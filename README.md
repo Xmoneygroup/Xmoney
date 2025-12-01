@@ -71,7 +71,8 @@
       transition: background 0.3s;
     }
 
-    .btn-black { background-color: black; }
+    .btn-black { background-color: "url('https://images.unsplash.com/photo-1610878180933-8d8398ffdd4f?auto=format&fit=crop&w=1470&q=80')" }}
+      ></div> }
     .btn-green { background-color: #16a34a; }
     .btn-red   { background-color: #dc2626; }
     .btn-blue  { background-color: #2563eb; }
