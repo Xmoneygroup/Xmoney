@@ -1,59 +1,131 @@
-[html code 1.txt](https://github.com/user-attachments/files/23858187/html.code.1.txt)
-// File: app/dashboard/page.tsx – Modern Xmoney Dashboard with static galaxy background
-export default function Dashboard() {
-  return (
-    <div className="relative min-h-screen bg-black text-white">
-      {/* Static Galaxy Background */}
-      <div
-        className="absolute inset-0 -z-10 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1610878180933-8d8398ffdd4f?auto=format&fit=crop&w=1470&q=80')" }}
-      ></div>
+[html code.txt](https://github.com/user-attachments/files/23858233/html.code.txt)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xmoney Dashboard</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 0;
+    }
 
-      <div className="relative z-10 p-8 max-w-7xl mx-auto">
-        <h1 className="text-5xl font-extrabold mb-6 text-center">Xmoney Dashboard</h1>
-        <p className="text-xl text-center mb-12 max-w-2xl mx-auto">
-          Welcome to the next level of business collaboration with <strong>Xmoney</strong>. Your membership unlocks exclusive tools and services designed to help your business grow.
-        </p>
+    .container {
+      padding: 24px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        {/* Options Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Option 1 – Logos */}
-          <div className="bg-white bg-opacity-90 shadow-2xl rounded-3xl p-8 text-black hover:scale-105 transform transition duration-300">
-            <h2 className="text-2xl font-bold mb-3">2 Professional Logos – $5</h2>
-            <p className="mb-5">Get 2 custom logos to elevate your brand identity.</p>
-            <a href="https://whop.com/checkout/plan_QOybDJlOSXgGn" target="_blank" rel="noopener noreferrer" className="inline-block bg-black text-white font-semibold px-6 py-3 rounded-xl w-full text-center hover:bg-gray-800 transition">
-              Order Logos
-            </a>
-          </div>
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
 
-          {/* Option 2 – Business Ideas */}
-          <div className="bg-white bg-opacity-90 shadow-2xl rounded-3xl p-8 text-black hover:scale-105 transform transition duration-300">
-            <h2 className="text-2xl font-bold mb-3">Business Ideas – $10</h2>
-            <p className="mb-5">Receive unique business ideas and strategies to grow fast.</p>
-            <a href="https://whop.com/checkout/plan_P7lCCHZ89ZLDj" target="_blank" rel="noopener noreferrer" className="inline-block bg-green-600 text-white font-semibold px-6 py-3 rounded-xl w-full text-center hover:bg-green-700 transition">
-              Get Ideas
-            </a>
-          </div>
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
 
-          {/* Option 3 – Premium Video */}
-          <div className="bg-white bg-opacity-90 shadow-2xl rounded-3xl p-8 text-black hover:scale-105 transform transition duration-300">
-            <h2 className="text-2xl font-bold mb-3">Premium Video Editing (20s) – $10</h2>
-            <p className="mb-5">High-quality 20-second marketing video for your business.</p>
-            <a href="https://whop.com/checkout/plan_KHyI8qQTLoyqk" target="_blank" rel="noopener noreferrer" className="inline-block bg-red-600 text-white font-semibold px-6 py-3 rounded-xl w-full text-center hover:bg-red-700 transition">
-              Order Video
-            </a>
-          </div>
-        </div>
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
 
-        {/* Membership Section */}
-        <div className="mt-16 bg-blue-900 bg-opacity-80 p-10 rounded-3xl text-center shadow-2xl hover:scale-105 transform transition duration-300">
-          <h2 className="text-3xl font-bold mb-3">Xmoney Membership – $19.99 per business</h2>
-          <p className="mb-5 text-lg">Unlock access to the full platform, including all tools, exclusive content, and priority support.</p>
-          <a href="https://whop.com/checkout/plan_fenfmpRiZGQCn" target="_blank" rel="noopener noreferrer" className="inline-block bg-blue-600 text-white font-semibold px-8 py-4 rounded-xl text-lg hover:bg-blue-700 transition">
-            Join Membership
-          </a>
-        </div>
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Card */
+    .card {
+      background-color: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    .btn-black { background-color: black; }
+    .btn-green { background-color: #16a34a; }
+    .btn-red   { background-color: #dc2626; }
+    .btn-blue  { background-color: #2563eb; }
+
+    /* Membership Section */
+    .membership {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background-color: #fef3c7;
+      border-radius: 1rem;
+      text-align: center;
+    }
+
+    .membership .btn {
+      width: auto;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.125rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dashboard - Xmoney</h1>
+    <p>Welcome to the next level of business collaboration with <strong>Xmoney</strong>. Your membership unlocks exclusive tools and services.</p>
+
+    <div class="grid">
+      <!-- 2 Logos -->
+      <div class="card">
+        <h2>2 Professional Logos – $5</h2>
+        <p>Get 2 custom logos for your business.</p>
+        <a href="https://whop.com/checkout/plan_QOybDJlOSXgGn" target="_blank" class="btn btn-black">Order Logos</a>
+      </div>
+
+      <!-- Business Ideas -->
+      <div class="card">
+        <h2>Business Ideas – $10</h2>
+        <p>Receive unique ideas to grow your business.</p>
+        <a href="https://whop.com/checkout/plan_P7lCCHZ89ZLDj" target="_blank" class="btn btn-green">Get Ideas</a>
+      </div>
+
+      <!-- Premium Video Editing -->
+      <div class="card">
+        <h2>Premium Video Editing (20s) – $10</h2>
+        <p>High-quality 20-second marketing video for your business.</p>
+        <a href="https://whop.com/checkout/plan_KHyI8qQTLoyqk" target="_blank" class="btn btn-red">Order Video</a>
       </div>
     </div>
-  );
-}
+
+    <!-- Membership Section -->
+    <div class="membership">
+      <h2>Xmoney Membership – $19.99 per business</h2>
+      <p>Unlock access to the full platform, including all tools and priority support.</p>
+      <a href="https://whop.com/checkout/plan_fenfmpRiZGQCn" target="_blank" class="btn btn-blue">Join Membership</a>
+    </div>
+  </div>
+</body>
+</html>
