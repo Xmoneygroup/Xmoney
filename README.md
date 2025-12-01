@@ -1,132 +1,123 @@
-[html code.txt](https://github.com/user-attachments/files/23856231/html.code.txt)
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Xmoney Dashboard</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9fafb;
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      padding: 24px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 1.5rem;
-    }
-
-    p {
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    /* Card */
-    .card {
-      background-color: white;
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    .card h2 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      margin-top: 1rem;
-      text-align: center;
-      width: 100%;
-      transition: background 0.3s;
-    }
-
-    .btn-black { background-color: "url('https://images.unsplash.com/photo-1610878180933-8d8398ffdd4f?auto=format&fit=crop&w=1470&q=80')" }}
-      ></div> }
-    .btn-green { background-color: #16a34a; }
-    .btn-red   { background-color: #dc2626; }
-    .btn-blue  { background-color: #2563eb; }
-
-    /* Membership Section */
-    .membership {
-      margin-top: 2.5rem;
-      padding: 1.5rem;
-      background-color: #fef3c7;
-      border-radius: 1rem;
-      text-align: center;
-    }
-
-    .membership .btn {
-      width: auto;
-      padding: 0.75rem 1.5rem;
-      font-size: 1.125rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Dashboard - Xmoney</h1>
-    <p>Welcome to the next level of business collaboration with <strong>Xmoney</strong>. Your membership unlocks exclusive tools and services.</p>
-
-    <div class="grid">
-      <!-- 2 Logos -->
-      <div class="card">
-        <h2>2 Professional Logos – $5</h2>
-        <p>Get 2 custom logos for your business.</p>
-        <a href="https://whop.com/checkout/plan_QOybDJlOSXgGn" target="_blank" class="btn btn-black">Order Logos</a>
+// File: app/dashboard/page.tsx – Member Dashboard with moving galaxy background
+export default function Dashboard() {
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-black">
+      {/* Galaxy Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="stars"></div>
+        <div className="stars2"></div>
+        <div className="stars3"></div>
       </div>
 
-      <!-- Business Ideas -->
-      <div class="card">
-        <h2>Business Ideas – $10</h2>
-        <p>Receive unique ideas to grow your business.</p>
-        <a href="https://whop.com/checkout/plan_P7lCCHZ89ZLDj" target="_blank" class="btn btn-green">Get Ideas</a>
+      <div className="p-6 relative z-10 text-white">
+        <h1 className="text-4xl font-bold mb-6">Dashboard - Xmoney</h1>
+        <p className="text-xl mb-6">
+          Welcome to the next level of business collaboration with <strong>Xmoney</strong>. Your membership unlocks exclusive tools and services.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white shadow-xl rounded-2xl p-6 text-black">
+            <h2 className="text-2xl font-bold mb-2">2 Professional Logos – $5</h2>
+            <p>Get 2 custom logos for your business.</p>
+            <a href="https://whop.com/checkout/plan_QOybDJlOSXgGn" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-black text-white px-4 py-2 rounded-xl w-full text-center">Order Logos</a>
+          </div>
+
+          <div className="bg-white shadow-xl rounded-2xl p-6 text-black">
+            <h2 className="text-2xl font-bold mb-2">Business Ideas – $10</h2>
+            <p>Receive unique ideas to grow your business.</p>
+            <a href="https://whop.com/checkout/plan_P7lCCHZ89ZLDj" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded-xl w-full text-center">Get Ideas</a>
+          </div>
+
+          <div className="bg-white shadow-xl rounded-2xl p-6 text-black">
+            <h2 className="text-2xl font-bold mb-2">Premium Video Editing (20s) – $10</h2>
+            <p>High-quality 20-second marketing video for your business.</p>
+            <a href="https://whop.com/checkout/plan_KHyI8qQTLoyqk" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-red-600 text-white px-4 py-2 rounded-xl w-full text-center">Order Video</a>
+          </div>
+        </div>
+
+        <div className="mt-10 p-6 bg-yellow-100 rounded-xl text-center text-black">
+          <h2 className="text-2xl font-bold mb-2">Xmoney Membership – $19.99 per business</h2>
+          <p>Unlock access to the full platform, including all tools and priority support.</p>
+          <a href="https://whop.com/checkout/plan_fenfmpRiZGQCn" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-xl text-lg">Join Membership</a>
+        </div>
       </div>
 
-      <!-- Premium Video Editing -->
-      <div class="card">
-        <h2>Premium Video Editing (20s) – $10</h2>
-        <p>High-quality 20-second marketing video for your business.</p>
-        <a href="https://whop.com/checkout/plan_KHyI8qQTLoyqk" target="_blank" class="btn btn-red">Order Video</a>
+      {/* Galaxy Animation CSS */}
+      <style jsx>{`
+        .stars, .stars2, .stars3 {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 200%;
+          height: 200%;
+          background-repeat: repeat;
+          background-size: contain;
+          animation: moveStars 100s linear infinite;
+        }
+
+        .stars {
+          background-image: radial-gradient(white 1px, transparent 1px);
+          animation-duration: 100s;
+        }
+        .stars2 {
+          background-image: radial-gradient(white 2px, transparent 2px);
+          animation-duration: 150s;
+        }
+        .stars3 {
+          background-image: radial-gradient(white 3px, transparent 3px);
+          animation-duration: 200s;
+        }
+
+        @keyframes moveStars {
+          0% { transform: translate(0, 0); }
+          100% { transform: translate(-50%, -50%); }
+        }
+      `}</style>
+    </div>
+  );
+}
+// File: app/dashboard/page.tsx – Member Dashboard with static galaxy background
+export default function Dashboard() {
+  return (
+    <div className="relative min-h-screen bg-black">
+      {/* Static Galaxy Background */}
+      <div
+        className="absolute inset-0 -z-10 bg-cover bg-center"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1610878180933-8d8398ffdd4f?auto=format&fit=crop&w=1470&q=80')" }}
+      ></div>
+
+      <div className="p-6 relative z-10 text-white">
+        <h1 className="text-4xl font-bold mb-6">Dashboard - Xmoney</h1>
+        <p className="text-xl mb-6">
+          Welcome to the next level of business collaboration with <strong>Xmoney</strong>. Your membership unlocks exclusive tools and services.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white shadow-xl rounded-2xl p-6 text-black">
+            <h2 className="text-2xl font-bold mb-2">2 Professional Logos – $5</h2>
+            <p>Get 2 custom logos for your business.</p>
+            <a href="https://whop.com/checkout/plan_QOybDJlOSXgGn" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-black text-white px-4 py-2 rounded-xl w-full text-center">Order Logos</a>
+          </div>
+
+          <div className="bg-white shadow-xl rounded-2xl p-6 text-black">
+            <h2 className="text-2xl font-bold mb-2">Business Ideas – $10</h2>
+            <p>Receive unique ideas to grow your business.</p>
+            <a href="https://whop.com/checkout/plan_P7lCCHZ89ZLDj" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded-xl w-full text-center">Get Ideas</a>
+          </div>
+
+          <div className="bg-white shadow-xl rounded-2xl p-6 text-black">
+            <h2 className="text-2xl font-bold mb-2">Premium Video Editing (20s) – $10</h2>
+            <p>High-quality 20-second marketing video for your business.</p>
+            <a href="https://whop.com/checkout/plan_KHyI8qQTLoyqk" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-red-600 text-white px-4 py-2 rounded-xl w-full text-center">Order Video</a>
+          </div>
+        </div>
+
+        <div className="mt-10 p-6 bg-yellow-100 rounded-xl text-center text-black">
+          <h2 className="text-2xl font-bold mb-2">Xmoney Membership – $19.99 per business</h2>
+          <p>Unlock access to the full platform, including all tools and priority support.</p>
+          <a href="https://whop.com/checkout/plan_fenfmpRiZGQCn" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-xl text-lg">Join Membership</a>
+        </div>
       </div>
     </div>
-
-    <!-- Membership Section -->
-    <div class="membership">
-      <h2>Xmoney Membership – $19.99 per business</h2>
-      <p>Unlock access to the full platform, including all tools and priority support.</p>
-      <a href="https://whop.com/checkout/plan_fenfmpRiZGQCn" target="_blank" class="btn btn-blue">Join Membership</a>
-    </div>
-  </div>
-</body>
-</html>
+  );
+}
