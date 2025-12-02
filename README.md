@@ -1,4 +1,4 @@
-[!DOCTYPE html   5.txt](https://github.com/user-attachments/files/23884809/DOCTYPE.html.5.txt)
+[!DOCTYPE html  6.txt](https://github.com/user-attachments/files/23885765/DOCTYPE.html.6.txt)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,21 +125,21 @@
             <div class="card">
                 <h2>2 Business Logos – $5</h2>
                 <p>Get high-quality, professional logos for your brand.</p>
-                <a class="btn" href="https://whop.com/checkout/plan_tg1jgLjTQYfSU">BUY NOW</a>
+                <a class="btn" href="https://whop.com/checkout/plan_Bg7KX3vyIVGjk">BUY NOW</a>
             </div>
 
             <!-- Card 2 -->
             <div class="card">
                 <h2>10 Business Growth Ideas – $10</h2>
                 <p>Boost your business with creative and actionable strategies.</p>
-                <a class="btn" href="https://whop.com/checkout/plan_yubdJLnByzgek">BUY NOW</a>
+                <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
             </div>
 
             <!-- Card 3 -->
             <div class="card">
                 <h2>1 Professional 30s Video – $10</h2>
                 <p>Create a compelling video that attracts more clients.</p>
-                <a class="btn" href="https://whop.com/checkout/plan_3FUjMCXZOq2mn">BUY NOW</a>
+                <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
             </div>
         </div>
 
@@ -150,7 +150,7 @@
         <div class="premium-card">
             <h3>Join the Premium Xmoney Membership</h3>
             <p>Price: $19.99</p>
-            <a class="btn" href="https://whop.com/checkout/plan_cjyeP2gKYnTjs">PAY NOW</a>
+            <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
         </div>
 
         <p class="section-text">After purchase, you will be contacted directly via email: suhejby@gmail.com</p>
