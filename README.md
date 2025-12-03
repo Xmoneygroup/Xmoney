@@ -1,4 +1,4 @@
-[!DOCTYPE html  6.txt](https://github.com/user-attachments/files/23885765/DOCTYPE.html.6.txt)
+(https://github.com/user-attachments/files/23885765/DOCTYPE.html.6.txt)
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
