@@ -151,6 +151,3 @@
             <p>Price: $19.99</p>
             <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
         </div>
-
-</body>
-</html>
