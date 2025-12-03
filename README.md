@@ -152,8 +152,5 @@
             <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
         </div>
 
-        <p class="section-text">After purchase, you will be contacted directly via email: suhejby@gmail.com</p>
-
-    </div>
 </body>
 </html>
