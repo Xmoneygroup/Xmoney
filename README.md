@@ -58,10 +58,7 @@
             color: #fff;
         }
 
-        .card p {
-            font-size: 16px;
-            margin-bottom: 25px;
-            color: #f0f0f0;
+        
         }
 
         .btn {
