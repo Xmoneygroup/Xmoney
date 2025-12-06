@@ -31,6 +31,8 @@
         }
 
         .cards-container {
+           min-height: 260px;
+           width: 350px;
            display: flex;
            flex-wrap: wrap;
            gap: 40px;
