@@ -30,11 +30,11 @@
             text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
         }
 
-        .cards {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 35px;
+        .cards-container {
+           display: flex;
+           flex-wrap: wrap;
+           gap: 40px;
+           justify-content: center;
         }
 
         .card {
