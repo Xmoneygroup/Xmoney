@@ -18,7 +18,7 @@
         }
 
         .overlay {
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: hsla(0, 0%, 0%, 0.6);
             width: 100%;
             min-height: 100vh;
             padding: 60px 20px;
