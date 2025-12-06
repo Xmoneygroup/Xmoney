@@ -9,11 +9,12 @@
 
         body {
             margin: 0;
-  height: 100vh;
-  background: linear-gradient(120deg, #00c6ff, #0072ff, #7209b7, #ff00c8);
-  background-size: 400% 400%;
-  animation: aurora 12s ease infinite;
-}
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(120deg, #00c6ff, #0072ff, #7209b7, #ff00c8);
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
         }
 
         .overlay {
@@ -141,18 +142,10 @@
             </div>
         </div>
 
-        <p class="section-text">We can bring your business: clients, money, and massive success.</p>
-
-        <p class="section-text">Join the premium and experience the storm of business success.</p>
-
         <div class="premium-card">
             <h3>Join the Premium Xmoney Membership</h3>
             <p>Price: $19.99</p>
             <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
         </div>
 
-        <p class="section-text">After purchase, you will be contacted directly via email: suhejby@gmail.com</p>
-
-    </div>
-</body>
-</html>
+       
