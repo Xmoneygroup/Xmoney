@@ -38,7 +38,7 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 255);
+            background: rgba(255, 255, 255, 0.15);
             padding: 30px;
             width: 330px;
             border-radius: 18px;
