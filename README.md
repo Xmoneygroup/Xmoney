@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="sq">
 <head>
 <meta charset="utf-8" />
@@ -10,55 +9,6 @@
     --bg-2: #1b2b7a; /* electric blue */
     --bg-3: #7a007a; /* deep purple */
     --accent: #ff3e9d; /* neon pink */
-  }
-
-  html,body {
-    height:100%;
-    margin:0;
-  }
-
-  .bg-gradient {
-    min-height:100vh;
-    background: radial-gradient(1200px 600px at 10% 20%, rgba(123,0,150,0.35), transparent 10%),
-                radial-gradient(1000px 500px at 90% 80%, rgba(0,200,255,0.14), transparent 10%),
-                linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
-    color: #fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  }
-
-  .container {
-    max-width:900px;
-    padding:40px;
-    text-align:center;
-    backdrop-filter: blur(0px);
-  }
-
-  h1 { margin:0 0 10px; font-size: clamp(1.5rem, 4vw, 3rem); }
-  p { opacity:0.9; }
-</style>
-</head>
-<body>
-  <div class="bg-gradient">
-    <div class="container">
-      <h1>Galaxy Gradient</h1>
-      <p>Background i thjeshtë dhe i përshtatshëm për performancë të lartë.</p>
-    </div>
-  </div>
-</body>
-</html>
-
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
-            text-align: center;
-            overflow-x: hidden;
         }
 
         .overlay {
