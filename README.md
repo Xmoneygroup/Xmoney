@@ -9,12 +9,11 @@
 
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(120deg, #00c6ff, #0072ff, #7209b7, #ff00c8);
-            color: #fff;
-            text-align: center;
-            overflow-x: hidden;
+  height: 100vh;
+  background: linear-gradient(120deg, #00c6ff, #0072ff, #7209b7, #ff00c8);
+  background-size: 400% 400%;
+  animation: aurora 12s ease infinite;
+}
         }
 
         .overlay {
