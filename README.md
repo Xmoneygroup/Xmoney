@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #2e3192, #1bffff);
+            background: linear-gradient(135deg, #2600ff, #6a00ff, #ff00ea, #ff0066);
             color: #fff;
             text-align: center;
             overflow-x: hidden;
