@@ -1,11 +1,172 @@
 
-<html lang="en">
+<!doctype html>
+<html lang="sq">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Premium Xmoney - Business Success</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Starfield Canvas Background</title>
+<style>
+  html,body{height:100%;margin:0}
+  body{background:#030217;color:#fff;font-family:system-ui,Arial}
+  canvas { position:fixed; inset:0; width:100%; height:100%; z-index:-1; display:block; }
+  .ui { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; height:100vh; }
+  h1 { margin:0; font-size: clamp(1.5rem, 5vw, 3rem); text-align:center; }
+</style>
+</head>
+<body>
+  <canvas id="starfield"></canvas>
+  <div class="ui">
+    <h1>Starfield — Parallax</h1>
+  </div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  let w, h, stars = [], cx = 0, cy = 0;
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize() {
+    w = canvas.clientWidth;
+    h = canvas.clientHeight;
+    canvas.width = Math.floor(w * DPR);
+    canvas.height = Math.floor(h * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    initStars();
+  }
+
+  function initStars() {
+    stars = [];
+    // density: approx 0.0008 stars per px^2 (adjustable)
+    const area = w * h;
+    const count = Math.round(Math.max(60, area * 0.0008));
+    for (let i=0;i<count;i++){
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        z: Math.random() * 1, // depth 0..1 (closer = brighter)
+        r: Math.random() * 1.6 + 0.4,
+        twinkle: Math.random() * Math.PI * 2,
+        speed: 0.02 + Math.random()*0.06
+      });
+    }
+  }
+
+  let last = 0;
+  function draw(t) {
+    const dt = Math.min(50, t - last);
+    last = t;
+    // gentle background gradient
+    const g = ctx.createLinearGradient(0,0,0,h);
+    g.addColorStop(0,'#040017');
+    g.addColorStop(1,'#000010');
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,w,h);
+
+    // small faint nebula blobs for depth
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.save();
+    ctx.fillStyle = 'rgba(30,10,80,0.06)';
+    ctx.beginPath(); ctx.ellipse(w*0.15, h*0.2, w*0.35, h*0.24, 0,0,Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(w*0.78, h*0.78, w*0.4, h*0.32, 0,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+
+    // draw stars
+    for (let i=0;i<stars.length;i++){
+      const s = stars[i];
+      // parallax offset depends on depth
+      const px = (cx * (1 - s.z * 0.9));
+      const py = (cy * (1 - s.z * 0.9));
+      const x = (s.x + px * (0.05 + s.z*0.2)) % (w + 50);
+      const y = (s.y + py * (0.05 + s.z*0.2)) % (h + 50);
+
+      // twinkle
+      s.twinkle += dt * 0.002 * s.speed;
+      const flick = 0.6 + 0.4 * Math.sin(s.twinkle);
+      const alpha = 0.3 + 0.7 * (1 - s.z) * flick;
+
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+      ctx.arc(x < 0 ? x + w : x, y < 0 ? y + h : y, s.r * (1 + (1 - s.z)*0.6), 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    // subtle moving streaks (meteors) occasionally
+    if (Math.random() < 0.01) {
+      createMeteor();
+    }
+
+    updateMeteors(dt);
+    requestAnimationFrame(draw);
+  }
+
+  // optional meteors
+  const meteors = [];
+  function createMeteor(){
+    meteors.push({
+      x: Math.random()*w,
+      y: -20,
+      vx: -2 - Math.random()*6,
+      vy: 4 + Math.random()*6,
+      len: 80 + Math.random()*140,
+      life: 0
+    });
+  }
+  function updateMeteors(dt){
+    for (let i=meteors.length-1;i>=0;i--){
+      const m = meteors[i];
+      m.x += m.vx * (dt/16);
+      m.y += m.vy * (dt/16);
+      m.life += dt;
+      ctx.beginPath();
+      const grad = ctx.createLinearGradient(m.x, m.y, m.x - m.vx*2, m.y - m.vy*2);
+      grad.addColorStop(0, 'rgba(255,255,255,0.95)');
+      grad.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.5;
+      ctx.moveTo(m.x, m.y);
+      ctx.lineTo(m.x - m.vx * (m.len/20), m.y - m.vy * (m.len/20));
+      ctx.stroke();
+
+      if (m.x < -100 || m.y > h + 100 || m.life > 2500) meteors.splice(i,1);
+    }
+  }
+
+  // mouse parallax
+  window.addEventListener('mousemove', (e) => {
+    const nx = (e.clientX / w - 0.5) * 2; // -1..1
+    const ny = (e.clientY / h - 0.5) * 2;
+    // subtle follow
+    cx += (nx * 30 - cx) * 0.06;
+    cy += (ny * 30 - cy) * 0.06;
+  });
+
+  // touch support
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      const t = e.touches[0];
+      const nx = (t.clientX / w - 0.5) * 2;
+      const ny = (t.clientY / h - 0.5) * 2;
+      cx += (nx * 30 - cx) * 0.08;
+      cy += (ny * 30 - cy) * 0.08;
+    }
+  }, {passive:true});
+
+  // visibility: pause when not visible to save battery
+  let running = true;
+  document.addEventListener('visibilitychange', () => {
+    running = !document.hidden;
+    if (running) { last = performance.now(); requestAnimationFrame(draw); }
+  });
+
+  // init
+  window.addEventListener('resize', () => { resize(); });
+  resize();
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
 
         body {
             margin: 0;
