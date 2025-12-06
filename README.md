@@ -1,4 +1,4 @@
-
+[html code X.txt](https://github.com/user-attachments/files/24003484/html.code.X.txt)
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -11,16 +11,17 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(120deg, #00c6ff, #0072ff, #7209b7, #ff00c8);
+            background: linear-gradient(135deg, #240b36, #c31432);
             color: #fff;
             text-align: center;
             overflow-x: hidden;
-        } 
+        }
+
+        .overlay {
             background-color: rgba(0, 0, 0, 0.6);
             width: 100%;
             min-height: 100vh;
             padding: 60px 20px;
-
         }
 
         h1 {
@@ -31,10 +32,10 @@
         }
 
         .cards {
-           display: flex;
-           flex-wrap: wrap;
-           gap: 40px;
-           justify-content: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 35px;
         }
 
         .card {
@@ -45,7 +46,7 @@
             backdrop-filter: blur(12px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-
+        }
 
         .card:hover {
             transform: translateY(-12px);
@@ -57,11 +58,11 @@
             margin-bottom: 15px;
             color: #fff;
         }
+
         .card p {
             font-size: 16px;
             margin-bottom: 25px;
             color: #f0f0f0;
-        
         }
 
         .btn {
@@ -92,7 +93,7 @@
             width: 350px;
             background: rgba(255, 255, 255, 0.18);
             backdrop-filter: blur(14px);
-            padding: 30px;
+            padding: 28px;
             border-radius: 20px;
             box-shadow: 0 12px 35px rgba(0,0,0,0.7);
             transition: transform 0.3s ease;
@@ -103,13 +104,13 @@
         }
 
         .premium-card h3 {
-            margin-bottom: 25px;
-            font-size: 16px;
+            margin-bottom: 15px;
+            font-size: 26px;
         }
 
         .premium-card p {
-            margin-bottom: 25px;
-            font-size: 16px;
+            margin-bottom: 22px;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -139,11 +140,13 @@
                 <p>Create a compelling video that attracts more clients.</p>
                 <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
             </div>
+        </div>
 
-          <div class="premium-card">
+      
+        <div class="premium-card">
             <h3>Join the Premium Xmoney Membership</h3>
             <p>Price: $19.99</p>
             <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
-          </div>
+        </div>
 
-       
+        
