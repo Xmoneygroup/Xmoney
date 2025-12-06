@@ -142,18 +142,11 @@
             </div>
         </div>
 
-        <p class="section-text">We can bring your business: clients, money, and massive success.</p>
-
-        <p class="section-text">Join the premium and experience the storm of business success.</p>
-
+        
         <div class="premium-card">
             <h3>Join the Premium Xmoney Membership</h3>
             <p>Price: $19.99</p>
             <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
         </div>
 
-        <p class="section-text">After purchase, you will be contacted directly via email: suhejby@gmail.com</p>
-
-    </div>
-</body>
-</html>
+       
