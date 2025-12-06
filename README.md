@@ -31,8 +31,6 @@
         }
 
         .cards-container {
-           min-height: 260px;
-           width: 350px;
            display: flex;
            flex-wrap: wrap;
            gap: 40px;
@@ -40,7 +38,7 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 255 );
+            background: rgba(255, 255, 255, 255);
             padding: 30px;
             width: 330px;
             border-radius: 18px;
