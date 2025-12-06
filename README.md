@@ -39,13 +39,22 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 30px;
-            width: 330px;
-            border-radius: 18px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+           <style jsx>{`
+  .animated-galaxy {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
+    background-size: 300% 300%;
+    animation: moveBackground 12s ease infinite;
+  }
+
+  @keyframes moveBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+`}</style>
+
         }
 
         .card:hover {
