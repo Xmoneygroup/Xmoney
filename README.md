@@ -1,4 +1,4 @@
-[Xmoney html.txt](https://github.com/user-attachments/files/23989992/Xmoney.html.txt)
+[Xmoney html.txt](https://github.com/user-attachments/files/23990246/Xmoney.html.txt)
 // File: app/dashboard/page.tsx – Member Dashboard with animated galaxy background
 export default function Dashboard() {
   return (
@@ -45,23 +45,14 @@ export default function Dashboard() {
         </div>
       </div>
 
+      {/* Galaxy animation styles */}
       <style jsx>{`
-  .animated-galaxy {
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, #ff0080, #7928ca, #2d2dff);
-    background-size: 200% 200%;
-    filter: blur(2px);
-    animation: neonSmoke 8s ease-in-out infinite alternate;
-  }
-
-  @keyframes neonSmoke {
-    0% { background-position: 30% 30%; }
-    50% { background-position: 70% 60%; }
-    100% { background-position: 30% 70%; }
-  }
-`}</style>
-
+        .animated-galaxy {
+          background: radial-gradient(circle at 20% 30%, #ff9ff3, transparent 25%),
+                      radial-gradient(circle at 80% 70%, #feca57, transparent 25%),
+                      radial-gradient(circle at 50% 50%, #48dbfb, transparent 25%);
+          background-size: 400% 400%;
+          animation: galaxyMove 20s linear infinite;
         }
 
         @keyframes galaxyMove {
