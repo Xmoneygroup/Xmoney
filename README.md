@@ -84,17 +84,18 @@
 
         .premium-card {
             margin: 45px auto;
-            width: 350px;
-            background: rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(14px);
-            padding: 28px;
-            border-radius: 20px;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.7);
-            transition: transform 0.3s ease;
+            width: 330px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease; box-shadow 0.3s ease;
         }
 
         .premium-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-12px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0,7)
         }
 
         .premium-card h3 {
