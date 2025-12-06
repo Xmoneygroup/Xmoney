@@ -1,4 +1,4 @@
-[html code X.txt](https://github.com/user-attachments/files/24003484/html.code.X.txt)
+
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -16,12 +16,6 @@
             text-align: center;
             overflow-x: hidden;
         }
-
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            min-height: 100vh;
-            padding: 60px 20px;
         }
 
         h1 {
