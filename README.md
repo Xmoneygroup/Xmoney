@@ -9,7 +9,16 @@
     --bg-2: #1b2b7a; /* electric blue */
     --bg-3: #7a007a; /* deep purple */
     --accent: #ff3e9d; /* neon pink */
-        }
+        }  html,body {
+    height:100%;
+    margin:0;
+  }
+
+  .bg-gradient {
+    min-height:100vh;
+    background: radial-gradient(1200px 600px at 10% 20%, rgba(123,0,150,0.35), transparent 10%),
+                radial-gradient(1000px 500px at 90% 80%, rgba(0,200,255,0.14), transparent 10%),
+                linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
 
         .overlay {
             background-color: rgba(0, 0, 0, 0.6);
