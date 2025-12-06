@@ -134,9 +134,9 @@
                 <h2>1 Professional 30s Video – $10</h2>
                 <p>Create a compelling video that attracts more clients.</p>
                 <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
-            </div>
-      
-        <div class="premium-card">
+             </div>
+       
+            </div class="premium-card">
             <h3>Join the Premium Xmoney Membership</h3>
             <p>Price: $19.99</p>
             <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
