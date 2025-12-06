@@ -38,14 +38,17 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 30px;
-            width: 330px;
-            border-radius: 18px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+           .card {
+    width: 350px;
+    min-height: 260px;
+    padding: 30px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #3a7bd5, #3a6073);
+    color: white;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
 
         .card:hover {
             transform: translateY(-12px);
