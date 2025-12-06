@@ -1,5 +1,4 @@
-[DOCTYPE.html.6.txt](https://github.com/user-attachments/files/23990544/DOCTYPE.html.6.txt)
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -153,8 +152,4 @@
             <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
         </div>
 
-        <p class="section-text">After purchase, you will be contacted directly via email: suhejby@gmail.com</p>
-
-    </div>
-</body>
-</html>
+   
