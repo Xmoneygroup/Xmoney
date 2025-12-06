@@ -1,5 +1,4 @@
-
-[DOCTYPE.html.6.txt](https://github.com/user-attachments/files/23990425/DOCTYPE.html.6.txt)
+[DOCTYPE.html.6.txt](https://github.com/user-attachments/files/23990505/DOCTYPE.html.6.txt)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,20 +9,18 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
-            text-align: center;
-            overflow-x: hidden;
+            .animated-galaxy {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, #ff0080, #7928ca, #2d2dff);
+    background-size: 200% 200%;
+    filter: blur(2px);
+    animation: neonSmoke 8s ease-in-out infinite alternate;
         }
-
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            min-height: 100vh;
-            padding: 60px 20px;
+@keyframes neonSmoke {
+    0% { background-position: 30% 30%; }
+    50% { background-position: 70% 60%; }
+    100% { background-position: 30% 70%; }
         }
 
         h1 {
@@ -41,23 +38,13 @@
         }
 
         .card {
-           <style jsx>{`
-  .animated-galaxy {
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, #ff0080, #7928ca, #2d2dff);
-    background-size: 200% 200%;
-    filter: blur(2px);
-    animation: neonSmoke 8s ease-in-out infinite alternate;
-  }
-
-  @keyframes neonSmoke {
-    0% { background-position: 30% 30%; }
-    50% { background-position: 70% 60%; }
-    100% { background-position: 30% 70%; }
-  }
-`}</style>
-
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            width: 330px;
+            border-radius: 18px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
