@@ -41,13 +41,23 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 30px;
-            width: 330px;
-            border-radius: 18px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+           <style jsx>{`
+  .animated-galaxy {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, #ff0080, #7928ca, #2d2dff);
+    background-size: 200% 200%;
+    filter: blur(2px);
+    animation: neonSmoke 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes neonSmoke {
+    0% { background-position: 30% 30%; }
+    50% { background-position: 70% 60%; }
+    100% { background-position: 30% 70%; }
+  }
+`}</style>
+
         }
 
         .card:hover {
