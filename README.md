@@ -30,7 +30,7 @@
             text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
         }
 
-        .cards-container {
+        .cards {
            display: flex;
            flex-wrap: wrap;
            gap: 40px;
