@@ -94,8 +94,8 @@
         }
 
         .premium-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0,7)
+            transform: translateY(12px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0,6)
         }
 
         .premium-card h3 {
@@ -135,10 +135,10 @@
                 <p>Create a compelling video that attracts more clients.</p>
                 <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
              </div>
-            
+       
        
          <div class="premium-card">
-            <h3>Join the Premium Xmoney Membership</h3>
+            <h3>Join the Premium Xmoney Membership.</h3>
             <p>Price: $19.99</p>
             <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
           </div>
