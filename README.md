@@ -9,18 +9,20 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
         body {
-            .animated-galaxy {
+     .animated-galaxy {
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, #ff0080, #7928ca, #2d2dff);
-    background-size: 200% 200%;
-    filter: blur(2px);
-    animation: neonSmoke 8s ease-in-out infinite alternate;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #6dd5fa, #2980b9);
+    background-size: 400% 400%;
+    animation: waveMove 10s ease infinite;
+  }
         }
-@keyframes neonSmoke {
-    0% { background-position: 30% 30%; }
-    50% { background-position: 70% 60%; }
-    100% { background-position: 30% 70%; }
+
+  @keyframes waveMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
         }
 
         h1 {
