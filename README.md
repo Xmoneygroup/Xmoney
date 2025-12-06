@@ -1,4 +1,4 @@
-[DOCTYPE.html.6.txt](https://github.com/user-attachments/files/23990505/DOCTYPE.html.6.txt)
+[DOCTYPE.html.6.txt](https://github.com/user-attachments/files/23990544/DOCTYPE.html.6.txt)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,20 +9,20 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
         body {
-     .animated-galaxy {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(-45deg, #1e3c72, #2a5298, #6dd5fa, #2980b9);
-    background-size: 400% 400%;
-    animation: waveMove 10s ease infinite;
-  }
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
         }
 
-  @keyframes waveMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            min-height: 100vh;
+            padding: 60px 20px;
         }
 
         h1 {
