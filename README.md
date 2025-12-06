@@ -1,5 +1,4 @@
-[DOCTYPE.html.6.txt](https://github.com/user-attachments/files/23997848/DOCTYPE.html.6.txt)
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -12,7 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background: linear-gradient(135deg, #000428, #004e92);
             color: #fff;
             text-align: center;
             overflow-x: hidden;
