@@ -1,162 +1,75 @@
+[Xmoney html.txt](https://github.com/user-attachments/files/23989992/Xmoney.html.txt)
+// File: app/dashboard/page.tsx – Member Dashboard with animated galaxy background
+export default function Dashboard() {
+  return (
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Animated Galaxy Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="animated-galaxy w-full h-full"></div>
+      </div>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Premium Xmoney - Business Success</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+      <div className="p-6 relative z-10">
+        <h1 className="text-4xl font-bold mb-6 text-white">Dashboard - Xmoney</h1>
+        <p className="text-xl mb-6 text-white">
+          Welcome to the next level of business collaboration with <strong>Xmoney</strong>. Your membership unlocks exclusive tools and services.
+        </p>
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
-            text-align: center;
-            overflow-x: hidden;
-        }
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* TABLE 1 – 2 Logo Designs */}
+          <div className="bg-white shadow-xl rounded-2xl p-6">
+            <h2 className="text-2xl font-bold mb-2">2 Professional Logos – $5</h2>
+            <p>Get 2 custom logos for your business.</p>
+            <a href="https://whop.com/checkout/plan_QOybDJlOSXgGn" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-black text-white px-4 py-2 rounded-xl w-full text-center">Order Logos</a>
+          </div>
 
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            min-height: 100vh;
-            padding: 60px 20px;
-        }
+          {/* TABLE 2 – Business Ideas */}
+          <div className="bg-white shadow-xl rounded-2xl p-6">
+            <h2 className="text-2xl font-bold mb-2">Business Ideas – $10</h2>
+            <p>Receive unique ideas to grow your business.</p>
+            <a href="https://whop.com/checkout/plan_P7lCCHZ89ZLDj" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-green-600 text-white px-4 py-2 rounded-xl w-full text-center">Get Ideas</a>
+          </div>
 
-        h1 {
-            font-size: 50px;
-            margin-bottom: 50px;
-            font-weight: 700;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
-        }
+          {/* TABLE 3 – Premium Video Editing */}
+          <div className="bg-white shadow-xl rounded-2xl p-6">
+            <h2 className="text-2xl font-bold mb-2">Premium Video Editing (20s) – $10</h2>
+            <p>High-quality 20-second marketing video for your business.</p>
+            <a href="https://whop.com/checkout/plan_KHyI8qQTLoyqk" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-red-600 text-white px-4 py-2 rounded-xl w-full text-center">Order Video</a>
+          </div>
+        </div>
 
-        .cards {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 35px;
-        }
+        {/* Membership section */}
+        <div className="mt-10 p-6 bg-yellow-100 rounded-xl text-center">
+          <h2 className="text-2xl font-bold mb-2">Xmoney Membership – $19.99 per business</h2>
+          <p>Unlock access to the full platform, including all tools and priority support.</p>
+          <a href="https://whop.com/checkout/plan_fenfmpRiZGQCn" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-xl text-lg">Join Membership</a>
+        </div>
+      </div>
 
-        .card {
-           <style jsx>{`
+      <style jsx>{`
   .animated-galaxy {
     width: 100%;
     height: 100%;
-    background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
-    background-size: 300% 300%;
-    animation: moveBackground 12s ease infinite;
+    background: radial-gradient(circle at 50% 50%, #ff0080, #7928ca, #2d2dff);
+    background-size: 200% 200%;
+    filter: blur(2px);
+    animation: neonSmoke 8s ease-in-out infinite alternate;
   }
 
-  @keyframes moveBackground {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  @keyframes neonSmoke {
+    0% { background-position: 30% 30%; }
+    50% { background-position: 70% 60%; }
+    100% { background-position: 30% 70%; }
   }
 `}</style>
 
         }
 
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+        @keyframes galaxyMove {
+          0% { background-position: 0% 0%, 100% 100%, 50% 50%; }
+          50% { background-position: 100% 50%, 0% 100%, 50% 0%; }
+          100% { background-position: 0% 0%, 100% 100%, 50% 50%; }
         }
-
-        .card h2 {
-            font-size: 26px;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .card p {
-            font-size: 16px;
-            margin-bottom: 25px;
-            color: #f0f0f0;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 26px;
-            background-color: #ff5722;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #e64a19;
-        }
-
-        .section-text {
-            margin-top: 50px;
-            font-size: 22px;
-            font-weight: 500;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
-        }
-
-        .premium-card {
-            margin: 45px auto;
-            width: 350px;
-            background: rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(14px);
-            padding: 28px;
-            border-radius: 20px;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.7);
-            transition: transform 0.3s ease;
-        }
-
-        .premium-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .premium-card h3 {
-            margin-bottom: 15px;
-            font-size: 26px;
-        }
-
-        .premium-card p {
-            margin-bottom: 22px;
-            font-size: 18px;
-        }
-    </style>
-</head>
-<body>
-    <div class="overlay">
-
-        <h1>Xmoney – The Key to Your Business Success</h1>
-
-        <div class="cards">
-            <!-- Card 1 -->
-            <div class="card">
-                <h2>2 Business Logos – $5</h2>
-                <p>Get high-quality, professional logos for your brand.</p>
-                <a class="btn" href="https://whop.com/checkout/plan_Bg7KX3vyIVGjk">BUY NOW</a>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="card">
-                <h2>10 Business Growth Ideas – $10</h2>
-                <p>Boost your business with creative and actionable strategies.</p>
-                <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="card">
-                <h2>1 Professional 30s Video – $10</h2>
-                <p>Create a compelling video that attracts more clients.</p>
-                <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
-            </div>
-        </div>
-
-        <p class="section-text">We can bring your business: clients, money, and massive success.</p>
-
-        <p class="section-text">Join the premium and experience the storm of business success.</p>
-
-        <div class="premium-card">
-            <h3>Join the Premium Xmoney Membership</h3>
-            <p>Price: $19.99</p>
-            <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
-        </div>
+      `}</style>
+    </div>
+  );
+}
