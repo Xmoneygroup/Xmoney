@@ -140,9 +140,9 @@
                 <p>Create a compelling video that attracts more clients.</p>
                 <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
             </div>
-        </div>
+        </div> 
 
-        <p class="section-text">We can bring your business: clients, money, and massive success.</p>
+        
 
         <p class="section-text">Join the premium and experience the storm of business success.</p>
 
