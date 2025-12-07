@@ -163,7 +163,7 @@
              </div>
           <div class="trusted-box">
     <p>Over 350 Businesses Are Satisfied With Us</p> 
-</div>
+    </div>
 
        
           
