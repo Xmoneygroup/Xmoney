@@ -36,10 +36,12 @@
 
         .cards {
             display: flex;
+            flex-direction: row;
             justify-content: center;
-            flex-wrap: nowrap;
+            align-items: center;
             gap: 35px;
             margin-top: 100px;
+            flex-wrap: nowrap;
         }
 
         .card {
@@ -145,7 +147,7 @@
         </div>
     </div>
 
-        
+       
 
 </body>
 </html>
