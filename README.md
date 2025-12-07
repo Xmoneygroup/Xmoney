@@ -43,7 +43,7 @@
         }
 
         .card:hover {
-            transform: translateY(5px);
+            transform: translateY(-12px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.7);
         }
 
@@ -122,22 +122,22 @@
                 <a class="btn" href="https://whop.com/checkout/plan_Bg7KX3vyIVGjk">BUY NOW</a>
             </div>
 
-            <!-- Card 2 -->
+          <!-- Card 2 -->
             <div class="card">
                 <h2>10 Business Growth Ideas – $10</h2>
                 <p>Boost your business with creative and actionable strategies.</p>
                 <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
             </div>
 
-            <!-- Card 3 -->
-            <div class="card">
+          <!-- Card 3 -->
+             <div class="card">
                 <h2>1 Professional 30s Video – $10</h2>
                 <p>Create a compelling video that attracts more clients.</p>
                 <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
              </div>
        
        
-         <div class="premium-card">
+          <div class="premium-card">
             <h3>Join the Premium Xmoney Membership.</h3>
             <p>Price: $19.99</p>
             <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
