@@ -86,7 +86,7 @@
         }
 
         .card .btn:hover {
-            background-color: #e64a19;
+            background-color: #218838;
         }
 
     </style>
