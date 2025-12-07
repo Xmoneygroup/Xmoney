@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -96,8 +96,8 @@
     <div class="hero-text">Xmoney</div>
 
     <div class="subtext">
-        Ne treg mbizotrojmë gati 5 vite dhe kemi potencial të sjellim shumë klientë
-        vetëm përmes këtyre 3 opsioneve. Opsioni 2 dhe 3 janë çelësi i suksesit të biznesit tuaj.
+        We have dominated the market for nearly 5 years and have the potential to bring many clients
+    through these 3 options. Options 2 and 3 are the key to your business success.
     </div>
 
     <div class="cards">
