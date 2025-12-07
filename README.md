@@ -28,18 +28,22 @@
         .cards {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
+            flex-wrap: nowwrap;
             gap: 35px;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.15);
             padding: 30px;
-            width: 330px;
+            width: 330px;          
+            height: 260px;         
             border-radius: 18px;
             backdrop-filter: blur(12px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /
         }
 
         .card:hover {
@@ -48,8 +52,8 @@
         }
 
         .card h2 {
-            font-size: 26px;
-            margin-bottom: 15px;
+            font-size: 24px;
+            min-height: 60px;
             color: #fff;
         }
 
@@ -137,11 +141,7 @@
              </div>
        
        
-          <div class="premium-card">
-            <h3>Join the Premium Xmoney Membership.</h3>
-            <p>Price: $19.99</p>
-            <a class="btn" href="https://whop.com/checkout/plan_HbwK4HOO0PteK">PAY NOW</a>
-          </div>
+          
 
   
         
