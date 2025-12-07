@@ -19,7 +19,7 @@
             font-size: 90px;
             font-weight: 700;
             color: #ffffff;
-            margin: 120px 0 0 50px;
+            margin: 100px 0 0 50px;
             opacity: 1;
             transform: translateX(-120px);
             animation: slideIn 1.6s ease-out forwards;
