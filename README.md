@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <title>Premium Xmoney - Business Success</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Cinzel:wght@600;700&display=swap');
 
@@ -85,8 +85,8 @@
     
 
     <div class="subtext">
-        We have dominated the market for nearly 5 years and have the potential to bring many clients
-        through these 3 options. Options 2 and 3 are the key to your business success.
+       We have dominated the market for nearly 5 years and have the potential to bring many clients
+       through these 3 options. Options 2 and 3 are the key to your business success.
     </div>
 
     <div class="cards">
@@ -112,4 +112,4 @@
         </div>
     </div>
 
-        
+      
