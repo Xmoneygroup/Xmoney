@@ -3,66 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XMONEY</title>
+<title>XMONEY - NEXT LEVEL 3D</title>
+
+<!-- THREE.JS CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <style>
     body {
         margin: 0;
+        background: black;
         font-family: Arial, sans-serif;
-        background: #000;
-        color: white;
         overflow-x: hidden;
+        color: white;
     }
 
-    /* 3D BACKGROUND (Parallax Layers) */
-    .layer {
+    /* FULLSCREEN CANVAS */
+    #canvas3d {
         position: fixed;
-        width: 200%;
-        height: 200%;
-        top: -50%;
-        left: -50%;
-        z-index: -5;
-        pointer-events: none;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -10;
     }
 
-    .layer img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.12;
-        animation: float 18s infinite alternate ease-in-out;
-    }
-
-    @keyframes float {
-        0% { transform: scale(1) translate(0,0); }
-        100% { transform: scale(1.2) translate(40px, 40px); }
-    }
-
-    /* LOGO */
-    h1 {
-        text-align: center;
-        margin-top: 90px;
-        font-size: 75px;
+    /* LOGO TEXT */
+    .logo {
+        font-size: 90px;
         font-weight: 100;
-        letter-spacing: 8px;
+        letter-spacing: 10px;
+        text-align: center;
+        margin-top: 120px;
         opacity: 0;
-        transform: translateY(-40px);
-        animation: fadeIn 1.5s forwards ease-out;
     }
 
-    @keyframes fadeIn {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    /* SUBTITLE */
+    .subtitle {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 22px;
+        opacity: 0;
     }
 
     /* CARDS */
     .cards {
-        margin-top: 70px;
+        margin-top: 120px;
         display: flex;
         justify-content: center;
-        gap: 30px;
+        gap: 40px;
         flex-wrap: wrap;
         padding: 20px;
     }
@@ -70,31 +62,29 @@
     .card {
         background: rgba(255,255,255,0.08);
         padding: 25px;
-        width: 300px;
-        border-radius: 15px;
+        width: 330px;
+        border-radius: 20px;
         text-align: center;
-        border: 1px solid rgba(255,255,255,0.1);
-        backdrop-filter: blur(5px);
-        transition: 0.5s;
-        transform-style: preserve-3d;
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255,255,255,0.15);
+        transition: transform .4s ease;
     }
 
     .card:hover {
-        transform: translateY(-10px) rotateX(8deg) rotateY(8deg);
-        box-shadow: 0 0 25px rgba(0,255,100,0.4);
+        transform: translateY(-15px) scale(1.05);
+        box-shadow: 0 0 30px rgba(0,255,100,0.4);
     }
 
-    /* BUY BUTTON */
     .buy {
         display: inline-block;
-        margin-top: 18px;
+        margin-top: 15px;
         padding: 12px 20px;
         background: red;
+        border-radius: 10px;
         color: white;
         font-size: 18px;
-        border-radius: 10px;
         text-decoration: none;
-        transition: 0.3s;
+        transition: .3s;
     }
 
     .buy:hover {
@@ -103,62 +93,103 @@
 
     footer {
         text-align: center;
-        margin-top: 80px;
-        padding: 40px;
-        color: #bbb;
+        margin-top: 100px;
+        color: #aaa;
+        padding-bottom: 60px;
     }
 </style>
 </head>
 <body>
 
-<!-- 3D LAYERS (BUSINESS-THEMED) -->
-<div class="layer"><img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a" /></div>
-<div class="layer"><img src="https://images.unsplash.com/photo-1556761175-4b46a572b786" /></div>
-<div class="layer"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216" /></div>
+<canvas id="canvas3d"></canvas>
 
-<!-- LOGO -->
-<h1>XMONEY</h1>
+<h1 class="logo">XMONEY</h1>
+<p class="subtitle">Helping Small Businesses Grow To Big Success</p>
 
 <!-- CARDS -->
 <div class="cards">
-
     <div class="card">
         <h2>2 Logos for Your Business</h2>
-        <p>Clean, professional, premium design.</p>
+        <p>Premium, clean, beautiful design.</p>
         <p><strong>$5</strong></p>
         <a class="buy" href="https://whop.com/xmoney-1/xmoney-1c/" target="_blank">BUY NOW</a>
     </div>
 
     <div class="card">
         <h2>10 Business Ideas</h2>
-        <p>Profitable and realistic ideas to start instantly.</p>
+        <p>Profitable & realistic ideas for fast growth.</p>
         <p><strong>$10</strong></p>
         <a class="buy" href="https://whop.com/xmoney-1/xmoney-7e/" target="_blank">BUY NOW</a>
     </div>
 
     <div class="card">
-        <h2>1 Business Video Edit</h2>
-        <p>High-quality edit + unlimited clients.</p>
+        <h2>1 Video Edit</h2>
+        <p>High quality edit + unlimited clients.</p>
         <p><strong>$10</strong></p>
         <a class="buy" href="https://whop.com/xmoney-1/xmoney-b1/" target="_blank">BUY NOW</a>
     </div>
-
 </div>
 
 <footer>
-    © 2025 XMONEY — Helping small businesses grow.
+    © 2025 XMONEY — Next Level Business Growth.
 </footer>
 
-<!-- PARALLAX MOUSE 3D MOVEMENT -->
+
+<!-- THREE.JS 3D BACKGROUND -->
 <script>
-document.addEventListener("mousemove", (e) => {
-    const layers = document.querySelectorAll(".layer");
-    layers.forEach((layer, index) => {
-        let speed = (index + 1) * 0.015;
-        let x = (window.innerWidth / 2 - e.clientX) * speed;
-        let y = (window.innerHeight / 2 - e.clientY) * speed;
-        layer.style.transform = `translate(${x}px, ${y}px)`;
-    });
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("canvas3d"), alpha: true });
+renderer.setSize(innerWidth, innerHeight);
+camera.position.z = 5;
+
+// CREATE 3D PARTICLE FIELD
+const particles = new THREE.BufferGeometry();
+const count = 2000;
+const positions = new Float32Array(count * 3);
+
+for (let i = 0; i < count * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 15;
+}
+
+particles.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+const material = new THREE.PointsMaterial({ color: "#00ff88", size: 0.03 });
+const particleMesh = new THREE.Points(particles, material);
+scene.add(particleMesh);
+
+// ANIMATION LOOP
+function animate() {
+    particleMesh.rotation.x += 0.0005;
+    particleMesh.rotation.y += 0.001;
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+}
+animate();
+
+// RESIZE FIX
+addEventListener("resize", () => {
+    renderer.setSize(innerWidth, innerHeight);
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+});
+</script>
+
+<!-- GSAP ANIMATIONS -->
+<script>
+gsap.from(".logo", { y: -40, opacity: 0, duration: 1.5, ease: "power3.out" });
+gsap.from(".subtitle", { y: 20, opacity: 0, duration: 1.5, delay: 0.5, ease: "power3.out" });
+
+gsap.from(".card", {
+    opacity: 0,
+    y: 60,
+    duration: 1.5,
+    stagger: 0.2,
+    ease: "power3.out",
+    scrollTrigger: {
+        trigger: ".cards",
+        start: "top 90%"
+    }
 });
 </script>
 
