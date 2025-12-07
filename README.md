@@ -16,13 +16,88 @@
             overflow-x: hidden;
         }
 
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .subtext {
+            max-width: 600px;
+            font-size: 20px;
+            font-weight: 300;
+            margin: 20px 0 0 55px;
+            font-family: 'Cinzel', serif;
+            opacity: 0;
+            transform: translateX(-80px);
+            animation: slideIn 2s ease-out forwards;
+        }
+
+        .cards {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 35px;
+    margin-top: 100px;
+    flex-wrap: nowrap !important;
+}
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            width: 330px;
+            height: 300px;
+            border-radius: 18px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+        }
+
+        .card .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 15px 0;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .card .btn:hover {
+            background-color: #218838;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="hero-text">Xmoney</div>
+<div class="subtext">We have dominated the market for nearly 5 years and have the potential to bring many clients through these 3 options. Options 2 and 3 are the key to your business success.</div>
+
+<style>
         .hero-text {
             font-family: 'Cinzel', serif;
             font-size: 90px;
             font-weight: 700;
             color: #ffffff;
             margin: 120px 0 0 50px;
-            opacity: 1;
+            opacity: 0;
             transform: translateX(-120px);
             animation: slideIn 1.6s ease-out forwards;
         }
@@ -50,60 +125,9 @@
             0% { opacity: 0; transform: translateX(-120px); }
             100% { opacity: 1; transform: translateX(0); }
         }
+</style>
 
-        .cards {
-            display: flex;
-            flex-direction: row !important;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 35px;
-            margin-top: 100px;
-            flex-wrap: nowrap !important;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 30px;
-            width: 330px;
-            height: 300px;
-            border-radius: 18px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-        }
-
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 26px;
-            background-color: #28a745;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #218838;
-        }
-
-    </style>
-</head>
-<body>
-
-    <div class="hero-text">Xmoney</div>
-    <div class="subtext">We have dominated the market for nearly 5 years and have the potential to bring many clients through these 3 options. Options 2 and 3 are the key to your business success.</div>
-
-    <div class="cards">
+    <div class="cards"">
         <!-- Card 1 -->
         <div class="card">
             <h2>2 Business Logos – $5</h2>
@@ -122,6 +146,15 @@
         <div class="card">
             <h2>1 Professional 30s Video – $10</h2>
             <p>Create a compelling video that attracts more clients.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
+        </div>
+    </div>
+
+        <div class="card">
+            <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
+        </div>
+
+        <div class="card">
             <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
         </div>
     </div>
