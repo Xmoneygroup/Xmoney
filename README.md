@@ -35,14 +35,14 @@
         }
 
         .cards {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            gap: 35px;
-            margin-top: 100px;
-            flex-wrap: nowrap;
-        }
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 35px;
+    margin-top: 100px;
+    flex-wrap: nowrap !important;
+}
 
         .card {
             background: rgba(255, 255, 255, 0.15);
@@ -148,6 +148,3 @@
     </div>
 
        
-
-        </body>
-        </html>
