@@ -111,6 +111,28 @@
             margin-bottom: 22px;
             font-size: 18px;
         }
+        .trusted-box {
+    margin-top: 60px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+    animation: glowFloat 4s ease-in-out infinite;
+    opacity: 0;
+    animation: fadeIn 1.3s ease forwards, glowFloat 4s ease-in-out infinite 1.3s;
+    }
+
+    @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+    @keyframes glowFloat {
+    0% { text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; transform: translateY(0); }
+    50% { text-shadow: 0 0 20px #00eaff, 0 0 40px #00eaff; transform: translateY(-6px); }
+    100% { text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; transform: translateY(0); }
+}
+
     </style>
 </head>
 <body>
@@ -139,7 +161,10 @@
                 <p>Create a compelling video that attracts more clients.</p>
                 <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
              </div>
-       
+          <div class="trusted-box">
+    <p>Over 350 Businesses Are Satisfied With Us</p> 
+</div>
+
        
           
 
