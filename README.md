@@ -82,14 +82,47 @@
 </head>
 <body>
 
-    
+    <div class="hero-text">Xmoney</div>
+<div class="subtext">We have dominated the market for nearly 5 years and have the potential to bring many clients through these 3 options. Options 2 and 3 are the key to your business success.</div>
 
-    <div class="subtext">
-       We have dominated the market for nearly 5 years and have the potential to bring many clients
-       through these 3 options. Options 2 and 3 are the key to your business success.
-    </div>
+<style>
+        .hero-text {
+            font-family: 'Cinzel', serif;
+            font-size: 90px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 120px 0 0 50px;
+            opacity: 0;
+            transform: translateX(-120px);
+            animation: slideIn 1.6s ease-out forwards;
+        }
 
-    <div class="cards">
+        .subtext {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 20px 0 0 55px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateX(-120px);
+            animation: fadeText 5s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeText {
+            0% { opacity: 0; transform: translateX(-120px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+</style>
+
+    <div class="cards"">
         <!-- Card 1 -->
         <div class="card">
             <h2>2 Business Logos – $5</h2>
@@ -112,4 +145,7 @@
         </div>
     </div>
 
-      
+        
+
+</body>
+</html>
