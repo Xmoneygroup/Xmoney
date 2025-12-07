@@ -36,14 +36,14 @@
             background: rgba(255, 255, 255, 0.15);
             padding: 30px;
             width: 330px;          
-            height: 260px;         
+            height: 300px;         
             border-radius: 18px;
             backdrop-filter: blur(12px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /
+            justify-content: space-around;
         }
 
         .card:hover {
