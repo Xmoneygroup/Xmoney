@@ -43,7 +43,7 @@
         }
 
         .card:hover {
-            transform: translateY(-12px);
+            transform: translateY(-9px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.7);
         }
 
@@ -99,8 +99,8 @@
         }
 
         .premium-card h3 {
-            margin-bottom: 22px;
-            font-size: 18px;
+            margin-bottom: 15px;
+            font-size: 26px;
         }
 
         .premium-card p {
