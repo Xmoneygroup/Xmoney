@@ -1,10 +1,10 @@
+
 <html lang="en">
 <head>
-     <meta charset="UTF-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <title>Premium Xmoney - Business Success</titl 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <style>
-
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Cinzel:wght@600;700&display=swap');
 
         body {
@@ -14,17 +14,6 @@
             background: linear-gradient(135deg, #000000, #1a1a2e, #16213e);
             color: #fff;
             overflow-x: hidden;
-        }
-
-        .hero-text {
-            font-family: 'Cinzel', serif;
-            font-size: 80px;
-            font-weight: 700;
-            text-align: left;
-            margin: 120px 0 0 50px;
-            opacity: 0;
-            transform: translateX(-80px);
-            animation: slideIn 1.6s ease-out forwards;
         }
 
         @keyframes slideIn {
@@ -76,7 +65,7 @@
         .card .btn {
             display: inline-block;
             padding: 15px 26px;
-            background-color: #ff5722;
+            background-color: #28a745;
             color: white;
             text-decoration: none;
             border-radius: 10px;
@@ -93,11 +82,11 @@
 </head>
 <body>
 
-    <div class="hero-text">Xmoney</div>
+    
 
     <div class="subtext">
-        We have dominated the market for nearly 5 years and have the potential to bring many clients
-    through these 3 options. Options 2 and 3 are the key to your business success.
+        Ne treg mbizotrojmë gati 5 vite dhe kemi potencial të sjellim shumë klientë
+        vetëm përmes këtyre 3 opsioneve. Opsioni 2 dhe 3 janë çelësi i suksesit të biznesit tuaj.
     </div>
 
     <div class="cards">
@@ -123,4 +112,4 @@
         </div>
     </div>
 
-       
+        
