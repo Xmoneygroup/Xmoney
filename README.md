@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -147,4 +147,14 @@
         </div>
     </div>
 
-       
+        <div class="card">
+            <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
+        </div>
+
+        <div class="card">
+            <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
+        </div>
+    </div>
+
+</body>
+</html>
