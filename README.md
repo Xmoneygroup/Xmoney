@@ -97,7 +97,7 @@
             background-color: #218838;
         }
     </style>
-</head>
+
 <body>
 
     <div class="hero-text">Xmoney</div>
