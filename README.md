@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -41,7 +41,7 @@
     align-items: flex-start;
     gap: 35px;
     margin-top: 100px;
-    flex-wrap: nowrap !important;
+    flex-wrap: nowrap;
 }
 
         .card {
@@ -147,14 +147,7 @@
         </div>
     </div>
 
-        <div class="card">
-            <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
-        </div>
-
-        <div class="card">
-            <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
-        </div>
-    </div>
+        
 
 </body>
 </html>
