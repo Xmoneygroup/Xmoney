@@ -33,18 +33,52 @@
             opacity: 0.25;
             pointer-events: none;
         }
-        /* --- END BACKGROUND --- */
 
+        /* --- HERO TEXT EFFECT ULTRA PREMIUM --- */
         .hero-text {
             font-family: 'Cinzel', serif;
             font-size: 90px;
             font-weight: 700;
             color: #ffffff;
             margin: 40px 0 0 50px;
-            opacity: 1;
-            transform: translateX(-120px);
-            animation: slideIn 1.6s ease-out forwards;
+
+            opacity: 0;
+            transform: translateY(-60px);
+            animation: slideInHero 1.8s ease-out forwards, glowPulse 4s ease-in-out infinite;
+
+            text-shadow: 0 0 15px #7b2ff7, 0 0 30px #7b2ff7, 0 0 45px #4c00ff;
+            position: relative;
         }
+
+        @keyframes slideInHero {
+            0% { opacity: 0; transform: translateY(-60px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { text-shadow: 0 0 15px #7b2ff7, 0 0 30px #4c00ff; }
+            50% { text-shadow: 0 0 25px #a855ff, 0 0 55px #7c3aed; }
+        }
+
+        .hero-text::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+            transform: skewX(-25deg);
+            animation: shine 3.5s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -120%; }
+            60% { left: 120%; }
+            100% { left: 120%; }
+        }
+        /* --- END HERO TEXT EFFECT --- */
+
 
         .subtext {
             font-family: 'Montserrat', sans-serif;
@@ -56,13 +90,6 @@
             opacity: 0;
             transform: translateX(-120px);
             animation: fadeText 5s ease-out forwards;
-        }
-
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         @keyframes fadeText {
@@ -117,11 +144,13 @@
         .btn:hover {
             background-color: #218838;
         }
+
     </style>
 
 <body>
 
     <div class="hero-text">Xmoney</div>
+
     <div class="subtext">
         We have dominated the market for nearly 5 years and have the potential to bring many clients through these 3 options. Options 2 and 3 are the key to your business success.
     </div>
