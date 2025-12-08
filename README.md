@@ -9,10 +9,31 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #000000, #1a1a2e, #16213e);
+
+            /* --- BACKGROUND SUPER I FUQISHËM — NEW --- */
+            background: radial-gradient(circle at 20% 20%, #3a0ca3, #1a0933 40%, #000000 80%),
+                        radial-gradient(circle at 80% 80%, #4361ee, #1b1b2f 50%, #000000 90%);
+            background-blend-mode: screen;
+            background-attachment: fixed;
+
+            /* efekt mini yjesh */
+            position: relative;
             color: #fff;
             overflow-x: hidden;
         }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            opacity: 0.25;
+            pointer-events: none;
+        }
+        /* --- END BACKGROUND --- */
 
         .hero-text {
             font-family: 'Cinzel', serif;
