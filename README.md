@@ -35,36 +35,52 @@
         }
 
         /* --- HERO TEXT | HOLOGRAM SHIMMER EFFECT --- */
-    .hero-text {
+    /* --- HERO TEXT | CLEAN NEON GLOW (no white stripe) --- */
+.hero-text {
     font-family: 'Cinzel', serif;
     font-size: 90px;
     font-weight: 700;
     margin: 40px 0 0 50px;
 
-    background: linear-gradient(120deg, #ffffff 0%, #7a8cff 20%, #4f74ff 40%, #aab6ff 60%, #ffffff 80%);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    color: transparent;
+    /* ngjyra e tekstit */
+    color: #ffffff;
 
-    text-shadow: 
-        0px 0px 10px rgba(120,120,255,0.7),
-        0px 0px 25px rgba(120,120,255,0.9);
+    /* glow i pastër, pa shimmer të bardhë */
+    text-shadow:
+        0 0 12px #637bff,
+        0 0 30px #4c5bff,
+        0 0 45px #3a0ca3,
+        0 0 70px #3a0ca3;
 
-    animation: holoSwipe 3s ease infinite, holoAppear 1.2s ease-out forwards;
+    /* animacion i bukur por pa vijë të bardhë */
     opacity: 0;
+    animation: glowAppear 1.3s ease-out forwards, glowPulse 3s infinite ease-in-out;
     }
 
-    /* efekt i hyrjes */
-    @keyframes holoAppear {
+    /* Hyrje smooth */
+    @keyframes glowAppear {
     0% { opacity: 0; transform: translateY(-40px) scale(0.85); }
     100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    /* shimmer hologram */
-    @keyframes holoSwipe {
-    0% { background-position: 200% 0%; }
-    100% { background-position: -200% 0%; }
+    /* Pulzim glow shumë i pastër */
+    @keyframes glowPulse {
+    0%, 100% {
+        text-shadow:
+            0 0 12px #637bff,
+            0 0 30px #4c5bff,
+            0 0 45px #3a0ca3,
+            0 0 70px #3a0ca3;
     }
+    50% {
+        text-shadow:
+            0 0 18px #7d8dff,
+            0 0 40px #6c7cff,
+            0 0 65px #5b4cff,
+            0 0 90px #4a2acc;
+    }
+    }
+
 
 
         .hero-text::after {
