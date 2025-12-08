@@ -122,7 +122,9 @@
 <body>
 
     <div class="hero-text">Xmoney</div>
-    <div class="subtext">We have dominated the market for nearly 5 years and have the potential to bring many clients through these 3 options. Options 2 and 3 are the key to your business success.</div>
+    <div class="subtext">
+        We have dominated the market for nearly 5 years and have the potential to bring many clients through these 3 options. Options 2 and 3 are the key to your business success.
+    </div>
 
     <div class="cards">
         <div class="card">
@@ -130,11 +132,13 @@
             <p>Get high-quality, professional logos for your brand.</p>
             <a class="btn" href="https://whop.com/checkout/plan_Bg7KX3vyIVGjk">BUY NOW</a>
         </div>
+
         <div class="card">
             <h2>10 Business Growth Ideas – $10</h2>
             <p>Boost your business with creative and actionable strategies.</p>
             <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
         </div>
+
         <div class="card">
             <h2>1 Professional 30s Video – $10</h2>
             <p>Create a compelling video that attracts more clients.</p>
