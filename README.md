@@ -1,4 +1,4 @@
-<!doctype html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -64,7 +64,7 @@
     display:flex;
     gap:24px;
     justify-content:center;
-    flex-wrap:wrap;
+    flex-nowwrap;
   }
 
   .card{
