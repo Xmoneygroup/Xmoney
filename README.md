@@ -12,17 +12,8 @@
     font-family: 'Poppins', sans-serif;
     color: white;
     height: 100%;
-    overflow: hidden;
-    background: #000;
-  }
-
-  canvas#bgCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+    overflow-x: hidden;
+    background: #000; /* Full black background */
   }
 
   header {
@@ -47,7 +38,7 @@
 
   .cards-wrapper {
     max-width: 1200px;
-    margin: 150px auto;
+    margin: 120px auto;
     padding: 20px;
     position: relative;
     z-index: 10;
@@ -64,7 +55,7 @@
     width: 330px;
     padding: 25px;
     border-radius: 20px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6); /* Semi-transparent black */
     border: 1px solid rgba(0,255,150,0.3);
     backdrop-filter: blur(15px);
     box-shadow: 0 0 25px rgba(0,255,150,0.35);
@@ -120,8 +111,6 @@
 
 <body>
 
-<canvas id="bgCanvas"></canvas>
-
 <header>
   <h1>XMONEY</h1>
 </header>
@@ -154,89 +143,6 @@
 <footer>
   XMONEY — Empowering Businesses Globally
 </footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
-<script>
-  // Ultra futuristic 3D particle network
-  const canvas = document.getElementById('bgCanvas');
-  const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-  camera.position.z = 6;
-
-  const ambientLight = new THREE.AmbientLight(0x00ff95, 0.5);
-  scene.add(ambientLight);
-
-  const directionalLight = new THREE.DirectionalLight(0x00ff95, 1);
-  directionalLight.position.set(5,5,5);
-  scene.add(directionalLight);
-
-  // Particle system as network
-  const particles = 5000;
-  const positions = [];
-  const velocities = [];
-  const geometry = new THREE.BufferGeometry();
-
-  for(let i=0;i<particles;i++){
-    positions.push((Math.random()*2-1)*20);
-    positions.push((Math.random()*2-1)*15);
-    positions.push((Math.random()*2-1)*20);
-    velocities.push((Math.random()-0.5)*0.002);
-    velocities.push((Math.random()-0.5)*0.002);
-    velocities.push((Math.random()-0.5)*0.002);
-  }
-
-  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions,3));
-
-  const material = new THREE.PointsMaterial({
-    color: 0x00ff95,
-    size: 0.05,
-    transparent: true,
-    opacity: 0.7
-  });
-
-  const points = new THREE.Points(geometry, material);
-  scene.add(points);
-
-  // Connect lines
-  const lineMaterial = new THREE.LineBasicMaterial({color:0x00ff95,opacity:0.05,transparent:true});
-  const lineGeometry = new THREE.BufferGeometry();
-  const linePositions = new Float32Array(particles*particles*3);
-  const lineMesh = new THREE.LineSegments(lineGeometry,lineMaterial);
-  scene.add(lineMesh);
-
-  const clock = new THREE.Clock();
-  function animate(){
-    const t = clock.getElapsedTime();
-    const positionsAttr = geometry.attributes.position.array;
-
-    for(let i=0;i<particles;i++){
-      positionsAttr[i*3]+=velocities[i*3];
-      positionsAttr[i*3+1]+=velocities[i*3+1];
-      positionsAttr[i*3+2]+=velocities[i*3+2];
-
-      if(positionsAttr[i*3]>20 || positionsAttr[i*3]<-20) velocities[i*3]*=-1;
-      if(positionsAttr[i*3+1]>15 || positionsAttr[i*3+1]<-15) velocities[i*3+1]*=-1;
-      if(positionsAttr[i*3+2]>20 || positionsAttr[i*3+2]<-20) velocities[i*3+2]*=-1;
-    }
-
-    geometry.attributes.position.needsUpdate = true;
-    points.rotation.y = t*0.02;
-    renderer.render(scene,camera);
-    requestAnimationFrame(animate);
-  }
-  animate();
-
-  window.addEventListener('resize',()=>{
-    renderer.setSize(window.innerWidth,window.innerHeight);
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-  });
-
-</script>
 
 </body>
 </html>
