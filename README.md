@@ -1,148 +1,125 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XMONEY — Premium Services</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Xmoney - Business Success</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Cinzel:wght@600;700&display=swap');
 
-<style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    height: 100%;
-    overflow-x: hidden;
-    background: #000; /* Full black background */
-  }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #000000, #1a1a2e, #16213e);
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-  header {
-    text-align: center;
-    padding-top: 60px;
-    position: relative;
-    z-index: 10;
-  }
+        .hero-text {
+            font-family: 'Cinzel', serif;
+            font-size: 90px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 40px 0 0 50px;
+            opacity: 1;
+            transform: translateX(-120px);
+            animation: slideIn 1.6s ease-out forwards;
+        }
 
-  header h1 {
-    font-size: 80px;
-    font-weight: 900;
-    color: #00ff95;
-    text-shadow: 0 0 20px #00ff95;
-    animation: glowTitle 2s infinite alternate;
-  }
+        .subtext {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 20px 0 0 55px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateX(-120px);
+            animation: fadeText 5s ease-out forwards;
+        }
 
-  @keyframes glowTitle {
-    0% { text-shadow: 0 0 15px #00ff95, 0 0 25px #00ff95; }
-    100% { text-shadow: 0 0 25px #00ff95, 0 0 50px #00ff95; }
-  }
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
-  .cards-wrapper {
-    max-width: 1200px;
-    margin: 120px auto;
-    padding: 20px;
-    position: relative;
-    z-index: 10;
-  }
+        @keyframes fadeText {
+            0% { opacity: 0; transform: translateX(-120px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
 
-  .cards {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+        .cards {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 35px;
+            margin-top: 100px;
+            flex-wrap: nowrap;
+        }
 
-  .card {
-    width: 330px;
-    padding: 25px;
-    border-radius: 20px;
-    background: rgba(0,0,0,0.6); /* Semi-transparent black */
-    border: 1px solid rgba(0,255,150,0.3);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 25px rgba(0,255,150,0.35);
-    transition: 0.3s;
-    cursor: pointer;
-  }
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            width: 330px;
+            height: 300px;
+            border-radius: 18px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
 
-  .card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 0 40px rgba(0,255,150,0.6);
-  }
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+        }
 
-  .card h3 {
-    font-size: 22px;
-    color: #00ff95;
-    text-shadow: 0 0 10px #00ff95;
-  }
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 15px 0;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
 
-  .price {
-    margin-top: 8px;
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  .buy-btn {
-    display: inline-block;
-    margin-top: 18px;
-    padding: 12px 20px;
-    background: #00ff95;
-    color: black;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: 0.25s;
-  }
-
-  .buy-btn:hover {
-    background: white;
-    transform: translateY(-4px);
-  }
-
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 18px;
-    color: #00ff95;
-    text-shadow: 0 0 10px #00ff95;
-    position: relative;
-    z-index: 10;
-  }
-</style>
-</head>
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
 
 <body>
 
-<header>
-  <h1>XMONEY</h1>
-</header>
+    <div class="hero-text">Xmoney</div>
+    <div class="subtext">We have dominated the market for nearly 5 years and have the potential to bring many clients through these 3 options. Options 2 and 3 are the key to your business success.</div>
 
-<section class="cards-wrapper">
-  <div class="cards">
-    <div class="card">
-      <h3>2 Professional Business Logos</h3>
-      <p>Get two unique, modern, high-quality business logo designs tailored to your brand.</p>
-      <div class="price">$5</div>
-      <a class="buy-btn" href="https://whop.com/xmoney-1/xmoney-1c/" target="_blank">BUY NOW</a>
+    <div class="cards">
+        <div class="card">
+            <h2>2 Business Logos – $5</h2>
+            <p>Get high-quality, professional logos for your brand.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_Bg7KX3vyIVGjk">BUY NOW</a>
+        </div>
+        <div class="card">
+            <h2>10 Business Growth Ideas – $10</h2>
+            <p>Boost your business with creative and actionable strategies.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
+        </div>
+        <div class="card">
+            <h2>1 Professional 30s Video – $10</h2>
+            <p>Create a compelling video that attracts more clients.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
+        </div>
     </div>
-
-    <div class="card">
-      <h3>10 Business Ideas Pack</h3>
-      <p>Receive ten powerful, profitable business ideas ready to launch immediately.</p>
-      <div class="price">$10</div>
-      <a class="buy-btn" href="https://whop.com/xmoney-1/xmoney-7e/" target="_blank">BUY NOW</a>
-    </div>
-
-    <div class="card">
-      <h3>1 Premium Video Edit</h3>
-      <p>A high-quality video edit designed to attract clients and boost your brand presence.</p>
-      <div class="price">$10</div>
-      <a class="buy-btn" href="https://whop.com/xmoney-1/xmoney-b1/" target="_blank">BUY NOW</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  XMONEY — Empowering Businesses Globally
-</footer>
 
 </body>
 </html>
