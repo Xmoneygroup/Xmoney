@@ -9,34 +9,14 @@
   body, html {
     margin: 0;
     padding: 0;
-    background: #000;
     font-family: 'Poppins', sans-serif;
     color: white;
     height: 100%;
     overflow-x: hidden;
+    background: #000;
   }
 
-  /* Background with green particles */
-  .bg {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    background: 
-      radial-gradient(circle at 50% 50%, rgba(0,255,0,0.2), transparent 40%),
-      url("https://i.imgur.com/G0j3x25.png");
-    opacity: 0.45;
-    animation: pulse 6s infinite alternate;
-  }
-
-  @keyframes pulse {
-    from { opacity: 0.35; }
-    to { opacity: 0.55; }
-  }
-
+  /* Header */
   header {
     text-align: center;
     padding-top: 70px;
@@ -52,7 +32,7 @@
     text-shadow: 0 0 20px #00ff95;
   }
 
-  /* CARD SECTION */
+  /* Cards */
   .cards-wrapper {
     max-width: 1200px;
     margin: 120px auto;
@@ -112,12 +92,33 @@
     background: white;
     transform: translateY(-4px);
   }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 18px;
+    color: #00ff95;
+    text-shadow: 0 0 10px #00ff95;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Fullscreen canvas for extreme moving background */
+  #bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
+<canvas id="bgCanvas"></canvas>
 
 <header>
   <h1>XMONEY</h1>
@@ -125,7 +126,6 @@
 
 <section class="cards-wrapper">
   <div class="cards">
-
     <!-- CARD 1 -->
     <div class="card">
       <h3>2 Professional Business Logos</h3>
@@ -149,9 +149,72 @@
       <div class="price">$10</div>
       <a class="buy-btn" href="https://whop.com/xmoney-1/xmoney-b1/" target="_blank">BUY NOW</a>
     </div>
-
   </div>
 </section>
+
+<footer>
+  XMONEY — Empowering Businesses Globally
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
+<script>
+  // Extreme Moving Background with Three.js
+  const canvas = document.getElementById('bgCanvas');
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+  camera.position.z = 5;
+
+  const ambientLight = new THREE.AmbientLight(0x00ff95, 0.5);
+  scene.add(ambientLight);
+
+  const directionalLight = new THREE.DirectionalLight(0x00ff95, 1);
+  directionalLight.position.set(5,5,5);
+  scene.add(directionalLight);
+
+  // Particle field
+  const particles = new THREE.BufferGeometry();
+  const particleCount = 3000;
+  const positions = new Float32Array(particleCount*3);
+
+  for(let i=0; i<particleCount; i++){
+    positions[i*3] = (Math.random()*2 -1) * 20;
+    positions[i*3+1] = (Math.random()*2 -1) * 12;
+    positions[i*3+2] = (Math.random()*2 -1) * 20;
+  }
+
+  particles.setAttribute('position', new THREE.BufferAttribute(positions,3));
+
+  const particleMaterial = new THREE.PointsMaterial({
+    color: 0x00ff00,
+    size: 0.05,
+    transparent: true,
+    opacity: 0.7
+  });
+
+  const particleSystem = new THREE.Points(particles, particleMaterial);
+  scene.add(particleSystem);
+
+  // Animate
+  const clock = new THREE.Clock();
+  function animate(){
+    const t = clock.getElapsedTime();
+    particleSystem.rotation.y = t*0.05;
+    particleSystem.rotation.x = Math.sin(t*0.2)*0.1;
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  window.addEventListener('resize', ()=>{
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+  });
+</script>
 
 </body>
 </html>
