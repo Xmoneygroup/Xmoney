@@ -1,202 +1,125 @@
-<html lang="en">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Premium Xmoney - Business Success</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Cinzel:wght@600;700&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
+    background: radial-gradient(circle at 20% 20%, #3a0ca3, #1a0933 40%, #000000 80%),
+                radial-gradient(circle at 80% 80%, #4361ee, #1b1b2f 50%, #000000 90%);
+    background-blend-mode: screen;
+    background-attachment: fixed;
 
-            /* --- BACKGROUND SUPER I FUQISHËM — NEW --- */
-            background: radial-gradient(circle at 20% 20%, #3a0ca3, #1a0933 40%, #000000 80%),
-                        radial-gradient(circle at 80% 80%, #4361ee, #1b1b2f 50%, #000000 90%);
-            background-blend-mode: screen;
-            background-attachment: fixed;
+    position: relative;
+    color: #fff;
+    overflow-x: hidden;
+}
 
-            /* efekt mini yjesh */
-            position: relative;
-            color: #fff;
-            overflow-x: hidden;
-        }
+/* --------------- SHTRESA YJEVE TË LËVIZSHËM --------------- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity: 0.20;
+    animation: starsMove 18s linear infinite;
+    pointer-events: none;
+}
 
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
-            opacity: 0.25;
-            pointer-events: none;
-        }
+@keyframes starsMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-300px); }
+}
+/* ---------------------------------------------------------- */
 
-        /* --- HERO TEXT | HOLOGRAM SHIMMER EFFECT --- */
-    /* --- HERO TEXT | CLEAN NEON GLOW (no white stripe) --- */
+/* TEKST FANTASTIK NEON */
 .hero-text {
     font-family: 'Cinzel', serif;
     font-size: 90px;
     font-weight: 700;
+    color: #ffffff;
     margin: 40px 0 0 50px;
 
-    /* ngjyra e tekstit */
-    color: #ffffff;
+    text-shadow: 0 0 15px #7b2ff7, 0 0 25px #5a189a, 0 0 40px #3a0ca3;
 
-    /* glow i pastër, pa shimmer të bardhë */
-    text-shadow:
-        0 0 12px #637bff,
-        0 0 30px #4c5bff,
-        0 0 45px #3a0ca3,
-        0 0 70px #3a0ca3;
-
-    /* animacion i bukur por pa vijë të bardhë */
     opacity: 0;
-    animation: glowAppear 1.3s ease-out forwards, glowPulse 3s infinite ease-in-out;
+    transform: translateX(-120px);
+    animation: slideIn 1.6s ease-out forwards;
+}
+
+.subtext {
+    font-size: 22px;
+    font-weight: 300;
+    max-width: 700px;
+    margin: 20px 0 0 55px;
+    line-height: 1.6;
+
+    opacity: 0;
+    transform: translateX(-120px);
+    animation: fadeText 5s ease-out forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
+}
 
-    /* Hyrje smooth */
-    @keyframes glowAppear {
-    0% { opacity: 0; transform: translateY(-40px) scale(0.85); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
+@keyframes fadeText {
+    0% { opacity: 0; transform: translateX(-120px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
 
-    /* Pulzim glow shumë i pastër */
-    @keyframes glowPulse {
-    0%, 100% {
-        text-shadow:
-            0 0 12px #637bff,
-            0 0 30px #4c5bff,
-            0 0 45px #3a0ca3,
-            0 0 70px #3a0ca3;
-    }
-    50% {
-        text-shadow:
-            0 0 18px #7d8dff,
-            0 0 40px #6c7cff,
-            0 0 65px #5b4cff,
-            0 0 90px #4a2acc;
-    }
-    }
+/* -------------- KARTAT MODERNE 3D ---------------- */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin-top: 100px;
+}
 
+.card {
+    background: rgba(255, 255, 255, 0.10);
+    padding: 30px;
+    width: 330px;
+    height: 300px;
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
 
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+}
 
-        .hero-text::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -120%;
-            width: 120%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
-            transform: skewX(-25deg);
-            animation: shine 3.5s ease-in-out infinite;
-        }
+/* Efekt 3D kur lëviz miu mbi kartë */
+.card:hover {
+    transform: translateY(-15px) rotateX(8deg) rotateY(-8deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+}
 
-        @keyframes shine {
-            0% { left: -120%; }
-            60% { left: 120%; }
-            100% { left: 120%; }
-        }
-        /* --- END HERO TEXT EFFECT --- */
+/* -------------- BUTON NEON ---------------- */
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 14px 0;
+    text-decoration: none;
 
+    background: linear-gradient(90deg, #3feea9, #28a745);
+    color: white;
 
-        .subtext {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 22px;
-            font-weight: 300;
-            max-width: 700px;
-            margin: 20px 0 0 55px;
-            line-height: 1.6;
-            opacity: 0;
-            transform: translateX(-120px);
-            animation: fadeText 5s ease-out forwards;
-        }
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 10px;
 
-        @keyframes fadeText {
-            0% { opacity: 0; transform: translateX(-120px); }
-            100% { opacity: 1; transform: translateX(0); }
-        }
+    box-shadow: 0 0 12px #28a745, 0 0 20px #28a745;
 
-        .cards {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 35px;
-            margin-top: 100px;
-            flex-wrap: nowrap;
-        }
+    transition: 0.35s ease;
+}
 
-        .card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 30px;
-            width: 330px;
-            height: 300px;
-            border-radius: 18px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-        }
-
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-        }
-
-        .btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            padding: 15px 0;
-            background-color: #28a745;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #218838;
-        }
-
-    </style>
-
-<body>
-
-    <div class="hero-text">Xmoney</div>
-
-    <div class="subtext">
-        We have dominated the market for nearly 5 years and have the potential to bring many clients through these 3 options. Options 2 and 3 are the key to your business success.
-    </div>
-
-    <div class="cards">
-        <div class="card">
-            <h2>2 Business Logos – $5</h2>
-            <p>Get high-quality, professional logos for your brand.</p>
-            <a class="btn" href="https://whop.com/checkout/plan_Bg7KX3vyIVGjk">BUY NOW</a>
-        </div>
-
-        <div class="card">
-            <h2>10 Business Growth Ideas – $10</h2>
-            <p>Boost your business with creative and actionable strategies.</p>
-            <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
-        </div>
-
-        <div class="card">
-            <h2>1 Professional 30s Video – $10</h2>
-            <p>Create a compelling video that attracts more clients.</p>
-            <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
-        </div>
-    </div>
-
-</body>
-</html>
+.btn:hover {
+    background: linear-gradient(90deg, #2ecc71, #1e8d43);
+    box-shadow: 0 0 20px #2ecc71, 0 0 40px #2ecc71;
+    transform: scale(1.05);
+}
