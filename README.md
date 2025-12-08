@@ -16,12 +16,11 @@
     background: #000;
   }
 
-  /* Header */
   header {
     text-align: center;
     padding-top: 70px;
-    z-index: 10;
     position: relative;
+    z-index: 10;
   }
 
   header h1 {
@@ -32,7 +31,6 @@
     text-shadow: 0 0 20px #00ff95;
   }
 
-  /* Cards */
   .cards-wrapper {
     max-width: 1200px;
     margin: 120px auto;
@@ -93,7 +91,6 @@
     transform: translateY(-4px);
   }
 
-  /* Footer */
   footer {
     text-align: center;
     padding: 40px 20px;
@@ -104,14 +101,15 @@
     z-index: 10;
   }
 
-  /* Fullscreen canvas for extreme moving background */
-  #bgCanvas {
+  /* Fullscreen canvas */
+  canvas#bgCanvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 0;
+    display: block;
   }
 </style>
 </head>
@@ -126,7 +124,6 @@
 
 <section class="cards-wrapper">
   <div class="cards">
-    <!-- CARD 1 -->
     <div class="card">
       <h3>2 Professional Business Logos</h3>
       <p>Get two unique, modern, high-quality business logo designs tailored to your brand.</p>
@@ -134,7 +131,6 @@
       <a class="buy-btn" href="https://whop.com/xmoney-1/xmoney-1c/" target="_blank">BUY NOW</a>
     </div>
 
-    <!-- CARD 2 -->
     <div class="card">
       <h3>10 Business Ideas Pack</h3>
       <p>Receive ten powerful, profitable business ideas ready to launch immediately.</p>
@@ -142,7 +138,6 @@
       <a class="buy-btn" href="https://whop.com/xmoney-1/xmoney-7e/" target="_blank">BUY NOW</a>
     </div>
 
-    <!-- CARD 3 -->
     <div class="card">
       <h3>1 Premium Video Edit</h3>
       <p>A high-quality video edit designed to attract clients and boost your brand presence.</p>
@@ -158,7 +153,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
 <script>
-  // Extreme Moving Background with Three.js
   const canvas = document.getElementById('bgCanvas');
   const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -175,22 +169,22 @@
   directionalLight.position.set(5,5,5);
   scene.add(directionalLight);
 
-  // Particle field
+  // Extreme moving particle field
   const particles = new THREE.BufferGeometry();
-  const particleCount = 3000;
+  const particleCount = 5000;
   const positions = new Float32Array(particleCount*3);
 
-  for(let i=0; i<particleCount; i++){
-    positions[i*3] = (Math.random()*2 -1) * 20;
-    positions[i*3+1] = (Math.random()*2 -1) * 12;
-    positions[i*3+2] = (Math.random()*2 -1) * 20;
+  for(let i=0;i<particleCount;i++){
+    positions[i*3] = (Math.random()*2 -1) * 25;
+    positions[i*3+1] = (Math.random()*2 -1) * 15;
+    positions[i*3+2] = (Math.random()*2 -1) * 25;
   }
 
   particles.setAttribute('position', new THREE.BufferAttribute(positions,3));
 
   const particleMaterial = new THREE.PointsMaterial({
     color: 0x00ff00,
-    size: 0.05,
+    size: 0.06,
     transparent: true,
     opacity: 0.7
   });
@@ -198,8 +192,8 @@
   const particleSystem = new THREE.Points(particles, particleMaterial);
   scene.add(particleSystem);
 
-  // Animate
   const clock = new THREE.Clock();
+
   function animate(){
     const t = clock.getElapsedTime();
     particleSystem.rotation.y = t*0.05;
@@ -211,7 +205,7 @@
 
   window.addEventListener('resize', ()=>{
     renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = window.innerWidth/window.innerHeight;
     camera.updateProjectionMatrix();
   });
 </script>
