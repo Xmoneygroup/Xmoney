@@ -12,28 +12,42 @@
     font-family: 'Poppins', sans-serif;
     color: white;
     height: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
     background: #000;
+  }
+
+  canvas#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
   }
 
   header {
     text-align: center;
-    padding-top: 70px;
+    padding-top: 60px;
     position: relative;
     z-index: 10;
   }
 
   header h1 {
-    font-size: 70px;
-    letter-spacing: 8px;
+    font-size: 80px;
     font-weight: 900;
     color: #00ff95;
     text-shadow: 0 0 20px #00ff95;
+    animation: glowTitle 2s infinite alternate;
+  }
+
+  @keyframes glowTitle {
+    0% { text-shadow: 0 0 15px #00ff95, 0 0 25px #00ff95; }
+    100% { text-shadow: 0 0 25px #00ff95, 0 0 50px #00ff95; }
   }
 
   .cards-wrapper {
     max-width: 1200px;
-    margin: 120px auto;
+    margin: 150px auto;
     padding: 20px;
     position: relative;
     z-index: 10;
@@ -49,17 +63,18 @@
   .card {
     width: 330px;
     padding: 25px;
-    border-radius: 18px;
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(0,255,120,0.25);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 0 25px rgba(0,255,130,0.25);
+    border-radius: 20px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(0,255,150,0.3);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 25px rgba(0,255,150,0.35);
     transition: 0.3s;
+    cursor: pointer;
   }
 
   .card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 0 35px rgba(0,255,140,0.55);
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 40px rgba(0,255,150,0.6);
   }
 
   .card h3 {
@@ -99,17 +114,6 @@
     text-shadow: 0 0 10px #00ff95;
     position: relative;
     z-index: 10;
-  }
-
-  /* Fullscreen canvas */
-  canvas#bgCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    display: block;
   }
 </style>
 </head>
@@ -153,14 +157,15 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
 <script>
+  // Ultra futuristic 3D particle network
   const canvas = document.getElementById('bgCanvas');
   const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-  camera.position.z = 5;
+  camera.position.z = 6;
 
   const ambientLight = new THREE.AmbientLight(0x00ff95, 0.5);
   scene.add(ambientLight);
@@ -169,45 +174,68 @@
   directionalLight.position.set(5,5,5);
   scene.add(directionalLight);
 
-  // Extreme moving particle field
-  const particles = new THREE.BufferGeometry();
-  const particleCount = 5000;
-  const positions = new Float32Array(particleCount*3);
+  // Particle system as network
+  const particles = 5000;
+  const positions = [];
+  const velocities = [];
+  const geometry = new THREE.BufferGeometry();
 
-  for(let i=0;i<particleCount;i++){
-    positions[i*3] = (Math.random()*2 -1) * 25;
-    positions[i*3+1] = (Math.random()*2 -1) * 15;
-    positions[i*3+2] = (Math.random()*2 -1) * 25;
+  for(let i=0;i<particles;i++){
+    positions.push((Math.random()*2-1)*20);
+    positions.push((Math.random()*2-1)*15);
+    positions.push((Math.random()*2-1)*20);
+    velocities.push((Math.random()-0.5)*0.002);
+    velocities.push((Math.random()-0.5)*0.002);
+    velocities.push((Math.random()-0.5)*0.002);
   }
 
-  particles.setAttribute('position', new THREE.BufferAttribute(positions,3));
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions,3));
 
-  const particleMaterial = new THREE.PointsMaterial({
-    color: 0x00ff00,
-    size: 0.06,
+  const material = new THREE.PointsMaterial({
+    color: 0x00ff95,
+    size: 0.05,
     transparent: true,
     opacity: 0.7
   });
 
-  const particleSystem = new THREE.Points(particles, particleMaterial);
-  scene.add(particleSystem);
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
+
+  // Connect lines
+  const lineMaterial = new THREE.LineBasicMaterial({color:0x00ff95,opacity:0.05,transparent:true});
+  const lineGeometry = new THREE.BufferGeometry();
+  const linePositions = new Float32Array(particles*particles*3);
+  const lineMesh = new THREE.LineSegments(lineGeometry,lineMaterial);
+  scene.add(lineMesh);
 
   const clock = new THREE.Clock();
-
   function animate(){
     const t = clock.getElapsedTime();
-    particleSystem.rotation.y = t*0.05;
-    particleSystem.rotation.x = Math.sin(t*0.2)*0.1;
-    renderer.render(scene, camera);
+    const positionsAttr = geometry.attributes.position.array;
+
+    for(let i=0;i<particles;i++){
+      positionsAttr[i*3]+=velocities[i*3];
+      positionsAttr[i*3+1]+=velocities[i*3+1];
+      positionsAttr[i*3+2]+=velocities[i*3+2];
+
+      if(positionsAttr[i*3]>20 || positionsAttr[i*3]<-20) velocities[i*3]*=-1;
+      if(positionsAttr[i*3+1]>15 || positionsAttr[i*3+1]<-15) velocities[i*3+1]*=-1;
+      if(positionsAttr[i*3+2]>20 || positionsAttr[i*3+2]<-20) velocities[i*3+2]*=-1;
+    }
+
+    geometry.attributes.position.needsUpdate = true;
+    points.rotation.y = t*0.02;
+    renderer.render(scene,camera);
     requestAnimationFrame(animate);
   }
   animate();
 
-  window.addEventListener('resize', ()=>{
-    renderer.setSize(window.innerWidth, window.innerHeight);
+  window.addEventListener('resize',()=>{
+    renderer.setSize(window.innerWidth,window.innerHeight);
     camera.aspect = window.innerWidth/window.innerHeight;
     camera.updateProjectionMatrix();
   });
+
 </script>
 
 </body>
