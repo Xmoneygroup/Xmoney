@@ -1,164 +1,201 @@
-/* ==========================================
-   BACKGROUND LAYERED NEBULA + PARTICLE ANIMATION
-========================================== */
+<html lang="en">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Xmoney - Business Success</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Cinzel:wght@600;700&display=swap');
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-    color: #fff;
-    background: #000;
-    position: relative;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
 
-/* --- Nebula gradient i fuqishëm --- */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    
-    background:
-        radial-gradient(circle at 25% 20%, rgba(120, 0, 255, 0.8), transparent 60%),
-        radial-gradient(circle at 75% 80%, rgba(0, 120, 255, 0.7), transparent 70%),
-        radial-gradient(circle at 50% 50%, rgba(255, 0, 100, 0.4), transparent 80%);
-    
-    filter: blur(90px);
-    animation: nebulaMove 18s ease-in-out infinite alternate;
-    z-index: -3;
-}
+            /* --- BACKGROUND SUPER I FUQISHËM — NEW --- */
+            background: radial-gradient(circle at 20% 20%, #3a0ca3, #1a0933 40%, #000000 80%),
+                        radial-gradient(circle at 80% 80%, #4361ee, #1b1b2f 50%, #000000 90%);
+            background-blend-mode: screen;
+            background-attachment: fixed;
 
-@keyframes nebulaMove {
-    0% { transform: scale(1) translate(0,0); }
-    100% { transform: scale(1.4) translate(-80px, 60px); }
-}
+            /* efekt mini yjesh */
+            position: relative;
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-/* --- Yje të animuar (Particle Field) --- */
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
-    opacity: 0.22;
-    animation: starDrift 26s linear infinite;
-    z-index: -1;
-}
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            opacity: 0.25;
+            pointer-events: none;
+        }
 
-@keyframes starDrift {
-    from { transform: translateY(0); }
-    to   { transform: translateY(-500px); }
-}
-
-/* ==========================================
-   TITULLI — WAVE NEON PULSE + CHROME STYLE
-========================================== */
-
-.hero-text {
+        /* --- HERO TEXT | HOLOGRAM SHIMMER EFFECT --- */
+    /* --- HERO TEXT | CLEAN NEON GLOW (no white stripe) --- */
+    .hero-text {
     font-family: 'Cinzel', serif;
-    font-size: 110px;
-    font-weight: 900;
-    letter-spacing: 4px;
-    margin: 60px 0 0 50px;
-
-    background: linear-gradient(90deg, #ffffff, #ad7cff, #7b2ff7, #ffffff);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    filter: drop-shadow(0 0 20px #6a00ff) drop-shadow(0 0 45px #9d4edd);
-
-    opacity: 0;
-    transform: translateY(60px) scale(0.85);
-    animation: heroIn 2s cubic-bezier(.17,.67,.83,.67) forwards,
-               glowPulse 7s ease-in-out infinite alternate;
-}
-
-@keyframes heroIn {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes glowPulse {
-    0% { filter: drop-shadow(0 0 20px #6a00ff); }
-    100% { filter: drop-shadow(0 0 50px #c77dff); }
-}
-
-/* ==========================================
-   SUBTEXT — SMOOTH FLOAT FADE
-========================================== */
-
-.subtext {
-    font-size: 24px;
-    font-weight: 300;
-    max-width: 700px;
-    margin: 25px 0 0 55px;
-    opacity: 0;
-    animation: subAppear 3.3s ease forwards 0.7s;
-    transform: translateY(40px);
-}
-
-@keyframes subAppear {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ==========================================
-   CARDS — ULTRA GLASS 3D PARALLAX
-========================================== */
-
-.cards {
-    margin-top: 120px;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-.card {
-    width: 330px;
-    height: 330px;
-
-    background: rgba(255, 255, 255, 0.10);
-    border-radius: 20px;
-    padding: 30px;
-
-    backdrop-filter: blur(16px) saturate(180%);
-    box-shadow: 0 0 25px rgba(0,0,0,0.6), inset 0 0 25px rgba(255,255,255,0.1);
-
-    transform-style: preserve-3d;
-    transition: 0.5s ease;
-}
-
-.card:hover {
-    transform: rotateX(12deg) rotateY(-12deg) translateY(-20px) scale(1.03);
-    box-shadow: 0 0 50px rgba(120,0,255,0.6),
-                0 0 90px rgba(0,200,255,0.4);
-}
-
-/* ==========================================
-   BUTTON — LASER NEON BEAM
-========================================== */
-
-.btn {
-    margin-top: 20px;
-    padding: 14px 0;
-    width: 100%;
-    text-decoration: none;
-    border-radius: 10px;
-    font-size: 18px;
+    font-size: 90px;
     font-weight: 700;
+    margin: 40px 0 0 50px;
 
-    background: linear-gradient(90deg, #00ffcc, #00bfff);
-    box-shadow: 0 0 12px #00e6b8, 0 0 32px #00e6ff;
-    color: #000;
+    /* ngjyra e tekstit */
+    color: #ffffff;
 
-    transition: 0.33s ease;
-}
+    /* glow i pastër, pa shimmer të bardhë */
+    text-shadow:
+        0 0 12px #637bff,
+        0 0 30px #4c5bff,
+        0 0 45px #3a0ca3,
+        0 0 70px #3a0ca3;
 
-.btn:hover {
-    background: linear-gradient(90deg, #00ffe6, #52e0ff);
-    box-shadow: 0 0 35px #00fff0, 0 0 70px #00ccff;
-    transform: scale(1.08);
-}
+    /* animacion i bukur por pa vijë të bardhë */
+    opacity: 0;
+    animation: glowAppear 1.3s ease-out forwards, glowPulse 3s infinite ease-in-out;
+    }
+
+    /* Hyrje smooth */
+    @keyframes glowAppear {
+    0% { opacity: 0; transform: translateY(-40px) scale(0.85); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Pulzim glow shumë i pastër */
+    @keyframes glowPulse {
+    0%, 100% {
+        text-shadow:
+            0 0 12px #637bff,
+            0 0 30px #4c5bff,
+            0 0 45px #3a0ca3,
+            0 0 70px #3a0ca3;
+    }
+    50% {
+        text-shadow:
+            0 0 18px #7d8dff,
+            0 0 40px #6c7cff,
+            0 0 65px #5b4cff,
+            0 0 90px #4a2acc;
+    }
+    }
+
+
+
+        .hero-text::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+            transform: skewX(-25deg);
+            animation: shine 3.5s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -120%; }
+            60% { left: 120%; }
+            100% { left: 120%; }
+        }
+        /* --- END HERO TEXT EFFECT --- */
+
+
+        .subtext {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 20px 0 0 55px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateX(-120px);
+            animation: fadeText 5s ease-out forwards;
+        }
+
+        @keyframes fadeText {
+            0% { opacity: 0; transform: translateX(-120px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 35px;
+            margin-top: 100px;
+            flex-wrap: nowrap;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            width: 330px;
+            height: 300px;
+            border-radius: 18px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 15px 0;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+    </style>
+
+<body>
+
+    <div class="hero-text">Xmoney</div>
+
+    <div class="subtext">
+        We have dominated the market for nearly 5 years and have the potential to bring many clients through these 3 options. Options 2 and 3 are the key to your business success.
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h2>2 Business Logos – $5</h2>
+            <p>Get high-quality, professional logos for your brand.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_Bg7KX3vyIVGjk">BUY NOW</a>
+        </div>
+
+        <div class="card">
+            <h2>10 Business Growth Ideas – $10</h2>
+            <p>Boost your business with creative and actionable strategies.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
+        </div>
+
+        <div class="card">
+            <h2>1 Professional 30s Video – $10</h2>
+            <p>Create a compelling video that attracts more clients.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
+        </div>
+    </div>
+
+</body>
