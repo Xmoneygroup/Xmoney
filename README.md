@@ -34,31 +34,38 @@
             pointer-events: none;
         }
 
-        /* --- HERO TEXT EFFECT ULTRA PREMIUM --- */
-        .hero-text {
-            font-family: 'Cinzel', serif;
-            font-size: 90px;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 40px 0 0 50px;
+        /* --- HERO TEXT | HOLOGRAM SHIMMER EFFECT --- */
+    .hero-text {
+    font-family: 'Cinzel', serif;
+    font-size: 90px;
+    font-weight: 700;
+    margin: 40px 0 0 50px;
 
-            opacity: 0;
-            transform: translateY(-60px);
-            animation: slideInHero 1.8s ease-out forwards, glowPulse 4s ease-in-out infinite;
+    background: linear-gradient(120deg, #ffffff 0%, #7a8cff 20%, #4f74ff 40%, #aab6ff 60%, #ffffff 80%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    color: transparent;
 
-            text-shadow: 0 0 15px #7b2ff7, 0 0 30px #7b2ff7, 0 0 45px #4c00ff;
-            position: relative;
-        }
+    text-shadow: 
+        0px 0px 10px rgba(120,120,255,0.7),
+        0px 0px 25px rgba(120,120,255,0.9);
 
-        @keyframes slideInHero {
-            0% { opacity: 0; transform: translateY(-60px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+    animation: holoSwipe 3s ease infinite, holoAppear 1.2s ease-out forwards;
+    opacity: 0;
+    }
 
-        @keyframes glowPulse {
-            0%, 100% { text-shadow: 0 0 15px #7b2ff7, 0 0 30px #4c00ff; }
-            50% { text-shadow: 0 0 25px #a855ff, 0 0 55px #7c3aed; }
-        }
+    /* efekt i hyrjes */
+    @keyframes holoAppear {
+    0% { opacity: 0; transform: translateY(-40px) scale(0.85); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* shimmer hologram */
+    @keyframes holoSwipe {
+    0% { background-position: 200% 0%; }
+    100% { background-position: -200% 0%; }
+    }
+
 
         .hero-text::after {
             content: "";
