@@ -187,7 +187,7 @@
 
     <!-- BUTONI I INSTAGRAMIT -->
     <a class="insta-btn" href="https://www.instagram.com/xmoney.s?igsh=bnR6d2x2dTJ0bG5s&utm_source=qr" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" />
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" style="width:70%; filter: invert(1);" />
     </a>
 
     <div class="hero-text">Xmoney</div>
