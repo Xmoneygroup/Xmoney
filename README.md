@@ -181,14 +181,51 @@
         width: 60%;
         filter: brightness(0) invert(1);
     }
+
+    .social-wrapper {
+        position: fixed;
+        top: 20px;
+        right: -120px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        animation: slideInSocial 1.3s ease-out forwards;
+    }
+
+    @keyframes slideInSocial {
+        0% { right: -120px; opacity: 0; }
+        100% { right: 25px; opacity: 1; }
+    }
+
+    .tiktok-btn {
+        width: 45px;
+        height: 45px;
+        background: transparent;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .tiktok-btn:hover {
+        transform: scale(1.18);
+    }
+
 </style>
 
 <body>
 
     <!-- BUTONI I INSTAGRAMIT -->
-    <a class="insta-btn" href="https://www.instagram.com/xmoney.s?igsh=bnR6d2x2dTJ0bG5s&utm_source=qr" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" style="width:70%; filter: invert(1);" />
-    </a>
+    <div class="social-wrapper">
+        <a class="insta-btn" href="https://www.instagram.com/xmoney.s?igsh=bnR6d2x2dTJ0bG5s&utm_source=qr" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" style="width:70%; filter: invert(1);" />
+        </a>
+        <a class="tiktok-btn" href="https://www.tiktok.com/@x.moneyyy?_r=1&_t=ZN-929odXKoQgU" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/TikTok_logo.png" style="width:70%; filter: invert(1);" />
+        </a>
+    </div>
 
     <div class="hero-text">Xmoney</div>
 
