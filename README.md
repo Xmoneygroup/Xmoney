@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -187,7 +187,7 @@
 
     <!-- BUTONI I INSTAGRAMIT -->
     <a class="insta-btn" href="https://www.instagram.com/xmoney.s?igsh=bnR6d2x2dTJ0bG5s&utm_source=qr" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" />
     </a>
 
     <div class="hero-text">Xmoney</div>
