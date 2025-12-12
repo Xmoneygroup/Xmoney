@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -149,55 +149,24 @@
         background-color: #218838;
     }
 
-    /* --- INSTAGRAM BUTTON SUPER I VOGEL + ANIMACION --- */
-    .insta-btn {
-        position: fixed;
-        top: 20px;
-        right: 25px;
-        width: 45px;
-        height: 45px;
-        background: transparent; /* heq ngjyrën e kuqe */
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: none; /* heq glow-in e kuqe */
-        transition: transform 0.3s ease;
-        animation: fadeInButton 1.5s ease-out;
-        cursor: pointer;
-    }
-
-    .insta-btn:hover {
-        transform: scale(1.18);
-        box-shadow: 0 0 18px rgba(255, 0, 120, 1);
-    }
-
-    @keyframes pulseInsta {
-        0%, 100% { box-shadow: 0 0 12px rgba(255, 0, 120, 0.7); }
-        50% { box-shadow: 0 0 22px rgba(255, 0, 120, 1); }
-    }
-
-    .insta-btn img {
-        width: 60%;
-        filter: brightness(0) invert(1);
-    }
-
+    /* SOCIAL ICONS */
     .social-wrapper {
         position: fixed;
         top: 20px;
-        right: -120px;
+        right: 25px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 15px;
+        opacity: 0;
         animation: slideInSocial 1.3s ease-out forwards;
     }
 
     @keyframes slideInSocial {
-        0% { right: -120px; opacity: 0; }
-        100% { right: 25px; opacity: 1; }
+        0% { opacity: 0; transform: translateX(100px); }
+        100% { opacity: 1; transform: translateX(0); }
     }
 
-    .tiktok-btn {
+    .social-btn {
         width: 45px;
         height: 45px;
         background: transparent;
@@ -209,21 +178,25 @@
         transition: transform 0.3s ease;
     }
 
-    .tiktok-btn:hover {
+    .social-btn:hover {
         transform: scale(1.18);
+    }
+
+    .social-btn img {
+        width: 70%;
+        filter: invert(1);
     }
 
 </style>
 
 <body>
 
-    <!-- BUTONI I INSTAGRAMIT -->
     <div class="social-wrapper">
-        <a class="insta-btn" href="https://www.instagram.com/xmoney.s?igsh=bnR6d2x2dTJ0bG5s&utm_source=qr" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" style="width:70%; filter: invert(1);" />
+        <a class="social-btn" href="https://www.instagram.com/xmoney.s?igsh=bnR6d2x2dTJ0bG5s&utm_source=qr" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" />
         </a>
-        <a class="tiktok-btn" href="https://www.tiktok.com/@x.moneyyy?_r=1&_t=ZN-929odXKoQgU" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/TikTok_logo.png" style="width:70%; filter: invert(1);" />
+        <a class="social-btn" href="https://www.tiktok.com/@x.moneyyy?_r=1&_t=ZN-929odXKoQgU" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.png" />
         </a>
     </div>
 
