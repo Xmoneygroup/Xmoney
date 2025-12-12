@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -196,7 +196,7 @@
             <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" />
         </a>
         <a class="social-btn" href="https://www.tiktok.com/@x.moneyyy?_r=1&_t=ZN-929odXKoQgU" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.png" />
+            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" />
         </a>
     </div>
 
