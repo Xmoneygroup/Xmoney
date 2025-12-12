@@ -156,14 +156,14 @@
         right: 25px;
         width: 45px;
         height: 45px;
-        background: radial-gradient(circle, #ff0080, #ff8c00);
+        background: transparent; /* heq ngjyrën e kuqe */
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 0 0 12px rgba(255, 0, 120, 0.7);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        animation: pulseInsta 2.5s infinite ease-in-out;
+        box-shadow: none; /* heq glow-in e kuqe */
+        transition: transform 0.3s ease;
+        animation: fadeInButton 1.5s ease-out;
         cursor: pointer;
     }
 
