@@ -159,45 +159,55 @@
   <section>
     <div class="products">
 
+      <!-- PRODUCT 1 -->
       <div class="product">
         <div class="images">
-          <img src="images/drone1.jpg" alt="Drone Image 1">
-          <img src="images/drone2.jpg" alt="Drone Image 2">
-          <img src="images/drone3.jpg" alt="Drone Image 3">
+          <img class="active" src="https://images.unsplash.com/photo-1508614999368-9260051292e5?w=800" alt="Drone">
+          <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?w=800" alt="Drone">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800" alt="Drone">
+
+          <button class="nav-btn prev" onclick="changeImage(this,-1)">‹</button>
+          <button class="nav-btn next" onclick="changeImage(this,1)">›</button>
         </div>
+
         <h3>Professional Drone E88 4K Wide-Angle HD 1080P Camera WiFi FPV Height Hold Foldable RC Drone Quadrotor Helicopter Children's Toys</h3>
         <div class="price">$35</div>
         <a href="#" class="btn">BUY NOW</a>
       </div>
 
+      <!-- PRODUCT 2 -->
       <div class="product">
         <div class="images">
-          <img src="images/vacuum1.jpg" alt="Vacuum Image 1">
-          <img src="images/vacuum2.jpg" alt="Vacuum Image 2">
-          <img src="images/vacuum3.jpg" alt="Vacuum Image 3">
+          <img class="active" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800" alt="Vacuum">
+          <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800" alt="Vacuum">
+          <img src="https://images.unsplash.com/photo-1616628182506-1a7f6f2cbb12?w=800" alt="Vacuum">
+
+          <button class="nav-btn prev" onclick="changeImage(this,-1)">‹</button>
+          <button class="nav-btn next" onclick="changeImage(this,1)">›</button>
         </div>
+
         <h3>Car Vacuum Cleaner High Power Portable Handheld Wireless Brushless Motor Cleaning Machine Powerful Air Duster for Home Appliance</h3>
         <div class="price">$55</div>
         <a href="#" class="btn">BUY NOW</a>
       </div>
 
     </div>
-    </section>
+  </section>
 
-     <footer>
-      © 2025 Xmoney. All rights reserved.
-      </footer>
+  <footer>
+    © 2025 Xmoney. All rights reserved.
+  </footer>
 
-    <script>
-    function changeImage(button, direction) {
+<script>
+  function changeImage(button, direction) {
     const container = button.parentElement;
     const images = container.querySelectorAll('img');
     let index = Array.from(images).findIndex(img => img.classList.contains('active'));
     images[index].classList.remove('active');
     index = (index + direction + images.length) % images.length;
     images[index].classList.add('active');
-    }
-     </script>
+  }
+</script>
 
-    </body>
-    </html>
+</body>
+</html>
