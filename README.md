@@ -19,25 +19,26 @@
     }
 
     header {
-      height: 100vh;
+      min-height: 90vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       animation: fadeIn 2s ease-in-out;
+      padding: 40px 20px;
     }
 
     header h1 {
-      font-size: 4.5rem;
-      letter-spacing: 4px;
-      margin-bottom: 20px;
+      font-size: 4rem;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
       animation: slideDown 1.5s ease-out;
     }
 
     .info {
-      max-width: 700px;
-      margin-top: 20px;
+      max-width: 650px;
+      margin-top: 10px;
       animation: fadeInUp 2s ease-in-out;
     }
 
@@ -52,7 +53,7 @@
     }
 
     section {
-      padding: 80px 10%;
+      padding: 60px 8%;
       background: #f4f4f4;
       color: #222;
     }
@@ -64,12 +65,9 @@
     }
 
     .product {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      padding: 20px;
+      background: transparent;
+      padding: 10px;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .product:hover {
@@ -78,9 +76,10 @@
     }
 
     .images {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
     .images img {
@@ -157,9 +156,9 @@
 
       <div class="product">
         <div class="images">
-          <img src="https://via.placeholder.com/300x200" alt="Drone Image 1">
-          <img src="https://via.placeholder.com/300x200" alt="Drone Image 2">
-          <img src="https://via.placeholder.com/300x200" alt="Drone Image 3">
+          <img src="images/drone1.jpg" alt="Drone Image 1">
+          <img src="images/drone2.jpg" alt="Drone Image 2">
+          <img src="images/drone3.jpg" alt="Drone Image 3">
         </div>
         <h3>Professional Drone E88 4K Wide-Angle HD 1080P Camera WiFi FPV Height Hold Foldable RC Drone Quadrotor Helicopter Children's Toys</h3>
         <div class="price">$35</div>
@@ -168,9 +167,9 @@
 
       <div class="product">
         <div class="images">
-          <img src="https://via.placeholder.com/300x200" alt="Vacuum Image 1">
-          <img src="https://via.placeholder.com/300x200" alt="Vacuum Image 2">
-          <img src="https://via.placeholder.com/300x200" alt="Vacuum Image 3">
+          <img src="images/vacuum1.jpg" alt="Vacuum Image 1">
+          <img src="images/vacuum2.jpg" alt="Vacuum Image 2">
+          <img src="images/vacuum3.jpg" alt="Vacuum Image 3">
         </div>
         <h3>Car Vacuum Cleaner High Power Portable Handheld Wireless Brushless Motor Cleaning Machine Powerful Air Duster for Home Appliance</h3>
         <div class="price">$55</div>
