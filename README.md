@@ -84,7 +84,12 @@
 
     .images img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 12px;
+      display: none;
+    }
+
+    .images img.active {
+      display: block;
     }
 
     .product h3 {
@@ -177,11 +182,22 @@
       </div>
 
     </div>
-  </section>
+    </section>
 
-  <footer>
-    © 2025 Xmoney. All rights reserved.
-  </footer>
+     <footer>
+      © 2025 Xmoney. All rights reserved.
+      </footer>
 
-</body>
-</html>
+    <script>
+    function changeImage(button, direction) {
+    const container = button.parentElement;
+    const images = container.querySelectorAll('img');
+    let index = Array.from(images).findIndex(img => img.classList.contains('active'));
+    images[index].classList.remove('active');
+    index = (index + direction + images.length) % images.length;
+    images[index].classList.add('active');
+    }
+     </script>
+
+    </body>
+    </html>
