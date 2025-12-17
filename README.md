@@ -1,213 +1,201 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Xmoney | Online Store</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Xmoney - Business Success</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Cinzel:wght@600;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+
+            /* --- BACKGROUND SUPER I FUQISHËM — NEW --- */
+            background: radial-gradient(circle at 20% 20%, #3a0ca3, #1a0933 40%, #000000 80%),
+                        radial-gradient(circle at 80% 80%, #4361ee, #1b1b2f 50%, #000000 90%);
+            background-blend-mode: screen;
+            background-attachment: fixed;
+
+            /* efekt mini yjesh */
+            position: relative;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* --- HERO TEXT | HOLOGRAM SHIMMER EFFECT --- */
+    /* --- HERO TEXT | CLEAN NEON GLOW (no white stripe) --- */
+    .hero-text {
+    font-family: 'Cinzel', serif;
+    font-size: 90px;
+    font-weight: 700;
+    margin: 40px 0 0 50px;
+
+    /* ngjyra e tekstit */
+    color: #ffffff;
+
+    /* glow i pastër, pa shimmer të bardhë */
+    text-shadow:
+        0 0 12px #637bff,
+        0 0 30px #4c5bff,
+        0 0 45px #3a0ca3,
+        0 0 70px #3a0ca3;
+
+    /* animacion i bukur por pa vijë të bardhë */
+    opacity: 0;
+    animation: glowAppear 1.3s ease-out forwards, glowPulse 3s infinite ease-in-out;
     }
 
-    body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #ffffff;
-      min-height: 100vh;
+    /* Hyrje smooth */
+    @keyframes glowAppear {
+    0% { opacity: 0; transform: translateY(-40px) scale(0.85); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    header {
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      animation: fadeIn 2s ease-in-out;
-      padding: 40px 20px;
+    /* Pulzim glow shumë i pastër */
+    @keyframes glowPulse {
+    0%, 100% {
+        text-shadow:
+            0 0 12px #637bff,
+            0 0 30px #4c5bff,
+            0 0 45px #3a0ca3,
+            0 0 70px #3a0ca3;
+    }
+    50% {
+        text-shadow:
+            0 0 18px #7d8dff,
+            0 0 40px #6c7cff,
+            0 0 65px #5b4cff,
+            0 0 90px #4a2acc;
+    }
     }
 
-    header h1 {
-      font-size: 4rem;
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-      animation: slideDown 1.5s ease-out;
-    }
 
-    .info {
-      max-width: 650px;
-      margin-top: 10px;
-      animation: fadeInUp 2s ease-in-out;
-    }
 
-    .info ul {
-      list-style: none;
-    }
+        .hero-text::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+            transform: skewX(-25deg);
+            animation: shine 3.5s ease-in-out infinite;
+        }
 
-    .info li {
-      margin: 12px 0;
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
+        @keyframes shine {
+            0% { left: -120%; }
+            60% { left: 120%; }
+            100% { left: 120%; }
+        }
+        /* --- END HERO TEXT EFFECT --- */
 
-    section {
-      padding: 60px 8%;
-      background: #f4f4f4;
-      color: #222;
-    }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-    }
+        .subtext {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 20px 0 0 55px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateX(-120px);
+            animation: fadeText 5s ease-out forwards;
+        }
 
-    .product {
-      background: transparent;
-      padding: 10px;
-      text-align: center;
-    }
+        @keyframes fadeText {
+            0% { opacity: 0; transform: translateX(-120px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
 
-    .product:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    }
+        .cards {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 35px;
+            margin-top: 100px;
+            flex-wrap: nowrap;
+        }
 
-    .images {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-bottom: 10px;
-    }
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            width: 330px;
+            height: 300px;
+            border-radius: 18px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
 
-    .images img {
-      width: 100%;
-      border-radius: 12px;
-      display: none;
-    }
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+        }
 
-    .images img.active {
-      display: block;
-    }
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 15px 0;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
 
-    .product h3 {
-      font-size: 1.1rem;
-      margin: 15px 0;
-    }
+        .btn:hover {
+            background-color: #218838;
+        }
 
-    .price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 10px 0 20px;
-    }
+    </style>
 
-    .btn {
-      display: inline-block;
-      padding: 12px 30px;
-      background: linear-gradient(135deg, #ff512f, #f09819);
-      color: #fff;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .btn:hover {
-      opacity: 0.9;
-      transform: scale(1.05);
-    }
-
-    footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-  </style>
-</head>
 <body>
 
-  <header>
-    <h1>X MONEY</h1>
-    <div class="info">
-      <ul>
-        <li>• We deliver orders only within Europe.</li>
-        <li>• Delivery from warehouse to customer takes 7–15 days.</li>
-        <li>• We are 100% transparent. Products arrive exactly as ordered. Orders cannot be returned.</li>
-      </ul>
+    <div class="hero-text">Xmoney</div>
+
+    <div class="subtext">
+        We have dominated the market for nearly 5 years and have the potential to bring many clients through these 3 options. Options 2 and 3 are the key to your business success.
     </div>
-  </header>
 
-  <section>
-    <div class="products">
-
-      <!-- PRODUCT 1 -->
-      <div class="product">
-        <div class="images">
-          <img class="active" src="https://images.unsplash.com/photo-1508614999368-9260051292e5?w=800" alt="Drone">
-          <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?w=800" alt="Drone">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800" alt="Drone">
-
-          <button class="nav-btn prev" onclick="changeImage(this,-1)">‹</button>
-          <button class="nav-btn next" onclick="changeImage(this,1)">›</button>
+    <div class="cards">
+        <div class="card">
+            <h2>2 Business Logos – $5</h2>
+            <p>Get high-quality, professional logos for your brand.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_Bg7KX3vyIVGjk">BUY NOW</a>
         </div>
 
-        <h3>Professional Drone E88 4K Wide-Angle HD 1080P Camera WiFi FPV Height Hold Foldable RC Drone Quadrotor Helicopter Children's Toys</h3>
-        <div class="price">$35</div>
-        <a href="#" class="btn">BUY NOW</a>
-      </div>
-
-      <!-- PRODUCT 2 -->
-      <div class="product">
-        <div class="images">
-          <img class="active" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800" alt="Vacuum">
-          <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800" alt="Vacuum">
-          <img src="https://images.unsplash.com/photo-1616628182506-1a7f6f2cbb12?w=800" alt="Vacuum">
-
-          <button class="nav-btn prev" onclick="changeImage(this,-1)">‹</button>
-          <button class="nav-btn next" onclick="changeImage(this,1)">›</button>
+        <div class="card">
+            <h2>10 Business Growth Ideas – $10</h2>
+            <p>Boost your business with creative and actionable strategies.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
         </div>
 
-        <h3>Car Vacuum Cleaner High Power Portable Handheld Wireless Brushless Motor Cleaning Machine Powerful Air Duster for Home Appliance</h3>
-        <div class="price">$55</div>
-        <a href="#" class="btn">BUY NOW</a>
-      </div>
-
+        <div class="card">
+            <h2>1 Professional 30s Video – $10</h2>
+            <p>Create a compelling video that attracts more clients.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
+        </div>
     </div>
-  </section>
-
-  <footer>
-    © 2025 Xmoney. All rights reserved.
-  </footer>
-
-<script>
-  function changeImage(button, direction) {
-    const container = button.parentElement;
-    const images = container.querySelectorAll('img');
-    let index = Array.from(images).findIndex(img => img.classList.contains('active'));
-    images[index].classList.remove('active');
-    index = (index + direction + images.length) % images.length;
-    images[index].classList.add('active');
-  }
-</script>
 
 </body>
-</html>
