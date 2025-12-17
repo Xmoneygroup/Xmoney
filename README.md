@@ -87,8 +87,8 @@
             display: flex;
             justify-content: center;
             gap: 35px;
-            margin-top: 100px;
-            flex-wrap: wrap;
+            margin-top: 80px;
+            flex-wrap:nowwrap;
         }
 
         .card {
@@ -138,7 +138,7 @@
         We have dominated the market for nearly 5 years and have the potential to bring many clients through these 3 options. Options 2 and 3 are the key to your business success.
     </div>
 
-    <div class="cards">
+    <div class="horizontal-cards">
         <div class="card">
             <h2>2 Business Logos – $5</h2>
             <p>Get high-quality, professional logos for your brand.</p>
