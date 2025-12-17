@@ -139,19 +139,19 @@
     </div>
 
     <div class="horizontal-cards">
-        <div class="card">
+        <div class="horizontal-cards">
             <h2>2 Business Logos – $5</h2>
             <p>Get high-quality, professional logos for your brand.</p>
             <a class="btn" href="https://whop.com/checkout/plan_Bg7KX3vyIVGjk">BUY NOW</a>
         </div>
 
-        <div class="card">
+        <div class="horizontal-cards">
             <h2>10 Business Growth Ideas – $10</h2>
             <p>Boost your business with creative and actionable strategies.</p>
             <a class="btn" href="https://whop.com/checkout/plan_w3oZUMd5R30D1">BUY NOW</a>
         </div>
 
-        <div class="card">
+        <div class="horizontal-cards">
             <h2>1 Professional 30s Video – $10</h2>
             <p>Create a compelling video that attracts more clients.</p>
             <a class="btn" href="https://whop.com/checkout/plan_HglKg8iMbKz5I">BUY NOW</a>
@@ -159,14 +159,14 @@
     </div>
 
     <!-- NEW CARDS BELOW (AS REQUESTED) -->
-    <div class="cards">
-        <div class="card">
+    <div class="horizontal-cards">
+       <div class="horizontal-cards">
             <h2>10 Premium Video Edits – $75</h2>
             <p>Super high-quality video editing services designed to elevate your business and attract more customers.</p>
             <a class="btn" href="https://whop.com/checkout/plan_ulFmjsGbsRDUW">BUY NOW</a>
         </div>
 
-        <div class="card">
+        <div class="horizontal-cards">
             <h2>Professional Business Website – $99</h2>
             <p>We create a perfect, high-quality website for your business, designed to convert visitors into clients.</p>
             <a class="btn" href="https://whop.com/checkout/plan_bHYKwHsN4hj7j">BUY NOW</a>
