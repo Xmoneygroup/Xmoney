@@ -9,14 +9,10 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-
-            /* --- BACKGROUND SUPER I FUQISHËM — NEW --- */
             background: radial-gradient(circle at 20% 20%, #3a0ca3, #1a0933 40%, #000000 80%),
                         radial-gradient(circle at 80% 80%, #4361ee, #1b1b2f 50%, #000000 90%);
             background-blend-mode: screen;
             background-attachment: fixed;
-
-            /* efekt mini yjesh */
             position: relative;
             color: #fff;
             overflow-x: hidden;
@@ -34,77 +30,44 @@
             pointer-events: none;
         }
 
-        /* --- HERO TEXT | HOLOGRAM SHIMMER EFFECT --- */
-    /* --- HERO TEXT | CLEAN NEON GLOW (no white stripe) --- */
-    .hero-text {
-    font-family: 'Cinzel', serif;
-    font-size: 90px;
-    font-weight: 700;
-    margin: 40px 0 0 50px;
-
-    /* ngjyra e tekstit */
-    color: #ffffff;
-
-    /* glow i pastër, pa shimmer të bardhë */
-    text-shadow:
-        0 0 12px #637bff,
-        0 0 30px #4c5bff,
-        0 0 45px #3a0ca3,
-        0 0 70px #3a0ca3;
-
-    /* animacion i bukur por pa vijë të bardhë */
-    opacity: 0;
-    animation: glowAppear 1.3s ease-out forwards, glowPulse 3s infinite ease-in-out;
-    }
-
-    /* Hyrje smooth */
-    @keyframes glowAppear {
-    0% { opacity: 0; transform: translateY(-40px) scale(0.85); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    /* Pulzim glow shumë i pastër */
-    @keyframes glowPulse {
-    0%, 100% {
-        text-shadow:
-            0 0 12px #637bff,
-            0 0 30px #4c5bff,
-            0 0 45px #3a0ca3,
-            0 0 70px #3a0ca3;
-    }
-    50% {
-        text-shadow:
-            0 0 18px #7d8dff,
-            0 0 40px #6c7cff,
-            0 0 65px #5b4cff,
-            0 0 90px #4a2acc;
-    }
-    }
-
-
-
-        .hero-text::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -120%;
-            width: 120%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
-            transform: skewX(-25deg);
-            animation: shine 3.5s ease-in-out infinite;
+        .hero-text {
+            font-family: 'Cinzel', serif;
+            font-size: 90px;
+            font-weight: 700;
+            margin: 40px 0 0 50px;
+            color: #ffffff;
+            text-shadow:
+                0 0 12px #637bff,
+                0 0 30px #4c5bff,
+                0 0 45px #3a0ca3,
+                0 0 70px #3a0ca3;
+            opacity: 0;
+            animation: glowAppear 1.3s ease-out forwards, glowPulse 3s infinite ease-in-out;
         }
 
-        @keyframes shine {
-            0% { left: -120%; }
-            60% { left: 120%; }
-            100% { left: 120%; }
+        @keyframes glowAppear {
+            0% { opacity: 0; transform: translateY(-40px) scale(0.85); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
-        /* --- END HERO TEXT EFFECT --- */
 
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow:
+                    0 0 12px #637bff,
+                    0 0 30px #4c5bff,
+                    0 0 45px #3a0ca3,
+                    0 0 70px #3a0ca3;
+            }
+            50% {
+                text-shadow:
+                    0 0 18px #7d8dff,
+                    0 0 40px #6c7cff,
+                    0 0 65px #5b4cff,
+                    0 0 90px #4a2acc;
+            }
+        }
 
         .subtext {
-            font-family: 'Montserrat', sans-serif;
             font-size: 22px;
             font-weight: 300;
             max-width: 700px;
@@ -122,12 +85,10 @@
 
         .cards {
             display: flex;
-            flex-direction: row;
             justify-content: center;
-            align-items: flex-start;
             gap: 35px;
             margin-top: 100px;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
         }
 
         .card {
@@ -167,7 +128,6 @@
         .btn:hover {
             background-color: #218838;
         }
-
     </style>
 
 <body>
@@ -198,4 +158,20 @@
         </div>
     </div>
 
+    <!-- NEW CARDS BELOW (AS REQUESTED) -->
+    <div class="cards">
+        <div class="card">
+            <h2>10 Premium Video Edits – $75</h2>
+            <p>Super high-quality video editing services designed to elevate your business and attract more customers.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_ulFmjsGbsRDUW">BUY NOW</a>
+        </div>
+
+        <div class="card">
+            <h2>Professional Business Website – $99</h2>
+            <p>We create a perfect, high-quality website for your business, designed to convert visitors into clients.</p>
+            <a class="btn" href="https://whop.com/checkout/plan_bHYKwHsN4hj7j">BUY NOW</a>
+        </div>
+    </div>
+
 </body>
+</html>
