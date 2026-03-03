@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xmoney | Private Wealth Group</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;400;600;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #d4af37;
@@ -13,6 +13,7 @@
             --border: rgba(255, 255, 255, 0.1);
         }
 
+        /* Base Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             background: #050505; 
@@ -27,16 +28,17 @@
         .hero {
             position: relative;
             z-index: 1;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 100px 20px;
             background: radial-gradient(circle at center, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
         }
 
         /* --- MAGNETIC TITLE --- */
-        .title-wrapper { perspective: 1000px; }
+        .title-wrapper { perspective: 1000px; margin-bottom: 40px; }
         .title {
             font-family: 'Syncopate', sans-serif;
             font-size: clamp(60px, 15vw, 200px);
@@ -51,24 +53,30 @@
             animation: titleReveal 1.5s cubic-bezier(0.2, 1, 0.3, 1);
         }
 
-        .subtitle-group {
-            margin-top: 30px;
+        /* --- NEW TEXT STYLING --- */
+        .manifesto-container {
+            max-width: 700px;
             text-align: center;
+            margin-bottom: 50px;
         }
 
-        .subtitle {
-            font-size: 14px;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: var(--cyan);
-            margin-bottom: 10px;
+        .manifesto-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
             opacity: 0;
-            animation: fadeInUp 1s forwards 0.8s;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
         }
+
+        .highlight-cyan { color: var(--cyan); font-weight: 600; }
+        .highlight-urgent { color: #ff3e3e; font-weight: 600; letter-spacing: 2px; }
 
         /* --- ELITE VIP CARD --- */
         .vip-card {
-            margin-top: 50px;
             background: var(--glass);
             border: 1px solid var(--border);
             padding: 50px;
@@ -79,7 +87,7 @@
             position: relative;
             overflow: hidden;
             transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1);
-            animation: fadeInUp 1s forwards 1.2s;
+            animation: fadeInUp 1s forwards 2.5s; /* Delayed until after text */
             opacity: 0;
         }
 
@@ -162,6 +170,7 @@
             .title { font-size: 70px; letter-spacing: -2px; }
             .vip-card { padding: 30px; }
             .features-list li { font-size: 12px; }
+            .manifesto-text { font-size: 14px; }
         }
     </style>
 </head>
@@ -174,9 +183,22 @@
         <h1 class="title">Xmoney</h1>
     </div>
     
-    <div class="subtitle-group">
-        <p class="subtitle">The Sovereign Wealth Circle</p>
-        <p class="subtitle" style="animation-delay: 1s">Institutional Grade Execution</p>
+    <div class="manifesto-container">
+        <p class="manifesto-text" style="animation-delay: 0.5s">
+            The market has <span class="highlight-cyan">no mercy</span> for anyone. Without discipline and a clear strategy, losses are inevitable.
+        </p>
+        <p class="manifesto-text" style="animation-delay: 1.0s">
+            Many traders act on emotion, drawing charts based on feelings instead of following a structured plan. That’s why most end up losing control.
+        </p>
+        <p class="manifesto-text" style="animation-delay: 1.5s">
+            Our goal is to help you build a <span class="highlight-cyan">structured approach</span> with proper risk management and a clear trading strategy.
+        </p>
+        <p class="manifesto-text" style="animation-delay: 2.0s">
+            This group will be active for <span class="highlight-urgent">only 3 months</span>. After that period, access will be permanently closed.
+        </p>
+        <p class="manifesto-text" style="animation-delay: 2.5s">
+            If you want to improve the way you trade and become part of our <span class="highlight-cyan">VIP ZONE</span>, join us now. Don’t wait until it’s too late.
+        </p>
     </div>
 
     <div class="vip-card">
@@ -284,7 +306,7 @@
 
     init();
     animate();
-    setTimeout(updateCounter, 2000);
+    setTimeout(updateCounter, 3500); // Delayed counter to match card reveal
 </script>
 
 </body>
