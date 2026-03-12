@@ -87,7 +87,7 @@
             position: relative;
             overflow: hidden;
             transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1);
-            animation: fadeInUp 1s forwards 2.5s; 
+            animation: fadeInUp 1s forwards 1.5s; 
             opacity: 0;
         }
 
@@ -144,15 +144,6 @@
             transform: scale(0.95);
         }
 
-        #memberCounter {
-            margin-top: 25px;
-            font-family: 'Syncopate', sans-serif;
-            font-size: 16px;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 2px;
-            text-align: center;
-        }
-
         /* --- ANIMATIONS --- */
         @keyframes titleReveal {
             0% { opacity: 0; transform: skewX(-20deg) scale(0.8); filter: blur(20px); }
@@ -188,27 +179,20 @@
             Tregu nuk ka <span class="highlight-cyan">asnjë mëshirë</span> për askënd. Pa disiplinë dhe një strategji të qartë, humbjet janë të pashmangshme.
         </p>
         <p class="manifesto-text" style="animation-delay: 1.0s">
-            Shumë tregtarë veprojnë mbi emocione, duke ndërtuar plane bazuar në ndjenja në vend që të ndjekin një strukturë strikte. Kjo është arsyeja pse shumica humbin kontrollin.
-        </p>
-        <p class="manifesto-text" style="animation-delay: 1.5s">
             Qëllimi ynë është t'ju ndihmojmë të ndërtoni një <span class="highlight-cyan">qasje të strukturuar</span> me menaxhimin e duhur të riskut dhe një strategji tregtimi të qartë.
         </p>
-        <p class="manifesto-text" style="animation-delay: 2.0s">
-            Ky grup do të jetë aktiv <span class="highlight-urgent">vetëm për 3 muaj</span>. Pas kësaj periudhe, qasja do të mbyllet përgjithmonë.
-        </p>
-        <p class="manifesto-text" style="animation-delay: 2.5s">
+        <p class="manifesto-text" style="animation-delay: 1.5s">
             Nëse dëshironi të përmirësoni mënyrën se si tregtoni dhe të bëheni pjesë e <span class="highlight-cyan">ZONËS VIP</span>, bashkohuni tani. Mos prisni derisa të jetë vonë.
         </p>
     </div>
 
     <div class="vip-card">
         <ul class="features-list">
-            <li>Sinjale Ditore Forex</li>
+            <li>Sinjale + Strategji</li>
             <li>57% - 60% Shkallë Fitoreje e Garantuar</li>
             <li>3 Sinjale në Ditë (Ndonjëherë më shumë)</li>
         </ul>
         <a href="https://whop.com/xmoney-1/xmoney-ed/" class="join-btn" onclick="joinVIP()">Përfitoni Qasjen</a>
-        <div id="memberCounter">0 ANËTARË VETËM</div>
     </div>
 </div>
 
@@ -286,35 +270,12 @@
         requestAnimationFrame(animate);
     }
 
-    const counterEl = document.getElementById("memberCounter");
-    const target = 13912;
-    const duration = 6000; // 6 sekonda
-    let startTime = null;
-
-    const updateCounter = (timestamp) => {
-        if (!startTime) startTime = timestamp;
-        const progress = timestamp - startTime;
-        const current = Math.min(Math.floor((progress / duration) * target), target);
-        
-        counterEl.innerText = current.toLocaleString() + " ANËTARË VETËM";
-        
-        if (progress < duration) {
-            requestAnimationFrame(updateCounter);
-        } else {
-            counterEl.innerText = target.toLocaleString() + " ANËTARË VETËM";
-        }
-    };
-
     function joinVIP() {
         document.querySelector('.vip-card').style.transform = "scale(0.95)";
     }
 
     init();
     animate();
-    // Start counter after the card animation begins (2.5s)
-    setTimeout(() => {
-        requestAnimationFrame(updateCounter);
-    }, 2500); 
 </script>
 
 </body>
