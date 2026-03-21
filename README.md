@@ -37,6 +37,25 @@
             background: radial-gradient(circle at center, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
         }
 
+        /* --- WHOP RANKING BADGE --- */
+        .rank-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--cyan);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .rank-number { color: var(--cyan); font-weight: 900; }
+
         /* --- MAGNETIC TITLE --- */
         .title-wrapper { perspective: 1000px; margin-bottom: 40px; }
         .title {
@@ -98,7 +117,7 @@
             background: conic-gradient(transparent, var(--cyan), transparent 30%);
             animation: rotate 4s linear infinite;
             z-index: -1;
-            opacity: 0.3;
+            opacity: 0.2;
         }
 
         .vip-card:hover {
@@ -121,6 +140,7 @@
 
         .features-list li:last-child { border-bottom: none; }
 
+        /* --- BUTTON WITH LOGO --- */
         .join-btn {
             width: 100%;
             padding: 20px;
@@ -134,8 +154,16 @@
             cursor: pointer;
             transition: 0.4s;
             text-decoration: none;
-            display: block;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .whop-logo-svg {
+            width: 24px;
+            height: 24px;
+            fill: black;
         }
 
         .join-btn:hover {
@@ -169,6 +197,12 @@
 <canvas id="neuralCanvas"></canvas>
 
 <div class="hero">
+    <div class="rank-badge">
+        <span>Whop Rank <span class="rank-number">#13</span></span>
+        <span style="opacity: 0.4">|</span>
+        <span>12,762 Members</span>
+    </div>
+
     <div class="title-wrapper">
         <h1 class="title">Xmoney</h1>
     </div>
@@ -180,22 +214,25 @@
         <p class="manifesto-text" style="animation-delay: 1.0s">
             Our mission is to help you build a <span class="highlight-cyan">structured approach</span> through proper risk management and a precise trading strategy.
         </p>
-        <p class="manifesto-text" style="animation-delay: 1.5s">
-            If you are ready to elevate your trading and join the <span class="highlight-cyan">VIP ZONE</span>, act now. Do not wait until it is too late.
-        </p>
     </div>
 
     <div class="vip-card">
         <ul class="features-list">
             <li>Signals + Strategy</li>
-            <li>57% - 60% Guaranteed Win Rate</li>
+            <li>57% - 60% Win Rate</li>
             <li>3+ Daily Signals</li>
         </ul>
-        <a href="https://whop.com/xmoney-1/xmoney-ed/" class="join-btn" onclick="joinVIP()">Get Access Now</a>
+        <a href="https://whop.com/xmoney-1/xmoney-ed/" class="join-btn" onclick="joinVIP()">
+            <svg class="whop-logo-svg" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            </svg>
+            Get Access on Whop
+        </a>
     </div>
 </div>
 
 <script>
+    // [Neural Canvas JS remains exactly the same as your original]
     const canvas = document.getElementById("neuralCanvas");
     const ctx = canvas.getContext("2d");
     let nodes = [];
