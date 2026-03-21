@@ -123,7 +123,7 @@
         .highlight-cyan { color: var(--cyan); font-weight: 600; }
 
         .vip-card {
-            background: rgba(5, 5, 5, 0.85);
+            background: rgba(5, 5, 5, 0.9);
             border: 1px solid var(--border);
             padding: 40px;
             width: 100%;
@@ -133,7 +133,7 @@
             opacity: 0;
             transform: translateY(40px);
             animation: cardEntrance 1.5s forwards 0.8s;
-            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.9);
             position: relative;
         }
 
@@ -196,7 +196,6 @@
         <span class="ticker-item">XAU/USD <span class="down">$2,341.05 (-0.4%)</span></span>
         <span class="ticker-item">EUR/USD <span class="up">1.0842 (+0.1%)</span></span>
         <span class="ticker-item">BTC/USD <span class="up">$64,231.12 (+2.4%)</span></span>
-        <span class="ticker-item">ETH/USD <span class="up">$3,452.10 (+1.8%)</span></span>
     </div>
 </div>
 
@@ -204,8 +203,8 @@
 
 <div class="hero">
     <div class="status-container">
-        <div class="status-pill"><div class="dot"></div> CRYPTO-NET: ACTIVE</div>
-        <div class="status-pill">AUTH: ENCRYPTED</div>
+        <div class="status-pill"><div class="dot"></div> PROTOCOL: LIVE</div>
+        <div class="status-pill">X-ACCESS: GRANTED</div>
     </div>
 
     <div class="title-wrapper">
@@ -214,21 +213,21 @@
     
     <div class="manifesto-container">
         <p class="manifesto-text" style="animation-delay: 0.4s">
-            The market has <span class="highlight-cyan">zero mercy</span>. Without a strategy, you are the exit liquidity.
+            The market has <span class="highlight-cyan">zero mercy</span>. Join the circle that controls the outcome.
         </p>
         <p class="manifesto-text" style="animation-delay: 0.6s">
-            Access the <span class="highlight-cyan">Private Terminal</span>. Professional signals for the modern trader.
+            Access the <span class="highlight-cyan">VIP Terminal</span>. Real-time data, institutional strategy.
         </p>
     </div>
 
     <div class="vip-card">
-        <div class="verified-badge">Secure Entry</div>
+        <div class="verified-badge">Elite Membership</div>
         <ul class="features-list">
-            <li><span>Market Signals</span> <span class="highlight-cyan">Institutional</span></li>
-            <li><span>Success Rate</span> <span class="highlight-cyan">Verified</span></li>
-            <li><span>Network</span> <span class="highlight-cyan">Private Node</span></li>
+            <li><span>Daily Signals</span> <span class="highlight-cyan">3+ ALERTS</span></li>
+            <li><span>Success Rate</span> <span class="highlight-cyan">60% VERIFIED</span></li>
+            <li><span>Encryption</span> <span class="highlight-cyan">AES-256</span></li>
         </ul>
-        <a href="https://whop.com/xmoney-1/xmoney-ed/" class="join-btn" onclick="joinVIP()">Get Access Now</a>
+        <a href="https://whop.com/xmoney-1/xmoney-ed/" class="join-btn" onclick="joinVIP()">Instant Access</a>
     </div>
 </div>
 
@@ -236,8 +235,7 @@
     const canvas = document.getElementById("neuralCanvas");
     const ctx = canvas.getContext("2d");
     let w, h;
-    let particles = [];
-    let tick = 0;
+    let frame = 0;
 
     function resize() {
         w = canvas.width = window.innerWidth;
@@ -246,60 +244,51 @@
     window.addEventListener("resize", resize);
     resize();
 
-    function draw() {
-        tick++;
-        ctx.fillStyle = "rgba(0, 0, 0, 0.15)"; // Motion blur effect
-        ctx.fillRect(0, 0, w, h);
-
-        const lines = 8;
-        const amplitude = 40;
-        const speed = 0.02;
-
-        for (let i = 0; i < lines; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = i === 0 ? 3 : 1;
-            
-            // Alternating colors between Cyan and Gold
-            let color = i % 2 === 0 ? "0, 242, 255" : "212, 175, 55";
-            let opacity = (1 - i / lines) * 0.4;
-            ctx.strokeStyle = `rgba(${color}, ${opacity})`;
-
-            for (let x = 0; x < w; x += 2) {
-                // The "Magic" Math for the waves
-                let noise = Math.sin(x * 0.002 + tick * speed + i) * amplitude;
-                let wave2 = Math.cos(x * 0.005 - tick * (speed * 0.5) + i) * (amplitude * 0.5);
-                let y = (h / 2) + noise + wave2 + (i * 15) - (lines * 7);
-
-                if (x === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
-            }
-            ctx.stroke();
+    function drawHex(x, y, size, color, alpha) {
+        ctx.beginPath();
+        for (let i = 0; i < 6; i++) {
+            ctx.lineTo(x + size * Math.cos(i * Math.PI / 3), y + size * Math.sin(i * Math.PI / 3));
         }
-
-        // Floating Gold Dust
-        if (particles.length < 50) {
-            particles.push({
-                x: Math.random() * w,
-                y: Math.random() * h,
-                s: Math.random() * 2,
-                v: Math.random() * 0.5 + 0.1
-            });
-        }
-
-        particles.forEach((p, index) => {
-            p.y -= p.v;
-            if (p.y < 0) p.y = h;
-            ctx.fillStyle = `rgba(212, 175, 55, 0.5)`;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.s, 0, Math.PI * 2);
-            ctx.fill();
-        });
-
-        requestAnimationFrame(draw);
+        ctx.closePath();
+        ctx.strokeStyle = `rgba(${color}, ${alpha})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
     }
 
-    function joinVIP() { document.querySelector('.vip-card').style.transform = "scale(0.95)"; }
-    draw();
+    function animate() {
+        frame++;
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, w, h);
+
+        const centerX = w / 2;
+        const centerY = h / 2;
+        const count = 25;
+
+        for (let i = 0; i < count; i++) {
+            // Perspective logic: Rings that scale up as they move toward the screen
+            let z = (i * 80 + frame * 3) % (count * 80);
+            let size = z * 1.5;
+            let alpha = 1 - (z / (count * 80));
+            let color = i % 2 === 0 ? "0, 242, 255" : "212, 175, 55";
+
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            ctx.rotate(z * 0.001); // Slight spin
+            drawHex(0, 0, size, color, alpha * 0.5);
+            ctx.restore();
+        }
+
+        // Random Digital "Glitches" (Horizontal Light Strips)
+        if (frame % 10 === 0) {
+            ctx.fillStyle = `rgba(0, 242, 255, ${Math.random() * 0.1})`;
+            ctx.fillRect(0, Math.random() * h, w, 2);
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    function joinVIP() { document.querySelector('.vip-card').style.transform = "scale(0.98)"; }
+    animate();
 </script>
 
 </body>
