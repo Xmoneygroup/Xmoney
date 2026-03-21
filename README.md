@@ -15,7 +15,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            background: #000; 
+            background: #020202; 
             color: white; 
             font-family: 'Montserrat', sans-serif; 
             overflow-x: hidden;
@@ -31,7 +31,7 @@
             width: 100%;
             overflow: hidden;
             height: 35px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             border-bottom: 1px solid var(--border);
             z-index: 999;
             display: flex;
@@ -41,7 +41,7 @@
         .ticker {
             display: flex;
             white-space: nowrap;
-            animation: ticker 30s linear infinite;
+            animation: ticker 40s linear infinite;
         }
 
         .ticker-item {
@@ -68,59 +68,96 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 60px 20px;
+            padding: 20px;
+            perspective: 2000px;
         }
 
-        /* --- NEW ANIMATED TITLE --- */
-        .title-wrapper { 
-            perspective: 1000px; 
-            margin-bottom: 20px; 
-            text-align: center;
+        /* --- CRAZY GLITCH TITLE --- */
+        .title-container {
+            position: relative;
+            margin-bottom: 40px;
+            transform-style: preserve-3d;
             transition: transform 0.1s ease-out;
         }
 
         .title {
             font-family: 'Syncopate', sans-serif;
-            font-size: clamp(60px, 15vw, 180px);
+            font-size: clamp(70px, 18vw, 220px);
             font-weight: 700;
             text-transform: uppercase;
-            line-height: 0.9;
-            letter-spacing: -5px;
+            letter-spacing: -10px;
+            line-height: 0.8;
             position: relative;
-            background: linear-gradient(180deg, #fff 30%, #444 100%);
+            /* Metallic Gradient */
+            background: linear-gradient(to bottom, #fff 20%, #666 50%, #eee 80%, #333 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
-            animation: titleReveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.1));
+            animation: mainReveal 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            z-index: 2;
         }
 
-        .title::after {
+        /* Glitch Layer 1 (Cyan) */
+        .title::before {
             content: 'Xmoney';
             position: absolute;
-            left: 0;
+            left: -3px;
             top: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+            background: transparent;
+            -webkit-text-stroke: 1px var(--cyan);
             -webkit-text-fill-color: transparent;
-            transform: translate(8px, 8px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: glitch1 3s infinite linear alternate-reverse;
         }
 
-        @keyframes titleReveal {
-            0% { opacity: 0; transform: translateY(50px) rotateX(-30deg); letter-spacing: 20px; filter: blur(10px); }
-            100% { opacity: 1; transform: translateY(0) rotateX(0deg); letter-spacing: -5px; filter: blur(0); }
+        /* Glitch Layer 2 (Gold) */
+        .title::after {
+            content: 'Xmoney';
+            position: absolute;
+            left: 3px;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            -webkit-text-stroke: 1px var(--gold);
+            -webkit-text-fill-color: transparent;
+            opacity: 0.4;
+            z-index: -1;
+            animation: glitch2 2.5s infinite linear alternate-reverse;
         }
 
-        .manifesto-container { max-width: 750px; text-align: center; margin-bottom: 50px; }
+        @keyframes mainReveal {
+            0% { transform: scale(0.5) translateZ(-500px); opacity: 0; letter-spacing: 50px; }
+            100% { transform: scale(1) translateZ(0); opacity: 1; letter-spacing: -10px; }
+        }
+
+        @keyframes glitch1 {
+            0% { transform: translate(0); }
+            20% { transform: translate(-4px, 2px); }
+            40% { transform: translate(-4px, -2px); }
+            60% { transform: translate(4px, 2px); }
+            80% { transform: translate(4px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes glitch2 {
+            0% { transform: translate(0); }
+            25% { transform: translate(4px, -2px); }
+            50% { transform: translate(-4px, 2px); }
+            75% { transform: translate(4px, 2px); }
+            100% { transform: translate(0); }
+        }
+
+        .manifesto-container { max-width: 800px; text-align: center; margin-bottom: 50px; }
         .manifesto-text {
-            font-size: 14px;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.4);
-            margin-bottom: 24px;
-            font-weight: 400;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 5px;
+            color: rgba(255,255,255,0.4);
+            font-weight: 400;
             opacity: 0;
             animation: fadeIn 1s forwards 1.2s;
         }
@@ -129,39 +166,29 @@
 
         /* --- VIP CARD --- */
         .vip-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.9) 100%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.95) 100%);
             border: 1px solid var(--border);
             padding: 40px;
             width: 100%;
             max-width: 450px;
-            border-radius: 24px;
-            backdrop-filter: blur(30px);
+            border-radius: 30px;
+            backdrop-filter: blur(40px);
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeIn 1s forwards 1.5s;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(40px);
+            animation: fadeIn 1.5s forwards 1.5s;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+            transition: border 0.3s, transform 0.3s;
         }
 
-        .vip-card:hover { border-color: var(--cyan); transform: translateY(-5px); }
-
-        .verified-badge {
-            position: absolute;
-            top: -12px;
-            right: 30px;
-            background: #fff;
-            color: #000;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 4px 15px;
-            border-radius: 4px;
-            text-transform: uppercase;
+        .vip-card:hover {
+            border-color: rgba(0, 242, 255, 0.5);
+            transform: translateY(-5px);
         }
 
         .features-list { list-style: none; margin-bottom: 30px; }
         .features-list li {
             padding: 18px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -171,25 +198,29 @@
 
         .join-btn {
             width: 100%;
-            padding: 22px;
+            padding: 24px;
             background: #fff;
             color: #000;
-            border-radius: 12px;
+            border-radius: 15px;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             cursor: pointer;
             text-decoration: none;
             display: block;
             text-align: center;
-            transition: 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .join-btn:hover { background: var(--cyan); transform: scale(1.02); box-shadow: 0 0 40px rgba(0, 242, 255, 0.3); }
+        .join-btn:hover {
+            background: var(--cyan);
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.4);
+            letter-spacing: 6px;
+        }
 
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
 
-        @media(max-width: 768px) { .title { font-size: 70px; letter-spacing: -2px; } }
+        @media(max-width: 768px) { .title { font-size: 80px; letter-spacing: -2px; } }
     </style>
 </head>
 <body>
@@ -210,22 +241,21 @@
 <canvas id="neuralCanvas"></canvas>
 
 <div class="hero">
-    <div class="title-wrapper" id="titleMove">
+    <div class="title-container" id="title3D">
         <h1 class="title">Xmoney</h1>
     </div>
     
     <div class="manifesto-container">
         <p class="manifesto-text">
-            Institutional Grade <span class="highlight-cyan">Intelligence</span>
+            Institutional <span class="highlight-cyan">Liquidity</span> & Intelligence
         </p>
     </div>
 
     <div class="vip-card" id="vipCard">
-        <div class="verified-badge">Access Level: VIP</div>
         <ul class="features-list">
-            <li><span>Daily Signals</span> <span class="highlight-cyan">3+</span></li>
-            <li><span>Avg Accuracy</span> <span class="highlight-cyan">88.4%</span></li>
-            <li><span>Network</span> <span class="highlight-cyan">PRIVATE</span></li>
+            <li><span>Market Signals</span> <span class="highlight-cyan">DAILY</span></li>
+            <li><span>Success Rate</span> <span class="highlight-cyan">88% AVG</span></li>
+            <li><span>Status</span> <span class="highlight-cyan">PRIVATE ACCESS</span></li>
         </ul>
         <a href="https://whop.com/xmoney-1/xmoney-ed/" class="join-btn" onclick="joinVIP()">Enter Terminal</a>
     </div>
@@ -234,80 +264,73 @@
 <script>
     const canvas = document.getElementById("neuralCanvas");
     const ctx = canvas.getContext("2d");
-    let w, h;
-    let stars = [];
-    let speedMult = 1.2; 
-    let targetSpeed = 1.2;
-    
-    function resize() {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-    }
+    let frame = 0;
+
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     window.addEventListener("resize", resize);
     resize();
 
-    // Mouse tilt for Title
-    const title = document.getElementById('titleMove');
+    // 3D Title Movement
+    const title3D = document.getElementById('title3D');
     document.addEventListener('mousemove', (e) => {
-        let x = (window.innerWidth / 2 - e.pageX) / 25;
-        let y = (window.innerHeight / 2 - e.pageY) / 25;
-        title.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        let x = (window.innerWidth / 2 - e.pageX) / 20;
+        let y = (window.innerHeight / 2 - e.pageY) / 20;
+        title3D.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
     });
 
-    class Star {
-        constructor() { this.reset(); }
-        reset() {
-            this.x = (Math.random() - 0.5) * w * 2.5;
-            this.y = (Math.random() - 0.5) * h * 2.5;
-            this.z = Math.random() * w; 
-            this.pz = this.z; 
-            this.color = Math.random() > 0.5 ? 'rgba(0, 242, 255,' : 'rgba(212, 175, 55,';
-        }
-        update() {
-            this.pz = this.z;
-            this.z -= speedMult;
-            if (this.z < 1) { this.reset(); this.pz = this.z; }
-        }
-        draw() {
-            let sx = ((this.x / this.z) * w) + w / 2;
-            let sy = ((this.y / this.z) * h) + h / 2;
-            let px = ((this.x / this.pz) * w) + w / 2;
-            let py = ((this.y / this.pz) * h) + h / 2;
+    function drawBackground() {
+        ctx.strokeStyle = 'rgba(0, 242, 255, 0.03)';
+        const spacing = 60;
+        
+        // Dynamic Grid
+        ctx.lineWidth = 1;
+        for(let i = -10; i < 20; i++) {
+            let z = (i * spacing) + (frame % spacing);
+            let alpha = 1 - (z / canvas.height);
+            ctx.strokeStyle = `rgba(212, 175, 55, ${alpha * 0.1})`;
+            
             ctx.beginPath();
-            let alpha = 1 - (this.z / w);
-            ctx.strokeStyle = this.color + alpha + ')';
-            ctx.lineWidth = alpha * 2;
-            ctx.moveTo(px, py);
-            ctx.lineTo(sx, sy);
+            ctx.moveTo(0, z + canvas.height/2);
+            ctx.lineTo(canvas.width, z + canvas.height/2);
+            ctx.stroke();
+        }
+
+        // Perspective Lines
+        for(let i = -10; i < 10; i++) {
+            ctx.strokeStyle = 'rgba(0, 242, 255, 0.05)';
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, canvas.height / 2);
+            ctx.lineTo(canvas.width / 2 + (i * 600), canvas.height);
             ctx.stroke();
         }
     }
 
-    function init() {
-        stars = [];
-        for (let i = 0; i < 350; i++) stars.push(new Star());
-    }
-
     function animate() {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
-        ctx.fillRect(0, 0, w, h);
-        if (Math.abs(speedMult - targetSpeed) > 0.01) {
-            speedMult += (targetSpeed - speedMult) * 0.02;
+        ctx.fillStyle = '#020202';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        frame += 0.8;
+        drawBackground();
+
+        // High-speed Particles
+        for(let i=0; i<40; i++) {
+            let x = (Math.tan(i + frame*0.005) * canvas.width/2) + canvas.width/2;
+            let y = (Math.sin(i + frame*0.01) * canvas.height/2) + canvas.height/2;
+            ctx.fillStyle = i % 2 === 0 ? 'rgba(0, 242, 255, 0.3)' : 'rgba(212, 175, 55, 0.3)';
+            ctx.beginPath();
+            ctx.arc(x, y, 1, 0, Math.PI*2);
+            ctx.fill();
         }
-        stars.forEach(s => { s.update(); s.draw(); });
+
         requestAnimationFrame(animate);
     }
 
-    const card = document.getElementById('vipCard');
-    card.addEventListener('mouseenter', () => targetSpeed = 0.2);
-    card.addEventListener('mouseleave', () => targetSpeed = 1.2);
-
     function joinVIP() { 
-        targetSpeed = 0.05; 
-        setTimeout(() => { targetSpeed = 1.2; }, 3000);
+        const card = document.getElementById('vipCard');
+        card.style.transform = "scale(0.95) translateZ(-50px)";
+        setTimeout(() => { card.style.transform = "scale(1) translateZ(0)"; }, 200);
     }
 
-    init();
     animate();
 </script>
 
