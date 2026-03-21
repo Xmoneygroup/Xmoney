@@ -13,7 +13,6 @@
             --border: rgba(255, 255, 255, 0.1);
         }
 
-        /* Base Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             background: #020202; 
@@ -25,6 +24,66 @@
 
         canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
 
+        /* --- FAKE MARKET TICKER --- */
+        .ticker-wrap {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+            height: 35px;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid var(--border);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker 30s linear infinite;
+        }
+
+        .ticker-item {
+            padding: 0 30px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .up { color: #00ff88; }
+        .down { color: #ff3e3e; }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- LIVE STATUS BADGE --- */
+        .status-container {
+            position: absolute;
+            top: 60px;
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 1s forwards;
+        }
+
+        .status-pill {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot { width: 6px; height: 6px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 10px #00ff88; animation: pulse 1.5s infinite; }
+
         .hero {
             position: relative;
             z-index: 1;
@@ -34,252 +93,205 @@
             align-items: center;
             justify-content: center;
             padding: 100px 20px;
-            /* Subtle overlay to ensure text readability */
-            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.03) 0%, transparent 80%);
         }
 
-        /* --- PROFESSIONAL TEXT ANIMATION --- */
-        .title-wrapper { perspective: 1000px; margin-bottom: 30px; }
+        .title-wrapper { perspective: 1000px; margin-bottom: 30px; text-align: center; }
         .title {
             font-family: 'Syncopate', sans-serif;
-            font-size: clamp(60px, 15vw, 180px);
+            font-size: clamp(50px, 12vw, 150px);
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: -5px;
-            line-height: 0.8;
-            background: linear-gradient(to bottom, #fff 40%, rgba(255,255,255,0.2) 100%);
+            letter-spacing: -2px;
+            background: linear-gradient(to bottom, #fff 40%, #555 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
             animation: titleEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .manifesto-container {
-            max-width: 750px;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
+        .manifesto-container { max-width: 750px; text-align: center; margin-bottom: 50px; }
         .manifesto-text {
-            font-size: 17px;
+            font-size: 16px;
             line-height: 1.6;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.6);
             margin-bottom: 24px;
             font-weight: 300;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             opacity: 0;
-            transform: translateY(30px) filter(blur(10px));
-            animation: textReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: textReveal 1.2s forwards;
         }
 
-        .highlight-cyan { 
-            color: var(--cyan); 
-            font-weight: 600; 
-            text-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
-        }
+        .highlight-cyan { color: var(--cyan); font-weight: 600; }
 
-        /* --- ELITE VIP CARD --- */
+        /* --- VIP CARD UPGRADE --- */
         .vip-card {
-            background: rgba(10, 10, 10, 0.6);
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.8) 100%);
             border: 1px solid var(--border);
-            padding: 50px;
-            width: 95%;
-            max-width: 480px;
-            border-radius: 30px;
-            backdrop-filter: blur(25px);
-            position: relative;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            animation: cardEntrance 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards; 
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
             opacity: 0;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+            transform: translateY(40px);
+            animation: cardEntrance 1.5s forwards 0.8s;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.5);
         }
 
-        .vip-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 242, 255, 0.4);
-            box-shadow: 0 20px 60px rgba(0, 242, 255, 0.1);
-        }
-
-        .features-list { list-style: none; text-align: center; margin-bottom: 35px; }
-        .features-list li {
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 13px;
+        .verified-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--cyan);
+            color: black;
+            font-size: 9px;
+            font-weight: 900;
+            padding: 5px 12px;
+            border-radius: 4px;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            color: rgba(255,255,255,0.9);
-            font-weight: 400;
         }
 
-        .features-list li:last-child { border-bottom: none; }
+        .features-list { list-style: none; margin-bottom: 30px; }
+        .features-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: space-between;
+        }
 
         .join-btn {
             width: 100%;
-            padding: 22px;
-            background: #fff;
-            color: #000;
+            padding: 20px;
+            background: white;
+            color: black;
             border: none;
-            border-radius: 15px;
+            border-radius: 10px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
             cursor: pointer;
-            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
             display: block;
             text-align: center;
-            font-size: 14px;
+            transition: 0.3s;
         }
 
-        .join-btn:hover {
-            background: var(--cyan);
-            transform: scale(0.97);
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
-        }
+        .join-btn:hover { background: var(--cyan); box-shadow: 0 0 30px rgba(0, 242, 255, 0.4); }
 
-        /* --- ANIMATIONS --- */
-        @keyframes titleEntrance {
-            0% { opacity: 0; transform: translateY(50px) scale(0.9); filter: blur(20px); }
-            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-        }
-        @keyframes textReveal {
-            to { opacity: 1; transform: translateY(0); filter: blur(0); }
-        }
-        @keyframes cardEntrance {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        @keyframes textReveal { to { opacity: 1; transform: translateY(0); } }
+        @keyframes cardEntrance { to { opacity: 1; transform: translateY(0); } }
 
-        @media(max-width: 768px) {
-            .title { font-size: 65px; letter-spacing: -2px; }
-            .vip-card { padding: 30px; }
-            .manifesto-text { font-size: 15px; }
-        }
+        @media(max-width: 768px) { .title { font-size: 60px; } }
     </style>
 </head>
 <body>
 
+<div class="ticker-wrap">
+    <div class="ticker">
+        <span class="ticker-item">BTC/USD <span class="up">$64,231.12 (+2.4%)</span></span>
+        <span class="ticker-item">ETH/USD <span class="up">$3,452.10 (+1.8%)</span></span>
+        <span class="ticker-item">XAU/USD <span class="down">$2,341.05 (-0.4%)</span></span>
+        <span class="ticker-item">EUR/USD <span class="up">1.0842 (+0.1%)</span></span>
+        <span class="ticker-item">BTC/USD <span class="up">$64,231.12 (+2.4%)</span></span>
+        <span class="ticker-item">ETH/USD <span class="up">$3,452.10 (+1.8%)</span></span>
+        <span class="ticker-item">XAU/USD <span class="down">$2,341.05 (-0.4%)</span></span>
+        <span class="ticker-item">EUR/USD <span class="up">1.0842 (+0.1%)</span></span>
+    </div>
+</div>
+
 <canvas id="neuralCanvas"></canvas>
 
 <div class="hero">
+    <div class="status-container">
+        <div class="status-pill"><div class="dot"></div> SERVER: OPERATIONAL</div>
+        <div class="status-pill">MEMBERS: 12,762</div>
+    </div>
+
     <div class="title-wrapper">
         <h1 class="title">Xmoney</h1>
     </div>
     
     <div class="manifesto-container">
+        <p class="manifesto-text" style="animation-delay: 0.4s">
+            The market has <span class="highlight-cyan">zero mercy</span> for anyone. Without discipline, losses are inevitable.
+        </p>
         <p class="manifesto-text" style="animation-delay: 0.6s">
-            The market has <span class="highlight-cyan">zero mercy</span> for anyone. Without discipline and a clear strategy, losses are inevitable.
-        </p>
-        <p class="manifesto-text" style="animation-delay: 0.9s">
-            Our mission is to help you build a <span class="highlight-cyan">structured approach</span> through proper risk management and a precise trading strategy.
-        </p>
-        <p class="manifesto-text" style="animation-delay: 1.2s">
-            If you are ready to elevate your trading and join the <span class="highlight-cyan">VIP ZONE</span>, act now. Do not wait until it is too late.
+            Join the <span class="highlight-cyan">Elite 1%</span>. We provide the tools, the strategy, and the signals.
         </p>
     </div>
 
     <div class="vip-card">
+        <div class="verified-badge">Verified Group</div>
         <ul class="features-list">
-            <li>Signals + Strategy</li>
-            <li>57% - 60% Guaranteed Win Rate</li>
-            <li>3+ Daily Signals</li>
+            <li><span>Daily Signals</span> <span class="highlight-cyan">3+</span></li>
+            <li><span>Win Rate</span> <span class="highlight-cyan">60% AVG</span></li>
+            <li><span>Community</span> <span class="highlight-cyan">VIP CHAT</span></li>
         </ul>
-        <a href="https://whop.com/xmoney-1/xmoney-ed/" class="join-btn" onclick="joinVIP()">Get Access Now</a>
+        <a href="https://whop.com/xmoney-1/xmoney-ed/" class="join-btn" onclick="joinVIP()">Join Private Group</a>
     </div>
 </div>
 
 <script>
     const canvas = document.getElementById("neuralCanvas");
     const ctx = canvas.getContext("2d");
-    
-    let stars = [];
-    let nebulas = [];
-    const starCount = 400;
-    let mouse = { x: 0, y: 0, active: false };
+    let mouse = { x: 0, y: 0 };
+    let frame = 0;
 
-    window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-        mouse.active = true;
-    });
-
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     window.addEventListener("resize", resize);
     resize();
 
-    class Star {
-        constructor() {
-            this.x = (Math.random() - 0.5) * 2000;
-            this.y = (Math.random() - 0.5) * 2000;
-            this.z = Math.random() * 2000;
-            this.size = 0.5 + Math.random() * 1.5;
-        }
-
-        update() {
-            this.z -= 1.5; // Forward speed
-            if (this.z <= 0) this.z = 2000;
-        }
-
-        draw() {
-            // 3D projection
-            let x = this.x / (this.z / 1000) + canvas.width / 2;
-            let y = this.y / (this.z / 1000) + canvas.height / 2;
-            let s = this.size * (1000 / this.z);
-
-            // Parallax movement based on mouse
-            let mx = (mouse.x - canvas.width / 2) * 0.05;
-            let my = (mouse.y - canvas.height / 2) * 0.05;
-
+    function drawGrid() {
+        ctx.strokeStyle = 'rgba(0, 242, 255, 0.05)';
+        ctx.lineWidth = 1;
+        const spacing = 50;
+        const perspective = 0.8;
+        
+        // Horizontal Lines (Perspective)
+        for(let i = -20; i < 40; i++) {
+            let y = (canvas.height / 2) + (i * spacing) + (frame % spacing);
+            let opacity = 1 - (Math.abs(y - canvas.height/2) / (canvas.height/2));
+            ctx.strokeStyle = `rgba(212, 175, 55, ${opacity * 0.1})`;
             ctx.beginPath();
-            ctx.arc(x + mx, y + my, s, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${1 - this.z / 2000})`;
-            ctx.fill();
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvas.width, y);
+            ctx.stroke();
         }
-    }
 
-    class Nebula {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.r = Math.random() * 400 + 200;
-            this.color = Math.random() > 0.5 ? 'rgba(0, 242, 255, 0.04)' : 'rgba(212, 175, 55, 0.02)';
+        // Vertical Lines (Vanish Point)
+        for(let i = -20; i < 20; i++) {
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, canvas.height / 2);
+            ctx.lineTo(canvas.width / 2 + (i * 400), canvas.height);
+            ctx.stroke();
         }
-        draw() {
-            let g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
-            g.addColorStop(0, this.color);
-            g.addColorStop(1, 'transparent');
-            ctx.fillStyle = g;
-            ctx.fillRect(0,0, canvas.width, canvas.height);
-        }
-    }
-
-    function init() {
-        stars = [];
-        nebulas = [];
-        for (let i = 0; i < starCount; i++) stars.push(new Star());
-        for (let i = 0; i < 5; i++) nebulas.push(new Nebula());
     }
 
     function animate() {
         ctx.fillStyle = '#020202';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        frame += 0.5;
+        drawGrid();
 
-        nebulas.forEach(n => n.draw());
-        stars.forEach(s => {
-            s.update();
-            s.draw();
-        });
+        // Add some floating digital particles
+        for(let i=0; i<30; i++) {
+            let x = (Math.sin(i + frame*0.01) * canvas.width/2) + canvas.width/2;
+            let y = (Math.cos(i + frame*0.02) * canvas.height/2) + canvas.height/2;
+            ctx.fillStyle = 'rgba(0, 242, 255, 0.2)';
+            ctx.beginPath();
+            ctx.arc(x, y, 1, 0, Math.PI*2);
+            ctx.fill();
+        }
 
         requestAnimationFrame(animate);
     }
 
-    function joinVIP() {
-        document.querySelector('.vip-card').style.transform = "scale(0.95)";
-    }
-
-    init();
+    function joinVIP() { document.querySelector('.vip-card').style.transform = "scale(0.95)"; }
     animate();
 </script>
 
