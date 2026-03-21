@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> me pika
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,7 @@
             --border: rgba(255, 255, 255, 0.1);
         }
 
+        /* Base Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             background: #020202; 
@@ -24,42 +25,6 @@
 
         canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
 
-        /* --- MARKET TICKER --- */
-        .ticker-wrap {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            overflow: hidden;
-            height: 35px;
-            background: rgba(0, 0, 0, 0.9);
-            border-bottom: 1px solid var(--border);
-            z-index: 999;
-            display: flex;
-            align-items: center;
-        }
-
-        .ticker {
-            display: flex;
-            white-space: nowrap;
-            animation: ticker 40s linear infinite;
-        }
-
-        .ticker-item {
-            padding: 0 30px;
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .up { color: #00ff88; }
-        .down { color: #ff3e3e; }
-
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
         .hero {
             position: relative;
             z-index: 1;
@@ -68,269 +33,253 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            perspective: 2000px;
+            padding: 100px 20px;
+            /* Subtle overlay to ensure text readability */
+            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.03) 0%, transparent 80%);
         }
 
-        /* --- CRAZY GLITCH TITLE --- */
-        .title-container {
-            position: relative;
-            margin-bottom: 40px;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
-        }
-
+        /* --- PROFESSIONAL TEXT ANIMATION --- */
+        .title-wrapper { perspective: 1000px; margin-bottom: 30px; }
         .title {
             font-family: 'Syncopate', sans-serif;
-            font-size: clamp(70px, 18vw, 220px);
+            font-size: clamp(60px, 15vw, 180px);
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: -10px;
+            letter-spacing: -5px;
             line-height: 0.8;
-            position: relative;
-            /* Metallic Gradient */
-            background: linear-gradient(to bottom, #fff 20%, #666 50%, #eee 80%, #333 100%);
+            background: linear-gradient(to bottom, #fff 40%, rgba(255,255,255,0.2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 20px rgba(255,255,255,0.1));
-            animation: mainReveal 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-            z-index: 2;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+            animation: titleEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Glitch Layer 1 (Cyan) */
-        .title::before {
-            content: 'Xmoney';
-            position: absolute;
-            left: -3px;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            -webkit-text-stroke: 1px var(--cyan);
-            -webkit-text-fill-color: transparent;
-            opacity: 0.4;
-            z-index: -1;
-            animation: glitch1 3s infinite linear alternate-reverse;
+        .manifesto-container {
+            max-width: 750px;
+            text-align: center;
+            margin-bottom: 50px;
         }
 
-        /* Glitch Layer 2 (Gold) */
-        .title::after {
-            content: 'Xmoney';
-            position: absolute;
-            left: 3px;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            -webkit-text-stroke: 1px var(--gold);
-            -webkit-text-fill-color: transparent;
-            opacity: 0.4;
-            z-index: -1;
-            animation: glitch2 2.5s infinite linear alternate-reverse;
-        }
-
-        @keyframes mainReveal {
-            0% { transform: scale(0.5) translateZ(-500px); opacity: 0; letter-spacing: 50px; }
-            100% { transform: scale(1) translateZ(0); opacity: 1; letter-spacing: -10px; }
-        }
-
-        @keyframes glitch1 {
-            0% { transform: translate(0); }
-            20% { transform: translate(-4px, 2px); }
-            40% { transform: translate(-4px, -2px); }
-            60% { transform: translate(4px, 2px); }
-            80% { transform: translate(4px, -2px); }
-            100% { transform: translate(0); }
-        }
-
-        @keyframes glitch2 {
-            0% { transform: translate(0); }
-            25% { transform: translate(4px, -2px); }
-            50% { transform: translate(-4px, 2px); }
-            75% { transform: translate(4px, 2px); }
-            100% { transform: translate(0); }
-        }
-
-        .manifesto-container { max-width: 800px; text-align: center; margin-bottom: 50px; }
         .manifesto-text {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            color: rgba(255,255,255,0.4);
-            font-weight: 400;
+            font-size: 17px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 24px;
+            font-weight: 300;
+            letter-spacing: 1.5px;
             opacity: 0;
-            animation: fadeIn 1s forwards 1.2s;
+            transform: translateY(30px) filter(blur(10px));
+            animation: textReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .highlight-cyan { color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
+        .highlight-cyan { 
+            color: var(--cyan); 
+            font-weight: 600; 
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+        }
 
-        /* --- VIP CARD --- */
+        /* --- ELITE VIP CARD --- */
         .vip-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.95) 100%);
+            background: rgba(10, 10, 10, 0.6);
             border: 1px solid var(--border);
-            padding: 40px;
-            width: 100%;
-            max-width: 450px;
+            padding: 50px;
+            width: 95%;
+            max-width: 480px;
             border-radius: 30px;
-            backdrop-filter: blur(40px);
+            backdrop-filter: blur(25px);
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: cardEntrance 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards; 
             opacity: 0;
-            transform: translateY(40px);
-            animation: fadeIn 1.5s forwards 1.5s;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
-            transition: border 0.3s, transform 0.3s;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
         }
 
         .vip-card:hover {
-            border-color: rgba(0, 242, 255, 0.5);
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            border-color: rgba(0, 242, 255, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 242, 255, 0.1);
         }
 
-        .features-list { list-style: none; margin-bottom: 30px; }
+        .features-list { list-style: none; text-align: center; margin-bottom: 35px; }
         .features-list li {
             padding: 18px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-            font-size: 11px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            justify-content: space-between;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 400;
         }
+
+        .features-list li:last-child { border-bottom: none; }
 
         .join-btn {
             width: 100%;
-            padding: 24px;
+            padding: 22px;
             background: #fff;
             color: #000;
+            border: none;
             border-radius: 15px;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             cursor: pointer;
+            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
             display: block;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 14px;
         }
 
         .join-btn:hover {
             background: var(--cyan);
-            box-shadow: 0 0 50px rgba(0, 242, 255, 0.4);
-            letter-spacing: 6px;
+            transform: scale(0.97);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
         }
 
-        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+        /* --- ANIMATIONS --- */
+        @keyframes titleEntrance {
+            0% { opacity: 0; transform: translateY(50px) scale(0.9); filter: blur(20px); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+        @keyframes textReveal {
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes cardEntrance {
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        @media(max-width: 768px) { .title { font-size: 80px; letter-spacing: -2px; } }
+        @media(max-width: 768px) {
+            .title { font-size: 65px; letter-spacing: -2px; }
+            .vip-card { padding: 30px; }
+            .manifesto-text { font-size: 15px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="ticker-wrap">
-    <div class="ticker">
-        <span class="ticker-item">BTC/USD <span class="up">$64,231.12 (+2.4%)</span></span>
-        <span class="ticker-item">ETH/USD <span class="up">$3,452.10 (+1.8%)</span></span>
-        <span class="ticker-item">XAU/USD <span class="down">$2,341.05 (-0.4%)</span></span>
-        <span class="ticker-item">EUR/USD <span class="up">1.0842 (+0.1%)</span></span>
-        <span class="ticker-item">BTC/USD <span class="up">$64,231.12 (+2.4%)</span></span>
-        <span class="ticker-item">ETH/USD <span class="up">$3,452.10 (+1.8%)</span></span>
-        <span class="ticker-item">XAU/USD <span class="down">$2,341.05 (-0.4%)</span></span>
-        <span class="ticker-item">EUR/USD <span class="up">1.0842 (+0.1%)</span></span>
-    </div>
-</div>
-
 <canvas id="neuralCanvas"></canvas>
 
 <div class="hero">
-    <div class="title-container" id="title3D">
+    <div class="title-wrapper">
         <h1 class="title">Xmoney</h1>
     </div>
     
     <div class="manifesto-container">
-        <p class="manifesto-text">
-            Institutional <span class="highlight-cyan">Liquidity</span> & Intelligence
+        <p class="manifesto-text" style="animation-delay: 0.6s">
+            The market has <span class="highlight-cyan">zero mercy</span> for anyone. Without discipline and a clear strategy, losses are inevitable.
+        </p>
+        <p class="manifesto-text" style="animation-delay: 0.9s">
+            Our mission is to help you build a <span class="highlight-cyan">structured approach</span> through proper risk management and a precise trading strategy.
+        </p>
+        <p class="manifesto-text" style="animation-delay: 1.2s">
+            If you are ready to elevate your trading and join the <span class="highlight-cyan">VIP ZONE</span>, act now. Do not wait until it is too late.
         </p>
     </div>
 
-    <div class="vip-card" id="vipCard">
+    <div class="vip-card">
         <ul class="features-list">
-            <li><span>Market Signals</span> <span class="highlight-cyan">DAILY</span></li>
-            <li><span>Success Rate</span> <span class="highlight-cyan">88% AVG</span></li>
-            <li><span>Status</span> <span class="highlight-cyan">PRIVATE ACCESS</span></li>
+            <li>Signals + Strategy</li>
+            <li>57% - 60% Guaranteed Win Rate</li>
+            <li>3+ Daily Signals</li>
         </ul>
-        <a href="https://whop.com/xmoney-1/xmoney-ed/" class="join-btn" onclick="joinVIP()">Enter Terminal</a>
+        <a href="https://whop.com/xmoney-1/xmoney-ed/" class="join-btn" onclick="joinVIP()">Get Access Now</a>
     </div>
 </div>
 
 <script>
     const canvas = document.getElementById("neuralCanvas");
     const ctx = canvas.getContext("2d");
-    let frame = 0;
+    
+    let stars = [];
+    let nebulas = [];
+    const starCount = 400;
+    let mouse = { x: 0, y: 0, active: false };
 
-    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        mouse.active = true;
+    });
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
     window.addEventListener("resize", resize);
     resize();
 
-    // 3D Title Movement
-    const title3D = document.getElementById('title3D');
-    document.addEventListener('mousemove', (e) => {
-        let x = (window.innerWidth / 2 - e.pageX) / 20;
-        let y = (window.innerHeight / 2 - e.pageY) / 20;
-        title3D.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-    });
-
-    function drawBackground() {
-        ctx.strokeStyle = 'rgba(0, 242, 255, 0.03)';
-        const spacing = 60;
-        
-        // Dynamic Grid
-        ctx.lineWidth = 1;
-        for(let i = -10; i < 20; i++) {
-            let z = (i * spacing) + (frame % spacing);
-            let alpha = 1 - (z / canvas.height);
-            ctx.strokeStyle = `rgba(212, 175, 55, ${alpha * 0.1})`;
-            
-            ctx.beginPath();
-            ctx.moveTo(0, z + canvas.height/2);
-            ctx.lineTo(canvas.width, z + canvas.height/2);
-            ctx.stroke();
+    class Star {
+        constructor() {
+            this.x = (Math.random() - 0.5) * 2000;
+            this.y = (Math.random() - 0.5) * 2000;
+            this.z = Math.random() * 2000;
+            this.size = 0.5 + Math.random() * 1.5;
         }
 
-        // Perspective Lines
-        for(let i = -10; i < 10; i++) {
-            ctx.strokeStyle = 'rgba(0, 242, 255, 0.05)';
-            ctx.beginPath();
-            ctx.moveTo(canvas.width / 2, canvas.height / 2);
-            ctx.lineTo(canvas.width / 2 + (i * 600), canvas.height);
-            ctx.stroke();
+        update() {
+            this.z -= 1.5; // Forward speed
+            if (this.z <= 0) this.z = 2000;
         }
+
+        draw() {
+            // 3D projection
+            let x = this.x / (this.z / 1000) + canvas.width / 2;
+            let y = this.y / (this.z / 1000) + canvas.height / 2;
+            let s = this.size * (1000 / this.z);
+
+            // Parallax movement based on mouse
+            let mx = (mouse.x - canvas.width / 2) * 0.05;
+            let my = (mouse.y - canvas.height / 2) * 0.05;
+
+            ctx.beginPath();
+            ctx.arc(x + mx, y + my, s, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${1 - this.z / 2000})`;
+            ctx.fill();
+        }
+    }
+
+    class Nebula {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.r = Math.random() * 400 + 200;
+            this.color = Math.random() > 0.5 ? 'rgba(0, 242, 255, 0.04)' : 'rgba(212, 175, 55, 0.02)';
+        }
+        draw() {
+            let g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
+            g.addColorStop(0, this.color);
+            g.addColorStop(1, 'transparent');
+            ctx.fillStyle = g;
+            ctx.fillRect(0,0, canvas.width, canvas.height);
+        }
+    }
+
+    function init() {
+        stars = [];
+        nebulas = [];
+        for (let i = 0; i < starCount; i++) stars.push(new Star());
+        for (let i = 0; i < 5; i++) nebulas.push(new Nebula());
     }
 
     function animate() {
         ctx.fillStyle = '#020202';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        frame += 0.8;
-        drawBackground();
 
-        // High-speed Particles
-        for(let i=0; i<40; i++) {
-            let x = (Math.tan(i + frame*0.005) * canvas.width/2) + canvas.width/2;
-            let y = (Math.sin(i + frame*0.01) * canvas.height/2) + canvas.height/2;
-            ctx.fillStyle = i % 2 === 0 ? 'rgba(0, 242, 255, 0.3)' : 'rgba(212, 175, 55, 0.3)';
-            ctx.beginPath();
-            ctx.arc(x, y, 1, 0, Math.PI*2);
-            ctx.fill();
-        }
+        nebulas.forEach(n => n.draw());
+        stars.forEach(s => {
+            s.update();
+            s.draw();
+        });
 
         requestAnimationFrame(animate);
     }
 
-    function joinVIP() { 
-        const card = document.getElementById('vipCard');
-        card.style.transform = "scale(0.95) translateZ(-50px)";
-        setTimeout(() => { card.style.transform = "scale(1) translateZ(0)"; }, 200);
+    function joinVIP() {
+        document.querySelector('.vip-card').style.transform = "scale(0.95)";
     }
 
+    init();
     animate();
 </script>
 
