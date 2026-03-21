@@ -22,184 +22,7 @@
             cursor: crosshair;
         }
 
-        canvas { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
-
-        /* --- FAKE MARKET TICKER --- */
-        .ticker-wrap {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            overflow: hidden;
-            height: 35px;
-            background: rgba(0, 0, 0, 0.9);
-            border-bottom: 1px solid var(--border);
-            z-index: 999;
-            display: flex;
-            align-items: center;
-        }
-
-        .ticker {
-            display: flex;
-            white-space: nowrap;
-            animation: ticker 30s linear infinite;
-        }
-
-        .ticker-item {
-            padding: 0 30px;
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .up { color: #00ff88; }
-        .down { color: #ff3e3e; }
-
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* --- LIVE STATUS BADGE --- */
-        .status-container {
-            position: absolute;
-            top: 60px;
-            display: flex;
-            gap: 20px;
-            animation: fadeInUp 1s forwards;
-        }
-
-        .status-pill {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border);
-            padding: 6px 15px;
-            border-radius: 50px;
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .dot { width: 6px; height: 6px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 10px #00ff88; animation: pulse 1.5s infinite; }
-
-        .hero {
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 100px 20px;
-        }
-
-        .title-wrapper { perspective: 1000px; margin-bottom: 30px; text-align: center; }
-        .title {
-            font-family: 'Syncopate', sans-serif;
-            font-size: clamp(50px, 12vw, 150px);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            background: linear-gradient(to bottom, #fff 40%, #444 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: titleEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .manifesto-container { max-width: 750px; text-align: center; margin-bottom: 50px; }
-        .manifesto-text {
-            font-size: 16px;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 24px;
-            font-weight: 300;
-            letter-spacing: 1px;
-            opacity: 0;
-            animation: textReveal 1.2s forwards;
-        }
-
-        .highlight-cyan { color: var(--cyan); font-weight: 600; }
-
-        .vip-card {
-            background: rgba(5, 5, 5, 0.9);
-            border: 1px solid var(--border);
-            padding: 40px;
-            width: 100%;
-            max-width: 450px;
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            opacity: 0;
-            transform: translateY(40px);
-            animation: cardEntrance 1.5s forwards 0.8s;
-            box-shadow: 0 50px 100px rgba(0,0,0,0.9);
-            position: relative;
-        }
-
-        .verified-badge {
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            background: var(--cyan);
-            color: black;
-            font-size: 9px;
-            font-weight: 900;
-            padding: 5px 12px;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
-
-        .features-list { list-style: none; margin-bottom: 30px; }
-        .features-list li {
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .join-btn {
-            width: 100%;
-            padding: 20px;
-            background: white;
-            color: black;
-            border: none;
-            border-radius: 10px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .join-btn:hover { background: var(--cyan); box-shadow: 0 0 30px rgba(0, 242, 255, 0.4); }
-
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-        @keyframes textReveal { to { opacity: 1; transform: translateY(0); } }
-        @keyframes cardEntrance { to { opacity: 1; transform: translateY(0); } }
-
-        @media(max-width: 768px) { .title { font-size: 60px; } }
-    </style>
-</head>
-<body>
-
-<div class="ticker-wrap">
-    <div class="ticker">
-        <span class="ticker-item">BTC/USD <span class="up">$64,231.12 (+2.4%)</span></span>
-        <span class="ticker-item">ETH/USD <span class="up">$3,452.10 (+1.8%)</span></span>
-        <span class="ticker-item">XAU/USD <span class="down">$2,341.05 (-0.4%)</span></span>
-        <span class="ticker-item">EUR/USD <span class="up">1.0842 (+0.1%)</span></span>
-        <span class="ticker-item">BTC/USD <span class="up">$64,231.12 (+2.4%)</span></span>
-    </div>
-</div>
-
-<canvas id="neuralCanvas"></canvas>
+       <canvas id="neuralCanvas"></canvas>
 
 <div class="hero">
     <div class="status-container">
@@ -220,7 +43,7 @@
         </p>
     </div>
 
-    <div class="vip-card">
+    <div class="vip-card" id="vipCard">
         <div class="verified-badge">Elite Membership</div>
         <ul class="features-list">
             <li><span>Daily Signals</span> <span class="highlight-cyan">3+ ALERTS</span></li>
@@ -235,61 +58,128 @@
     const canvas = document.getElementById("neuralCanvas");
     const ctx = canvas.getContext("2d");
     let w, h;
-    let frame = 0;
+    let particles = [];
+    let tick = 0;
+    
+    // THE 4K DENSITY & INTERACTION SETUP
+    const properties = {
+        particleCount: 2000,    // Increased count for 4K feel
+        highSpeed: 0.8,         // Fast drift
+        lowSpeed: 0.05,         // Super Slow-Mo drift
+        interactionRadius: 150, // Mouse push radius
+        baseRadius: 1.2,        // Particle size
+        colorCyan: "0, 242, 255",
+        colorGold: "212, 175, 55"
+    };
+    
+    // Control speed logic
+    let targetSpeed = properties.highSpeed;
+    let currentSpeed = properties.highSpeed;
 
-    function resize() {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-    }
+    // INTERACTION LOGIC: The requested Special Slowdown
+    const vipCard = document.getElementById("vipCard");
+    
+    vipCard.addEventListener("mouseenter", () => {
+        // Drop to slow speed instantly
+        targetSpeed = properties.lowSpeed;
+    });
+    
+    vipCard.addEventListener("mouseleave", () => {
+        // Return to fast speed instantly
+        targetSpeed = properties.highSpeed;
+    });
+
+    // 4K & CANVAS LOGIC
     window.addEventListener("resize", resize);
-    resize();
+    function resize() {
+        // Handle High-DPI (Retina) displays for 4K look
+        const scale = window.devicePixelRatio || 1;
+        w = canvas.width = window.innerWidth * scale;
+        h = canvas.height = window.innerHeight * scale;
+        ctx.scale(scale, scale);
+        // Normalize coordinates back to CSS pixels
+        w /= scale;
+        h /= scale;
+        init();
+    }
 
-    function drawHex(x, y, size, color, alpha) {
-        ctx.beginPath();
-        for (let i = 0; i < 6; i++) {
-            ctx.lineTo(x + size * Math.cos(i * Math.PI / 3), y + size * Math.sin(i * Math.PI / 3));
+    class Particle {
+        constructor() {
+            this.init();
         }
-        ctx.closePath();
-        ctx.strokeStyle = `rgba(${color}, ${alpha})`;
-        ctx.lineWidth = 1;
-        ctx.stroke();
+        init() {
+            this.x = Math.random() * w;
+            this.y = Math.random() * h;
+            this.vx = (Math.random() - 0.5);
+            this.vy = (Math.random() - 0.5);
+            this.radius = Math.random() * properties.baseRadius;
+            this.color = Math.random() > 0.6 ? properties.colorGold : properties.colorCyan;
+        }
+        update(speed) {
+            // Flow motion
+            this.x += this.vx * speed;
+            this.y += this.vy * speed;
+            
+            // Loop boundaries
+            if (this.x < 0) this.x = w;
+            if (this.x > w) this.x = 0;
+            if (this.y < 0) this.y = h;
+            if (this.y > h) this.y = 0;
+        }
+        draw(speedFactor) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            
+            // Dynamic opacity: brighter when moving fast
+            let opacity = speedFactor * 0.4 + 0.1;
+            ctx.fillStyle = `rgba(${this.color}, ${opacity})`;
+            ctx.fill();
+        }
+    }
+
+    function init() {
+        particles = [];
+        for (let i = 0; i < properties.particleCount; i++) {
+            particles.push(new Particle());
+        }
     }
 
     function animate() {
-        frame++;
-        ctx.fillStyle = "black";
+        tick++;
+        // Clear with a slightly lighter black to help trails
+        ctx.fillStyle = "#010101";
         ctx.fillRect(0, 0, w, h);
 
-        const centerX = w / 2;
-        const centerY = h / 2;
-        const count = 25;
+        // Smooth speed interpolation (optional, if you want acceleration rather than instant snap)
+        // currentSpeed += (targetSpeed - currentSpeed) * 0.05; // Uncomment for smooth transition
+        currentSpeed = targetSpeed; // Keep instant snap for "Special" feel
 
-        for (let i = 0; i < count; i++) {
-            // Perspective logic: Rings that scale up as they move toward the screen
-            let z = (i * 80 + frame * 3) % (count * 80);
-            let size = z * 1.5;
-            let alpha = 1 - (z / (count * 80));
-            let color = i % 2 === 0 ? "0, 242, 255" : "212, 175, 55";
+        // Calculate speed factor for opacity/trail effects (0 to 1)
+        const speedFactor = (currentSpeed - properties.lowSpeed) / (properties.highSpeed - properties.lowSpeed);
 
-            ctx.save();
-            ctx.translate(centerX, centerY);
-            ctx.rotate(z * 0.001); // Slight spin
-            drawHex(0, 0, size, color, alpha * 0.5);
-            ctx.restore();
-        }
+        particles.forEach(p => {
+            p.update(currentSpeed);
+            p.draw(speedFactor);
+        });
 
-        // Random Digital "Glitches" (Horizontal Light Strips)
-        if (frame % 10 === 0) {
-            ctx.fillStyle = `rgba(0, 242, 255, ${Math.random() * 0.1})`;
-            ctx.fillRect(0, Math.random() * h, w, 2);
+        // Add occasional digital flashes (Light Leaks) for dynamism
+        if (tick % 15 === 0 && targetSpeed > properties.lowSpeed) {
+            ctx.fillStyle = `rgba(${properties.colorCyan}, 0.05)`;
+            ctx.fillRect(0, Math.random() * h, w, 10);
         }
 
         requestAnimationFrame(animate);
     }
 
+    // Preserve original function
     function joinVIP() { document.querySelector('.vip-card').style.transform = "scale(0.98)"; }
+    
+    resize();
     animate();
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
