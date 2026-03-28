@@ -188,12 +188,12 @@
     </div>
 
     <div class="gallery-grid">
-        <div class="img-box"><img src="images/foto1.jpg" alt="Unikey Work 1"></div>
-        <div class="img-box"><img src="images/foto2.jpg" alt="Unikey Work 2"></div>
-        <div class="img-box"><img src="images/foto3.jpg" alt="Unikey Work 3"></div>
-        <div class="img-box"><img src="images/foto4.jpg" alt="Unikey Work 4"></div>
-        <div class="img-box"><img src="images/foto5.jpg" alt="Unikey Work 5"></div>
-        <div class="img-box"><img src="images/foto6.jpg" alt="Unikey Work 6"></div>
+        <div class="img-box"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/foto1.jpg"></div>
+        <div class="img-box"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/foto2.jpg"></div>
+        <div class="img-box"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/foto3.jpg"></div>
+        <div class="img-box"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/foto4.jpg"></div>
+        <div class="img-box"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/foto5.jpg"></div>
+        <div class="img-box"><img src="https://raw.githubusercontent.com/USERNAME/REPO/main/images/foto6.jpg"></div>
     </div>
 
     <div class="rating-container">
