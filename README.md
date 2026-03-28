@@ -113,7 +113,7 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-bottom: 60px;
         }
@@ -121,9 +121,12 @@
         .img-box {
             height: 400px;
             background: #111;
-            border: 1px solid var(--gold);
+            border: 1px solid var(--border-glass);
             overflow: hidden;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .img-box img {
@@ -133,8 +136,12 @@
             transition: 0.6s ease;
         }
 
+        .img-box:hover {
+            border: 1px solid var(--gold);
+        }
+
         .img-box:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .rating-container {
@@ -153,6 +160,7 @@
             border: 1px solid var(--border-glass);
             color: white;
             margin-top: 20px;
+            font-family: 'Rajdhani';
         }
 
         .btn-submit {
@@ -188,12 +196,15 @@
     </div>
 
     <div class="gallery-grid">
-        <div class="img-box"><img src="/REPO/images/foto1.jpg" alt="Unikey Work 1"></div>
-        <div class="img-box"><img src="/REPO/images/foto2.jpg" alt="Unikey Work 2"></div>
-        <div class="img-box"><img src="/REPO/images/foto3.jpg" alt="Unikey Work 3"></div>
-        <div class="img-box"><img src="/REPO/images/foto4.jpg" alt="Unikey Work 4"></div>
-        <div class="img-box"><img src="/REPO/images/foto5.jpg" alt="Unikey Work 5"></div>
-        <div class="img-box"><img src="/REPO/images/foto6.jpg" alt="Unikey Work 6"></div>
+        <div class="img-box"><img src="IMG_0534.jpg" alt="Unikey Workshop"></div>
+        <div class="img-box"><img src="IMG_0535.jpg" alt="BMW Key Coding"></div>
+        <div class="img-box"><img src="IMG_0537.jpg" alt="Unikey Storefront"></div>
+        <div class="img-box"><img src="IMG_0538.jpg" alt="Door Mechanism Repair"></div>
+        <div class="img-box"><img src="IMG_0539.jpg" alt="VW Golf Service"></div>
+        <div class="img-box"><img src="IMG_0540.jpg" alt="Mercedes Diagnosis"></div>
+        <div class="img-box"><img src="IMG_0541.jpg" alt="BMW Lock Service"></div>
+        <div class="img-box"><img src="IMG_0542.jpg" alt="Car Key Collection"></div>
+        <div class="img-box"><img src="IMG_0543.jpg" alt="Seat Key Duplicate"></div>
     </div>
 
     <div class="rating-container">
