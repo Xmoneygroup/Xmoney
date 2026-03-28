@@ -23,7 +23,6 @@
             min-height: 100vh;
         }
 
-        /* BACKGROUND ME LOGO QË LËVIZIN */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -112,7 +111,6 @@
             font-weight: bold;
         }
 
-        /* SEKSIONI I FOTOOVE */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -139,7 +137,6 @@
             transform: scale(1.1);
         }
 
-        /* RATING */
         .rating-container {
             background: #0a0a0a;
             border: 1px solid var(--gold);
@@ -171,83 +168,81 @@
 </head>
 <body>
 
-    <div id="bg-canvas"></div>
+<div id="bg-canvas"></div>
 
-    <nav class="header-nav">
-        <button class="btn-translate" onclick="toggleLanguage()">Translate to English</button>
-    </nav>
+<nav class="header-nav">
+    <button class="btn-translate" onclick="toggleLanguage()">Translate to English</button>
+</nav>
 
-    <div class="main-wrapper">
-        <h1 class="luxury-title">UNIKEY</h1>
-        
-        <div class="info-card">
-            <ul class="info-list" id="content-list">
-                <li data-sq="Kemi 17 vite qe meremi me kete profesion." data-en="17 years of professional experience in this field.">Kemi 17 vite qe meremi me kete profesion.</li>
-                <li data-sq="Punojm 6 ditet e javes (E Hënë - E Shtunë), 09:30 - 19:00." data-en="Open 6 days a week (Mon - Sat), 09:30 - 19:00.">Punojm 6 ditet e javes (E Hënë - E Shtunë), 09:30 - 19:00.</li>
-                <li data-sq="Riparojm Brava makinash, Mekanizma dritaresh, Qelsa duplikat, Kodime, Diagnostikë." data-en="Car locks, window mechanisms, duplicate keys, coding, and diagnostics.">Riparojm Brava makinash, Mekanizma dritaresh, Qelsa duplikat, Kodime, Diagnostikë.</li>
-                <li data-sq="Lokacioni: Gjorce Petrov, Maqedoni (UNIKKEY - Gjorce Petrov)." data-en="Location: Gjorce Petrov, Macedonia (Search: UNIKKEY - Gjorce Petrov).">Lokacioni: Gjorce Petrov, Maqedoni (UNIKKEY - Gjorce Petrov).</li>
-                <li data-sq="Muhamet Musliu - + 389 070 229 348" data-en="Contact: Muhamet Musliu - + 389 070 229 348">Muhamet Musliu - + 389 070 229 348</li>
-            </ul>
-        </div>
+<div class="main-wrapper">
+    <h1 class="luxury-title">UNIKEY</h1>
 
-        <div class="gallery-grid">
-            <div class="img-box"><img src="foto1.jpg" alt="Unikey Work 1"></div>
-            <div class="img-box"><img src="foto2.jpg" alt="Unikey Work 2"></div>
-            <div class="img-box"><img src="foto3.jpg" alt="Unikey Work 3"></div>
-            <div class="img-box"><img src="foto4.jpg" alt="Unikey Work 4"></div>
-            <div class="img-box"><img src="foto5.jpg" alt="Unikey Work 5"></div>
-            <div class="img-box"><img src="foto6.jpg" alt="Unikey Work 6"></div>
-        </div>
-
-        <div class="rating-container">
-            <h2 id="rate-title" style="font-family:'Orbitron'">VLERSONI PUNEN TONË</h2>
-            <div class="stars">
-                <span class="star" onclick="setStar(1)">★</span>
-                <span class="star" onclick="setStar(2)">★</span>
-                <span class="star" onclick="setStar(3)">★</span>
-                <span class="star" onclick="setStar(4)">★</span>
-                <span class="star" onclick="setStar(5)">★</span>
-            </div>
-            <textarea id="feedback" placeholder="Shkruani mendimin tuaj këtu..."></textarea>
-            <button class="btn-submit" onclick="alert('Faleminderit!')">DËRGO KOMENTIN</button>
-        </div>
+    <div class="info-card">
+        <ul class="info-list" id="content-list">
+            <li data-sq="Kemi 17 vite qe meremi me kete profesion." data-en="17 years of professional experience in this field.">Kemi 17 vite qe meremi me kete profesion.</li>
+            <li data-sq="Punojm 6 ditet e javes (E Hënë - E Shtunë), 09:30 - 19:00." data-en="Open 6 days a week (Mon - Sat), 09:30 - 19:00.">Punojm 6 ditet e javes (E Hënë - E Shtunë), 09:30 - 19:00.</li>
+            <li data-sq="Riparojm Brava makinash, Mekanizma dritaresh, Qelsa duplikat, Kodime, Diagnostikë." data-en="Car locks, window mechanisms, duplicate keys, coding, and diagnostics.">Riparojm Brava makinash, Mekanizma dritaresh, Qelsa duplikat, Kodime, Diagnostikë.</li>
+            <li data-sq="Lokacioni: Gjorce Petrov, Maqedoni (UNIKKEY - Gjorce Petrov)." data-en="Location: Gjorce Petrov, Macedonia (Search: UNIKKEY - Gjorce Petrov).">Lokacioni: Gjorce Petrov, Maqedoni (UNIKKEY - Gjorce Petrov).</li>
+            <li data-sq="Muhamet Musliu - + 389 070 229 348" data-en="Contact: Muhamet Musliu - + 389 070 229 348">Muhamet Musliu - + 389 070 229 348</li>
+        </ul>
     </div>
 
-    <script>
-        // Animacioni i Background-it
-        const brands = ['LAMBORGHINI', 'FERRARI', 'PORSCHE', 'BMW', 'AUDI', 'MERCEDES', 'TOYOTA', 'VW', 'CADILLAC'];
-        const canvas = document.getElementById('bg-canvas');
+    <div class="gallery-grid">
+        <div class="img-box"><img src="images/foto1.jpg" alt="Unikey Work 1"></div>
+        <div class="img-box"><img src="images/foto2.jpg" alt="Unikey Work 2"></div>
+        <div class="img-box"><img src="images/foto3.jpg" alt="Unikey Work 3"></div>
+        <div class="img-box"><img src="images/foto4.jpg" alt="Unikey Work 4"></div>
+        <div class="img-box"><img src="images/foto5.jpg" alt="Unikey Work 5"></div>
+        <div class="img-box"><img src="images/foto6.jpg" alt="Unikey Work 6"></div>
+    </div>
 
-        function createLogo() {
-            const logo = document.createElement('div');
-            logo.className = 'floating-logo';
-            logo.innerText = brands[Math.floor(Math.random() * brands.length)];
-            logo.style.left = Math.random() * 100 + 'vw';
-            logo.style.top = '110vh';
-            const duration = 12 + Math.random() * 10;
-            logo.style.transition = `transform ${duration}s linear, opacity 1s`;
-            canvas.appendChild(logo);
-            setTimeout(() => { logo.style.transform = `translateY(-120vh) rotate(360deg)`; }, 100);
-            setTimeout(() => { logo.remove(); }, duration * 1000);
-        }
-        setInterval(createLogo, 1800);
+    <div class="rating-container">
+        <h2 id="rate-title" style="font-family:'Orbitron'">VLERSONI PUNEN TONË</h2>
+        <div class="stars">
+            <span class="star" onclick="setStar(1)">★</span>
+            <span class="star" onclick="setStar(2)">★</span>
+            <span class="star" onclick="setStar(3)">★</span>
+            <span class="star" onclick="setStar(4)">★</span>
+            <span class="star" onclick="setStar(5)">★</span>
+        </div>
+        <textarea id="feedback" placeholder="Shkruani mendimin tuaj këtu..."></textarea>
+        <button class="btn-submit" onclick="alert('Faleminderit!')">DËRGO KOMENTIN</button>
+    </div>
+</div>
 
-        // Translate
-        let isEn = false;
-        function toggleLanguage() {
-            isEn = !isEn;
-            document.querySelectorAll('#content-list li').forEach(li => {
-                li.innerText = isEn ? li.getAttribute('data-en') : li.getAttribute('data-sq');
-            });
-            document.querySelector('.btn-translate').innerText = isEn ? "Kthe ne Shqip" : "Translate to English";
-        }
+<script>
+const brands = ['LAMBORGHINI','FERRARI','PORSCHE','BMW','AUDI','MERCEDES','TOYOTA','VW','CADILLAC'];
+const canvas = document.getElementById('bg-canvas');
 
-        // Stars
-        function setStar(n) {
-            document.querySelectorAll('.star').forEach((s, i) => {
-                s.classList.toggle('active', i < n);
-            });
-        }
-    </script>
+function createLogo() {
+    const logo = document.createElement('div');
+    logo.className = 'floating-logo';
+    logo.innerText = brands[Math.floor(Math.random() * brands.length)];
+    logo.style.left = Math.random() * 100 + 'vw';
+    logo.style.top = '110vh';
+    const duration = 12 + Math.random() * 10;
+    logo.style.transition = `transform ${duration}s linear, opacity 1s`;
+    canvas.appendChild(logo);
+    setTimeout(() => { logo.style.transform = `translateY(-120vh) rotate(360deg)`; }, 100);
+    setTimeout(() => { logo.remove(); }, duration * 1000);
+}
+setInterval(createLogo, 1800);
+
+let isEn = false;
+function toggleLanguage() {
+    isEn = !isEn;
+    document.querySelectorAll('#content-list li').forEach(li => {
+        li.innerText = isEn ? li.getAttribute('data-en') : li.getAttribute('data-sq');
+    });
+    document.querySelector('.btn-translate').innerText = isEn ? "Kthe ne Shqip" : "Translate to English";
+}
+
+function setStar(n) {
+    document.querySelectorAll('.star').forEach((s, i) => {
+        s.classList.toggle('active', i < n);
+    });
+}
+</script>
+
 </body>
 </html>
