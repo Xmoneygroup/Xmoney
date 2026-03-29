@@ -7,10 +7,10 @@
     <style>
         /* --- STILI GLOBAL 'DARK TECH' --- */
         :root {
-            --bg-dark: #06090f; /* E zezë absolute */
-            --bg-panel: #0d1117; /* E zezë e hirtë për panelet */
-            --accent-blue: #007bff; /* Bluja kryesore */
-            --accent-electric: #00f2fe; /* Bluja elektrike */
+            --bg-dark: #06090f; 
+            --bg-panel: #0d1117; 
+            --accent-blue: #007bff; 
+            --accent-electric: #00f2fe; 
             --text-main: #ffffff;
             --text-muted: #8b949e;
             --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -29,10 +29,10 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; padding: 0; margin: 0; }
 
-        /* --- HEADER & NAVIGATION --- */
+        /* --- HEADER & NAVIGATION RREGULLUAR --- */
         header {
             background-color: rgba(13, 17, 23, 0.95);
-            padding: 15px 50px;
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -55,8 +55,20 @@
         }
         .logo span { color: var(--accent-electric); }
 
-        nav ul { display: flex; gap: 30px; }
-        nav a { font-size: 13px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 1px; }
+        nav ul { 
+            display: flex; 
+            gap: 30px; 
+            align-items: center; /* Kjo e mban 'HOME' ne vije te drejte me te tjerat */
+        }
+        nav a { 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            color: var(--text-muted); 
+            font-weight: 600; 
+            letter-spacing: 1px;
+            display: inline-block;
+            vertical-align: middle;
+        }
         nav a:hover { color: var(--accent-electric); }
 
         .contact-btn {
@@ -70,10 +82,9 @@
         }
         .contact-btn:hover { background-color: #0056b3; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,123,255,0.3); }
 
-        /* --- HERO SECTION (Zëvendësuar me Gradient Profesional) --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 85vh;
-            /* Gradient radial për efekt dëshire 'Premium' */
             background: radial-gradient(circle at center, #1a2236 0%, var(--bg-dark) 70%);
             display: flex;
             flex-direction: column;
@@ -83,7 +94,6 @@
             padding: 100px 20px 0 20px;
             position: relative;
         }
-        /* Efekt vije elektrike poshtë hero */
         .hero::after {
             content: "";
             position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
@@ -92,10 +102,10 @@
         }
 
         .hero h1 {
-            font-size: 56px;
+            font-size: 65px; /* Pak me i madh pasi hoqem Autotech */
             margin-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             font-weight: 900;
             background: linear-gradient(to bottom, #fff, #bbb);
             -webkit-background-clip: text;
@@ -104,7 +114,7 @@
         .hero h1 span { -webkit-text-fill-color: var(--accent-electric); text-shadow: 0 0 20px rgba(0,242,254,0.5); }
         .hero p { font-size: 18px; color: var(--text-muted); max-width: 650px; margin-bottom: 40px; font-weight: 300; }
 
-        /* --- SERVICES DASHBOARD (Panele pa foto) --- */
+        /* --- SERVICES DASHBOARD --- */
         .services-dashboard {
             padding: 80px 50px;
             display: grid;
@@ -126,7 +136,6 @@
             overflow: hidden;
         }
 
-        /* Efekti 'Glow' kur kalon miun */
         .service-panel:hover {
             border-color: var(--accent-electric);
             transform: translateY(-8px);
@@ -137,8 +146,7 @@
             font-size: 24px;
             text-transform: uppercase;
             color: var(--text-main);
-            margin-top: 0;
-            margin-bottom: 20px;
+            margin: 0 0 20px 0;
             font-weight: 800;
             letter-spacing: 1px;
             display: flex;
@@ -146,7 +154,6 @@
             gap: 15px;
         }
         
-        /* Vijë dekorative elektrike anash titullit */
         .service-panel h3::before {
             content: ""; display: inline-block; width: 4px; height: 24px; background-color: var(--accent-electric);
             box-shadow: 0 0 10px var(--accent-electric);
@@ -157,7 +164,6 @@
             font-size: 15px;
             line-height: 1.7;
             margin-bottom: 30px;
-            font-weight: 400;
         }
 
         .panel-link {
@@ -166,13 +172,9 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            align-self: flex-start;
-            padding-bottom: 5px;
-            border-bottom: 1px solid transparent;
         }
-        .service-panel:hover .panel-link { border-color: var(--accent-electric); }
 
-        /* --- SECTION: DIAGNOISTIKË (Me Grafik SVG të integruar) --- */
+        /* --- SECTION: DIAGNOISTIKË --- */
         .diagnostike-tech {
             background-color: var(--bg-panel);
             padding: 100px 50px;
@@ -190,20 +192,16 @@
             height: 320px;
             border: 1px solid rgba(255,255,255,0.05);
             display: flex; align-items: center; justify-content: center;
-            position: relative;
         }
         
-        /* Grafiku Vektorial (SVG) i integruar direkt në kod */
-        .diag-visual svg {
-            width: 100%; height: 100%;
-        }
+        .diag-visual svg { width: 100%; height: 100%; }
 
         .diag-text { flex: 1.2; }
-        .diag-text h2 { text-transform: uppercase; color: var(--text-main); font-size: 36px; font-weight: 900; margin-bottom: 20px; letter-spacing: 2px; }
-        .diag-text h2 span { color: var(--accent-electric); text-shadow: 0 0 15px rgba(0,242,254,0.4); }
-        .diag-text p { color: var(--text-muted); line-height: 1.8; font-size: 16px; margin-bottom: 20px; font-weight: 300; }
+        .diag-text h2 { text-transform: uppercase; color: var(--text-main); font-size: 36px; font-weight: 900; margin-bottom: 20px; }
+        .diag-text h2 span { color: var(--accent-electric); }
+        .diag-text p { color: var(--text-muted); line-height: 1.8; font-size: 16px; }
 
-        /* --- FOOTER & CONTACT (Specifike) --- */
+        /* --- FOOTER & CONTACT --- */
         footer {
             background-color: var(--bg-dark);
             padding: 70px 50px 40px 50px;
@@ -213,7 +211,6 @@
 
         .footer-logo { font-size: 36px; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; font-style: italic; }
         .footer-logo span { color: var(--accent-electric); }
-        .footer-tagline { color: var(--text-muted); margin-bottom: 40px; font-size: 15px; font-weight: 400; max-width: 500px; margin-left: auto; margin-right: auto;}
 
         .contact-card {
             background-color: var(--bg-panel);
@@ -221,27 +218,22 @@
             border-radius: 12px;
             display: inline-block;
             border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .contact-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
-        .contact-name { font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 10px; letter-spacing: 1px;}
-        .contact-phone { font-size: 28px; color: var(--accent-electric); font-family: 'Courier New', Courier, monospace; font-weight: bold; }
-        .contact-phone a:hover { text-shadow: 0 0 15px var(--accent-electric); }
+        .contact-name { font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 10px; }
+        .contact-phone { font-size: 28px; color: var(--accent-electric); font-family: monospace; font-weight: bold; }
 
-        .copyright { margin-top: 60px; font-size: 12px; color: #444; letter-spacing: 1px; text-transform: uppercase; }
+        .copyright { margin-top: 60px; font-size: 12px; color: #444; text-transform: uppercase; }
 
-        /* --- RESPONSIVE DESIGN --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
             .diagnostike-tech { flex-direction: column; text-align: center; padding: 60px 20px; }
-            .hero h1 { font-size: 40px; }
+            .hero h1 { font-size: 45px; }
         }
 
         @media (max-width: 768px) {
-            header { padding: 15px 20px; flex-direction: column; gap: 10px; text-align: center; }
+            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
             nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
-            .hero h1 { font-size: 32px; letter-spacing: 2px; }
-            .services-dashboard { padding: 40px 20px; }
-            .contact-phone { font-size: 22px; }
+            .hero h1 { font-size: 38px; }
         }
     </style>
 </head>
@@ -261,13 +253,12 @@
     </header>
 
     <section id="home" class="hero">
-        <h1>UNI<span>KEY</span> AUTOTECH</h1>
+        <h1>UNI<span>KEY</span></h1>
         <p>Specialistë të çertifikuar për kodimin e çelësave inteligjentë, diagnostikë kompjuterike dhe riparimin e bravave për makina moderne.</p>
         <a href="#sherbimet" class="contact-btn">SHIKO SHËRBIMET</a>
     </section>
 
     <section id="sherbimet" class="services-dashboard">
-        
         <div class="service-panel">
             <div>
                 <h3>Kodim Çelësash</h3>
@@ -291,7 +282,6 @@
             </div>
             <a href="tel:+389070229348" class="panel-link">Për Shërbim shpejt →</a>
         </div>
-
     </section>
 
     <section id="diagnostike" class="diagnostike-tech">
@@ -302,32 +292,22 @@
                       stroke="#00f2fe" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="3s" repeatCount="indefinite" />
                 </path>
-                <circle cx="265" cy="75" r="5" fill="#00f2fe">
-                    <animate attributeName="r" from="5" to="8" dur="1s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" from="1" to="0.5" dur="1s" repeatCount="indefinite" />
-                </circle>
             </svg>
         </div>
         <div class="diag-text">
             <h2>Diagnoistikë <span>Kompjuterike</span></h2>
             <p>Zbulimi i saktë i problemeve elektronike me sistemet e sigurisë së makinës (Immobilizer, Keyless Go) duke përdorur pajisjet më të fundit diagnoistike.</p>
-            <p>Ne eliminojmë gabimet dhe sigurojmë që kodimi i çelësit të bëhet në përputhje të plotë me kompjuterin e makinës.</p>
         </div>
     </section>
 
     <footer id="kontakt">
         <div class="footer-logo">UNI<span>KEY</span></div>
-        <p class="footer-tagline">Zgjidhje Profesionale dhe Teknologjike për Çelësa dhe Siguri Automjetesh</p>
-        
         <div class="contact-card">
-            <div class="contact-label">Personi Kontakt</div>
             <div class="contact-name">Muhamed Musili</div>
             <div class="contact-phone"><a href="tel:+389070229348">+389 070 229 348</a></div>
         </div>
-
         <div class="copyright">
-            &copy; 2023 UNIKEY. All rights reserved. <br>
-            Professional No-Image Template.
+            &copy; 2026 UNIKEY. All rights reserved.
         </div>
     </footer>
 
