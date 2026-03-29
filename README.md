@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="sq">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-main);
             margin: 0;
@@ -26,10 +26,10 @@
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; padding: 0; margin: 0; }
 
-        /* HEADER RREGULLUAR - Tekstet drejt dhe bukur */
+        /* MENUJA LART - E rregulluar drejt */
         header {
-            background-color: rgba(13, 17, 23, 0.98);
-            padding: 25px 50px;
+            background-color: rgba(13, 17, 23, 0.95);
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -42,7 +42,7 @@
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -51,20 +51,19 @@
 
         nav ul { 
             display: flex; 
-            gap: 35px; 
-            align-items: center; /* I mban tekstet baras dhe drejt */
+            gap: 30px; 
+            align-items: center; 
         }
         nav a { 
-            font-size: 14px; 
+            font-size: 13px; 
             text-transform: uppercase; 
             color: var(--text-muted); 
-            font-weight: 700; 
-            letter-spacing: 1.5px;
+            font-weight: 700;
             transition: 0.3s;
         }
         nav a:hover { color: var(--accent-electric); }
 
-        /* HERO SECTION - Pa vijën e bardhë poshtë titullit */
+        /* TITULLI KRYESOR - Pa vijë të bardhë poshtë */
         .hero {
             height: 80vh;
             display: flex;
@@ -72,103 +71,79 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding-top: 100px;
-            background: radial-gradient(circle at center, #111b2d 0%, var(--bg-dark) 80%);
+            padding-top: 80px;
         }
 
         .hero h1 {
-            font-size: 80px;
-            margin: 0; /* Hoqa marginat që të mos ketë hapësira të tepërta */
+            font-size: 70px;
+            margin: 0;
             text-transform: uppercase;
-            letter-spacing: 8px;
             font-weight: 900;
+            letter-spacing: 5px;
         }
         .hero h1 span { color: var(--accent-electric); }
 
-        /* Hoqa stilin që krijonte vijën e bardhë këtu */
-
-        .hero p { 
-            font-size: 18px; 
-            color: var(--text-muted); 
-            max-width: 600px; 
+        .hero p {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 550px;
             margin-top: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .contact-btn {
             background-color: var(--accent-blue);
             color: white;
-            padding: 12px 30px;
+            padding: 12px 25px;
             border-radius: 4px;
             font-weight: bold;
             text-transform: uppercase;
-            transition: 0.3s;
         }
-        .contact-btn:hover { background-color: #0056b3; transform: scale(1.05); }
 
-        /* DIAGNOSTIKA - Pamje më e pastër */
-        .diagnostike-section {
-            padding: 100px 50px;
+        /* DIAGNOSTIKA */
+        .diag-section {
+            padding: 80px 50px;
             background-color: var(--bg-panel);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 50px;
+            gap: 40px;
         }
 
         .radar-box {
-            width: 300px;
-            height: 200px;
-            background: #05070a;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 242, 254, 0.2);
+            width: 250px;
+            height: 150px;
+            border: 1px solid var(--accent-electric);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
         }
 
-        .line {
-            width: 100%;
-            height: 2px;
-            background: var(--accent-electric);
-            box-shadow: 0 0 15px var(--accent-electric);
-            position: absolute;
-            animation: scan 3s infinite linear;
-        }
-
-        @keyframes scan {
-            0% { top: 0; }
-            100% { top: 100%; }
-        }
-
-        .diag-text h2 { font-size: 35px; text-transform: uppercase; }
+        .diag-text h2 { font-size: 30px; text-transform: uppercase; }
         .diag-text span { color: var(--accent-electric); }
 
-        /* FOOTER KORRIGJUAR */
+        /* FOOTER */
         footer {
-            padding: 80px 20px;
+            padding: 60px 20px;
             text-align: center;
-            background-color: var(--bg-dark);
         }
 
         .contact-card {
-            background-color: var(--bg-panel);
+            background: #0d1117;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 10px;
             display: inline-block;
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .c-name { font-size: 24px; font-weight: 800; margin-bottom: 10px; }
-        .c-phone { font-size: 30px; color: var(--accent-electric); font-weight: bold; }
+        .c-name { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+        .c-phone { font-size: 26px; color: var(--accent-electric); font-weight: bold; }
 
         @media (max-width: 768px) {
-            header { padding: 20px; flex-direction: column; gap: 15px; }
-            nav ul { gap: 15px; }
-            .hero h1 { font-size: 45px; }
-            .diagnostike-section { flex-direction: column; text-align: center; }
+            header { padding: 15px; flex-direction: column; }
+            .hero h1 { font-size: 40px; }
+            .diag-section { flex-direction: column; }
         }
     </style>
 </head>
@@ -184,7 +159,7 @@
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
         </nav>
-        <a href="tel:+389070229348" class="contact-btn" style="padding: 10px 20px; font-size: 12px;">TELEFONO</a>
+        <a href="tel:+389070229348" class="contact-btn" style="font-size: 12px; padding: 8px 15px;">TELEFONO</a>
     </header>
 
     <section id="home" class="hero">
@@ -193,14 +168,13 @@
         <a href="#sherbimet" class="contact-btn">SHIKO SHËRBIMET</a>
     </section>
 
-    <section id="diagnostike" class="diagnostike-section">
+    <section id="diagnostike" class="diag-section">
         <div class="radar-box">
-            <div class="line"></div>
-            <span style="color: var(--accent-electric); font-weight: bold; letter-spacing: 2px;">DIAGNOSING...</span>
+            <span style="color: var(--accent-electric); font-weight: bold;">SCANNING...</span>
         </div>
         <div class="diag-text">
             <h2>Diagnostikë <span>Kompjuterike</span></h2>
-            <p style="color: var(--text-muted); max-width: 400px;">Zbulim i gabimeve elektronike me pajisjet më të fundit në treg.</p>
+            <p style="color: var(--text-muted);">Zbulim i saktë i problemeve elektronike.</p>
         </div>
     </section>
 
@@ -209,7 +183,7 @@
             <div class="c-name">Muhamed Musli</div>
             <div class="c-phone"><a href="tel:+389070229348">+389 070 229 348</a></div>
         </div>
-        <p style="margin-top: 40px; color: #333; font-size: 12px;">&copy; 2026 UNIKEY. ALL RIGHTS RESERVED.</p>
+        <p style="margin-top: 30px; color: #222; font-size: 10px;">&copy; 2026 UNIKEY. ALL RIGHTS RESERVED.</p>
     </footer>
 
 </body>
