@@ -223,7 +223,7 @@
             <li data-sq="E Hënë - E Shtunë | 09:30 - 19:00" data-en="Monday - Saturday | 09:30 - 19:00">E Hënë - E Shtunë | 09:30 - 19:00</li>
             <li data-sq="Brava makinash • Qelsa duplikat • Kodime • Diagnostikë" data-en="Car locks • Duplicate keys • Coding • Diagnostics">Brava makinash • Qelsa duplikat • Kodime • Diagnostikë</li>
             <li data-sq="Lokacioni: Gjorce Petrov, Maqedoni" data-en="Location: Gjorce Petrov, Macedonia">Lokacioni: Gjorce Petrov, Maqedoni</li>
-            <li data-sq="Kontakt: Muhamet Musliu - +389 70 229 348" data-en="Contact: Muhamet Musliu - +389 70 229 348">Kontakt: Muhamet Musliu - +389 70 229 348</li>
+            <li data-sq="Kontakt: Muhamet Musliu - +389 70 229 348" data-en="Contact: Muhamed Musliu - +389 70 229 348">Kontakt: Muhamet Musliu - +389 70 229 348</li>
         </ul>
     </div>
 
