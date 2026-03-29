@@ -2,11 +2,11 @@
 <html lang="sq">
 <head>
     <meta charset="UTF-8">
-    
+   
     <title>UNIKEY - Specialist për Çelësa makinash</title>
     <style>
         /* --- STILI GLOBAL 'DARK TECH' --- */
-       
+        :root {
             --bg-dark: #06090f; 
             --bg-panel: #0d1117; 
             --accent-blue: #007bff; 
