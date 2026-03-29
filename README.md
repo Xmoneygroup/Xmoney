@@ -200,7 +200,8 @@
         <div class="img-box"><img src="IMG_0535.jpg" alt="BMW Key Coding"></div>
         <div class="img-box"><img src="IMG_0537.jpg" alt="Unikey Storefront"></div>
         <div class="img-box"><img src="IMG_0536.jpg" alt="Unikey Service 4"></div>
-        <div class="img-box"><img src="IMG_0539.jpg" alt="VW Golf Service"></div> <div class="img-box"><img src="IMG_0540.jpg" alt="Mercedes Diagnosis"></div>
+        <div class="img-box"><img src="IMG_0539.jpg" alt="VW Golf Service"></div>
+        <div class="img-box"><img src="IMG_0540.jpg" alt="Mercedes Diagnosis"></div>
         <div class="img-box"><img src="IMG_0541.jpg" alt="BMW Lock Service"></div>
         <div class="img-box"><img src="IMG_0542.jpg" alt="Car Key Collection"></div>
         <div class="img-box"><img src="IMG_0543.jpg" alt="Seat Key Duplicate"></div>
