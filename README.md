@@ -211,7 +211,7 @@
 <div id="bg-canvas"></div>
 
 <nav class="header-nav">
-    <button class="btn-translate" onclick="toggleLanguage()">English Version</button>
+    <button class="btn-translate" onclick="toggleLanguage()">Translate English</button>
 </nav>
 
 <div class="main-wrapper">
@@ -223,7 +223,7 @@
             <li data-sq="E Hënë - E Shtunë | 09:30 - 19:00" data-en="Monday - Saturday | 09:30 - 19:00">E Hënë - E Shtunë | 09:30 - 19:00</li>
             <li data-sq="Brava makinash • Qelsa duplikat • Kodime • Diagnostikë" data-en="Car locks • Duplicate keys • Coding • Diagnostics">Brava makinash • Qelsa duplikat • Kodime • Diagnostikë</li>
             <li data-sq="Lokacioni: Gjorce Petrov, Maqedoni" data-en="Location: Gjorce Petrov, Macedonia">Lokacioni: Gjorce Petrov, Maqedoni</li>
-            <li data-sq="Kontakt: Muhamed Musliu - +389 70 229 348" data-en="Contact: Muhamed Musliu - +389 70 229 348">Kontakt: Muhamed Musliu - +389 70 229 348</li>
+            <li data-sq="Kontakt: Muhamed Musli - +389 70 229 348" data-en="Contact: Muhamed Musli - +389 70 229 348">Kontakt: Muhamed Musli - +389 70 229 348</li>
         </ul>
     </div>
 
@@ -287,7 +287,7 @@ function toggleLanguage() {
     document.querySelectorAll('#content-list li').forEach(li => {
         li.innerText = isEn ? li.getAttribute('data-en') : li.getAttribute('data-sq');
     });
-    document.querySelector('.btn-translate').innerText = isEn ? "Versioni Shqip" : "English Version";
+    document.querySelector('.btn-translate').innerText = isEn ? "Translate Shqip" : "Translate English";
 }
 
 function setStar(n) {
