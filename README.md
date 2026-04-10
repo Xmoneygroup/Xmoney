@@ -3,296 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIKEY | Auto Tech Specialists</title>
+    <title>UNIKEY | Mansory Edition Professional Services</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --accent: #ffcc00;
-            --dark-grey: #111111;
+            --gold: #c5a059; /* Ngjyra Gold Mansory */
+            --dark: #0a0a0a;
+            --carbon: #121212;
         }
 
         body, html {
             margin: 0; padding: 0;
-            background: #000;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
         }
 
-        /* 1. SUPER INTRO ANIMATION */
+        /* CARBON BACKGROUND EFFECT */
+        .carbon-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(45deg, #111 25%, transparent 25%), 
+                linear-gradient(-45deg, #111 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #111 75%), 
+                linear-gradient(-45deg, transparent 75%, #111 75%);
+            background-size: 4px 4px;
+            background-color: #0d0d0d;
+            z-index: -2; opacity: 0.5;
+        }
+
+        /* INTRO MANSORY STYLE */
         #loader {
-            position: fixed; inset: 0;
-            background: #000;
-            display: flex; justify-content: center; align-items: center;
-            z-index: 9999;
+            position: fixed; inset: 0; background: #000;
+            display: flex; justify-content: center; align-items: center; z-index: 10000;
         }
 
-        .unikey-glitch {
-            font-family: 'Syncopate', sans-serif;
-            font-size: 10vw;
-            font-weight: 700;
-            letter-spacing: 2vw;
-            color: var(--accent);
-            position: relative;
+        .unikey-logo-intro {
+            font-family: 'Cinzel', serif;
+            font-size: 8vw; color: var(--gold);
+            letter-spacing: 20px; filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.5));
+            opacity: 0;
         }
 
-        /* 2. BACKGROUND MESH (SHTRESA E PARË) */
-        #bg-canvas {
-            position: fixed; top: 0; left: 0;
-            z-index: -1;
-            opacity: 0.4;
-        }
-
-        /* 3. NAVIGATION */
+        /* NAVBAR */
         nav {
             position: fixed; top: 0; width: 100%;
-            padding: 40px; display: flex; justify-content: space-between;
-            z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 30px 60px; z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
         }
 
-        .lang-toggle {
-            display: flex; gap: 10px;
+        .brand { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold); letter-spacing: 5px; }
+        
+        .lang-switch button {
+            background: none; border: 1px solid var(--gold); color: var(--gold);
+            padding: 5px 15px; cursor: pointer; font-family: 'Montserrat'; font-weight: 600;
+            transition: 0.3s;
         }
+        .lang-switch button:hover { background: var(--gold); color: black; }
 
-        .lang-toggle button {
-            background: none; border: 1px solid rgba(255,255,255,0.2);
-            color: #fff; padding: 5px 15px; cursor: pointer;
-            font-family: 'Syncopate'; font-size: 10px;
-        }
-
-        .lang-toggle button:hover { border-color: var(--accent); color: var(--accent); }
-
-        /* 4. MAIN CONTENT */
+        /* HERO SECTION */
         .hero {
-            height: 100vh;
-            display: flex; flex-direction: column;
-            justify-content: center; padding: 0 10%;
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle, rgba(197,160,89,0.1) 0%, transparent 70%);
         }
 
         .hero h1 {
-            font-family: 'Syncopate'; font-size: 8vw; line-height: 1;
-            margin: 0; text-transform: uppercase;
+            font-family: 'Cinzel', serif; font-size: 5rem; margin: 0;
+            text-transform: uppercase; letter-spacing: 10px;
         }
 
-        .hero .highlight { color: var(--accent); }
+        .hero p { font-size: 1.2rem; letter-spacing: 5px; opacity: 0.7; margin-top: 10px; }
 
+        .btn-main {
+            margin-top: 40px; padding: 15px 40px;
+            background: none; border: 1px solid var(--gold);
+            color: var(--gold); font-family: 'Cinzel'; font-size: 1.2rem;
+            cursor: pointer; transition: 0.5s; position: relative; overflow: hidden;
+        }
+        .btn-main:hover { background: var(--gold); color: black; box-shadow: 0 0 30px var(--gold); }
+
+        /* SECTIONS */
         section {
-            min-height: 100vh;
-            display: flex; align-items: center;
-            padding: 100px 10%;
-            position: relative;
+            height: 100vh; display: flex; align-items: center;
+            padding: 0 10%; position: relative;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
         }
 
-        .service-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 60px;
-            max-width: 600px;
-            position: relative;
-            z-index: 10;
+        .content-box {
+            max-width: 500px; z-index: 10;
+            background: rgba(0, 0, 0, 0.6); padding: 40px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            backdrop-filter: blur(10px);
         }
 
-        .service-card h2 {
-            font-family: 'Syncopate'; font-size: 3rem; margin-bottom: 20px;
-            color: var(--accent);
+        h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); margin: 0; }
+        p { font-size: 1.1rem; line-height: 1.6; margin-top: 20px; font-weight: 300; }
+
+        .canvas-container {
+            position: absolute; right: 0; top: 0; width: 60vw; height: 100%; z-index: 1;
         }
 
-        .service-card p {
-            font-size: 1.2rem; line-height: 1.8; opacity: 0.7; font-weight: 300;
-        }
-
-        /* 5. 3D CONTAINER FOR EACH SECTION */
-        .three-container {
-            position: absolute; right: 0; top: 0;
-            width: 50vw; height: 100%;
-            z-index: 1;
-        }
-
-        /* 6. CONTACT FOOTER */
+        /* FOOTER */
         footer {
-            padding: 100px 10%;
-            background: var(--dark-grey);
-            border-top: 1px solid var(--accent);
+            padding: 100px 10%; background: #050505; text-align: center;
+            border-top: 2px solid var(--gold);
         }
 
-        .footer-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
+        .footer-title { font-family: 'Cinzel', serif; font-size: 4rem; color: var(--gold); }
+        .contact-info { margin-top: 30px; font-size: 1.5rem; }
+        .contact-info a { color: var(--gold); text-decoration: none; font-weight: 800; font-size: 2.5rem; display: block; margin-top: 10px; }
 
-        .contact-number {
-            font-family: 'Syncopate'; font-size: 3vw;
-            color: var(--accent); text-decoration: none;
-        }
-
-        .info-txt { font-size: 1.5rem; opacity: 0.8; margin: 10px 0; }
     </style>
 </head>
 <body>
 
     <div id="loader">
-        <div class="unikey-glitch" id="intro-text">UNIKEY</div>
+        <div class="unikey-logo-intro">UNIKEY</div>
     </div>
 
-    <canvas id="bg-canvas"></canvas>
+    <div class="carbon-bg"></div>
 
     <nav>
-        <div style="font-family: 'Syncopate'; font-weight: 700; font-size: 1.5rem;">UK // 2026</div>
-        <div class="lang-toggle">
-            <button onclick="changeLang('sq')">ALB</button>
-            <button onclick="changeLang('en')">ENG</button>
+        <div class="brand">UNIKEY</div>
+        <div class="lang-switch">
+            <button onclick="translate('sq')">ALB</button>
+            <button onclick="translate('en')">ENG</button>
         </div>
     </nav>
 
     <main>
-        <div class="hero">
-            <h1 id="h-title">TEKNOLOGJIA <br><span class="highlight">E ÇELSAVE</span></h1>
-            <p style="font-size: 1.5rem; max-width: 600px; margin-top: 20px;" id="h-sub">
-                Lider në riparimin dhe kodimin e avancuar të të gjitha markave të makinave.
-            </p>
-        </div>
-
-        <section id="s1">
-            <div class="service-card">
-                <h2 id="t1">ÇELSA DUPLIKAT</h2>
-                <p id="d1">Nuk mbeteni kurrë jashtë. Ne krijojmë kopje perfekte për çdo lloj çelësi inteligjent ose mekanik me garanci të plotë.</p>
-            </div>
-            <div class="three-container" id="c1"></div>
+        <section class="hero">
+            <h1 id="h1">Teknologjia e Çelsave</h1>
+            <p id="p1">RIPARIM DHE KODIM PËR ÇDO MARKË MAKINASH</p>
+            <button class="btn-main" id="b1" onclick="window.location.href='tel:+389070229348'">KONTAKTO TANI</button>
         </section>
 
-        <section id="s2">
-            <div class="three-container" style="left: 0;" id="c2"></div>
-            <div class="service-card" style="margin-left: auto;">
-                <h2 id="t2">BRAVA & XHAMA</h2>
-                <p id="d2">Riparojmë bravat e bllokuara dhe mekanizmat elektronikë të dritareve. Siguri që nuk njeh kompromis.</p>
+        <section>
+            <div class="content-box">
+                <h2 id="t2">DUPLIKAT ÇELSASH</h2>
+                <p id="d2">Saktësi milimetrike në çdo prerje dhe kodim. Përdorim teknologjinë më të fundit për çelsa inteligjentë dhe mekanikë.</p>
+            </div>
+            <div class="canvas-container" id="c1"></div>
+        </section>
+
+        <section>
+            <div class="canvas-container" style="left:0;" id="c2"></div>
+            <div class="content-box" style="margin-left: auto;">
+                <h2 id="t3">RIPARIM BRAVASH</h2>
+                <p id="d3">Siguri dhe funksionalitet. Riparojmë bravat e derës dhe mekanizmat e dritareve sikur të ishin të reja.</p>
             </div>
         </section>
 
-        <section id="s3">
-            <div class="service-card">
-                <h2 id="t3">DIAGNOSTIKË</h2>
-                <p id="d3">Skanim i moduleve elektronike të makinës, fshirje e gabimeve dhe përditësim i sistemeve qendrore.</p>
+        <section>
+            <div class="content-box">
+                <h2 id="t4">DIAGNOSTIKË</h2>
+                <p id="d4">Gjejmë dhe zgjidhim çdo gabim elektronik. Skanim i plotë i moduleve të makinës tuaj.</p>
             </div>
-            <div class="three-container" id="c3"></div>
+            <div class="canvas-container" id="c3"></div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-grid">
-            <div>
-                <h2 style="font-family: 'Syncopate'; color: var(--accent);">UNIKEY</h2>
-                <p class="info-txt" id="f1">Përvojë mbi 15 vite në riparimin e sistemeve të sigurisë auto.</p>
-                <p class="info-txt" id="f2">Hapur: 09:30 - 19:00 (Hënë - Shtunë)</p>
-            </div>
-            <div style="text-align: right;">
-                <p>TELEFONONI MJESHTRIN:</p>
-                <a href="tel:+389070229348" class="contact-number">+389 070 229 348</a>
-            </div>
+        <div class="footer-title">UNIKEY</div>
+        <div class="contact-info">
+            <p id="exp">Mbi 15 Vite Eksperiencë</p>
+            <p id="hours">Hapur: 09:30 - 19:00 (Hënë - Shtunë)</p>
+            <a href="tel:+389070229348">+389 070 229 348</a>
         </div>
     </footer>
 
     <script>
-        // DATA PËR GJUHËT
+        // LOGJIKA E PËRKTHIMIT
         const langData = {
             sq: {
-                h_title: "TEKNOLOGJIA <br><span class='highlight'>E ÇELSAVE</span>",
-                h_sub: "Lider në riparimin dhe kodimin e avancuar të të gjitha markave të makinave.",
-                t1: "ÇELSA DUPLIKAT", d1: "Nuk mbeteni kurrë jashtë. Ne krijojmë kopje perfekte për çdo lloj çelësi inteligjent ose mekanik me garanci të plotë.",
-                t2: "BRAVA & XHAMA", d2: "Riparojmë bravat e bllokuara dhe mekanizmat elektronikë të dritareve. Siguri që nuk njeh kompromis.",
-                t3: "DIAGNOSTIKË", d3: "Skanim i moduleve elektronike të makinës, fshirje e gabimeve dhe përditësim i sistemeve qendrore.",
-                f1: "Përvojë mbi 15 vite në riparimin e sistemeve të sigurisë auto.", f2: "Hapur: 09:30 - 19:00 (Hënë - Shtunë)"
+                h1: "Teknologjia e Çelsave", p1: "RIPARIM DHE KODIM PËR ÇDO MARKË MAKINASH", b1: "KONTAKTO TANI",
+                t2: "DUPLIKAT ÇELSASH", d2: "Saktësi milimetrike në çdo prerje dhe kodim. Përdorim teknologjinë më të fundit.",
+                t3: "RIPARIM BRAVASH", d3: "Siguri dhe funksionalitet. Riparojmë bravat dhe mekanizmat e dritareve.",
+                t4: "DIAGNOSTIKË", d4: "Gjejmë dhe zgjidhim çdo gabim elektronik. Skanim i plotë i moduleve.",
+                exp: "Mbi 15 Vite Eksperiencë", hours: "Hapur: 09:30 - 19:00 (Hënë - Shtunë)"
             },
             en: {
-                h_title: "CAR KEY <br><span class='highlight'>TECHNOLOGY</span>",
-                h_sub: "Leader in advanced repair and coding for all car brands.",
-                t1: "KEY DUPLICATION", d1: "Never get locked out. We create perfect copies for every smart or mechanical key with full warranty.",
-                t2: "LOCKS & WINDOWS", d2: "We repair jammed locks and electronic window mechanisms. Uncompromising security.",
-                t3: "DIAGNOSTICS", d3: "Scanning car electronic modules, clearing errors, and updating central systems.",
-                f1: "Over 15 years of experience in auto security systems.", f2: "Open: 09:30 - 19:00 (Mon - Sat)"
+                h1: "Key Technology", p1: "REPAIR AND CODING FOR EVERY CAR BRAND", b1: "CONTACT NOW",
+                t2: "KEY DUPLICATION", d2: "Millimetric precision in every cut and coding. We use the latest technology.",
+                t3: "LOCK REPAIR", d3: "Security and functionality. We repair door locks and window mechanisms.",
+                t4: "DIAGNOSTICS", d4: "We find and solve every electronic error. Full scanning of your car modules.",
+                exp: "Over 15 Years of Experience", hours: "Open: 09:30 - 19:00 (Mon - Sat)"
             }
         };
 
-        function changeLang(l) {
+        function translate(l) {
             Object.keys(langData[l]).forEach(id => {
-                document.getElementById(id).innerHTML = langData[l][id];
+                document.getElementById(id).innerText = langData[l][id];
             });
         }
 
-        // 1. INTRO ANIMATION
+        // ANIMACIONET
         gsap.registerPlugin(ScrollTrigger);
-        const tl = gsap.timeline();
-        tl.from("#intro-text", { letterSpacing: "-10vw", opacity: 0, duration: 2, ease: "power4.out" })
-          .to("#loader", { clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)", duration: 1.2, ease: "expo.inOut" });
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline();
+            tl.to(".unikey-logo-intro", { opacity: 1, letterSpacing: "10px", duration: 1.5, ease: "power4.out" })
+              .to("#loader", { y: "-100%", duration: 1, ease: "expo.inOut" });
+        });
 
-        // 2. BACKGROUND PARTICLES (Three.js)
-        const bgScene = new THREE.Scene();
-        const bgCam = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        const bgRenderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
-        bgRenderer.setSize(window.innerWidth, window.innerHeight);
-
-        const starGeo = new THREE.BufferGeometry();
-        const starCount = 2000;
-        const posArray = new Float32Array(starCount * 3);
-        for(let i=0; i<starCount*3; i++) posArray[i] = (Math.random() - 0.5) * 10;
-        starGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const starMat = new THREE.PointsMaterial({ size: 0.005, color: 0xffcc00 });
-        const starMesh = new THREE.Points(starGeo, starMat);
-        bgScene.add(starMesh);
-        bgCam.position.z = 2;
-
-        function animateBg() {
-            requestAnimationFrame(animateBg);
-            starMesh.rotation.y += 0.001;
-            bgRenderer.render(bgScene, bgCam);
-        }
-        animateBg();
-
-        // 3. SECTION ANIMATIONS (BUMERANG)
-        function createService3D(containerId, color) {
+        // 3D ENGINE (MANSORY EDITION)
+        function init3D(id, color) {
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            const container = document.getElementById(containerId);
+            const container = document.getElementById(id);
             renderer.setSize(container.offsetWidth, container.offsetHeight);
             container.appendChild(renderer.domElement);
 
             const group = new THREE.Group();
             const pieces = [];
-            // Krijo "pjesë mekanike"
-            for(let i=0; i<50; i++) {
-                const geo = new THREE.BoxGeometry(Math.random()*0.5, 0.05, 0.1);
-                const mat = new THREE.MeshStandardMaterial({ color: color, metalness: 1, roughness: 0.3 });
+
+            // Pjesë "Gold & Carbon"
+            for(let i=0; i<40; i++) {
+                const geo = i % 2 === 0 ? new THREE.TorusGeometry(0.3, 0.05, 16, 100) : new THREE.BoxGeometry(0.4, 0.4, 0.4);
+                const mat = new THREE.MeshStandardMaterial({ 
+                    color: i % 5 === 0 ? 0xc5a059 : 0x333333, 
+                    metalness: 1, roughness: 0.1 
+                });
                 const mesh = new THREE.Mesh(geo, mat);
-                group.add(mesh);
                 pieces.push(mesh);
+                group.add(mesh);
             }
             scene.add(group);
+            const light = new THREE.PointLight(0xffffff, 2, 50);
+            light.position.set(5, 5, 5);
+            scene.add(light);
             scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-            const pLight = new THREE.PointLight(0xffffff, 1);
-            pLight.position.set(5,5,5);
-            scene.add(pLight);
             camera.position.z = 5;
 
-            // Bumerang 5 sekonda (Hapje 2.5s, Mbyllje 2.5s)
+            // Efekti Bumerang (5 sekonda cikël)
             gsap.to(pieces.map(p => p.position), {
-                x: () => (Math.random() - 0.5) * 10,
-                y: () => (Math.random() - 0.5) * 10,
-                z: () => (Math.random() - 0.5) * 10,
-                rotationX: () => Math.random() * 5,
+                x: () => (Math.random() - 0.5) * 12,
+                y: () => (Math.random() - 0.5) * 12,
+                z: () => (Math.random() - 0.5) * 12,
                 duration: 2.5,
                 repeat: -1,
                 yoyo: true,
                 ease: "power2.inOut",
                 stagger: 0.01,
-                scrollTrigger: {
-                    trigger: `#${containerId}`,
-                    start: "top center"
-                }
+                scrollTrigger: { trigger: `#${id}`, start: "top center" }
             });
 
             function animate() {
@@ -303,10 +264,9 @@
             animate();
         }
 
-        createService3D('c1', 0xffcc00); // Gold
-        createService3D('c2', 0x555555); // Silver
-        createService3D('c3', 0xff0000); // Red (Alert/Diag)
-
+        init3D('c1', 0xc5a059); // Gold
+        init3D('c2', 0x888888); // Silver
+        init3D('c3', 0xc5a059); // Gold
     </script>
 </body>
 </html>
