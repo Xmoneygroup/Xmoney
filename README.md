@@ -2,15 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Premium Galaxy</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <title>Galaxy Premium 3D</title>
 
+  <style>
     body {
+      margin: 0;
       overflow: hidden;
       background: black;
       font-family: Arial, sans-serif;
@@ -18,13 +14,10 @@
     }
 
     canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
+      display: block;
     }
 
-    .content {
+    .overlay {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -33,93 +26,109 @@
     }
 
     h1 {
-      font-size: 4rem;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, #fff, #888, #fff);
+      font-size: 5rem;
+      letter-spacing: 4px;
+      background: linear-gradient(90deg, #fff, #aaa, #fff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: glow 3s infinite alternate;
-    }
-
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 10px #fff;
-      }
-      to {
-        text-shadow: 0 0 30px #00ccff, 0 0 60px #6600ff;
-      }
     }
 
     p {
-      margin-top: 20px;
-      opacity: 0.7;
+      opacity: 0.6;
+      margin-top: 10px;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 30px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: white;
+      color: black;
     }
   </style>
 </head>
 <body>
 
-<canvas id="galaxy"></canvas>
-
-<div class="content">
-  <h1>PREMIUM DOMAIN</h1>
-  <p>Future digital asset</p>
+<div class="overlay">
+  <h1>DOMAIN FOR SALE</h1>
+  <p>Premium digital asset</p>
+  <button class="btn">Contact</button>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+
 <script>
-  const canvas = document.getElementById("galaxy");
-  const ctx = canvas.getContext("2d");
+  const scene = new THREE.Scene();
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
 
-  let stars = [];
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
 
-  class Star {
-    constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.radius = Math.random() * 1.5;
-      this.speed = Math.random() * 0.5;
-    }
+  // ⭐ Create stars
+  const starGeometry = new THREE.BufferGeometry();
+  const starCount = 8000;
 
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = "white";
-      ctx.fill();
-    }
+  const positions = new Float32Array(starCount * 3);
 
-    update() {
-      this.y += this.speed;
-      if (this.y > canvas.height) {
-        this.y = 0;
-        this.x = Math.random() * canvas.width;
-      }
-      this.draw();
-    }
+  for (let i = 0; i < starCount * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 1000;
   }
 
-  function init() {
-    for (let i = 0; i < 300; i++) {
-      stars.push(new Star());
-    }
-  }
+  starGeometry.setAttribute(
+    'position',
+    new THREE.BufferAttribute(positions, 3)
+  );
 
+  const starMaterial = new THREE.PointsMaterial({
+    color: 0xffffff,
+    size: 1
+  });
+
+  const stars = new THREE.Points(starGeometry, starMaterial);
+  scene.add(stars);
+
+  camera.position.z = 5;
+
+  // 🎥 Mouse movement effect
+  document.addEventListener("mousemove", (event) => {
+    const x = (event.clientX / window.innerWidth - 0.5) * 2;
+    const y = (event.clientY / window.innerHeight - 0.5) * 2;
+
+    camera.position.x = x * 5;
+    camera.position.y = -y * 5;
+  });
+
+  // 🔄 Animation loop
   function animate() {
-    ctx.fillStyle = "rgba(0, 0, 20, 0.3)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    stars.forEach(star => star.update());
-
     requestAnimationFrame(animate);
+
+    stars.rotation.y += 0.0005;
+    stars.rotation.x += 0.0002;
+
+    renderer.render(scene, camera);
   }
 
-  init();
   animate();
 
+  // 📱 Responsive
   window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
   });
 </script>
 
