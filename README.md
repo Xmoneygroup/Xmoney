@@ -2,45 +2,52 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Ultra Premium Domain</title>
+<title>Elite Domain</title>
 
 <style>
 body {
   margin: 0;
   overflow: hidden;
-  background: radial-gradient(circle at center, #050510, #000);
-  font-family: Arial, sans-serif;
+  background: black;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   color: white;
 }
 
-/* Glass UI */
+/* Glass Premium Panel */
 .panel {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 40px 60px;
-  backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.05);
+  padding: 50px 70px;
+  border-radius: 25px;
+  backdrop-filter: blur(25px);
+  background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
   text-align: center;
 }
 
 h1 {
-  font-size: 4rem;
-  letter-spacing: 3px;
+  font-size: 4.5rem;
+  letter-spacing: 4px;
 }
 
 p {
   opacity: 0.6;
 }
 
+.price {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #00ccff;
+}
+
 button {
-  margin-top: 20px;
-  padding: 12px 30px;
-  border-radius: 30px;
+  margin-top: 25px;
+  padding: 14px 35px;
+  border-radius: 40px;
   border: none;
+  font-size: 1rem;
   background: linear-gradient(90deg, #00ccff, #6600ff);
   color: white;
   cursor: pointer;
@@ -49,6 +56,7 @@ button {
 
 button:hover {
   transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0,200,255,0.7);
 }
 </style>
 </head>
@@ -56,9 +64,10 @@ button:hover {
 <body>
 
 <div class="panel">
-  <h1>PREMIUM DOMAIN</h1>
-  <p>This domain is for sale</p>
-  <button>Buy Now</button>
+  <h1>YOURDOMAIN.COM</h1>
+  <p>Premium digital asset</p>
+  <div class="price">$25,000</div>
+  <button>Acquire Now</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
@@ -70,33 +79,30 @@ const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
   0.1,
-  2000
+  3000
 );
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// 🌌 Spiral Galaxy
-const particles = 15000;
+// 🌌 Galaxy + Black Hole
+const particles = 20000;
 const geometry = new THREE.BufferGeometry();
 const positions = new Float32Array(particles * 3);
 
 for (let i = 0; i < particles; i++) {
   const i3 = i * 3;
 
-  const radius = Math.random() * 500;
-  const angle = radius * 0.05;
+  const radius = Math.random() * 800;
+  const angle = radius * 0.08;
 
   positions[i3] = Math.cos(angle) * radius;
-  positions[i3 + 1] = (Math.random() - 0.5) * 50;
+  positions[i3 + 1] = (Math.random() - 0.5) * 80;
   positions[i3 + 2] = Math.sin(angle) * radius;
 }
 
-geometry.setAttribute(
-  "position",
-  new THREE.BufferAttribute(positions, 3)
-);
+geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
 const material = new THREE.PointsMaterial({
   size: 1.2,
@@ -106,25 +112,36 @@ const material = new THREE.PointsMaterial({
 const galaxy = new THREE.Points(geometry, material);
 scene.add(galaxy);
 
-camera.position.z = 200;
+// 🕳️ Black hole (center sphere)
+const holeGeometry = new THREE.SphereGeometry(20, 32, 32);
+const holeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
+const blackHole = new THREE.Mesh(holeGeometry, holeMaterial);
+scene.add(blackHole);
 
-// 🖱️ Mouse interaction
+camera.position.z = 300;
+
+// 🖱️ Mouse depth
 let mouseX = 0;
 let mouseY = 0;
 
 document.addEventListener("mousemove", (e) => {
-  mouseX = (e.clientX - window.innerWidth / 2) * 0.001;
-  mouseY = (e.clientY - window.innerHeight / 2) * 0.001;
+  mouseX = (e.clientX - window.innerWidth / 2) * 0.0015;
+  mouseY = (e.clientY - window.innerHeight / 2) * 0.0015;
 });
 
 // 🎬 Animation
 function animate() {
   requestAnimationFrame(animate);
 
-  galaxy.rotation.y += 0.0008;
+  galaxy.rotation.y += 0.001;
+  galaxy.rotation.x += 0.0003;
 
-  camera.position.x += (mouseX * 50 - camera.position.x) * 0.05;
-  camera.position.y += (-mouseY * 50 - camera.position.y) * 0.05;
+  // camera cinematic movement
+  camera.position.x += (mouseX * 80 - camera.position.x) * 0.04;
+  camera.position.y += (-mouseY * 80 - camera.position.y) * 0.04;
+
+  // subtle zoom breathing
+  camera.position.z = 300 + Math.sin(Date.now() * 0.0005) * 20;
 
   camera.lookAt(scene.position);
 
