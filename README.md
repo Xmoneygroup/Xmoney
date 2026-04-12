@@ -3,133 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Domain Asset | Model 2</title>
+    <title>Elite Asset | Domain for Sale</title>
     <style>
-        /* --- SFONDI "MËNDAFSH I LËNGSHËM" (CSS ONLY) --- */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300&display=swap');
+
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #000; /* Baza e zezë */
-            font-family: 'Poppins', sans-serif; /* Font modern, pastër */
+            background-color: #020202; 
         }
 
-        .liquid-background {
-            width: 100%;
-            height: 100vh;
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-            
-            /* SHTRESËZIMI I GRADIENTËVE (Sekreti i dizajnit) */
-            /* Krijon re ngjyrash premium (Vjollcë e thellë, Blu mbretërore, Pak Ar) */
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(26, 0, 77, 0.8) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 51, 102, 0.8) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(13, 13, 13, 1) 0%, rgba(0, 0, 0, 1) 100%);
-            background-size: 200% 200%; /* E bëjmë më të madh për animacion */
-            
-            /* Animacioni i lëvizjes së ngadaltë si lëng */
-            animation: liquidMove 15s ease-in-out infinite alternate;
+            height: 100vh;
+            pointer-events: none;
         }
 
-        /* Shtojmë një efekt shkëlqimi (Glow) të shpërndarë */
-        .liquid-background::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
-            filter: blur(50px);
-        }
-
-        /* --- TITULLI PREMIUM --- */
-        .premium-content {
-            position: relative;
-            z-index: 10;
+        .luxury-card {
             text-align: center;
+            padding: 60px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(212, 175, 55, 0.15); /* Kornizë e hollë ari */
+            border-radius: 2px; /* Kthesa minimale për pamje më serioze */
+            backdrop-filter: blur(15px);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+            animation: fadeInCard 3s ease-out;
         }
 
         .title {
-            font-size: 5rem;
-            font-weight: 900;
+            font-family: 'Cinzel', serif; /* Font mbretëror */
+            font-size: 4.5rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 15px;
+            letter-spacing: 18px;
             margin: 0;
-            
-            /* Efekti i tekstit si Ar i shkrirë */
-            background: linear-gradient(to bottom, #ffffff 0%, #f1c40f 50%, #b8860b 100%);
+            /* Gradient ari i pasur */
+            background: linear-gradient(to bottom, #ffffff 0%, #d4af37 50%, #8a6d3b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            
-            /* Shkëlqim i pastër i arit */
-            filter: drop-shadow(0 0 10px rgba(241, 196, 15, 0.4));
-            
-            /* Animacioni i hyrjes */
-            animation: fadeInScale 2s ease-out forwards;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+            animation: luxuryGlow 4s ease-in-out infinite alternate;
         }
 
-        .sub-title {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 1rem;
+        .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            margin-top: 20px;
+            letter-spacing: 12px;
             text-transform: uppercase;
-            letter-spacing: 8px;
-            margin-top: 15px;
-            opacity: 0;
-            animation: fadeIn 2s ease-out forwards 1.5s; /* Del me vonesë */
+            font-weight: 300;
         }
 
-        /* --- ANIMACIONET --- */
-
-        /* Lëvizja e ngadaltë dhe e lëngshme e sfondit */
-        @keyframes liquidMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes luxuryGlow {
+            from { filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2)); }
+            to { filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5)); }
         }
 
-        /* Hyrja me shkallëzim dhe zbehtje */
-        @keyframes fadeInScale {
-            0% {
-                opacity: 0;
-                transform: scale(0.9);
-                filter: blur(10px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-                filter: blur(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        /* PËRSHTATJA PËR CELULAR (Responsive) */
-        @media (max-width: 1024px) {
-            .title { font-size: 3.5rem; letter-spacing: 8px; }
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 768px) {
-            .title { font-size: 2.2rem; letter-spacing: 4px; }
-            .sub-title { font-size: 0.8rem; letter-spacing: 4px; }
+            .title { font-size: 2.2rem; letter-spacing: 8px; }
+            .luxury-card { padding: 30px; margin: 20px; }
         }
-
-        /* Importimi i fontit */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
     </style>
 </head>
 <body>
 
-    <div class="liquid-background">
-        <div class="premium-content">
-            <h1 class="title">This Domain<br>is for Sale</h1>
-            <p class="sub-title">Elite Digital Real Estate</p>
+    <canvas id="canvas"></canvas>
+
+    <div class="content-wrapper">
+        <div class="luxury-card">
+            <h1 class="title">Domain is for Sale</h1>
+            <div class="subtitle">Premium Digital Real Estate</div>
         </div>
     </div>
 
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray;
+        let lineReach = 0; // Përdoret për animacionin e vijave në fillim
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.5)';
+                ctx.fill();
+            }
+            update() {
+                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            // Reduktuar numrin e pikave për më shumë elegancë
+            let numberOfParticles = (canvas.height * canvas.width) / 18000; 
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 1.5) + 0.5;
+                let x = Math.random() * innerWidth;
+                let y = Math.random() * innerHeight;
+                let directionX = (Math.random() * 0.4) - 0.2;
+                let directionY = (Math.random() * 0.4) - 0.2;
+                particlesArray.push(new Particle(x, y, directionX, directionY, size));
+            }
+        }
+
+        function connect() {
+            // Animacioni i rritjes së distancës së vijave (lindja e rrjetës)
+            if (lineReach < 160) lineReach += 0.5; 
+
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2)
+                                 + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                    
+                    if (distance < lineReach * lineReach) {
+                        let opacity = 1 - (distance / (lineReach * lineReach));
+                        ctx.strokeStyle = `rgba(212, 175, 55, ${opacity * 0.2})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0,0, innerWidth, innerHeight);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+            init();
+        });
+    </script>
 </body>
 </html>
