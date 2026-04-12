@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIP Domain Offering</title>
+    <title>VIP Domain Offering | Liquid Blue</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;600&display=swap');
 
         body, html {
             margin: 0;
@@ -13,14 +13,30 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #000; 
+            background-color: #000; /* Baza */
+        }
+
+        /* SFONDI I RI ABSTRAKT (VALË MËNDAFSHI) */
+        .liquid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+            /* Gradient kompleks që simulon lëvizjen e lëngut */
+            background: linear-gradient(125deg, #000000 0%, #000000 40%, #051937 60%, #004d7a 80%, #008793 100%);
+            background-size: 400% 400%;
+            animation: oceanWave 15s ease infinite;
         }
 
         #canvas {
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 1;
+            z-index: 2; /* Pikat mbi sfondin likuid */
+            /* Zvobëlojmë pak dukshmërinë e pikave që të dominojë sfondi */
+            opacity: 0.6; 
         }
 
         .content-wrapper {
@@ -33,66 +49,82 @@
             pointer-events: none;
         }
 
-        /* PLLAKATA VIP TEJDUKSHME ME HIJE DINAMIKE */
+        /* PLLAKATA PLOTËSISHT E TEJDUKSHME (PA NGJYRË) */
         .luxury-card {
             text-align: center;
-            padding: 50px 80px;
-            background: rgba(255, 255, 255, 0.02); /* Super e tejdukshme */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(20px);
+            padding: 60px 90px;
+            /* Pa ngjyrë background-i, vetëm xham dhe kornizë */
+            background: rgba(255, 255, 255, 0.0); 
+            border: 1px solid rgba(0, 255, 255, 0.2); /* Kornizë e kaltër e hapur */
+            border-radius: 5px; /* Kthesa minimale VIP */
+            backdrop-filter: blur(15px); /* Efekti xham mbi valë */
             
-            /* Hija VIP që ndryshon ngjyrat */
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
-            animation: vipShadowPulse 8s linear infinite;
+            /* Hije e kaltër elektrike */
+            box-shadow: 0 0 50px rgba(0, 238, 255, 0.15);
+            animation: neonBreathe 4s ease-in-out infinite alternate;
         }
 
         .title {
             font-family: 'Cinzel', serif;
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 15px;
+            letter-spacing: 18px;
             margin: 0;
-            background: linear-gradient(to bottom, #fff, #d4af37, #aa8c2e);
+            /* Gradient Platinum/Argjend */
+            background: linear-gradient(to bottom, #ffffff 0%, #a2abb3 50%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
         }
 
         .subtitle {
             font-family: 'Montserrat', sans-serif;
             color: #fff;
-            font-size: 1.1rem;
-            margin-top: 25px;
-            letter-spacing: 4px;
-            font-weight: 500;
-            opacity: 0.9;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+            margin-top: 30px;
+            letter-spacing: 10px;
+            font-weight: 300;
+            text-transform: uppercase;
+            opacity: 0.8;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
-        /* ANIMACIONI I HIJES VIP (RGB GOLD/WHITE/PURPLE) */
-        @keyframes vipShadowPulse {
-            0% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.3); border-color: rgba(212, 175, 55, 0.2); }
-            33% { box-shadow: 0 0 60px rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.2); }
-            66% { box-shadow: 0 0 40px rgba(138, 43, 226, 0.2); border-color: rgba(138, 43, 226, 0.2); }
-            100% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.3); border-color: rgba(212, 175, 55, 0.2); }
+        /* ANIMACIONET */
+        @keyframes oceanWave {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes neonBreathe {
+            from { 
+                box-shadow: 0 0 40px rgba(0, 238, 255, 0.1);
+                border-color: rgba(0, 255, 255, 0.1);
+            }
+            to { 
+                box-shadow: 0 0 60px rgba(0, 238, 255, 0.25);
+                border-color: rgba(0, 255, 255, 0.3);
+            }
         }
 
         @media (max-width: 768px) {
-            .title { font-size: 2rem; letter-spacing: 5px; }
+            .title { font-size: 2.2rem; letter-spacing: 6px; }
             .luxury-card { padding: 30px; margin: 20px; }
+            .subtitle { font-size: 0.8rem; letter-spacing: 5px; }
         }
     </style>
 </head>
 <body>
+
+    <div class="liquid-background"></div>
 
     <canvas id="canvas"></canvas>
 
     <div class="content-wrapper">
         <div class="luxury-card">
             <h1 class="title">Domain for Sale</h1>
-            <div class="subtitle">This domain will be sold in a very short time</div>
+            <div class="subtitle">This Domain is for Sale</div>
         </div>
     </div>
 
@@ -115,9 +147,7 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = '#fff';
-                ctx.shadowBlur = 10; // Efekti i shkëlqimit për çdo pikë
-                ctx.shadowColor = '#fff';
+                ctx.fillStyle = 'rgba(0, 255, 255, 0.7)'; // Pikat me të kaltra
                 ctx.fill();
             }
             update() {
@@ -131,13 +161,14 @@
 
         function init() {
             particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 15000;
+            // Reduktuar numrin e pikave për t'ia lënë skenën sfondit likuid
+            let numberOfParticles = (canvas.height * canvas.width) / 20000;
             for (let i = 0; i < numberOfParticles; i++) {
-                let size = Math.random() * 2;
+                let size = Math.random() * 1.5;
                 let x = Math.random() * innerWidth;
                 let y = Math.random() * innerHeight;
-                let directionX = (Math.random() * 0.5) - 0.25;
-                let directionY = (Math.random() * 0.5) - 0.25;
+                let directionX = (Math.random() * 0.3) - 0.15;
+                let directionY = (Math.random() * 0.3) - 0.15;
                 particlesArray.push(new Particle(x, y, directionX, directionY, size));
             }
         }
@@ -148,18 +179,18 @@
                     let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2)
                                  + ((particlesArray[a].y - particlesArray[b].y) ** 2);
                     
-                    if (distance < 150 * 150) {
-                        let opacity = 1 - (distance / (150 * 150));
-                        // VIJAT ME EFEKT NEON
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.3})`;
-                        ctx.lineWidth = 1;
-                        ctx.shadowBlur = 5; // Shkëlqimi i vijave
-                        ctx.shadowColor = 'rgba(212, 175, 55, 0.5)';
+                    if (distance < 180 * 180) {
+                        let opacity = 1 - (distance / (180 * 180));
+                        // VIJAT ME NGJYRE TE KALTER Elektrike
+                        ctx.strokeStyle = `rgba(0, 238, 255, ${opacity * 0.4})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.shadowBlur = 8; // Shkëlqim Cyan Neon
+                        ctx.shadowColor = 'rgba(0, 238, 255, 0.5)';
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
                         ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
                         ctx.stroke();
-                        ctx.shadowBlur = 0; // Reset shkëlqimin për performancë
+                        ctx.shadowBlur = 0;
                     }
                 }
             }
