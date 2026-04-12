@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Asset | Domain for Sale</title>
+    <title>VIP Domain Offering</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;500&display=swap');
 
         body, html {
             margin: 0;
@@ -13,7 +13,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #020202; 
+            background-color: #000; 
         }
 
         #canvas {
@@ -33,54 +33,54 @@
             pointer-events: none;
         }
 
+        /* PLLAKATA VIP TEJDUKSHME ME HIJE DINAMIKE */
         .luxury-card {
             text-align: center;
-            padding: 60px;
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(212, 175, 55, 0.15); /* Kornizë e hollë ari */
-            border-radius: 2px; /* Kthesa minimale për pamje më serioze */
-            backdrop-filter: blur(15px);
-            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
-            animation: fadeInCard 3s ease-out;
+            padding: 50px 80px;
+            background: rgba(255, 255, 255, 0.02); /* Super e tejdukshme */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(20px);
+            
+            /* Hija VIP që ndryshon ngjyrat */
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
+            animation: vipShadowPulse 8s linear infinite;
         }
 
         .title {
-            font-family: 'Cinzel', serif; /* Font mbretëror */
-            font-size: 4.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 18px;
+            letter-spacing: 15px;
             margin: 0;
-            /* Gradient ari i pasur */
-            background: linear-gradient(to bottom, #ffffff 0%, #d4af37 50%, #8a6d3b 100%);
+            background: linear-gradient(to bottom, #fff, #d4af37, #aa8c2e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
-            animation: luxuryGlow 4s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
         }
 
         .subtitle {
             font-family: 'Montserrat', sans-serif;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.9rem;
-            margin-top: 20px;
-            letter-spacing: 12px;
-            text-transform: uppercase;
-            font-weight: 300;
+            color: #fff;
+            font-size: 1.1rem;
+            margin-top: 25px;
+            letter-spacing: 4px;
+            font-weight: 500;
+            opacity: 0.9;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        @keyframes luxuryGlow {
-            from { filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2)); }
-            to { filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5)); }
-        }
-
-        @keyframes fadeInCard {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ANIMACIONI I HIJES VIP (RGB GOLD/WHITE/PURPLE) */
+        @keyframes vipShadowPulse {
+            0% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.3); border-color: rgba(212, 175, 55, 0.2); }
+            33% { box-shadow: 0 0 60px rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.2); }
+            66% { box-shadow: 0 0 40px rgba(138, 43, 226, 0.2); border-color: rgba(138, 43, 226, 0.2); }
+            100% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.3); border-color: rgba(212, 175, 55, 0.2); }
         }
 
         @media (max-width: 768px) {
-            .title { font-size: 2.2rem; letter-spacing: 8px; }
+            .title { font-size: 2rem; letter-spacing: 5px; }
             .luxury-card { padding: 30px; margin: 20px; }
         }
     </style>
@@ -91,8 +91,8 @@
 
     <div class="content-wrapper">
         <div class="luxury-card">
-            <h1 class="title">Domain is for Sale</h1>
-            <div class="subtitle">Premium Digital Real Estate</div>
+            <h1 class="title">Domain for Sale</h1>
+            <div class="subtitle">This domain will be sold in a very short time</div>
         </div>
     </div>
 
@@ -100,7 +100,6 @@
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         let particlesArray;
-        let lineReach = 0; // Përdoret për animacionin e vijave në fillim
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -116,7 +115,9 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = 'rgba(212, 175, 55, 0.5)';
+                ctx.fillStyle = '#fff';
+                ctx.shadowBlur = 10; // Efekti i shkëlqimit për çdo pikë
+                ctx.shadowColor = '#fff';
                 ctx.fill();
             }
             update() {
@@ -130,35 +131,35 @@
 
         function init() {
             particlesArray = [];
-            // Reduktuar numrin e pikave për më shumë elegancë
-            let numberOfParticles = (canvas.height * canvas.width) / 18000; 
+            let numberOfParticles = (canvas.height * canvas.width) / 15000;
             for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 1.5) + 0.5;
+                let size = Math.random() * 2;
                 let x = Math.random() * innerWidth;
                 let y = Math.random() * innerHeight;
-                let directionX = (Math.random() * 0.4) - 0.2;
-                let directionY = (Math.random() * 0.4) - 0.2;
+                let directionX = (Math.random() * 0.5) - 0.25;
+                let directionY = (Math.random() * 0.5) - 0.25;
                 particlesArray.push(new Particle(x, y, directionX, directionY, size));
             }
         }
 
         function connect() {
-            // Animacioni i rritjes së distancës së vijave (lindja e rrjetës)
-            if (lineReach < 160) lineReach += 0.5; 
-
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a; b < particlesArray.length; b++) {
                     let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2)
                                  + ((particlesArray[a].y - particlesArray[b].y) ** 2);
                     
-                    if (distance < lineReach * lineReach) {
-                        let opacity = 1 - (distance / (lineReach * lineReach));
-                        ctx.strokeStyle = `rgba(212, 175, 55, ${opacity * 0.2})`;
-                        ctx.lineWidth = 0.5;
+                    if (distance < 150 * 150) {
+                        let opacity = 1 - (distance / (150 * 150));
+                        // VIJAT ME EFEKT NEON
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.3})`;
+                        ctx.lineWidth = 1;
+                        ctx.shadowBlur = 5; // Shkëlqimi i vijave
+                        ctx.shadowColor = 'rgba(212, 175, 55, 0.5)';
                         ctx.beginPath();
                         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
                         ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
                         ctx.stroke();
+                        ctx.shadowBlur = 0; // Reset shkëlqimin për performancë
                     }
                 }
             }
