@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Domain | Locarox.com</title>
+    <title>Elite Domain Sales | Locarox.com</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
+        /* FONTET ORIGJINALE */
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Montserrat:wght@300;400;600&display=swap');
 
+        /* BEJGRAUNDI DHE STRUKTURA (NUK PREKEN) */
         body, html {
             margin: 0;
             padding: 0;
@@ -27,134 +30,158 @@
         }
 
         /* CONTAINER KRYESOR */
-        .main-container {
+        .main-wrapper {
             position: relative;
             z-index: 10;
             width: 100%;
             height: 100vh;
             display: flex;
             flex-direction: row;
-            justify-content: flex-end; /* I shton elementet djathtas */
-            align-items: flex-start; /* I ngjit lart */
+            justify-content: space-around;
+            align-items: center;
             padding: 50px;
             box-sizing: border-box;
             pointer-events: none;
         }
 
-        /* PLLAKATA E BARDHË */
-        .sales-card {
+        /* 1. PLLAKATA E BARDHË (STILI GODADDY) */
+        .glass-card {
             background: #ffffff;
-            width: 320px;
-            padding: 30px;
-            border-radius: 4px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            pointer-events: auto; /* Që butoni të punojë */
-            margin-right: 20px;
+            width: 380px;
+            padding: 40px;
+            border-radius: 20px; /* Kthesa si në imazh */
+            text-align: left;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            pointer-events: auto;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .sales-card h2 {
+        .glass-card h2 {
             color: #000;
-            font-size: 1rem;
-            margin: 0;
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
-
-        .sales-card .domain-name {
-            color: #000;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin: 15px 0 5px 0;
-        }
-
-        .sales-card .status {
-            color: #666;
-            font-size: 0.8rem;
-            margin-bottom: 20px;
-        }
-
-        .sales-card .price {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
+            margin: 0 0 10px 0;
             font-weight: 700;
-            color: #000;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: none; /* Jo uppercase */
+            letter-spacing: normal;
+        }
+
+        .glass-card .domain-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 25px;
         }
 
-        /* BUTONI NEXT */
+        .glass-card .domain-name {
+            color: #000;
+            font-weight: 400;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .glass-card .price {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #117aca; /* Blu si në imazh */
+            margin: 0;
+        }
+
+        /* BUTONI NEXT INTERAKTIV */
         .next-btn {
             display: block;
             width: 100%;
-            padding: 15px;
-            background: #000;
+            padding: 18px;
+            background: #111;
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            border-radius: 4px;
+            border-radius: 6px;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            text-transform: none;
+            letter-spacing: normal;
             border: none;
             cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
         }
 
         .next-btn:hover {
-            background: #2ecc71; /* E gjelbër e lehtë */
-            transform: translateY(-2px);
+            background: #2ecc71; /* E gjelbër e lehtë kur afron mausin */
         }
 
-        .help-text {
-            color: #888;
-            font-size: 0.75rem;
-            margin-top: 20px;
+        .contact-info {
+            color: #000;
+            font-size: 1rem;
+            margin-top: 35px;
+            text-align: center;
+            font-weight: 600;
         }
 
-        /* TEKSTI JASHTË PLLAKATËS (DJATHAS POSHTË) */
-        .external-info {
-            position: absolute;
-            right: 50px;
-            bottom: 80px;
-            text-align: right;
+        .phone-link {
+            color: #117aca;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 400;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* 2. TEKSTI JASHTË PLLAKATËS (DJATHAS) */
+        .info-panel {
+            text-align: left;
+            color: #fff;
+            max-width: 500px;
+        }
+
+        .info-domain {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 3.5rem;
+            margin: 0 0 10px 0;
+            letter-spacing: -2px;
+            text-transform: lowercase;
+        }
+
+        .info-status {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        /* IKONAT E BESIMIT */
+        .trust-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .trust-item span {
+            font-size: 1.2rem;
             color: #fff;
         }
 
-        .ext-domain {
-            font-family: 'Syncopate', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-            letter-spacing: 4px;
-        }
-
-        .ext-status {
-            font-size: 1.1rem;
-            font-weight: 300;
-            opacity: 0.9;
-            margin-bottom: 15px;
-        }
-
-        .ext-anim {
-            font-size: 0.8rem;
-            font-weight: 300;
-            color: rgba(255,255,255,0.6);
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 10px;
-            animation: fadeInOut 4s infinite ease-in-out;
-        }
-
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        @media (max-width: 768px) {
-            .main-container { 
+        @media (max-width: 900px) {
+            .main-wrapper { 
                 flex-direction: column; 
-                align-items: center; 
-                padding: 20px;
+                padding: 30px;
                 justify-content: center;
             }
-            .sales-card { margin: 0 auto; width: 85%; }
-            .external-info { position: relative; right: 0; bottom: 0; text-align: center; margin-top: 30px; }
+            .glass-card { margin-bottom: 50px; width: 90%; max-width: 380px;}
+            .info-panel { text-align: center; }
+            .info-domain { font-size: 2.2rem; }
+            .trust-grid { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
@@ -162,26 +189,39 @@
 
     <canvas id="canvas"></canvas>
 
-    <div class="main-container">
-        <div class="sales-card">
-            <h2>BUY NOW</h2>
-            <div class="domain-name">locarox.com</div>
-            <div class="status">is for sale now</div>
-            <div class="price">2,390.00 USD</div>
+    <div class="main-wrapper">
+        <div class="glass-card">
+            <h2>Buy Now</h2>
+            <div class="domain-line">
+                <p class="domain-name">locarox.com is for sale now</p>
+                <p class="price">2,390.00 USD</p>
+            </div>
             
             <a href="KËTU_VENDOS_LINKUN_E_PAGESËS" class="next-btn">Next</a>
             
-            <div class="help-text">
+            <div class="contact-info">
                 Need help? Give us a call<br>
-                <strong>+389 XX XXX XXX</strong> </div>
+                <a href="tel:+389XXXXXXXXX" class="phone-link">+389 XX XXX XXX</a> 
+            </div>
         </div>
 
-        <div class="external-info">
-            <div class="ext-domain">locarox.com</div>
-            <div class="ext-status">is for sale!</div>
-            <div class="ext-anim">
-                Simple, secure purchase & transfer<br>
-                Trusted by customers globally
+        <div class="info-panel">
+            <div class="info-domain">locarox.com</div>
+            <div class="info-status">is for sale!</div>
+            
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <span class="material-icons">shopping_cart</span>
+                    Simple, secure purchase & transfer
+                </div>
+                <div class="trust-item">
+                    <span class="material-icons">check_circle</span>
+                    Trusted by customers globally
+                </div>
+                <div class="trust-item">
+                    <span class="material-icons">favorite</span>
+                    24/7 dedicated support
+                </div>
             </div>
         </div>
     </div>
