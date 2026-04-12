@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Domain Sales | Locarox.com</title>
+    <title>Elite Domain Sales | dubrent.com</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Montserrat:wght@300;400;600&display=swap');
@@ -27,7 +26,6 @@
             z-index: 1;
         }
 
-        /* POZICIONIMI FINAL - EDHE MË LART */
         .main-wrapper {
             position: relative;
             z-index: 10;
@@ -37,14 +35,13 @@
             flex-direction: row;
             justify-content: center; 
             align-items: center;     
-            gap: 60px;               
+            gap: 60px;                
             padding: 20px;
-            padding-bottom: 180px; /* Ngritur edhe më lart për balancë perfekte */
+            padding-bottom: 180px;
             box-sizing: border-box;
             pointer-events: none;
         }
 
-        /* 1. PLLAKATA E BARDHË */
         .glass-card {
             background: #ffffff;
             width: 440px;
@@ -124,7 +121,6 @@
             margin-top: 8px;
         }
 
-        /* 2. TEKSTI JASHTË */
         .info-panel {
             text-align: left;
             color: #fff;
@@ -147,7 +143,6 @@
             margin-bottom: 40px;
         }
 
-        /* 3 OPSIONET */
         .trust-list {
             display: flex;
             flex-direction: column;
@@ -186,8 +181,8 @@
         <div class="glass-card">
             <h2>Buy Now</h2>
             <div class="domain-line">
-                <p class="domain-name">locarox.com is for sale now</p>
-                <p class="price">2,390.00 USD</p>
+                <p class="domain-name">dubrent.com is for sale now</p>
+                <p class="price">20,000.00 USD</p>
             </div>
             
             <a href="VENDO_LINKUN_TËND" class="next-btn">Next</a>
@@ -199,7 +194,7 @@
         </div>
 
         <div class="info-panel">
-            <div class="info-domain">locarox.com</div>
+            <div class="info-domain">dubrent.com</div>
             <div class="info-status">is for sale!</div>
             
             <div class="trust-list">
