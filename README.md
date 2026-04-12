@@ -27,6 +27,7 @@
             z-index: 1;
         }
 
+        /* POZICIONIMI QËNDROR I TOTALIT */
         .main-wrapper {
             position: relative;
             z-index: 10;
@@ -34,9 +35,10 @@
             height: 100vh;
             display: flex;
             flex-direction: row;
-            justify-content: space-between; /* Hapësirë maksimale mes elementeve */
-            align-items: center;
-            padding: 0 8%; /* Hapsirë anash */
+            justify-content: center; /* Qëndror horizontalisht */
+            align-items: center;     /* Qëndror vertikalisht */
+            gap: 60px;               /* Hapësira mes pllakatës dhe tekstit */
+            padding: 20px;
             box-sizing: border-box;
             pointer-events: none;
         }
@@ -44,7 +46,7 @@
         /* 1. PLLAKATA E BARDHË */
         .glass-card {
             background: #ffffff;
-            width: 440px; /* Zgjeruar për radhitje më të mirë */
+            width: 440px;
             padding: 45px;
             border-radius: 24px;
             text-align: left;
@@ -73,7 +75,7 @@
             font-weight: 400;
             font-size: 1.1rem;
             margin: 0;
-            white-space: nowrap; /* Ndalon thyerjen e fjalisë */
+            white-space: nowrap;
         }
 
         .glass-card .price {
@@ -121,16 +123,15 @@
             margin-top: 8px;
         }
 
-        /* 2. TEKSTI JASHTË (DJATHAS) */
+        /* 2. TEKSTI JASHTË */
         .info-panel {
-            text-align: right; /* Zhvendosur djathtas */
+            text-align: left; /* Tani në mes, e mbajmë radhitjen majtas për panelin */
             color: #fff;
-            margin-right: 5%;
         }
 
         .info-domain {
             font-family: 'Syncopate', sans-serif;
-            font-size: 4rem; /* Pak më i madh dhe i qartë */
+            font-size: 3.5rem;
             margin: 0;
             letter-spacing: 2px;
             text-transform: lowercase;
@@ -138,40 +139,41 @@
         }
 
         .info-status {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 300;
             opacity: 0.8;
             margin-top: 5px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
-        /* 3 OPSIONET POSHTË SUPPORT */
+        /* 3 OPSIONET */
         .trust-list {
             display: flex;
             flex-direction: column;
-            gap: 25px; /* Hapësirë mes opsioneve */
-            align-items: flex-end;
+            gap: 20px;
+            align-items: flex-start;
         }
 
         .trust-item {
             display: flex;
             align-items: center;
             gap: 15px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: rgba(255,255,255,0.8);
             font-weight: 300;
         }
 
         .trust-item span {
-            font-size: 1.5rem;
-            color: #2ecc71; /* I gjelbër që të përshtatet me butonin */
+            font-size: 1.4rem;
+            color: #2ecc71;
         }
 
-        @media (max-width: 1100px) {
-            .main-wrapper { flex-direction: column; padding: 40px; }
-            .info-panel { text-align: center; margin-right: 0; margin-top: 50px; }
+        @media (max-width: 1000px) {
+            .main-wrapper { flex-direction: column; gap: 40px; }
+            .info-panel { text-align: center; }
             .trust-list { align-items: center; }
-            .glass-card { width: 90%; max-width: 440px; }
+            .glass-card { width: 95%; max-width: 440px; padding: 30px; }
+            .info-domain { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -201,23 +203,22 @@
             
             <div class="trust-list">
                 <div class="trust-item">
-                    Simple, secure purchase & transfer
                     <span class="material-icons">verified_user</span>
+                    Simple, secure purchase & transfer
                 </div>
                 <div class="trust-item">
-                    Trusted by customers globally
                     <span class="material-icons">public</span>
+                    Trusted by customers globally
                 </div>
                 <div class="trust-item">
-                    24/7 dedicated support
                     <span class="material-icons">support_agent</span>
+                    24/7 dedicated support
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // --- SKRIPTI I FISHEKZJARRËVE (I NJËJTI, PA PREKUR ASGJË) ---
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
