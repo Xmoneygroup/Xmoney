@@ -42,42 +42,42 @@
             pointer-events: none;
         }
 
-        /* PLLAKATA APPLE GLASS - E ZGJERUAR DHE MË E HAPUR */
+        /* PLLAKATA 50% MË E MADHE DHE ME BLUR TË LEHTË */
         .glass-card {
-            background: rgba(255, 255, 255, 0.2); /* Më e hapur dhe më e dukshme */
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
-            width: 480px; /* E zgjeruar anash sipas kërkesës */
-            padding: 50px;
-            border-radius: 35px;
+            background: rgba(255, 255, 255, 0.05); /* Shumë transparente që të duken raketat */
+            backdrop-filter: blur(8px); /* Blur i lehtë, jo i dendur */
+            -webkit-backdrop-filter: blur(8px);
+            width: 570px; /* Zmadhuar 50% nga origjinali */
+            padding: 60px; /* Hapësirë e brendshme më e madhe */
+            border-radius: 40px;
             text-align: left;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
             pointer-events: auto;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .glass-card h2 {
             color: #fff;
-            font-size: 1.5rem;
-            margin: 0 0 10px 0;
+            font-size: 2rem; /* Pak më i madh për t'u përshtatur me pllakatën */
+            margin: 0 0 15px 0;
             font-weight: 600;
             letter-spacing: -0.5px;
         }
 
         .glass-card .domain-line {
             display: block;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
         }
 
         .glass-card .domain-name {
-            color: rgba(255,255,255,0.85); /* Teksti pak më i qartë */
+            color: rgba(255,255,255,0.8);
             font-weight: 300;
-            font-size: 0.95rem;
-            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
         }
 
         .glass-card .price {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #fff;
             margin: 0;
@@ -87,18 +87,17 @@
         .next-btn {
             display: block;
             width: 100%;
-            padding: 18px;
+            padding: 20px;
             background: #fff;
             color: #000;
             text-decoration: none;
             font-weight: 600;
-            border-radius: 18px;
+            border-radius: 20px;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             text-align: center;
-            font-size: 1rem;
-            margin-top: 10px;
+            font-size: 1.1rem;
         }
 
         .next-btn:hover {
@@ -107,19 +106,19 @@
         }
 
         .contact-info {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.85rem;
-            margin-top: 35px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            margin-top: 40px;
             text-align: center;
         }
 
         .phone-link {
             color: #fff;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 600;
             display: block;
-            margin-top: 5px;
+            margin-top: 10px;
         }
 
         /* INFO PANEL - I PAPREKUR */
@@ -172,7 +171,7 @@
             .main-wrapper { flex-direction: column; gap: 40px; padding-bottom: 40px; }
             .info-panel { text-align: center; }
             .trust-list { align-items: center; }
-            .glass-card { width: 90%; max-width: 480px; }
+            .glass-card { width: 90%; max-width: 570px; padding: 40px; }
             .info-domain { font-size: 2.5rem; }
         }
     </style>
