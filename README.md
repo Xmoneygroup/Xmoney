@@ -261,55 +261,82 @@
     <script>
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            columns = Math.floor(canvas.width / fontSize);
-            drops = Array(columns).fill(1);
+            init();
         });
 
-        // --- KONFIGURIMI I SHIUT DIGJITAL ---
-        const fontSize = 16;
-        let columns = Math.floor(canvas.width / fontSize);
-        let drops = Array(columns).fill(1);
-
-        function drawCyberRain() {
-            // Krijo efektin e fades (zbehjes) për prapavijën
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Stilimi i "pikave" të shiut
-            ctx.fillStyle = '#00f2ff'; // Ngjyra Cyan që përdor te ikona
-            ctx.font = fontSize + 'px monospace';
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = '#00f2ff';
-
-            for (let i = 0; i < drops.length; i++) {
-                // Përdor shkronja dhe numra random
-                const text = Math.floor(Math.random() * 2); 
-                const x = i * fontSize;
-                const y = drops[i] * fontSize;
-
-                ctx.fillText(text, x, y);
-
-                // Reset pika kur arrin fundin ose me mundësi random
-                if (y > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
+        class Bubble {
+            constructor() {
+                this.init();
             }
-            ctx.shadowBlur = 0; // Hiq shadow për elementet e tjera
+
+            init() {
+                this.radius = Math.random() * 80 + 20;
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+                this.opacity = Math.random() * 0.2 + 0.05;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                
+                // Gradienti për efektin 3D xhami
+                const gradient = ctx.createRadialGradient(
+                    this.x - this.radius/3, this.y - this.radius/3, this.radius/10,
+                    this.x, this.y, this.radius
+                );
+                
+                gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity + 0.1})`);
+                gradient.addColorStop(0.5, `rgba(255, 255, 255, ${this.opacity})`);
+                gradient.addColorStop(1, 'rgba(255, 255, 255, 0.01)');
+
+                ctx.fillStyle = gradient;
+                ctx.strokeStyle = `rgba(255, 255, 255, 0.1)`;
+                ctx.lineWidth = 1;
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < -this.radius) this.x = canvas.width + this.radius;
+                if (this.x > canvas.width + this.radius) this.x = -this.radius;
+                if (this.y < -this.radius) this.y = canvas.height + this.radius;
+                if (this.y > canvas.height + this.radius) this.y = -this.radius;
+            }
+        }
+
+        const bubbles = [];
+        function init() {
+            bubbles.length = 0;
+            const count = (canvas.width * canvas.height) / 30000;
+            for (let i = 0; i < count; i++) {
+                bubbles.push(new Bubble());
+            }
         }
 
         function animate() {
-            drawCyberRain();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Background shtohet direkt nga CSS, këtu fshijmë vetëm canvasin
+            bubbles.forEach(bubble => {
+                bubble.update();
+                bubble.draw();
+            });
             requestAnimationFrame(animate);
         }
 
+        init();
         animate();
     </script>
 </body>
