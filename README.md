@@ -17,15 +17,13 @@
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Canvas tani është mbi gjithçka (z-index i lartë) */
         #canvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 999; 
-            pointer-events: none; /* Lejon klikimin e butonave poshtë tij */
+            z-index: 1;
         }
 
         .main-wrapper {
@@ -41,6 +39,7 @@
             padding: 20px;
             padding-bottom: 180px;
             box-sizing: border-box;
+            pointer-events: none;
         }
 
         .glass-card {
@@ -56,24 +55,156 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .badge-container { display: flex; gap: 12px; margin-bottom: 20px; }
-        .badge { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .verified-badge { background: rgba(0, 242, 255, 0.15); color: #00f2ff; border: 1px solid rgba(0, 242, 255, 0.3); }
-        .premium-badge { background: rgba(255, 215, 0, 0.15); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.3); }
-
-        .glass-card h2 { color: #fff; font-size: 2rem; margin: 0 0 15px 0; font-weight: 600; }
-        .next-btn {
-            display: block; width: 100%; padding: 20px; background: #fff; color: #000;
-            text-decoration: none; font-weight: 600; border-radius: 20px; text-align: center; font-size: 1.1rem;
+        .badge-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
-        .info-panel { text-align: left; color: #fff; }
-        .info-domain { font-family: 'Syncopate', sans-serif; font-size: 3.5rem; margin: 0; text-transform: lowercase; }
-        .info-status { font-size: 1.6rem; font-weight: 300; opacity: 0.8; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 3px; }
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .verified-badge {
+            background: rgba(0, 242, 255, 0.15);
+            color: #00f2ff;
+            border: 1px solid rgba(0, 242, 255, 0.3);
+        }
+
+        .premium-badge {
+            background: rgba(255, 215, 0, 0.15);
+            color: #ffd700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .badge span {
+            font-size: 14px;
+        }
+
+        .glass-card h2 {
+            color: #fff;
+            font-size: 2rem; 
+            margin: 0 0 15px 0;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .glass-card .domain-line {
+            display: block;
+            margin-bottom: 35px;
+        }
+
+        .glass-card .domain-name {
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+        }
+
+        .glass-card .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .next-btn {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .next-btn:hover {
+            background: rgba(255,255,255,0.9);
+            transform: scale(0.98);
+        }
+
+        .contact-info {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .phone-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .info-panel {
+            text-align: left;
+            color: #fff;
+        }
+
+        .info-domain {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            text-shadow: 0 0 30px rgba(255,255,255,0.2);
+        }
+
+        .info-status {
+            font-size: 1.6rem;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-top: 5px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .trust-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+        }
+
+        .trust-item span {
+            font-size: 1.4rem;
+            color: #00f2ff;
+        }
 
         @media (max-width: 1000px) {
-            .main-wrapper { flex-direction: column; gap: 40px; }
-            .glass-card { width: 90%; }
+            .main-wrapper { flex-direction: column; gap: 40px; padding-bottom: 40px; }
+            .info-panel { text-align: center; }
+            .trust-list { align-items: center; }
+            .glass-card { width: 90%; max-width: 570px; padding: 40px; }
+            .info-domain { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -82,29 +213,48 @@
     <canvas id="canvas"></canvas>
 
     <div class="main-wrapper">
-        <div class="glass-card" id="card-target">
+        <div class="glass-card">
             <div class="badge-container">
-                <div class="badge verified-badge"><span class="material-icons">verified</span> verified</div>
-                <div class="badge premium-badge"><span class="material-icons">stars</span> premium domain</div>
+                <div class="badge verified-badge">
+                    <span class="material-icons">verified</span> verified
+                </div>
+                <div class="badge premium-badge">
+                    <span class="material-icons">stars</span> premium domain
+                </div>
             </div>
 
             <h2>Buy Now</h2>
             <div class="domain-line">
-                <p class="domain-name" id="text-target">dubinv.com is for sale now</p>
+                <p class="domain-name">dubinv.com is for sale now</p>
                 <p class="price">20,000 USD</p>
             </div>
             
-            <a href="#" class="next-btn" id="btn-target">Next</a>
+            <a href="VENDO_LINKUN_TËND" class="next-btn">Next</a>
             
             <div class="contact-info">
                 Need help? Give us a call<br>
-                <a href="tel:+389XXXXXXXXX" class="phone-link" style="color:#fff; text-decoration:none; font-size:1.4rem; font-weight:600;">+389 XX XXX XXX</a> 
+                <a href="tel:+389XXXXXXXXX" class="phone-link">+389 XX XXX XXX</a> 
             </div>
         </div>
 
         <div class="info-panel">
-            <div class="info-domain">dubinv.com</div>
+            <div class="info-domain" id="domain-target">dubinv.com</div>
             <div class="info-status">is for sale!</div>
+            
+            <div class="trust-list">
+                <div class="trust-item">
+                    <span class="material-icons">verified_user</span>
+                    Simple, secure purchase & transfer
+                </div>
+                <div class="trust-item">
+                    <span class="material-icons">public</span>
+                    Trusted by customers globally
+                </div>
+                <div class="trust-item">
+                    <span class="material-icons">support_agent</span>
+                    24/7 dedicated support
+                </div>
+            </div>
         </div>
     </div>
 
@@ -119,107 +269,112 @@
             canvas.height = window.innerHeight;
         });
 
+        // --- KLASA E PERSONIT (STICKMAN) ---
         class Person {
             constructor() {
-                this.init();
+                this.reset();
             }
-            init() {
-                this.x = Math.random() < 0.5 ? -50 : canvas.width + 50;
-                this.y = canvas.height * 0.8;
-                this.color = `hsl(${Math.random() * 360}, 100%, 75%)`;
+            reset() {
+                this.x = -50;
+                this.y = canvas.height * 0.7;
                 this.state = 'walking'; // walking, sitting, falling
-                this.waitStart = 0;
-                this.legAngle = 0;
-                this.armAngle = 0;
-                this.fallSpeed = 0;
-                this.target = Math.random() > 0.5 ? 'btn' : 'text';
+                this.waitTimer = 0;
+                this.angle = 0;
+                this.fallY = 0;
+            }
+            update() {
+                const target = document.getElementById('domain-target').getBoundingClientRect();
+                const tx = target.left + target.width / 2;
+                const ty = target.top;
+
+                if (this.state === 'walking') {
+                    this.angle += 0.15;
+                    this.x += (tx - this.x) * 0.02;
+                    this.y += (ty - this.y) * 0.02;
+                    if (Math.abs(this.x - tx) < 5) this.state = 'sitting';
+                } else if (this.state === 'sitting') {
+                    this.waitTimer++;
+                    if (this.waitTimer > 200) this.state = 'falling';
+                } else if (this.state === 'falling') {
+                    this.fallY += 0.5;
+                    this.y += this.fallY;
+                    if (this.y > canvas.height + 100) this.reset();
+                }
             }
             draw() {
                 ctx.save();
-                ctx.strokeStyle = this.color;
-                ctx.lineWidth = 2.5;
+                ctx.strokeStyle = '#00f2ff';
+                ctx.lineWidth = 3;
                 ctx.lineCap = 'round';
 
                 // Koka
                 ctx.beginPath();
-                ctx.arc(this.x, this.y - 25, 6, 0, Math.PI * 2);
+                ctx.arc(this.x, this.y - 30, 7, 0, Math.PI * 2);
                 ctx.stroke();
 
                 // Trupi
                 ctx.beginPath();
-                ctx.moveTo(this.x, this.y - 19);
-                ctx.lineTo(this.x, this.y);
+                ctx.moveTo(this.x, this.y - 23);
+                ctx.lineTo(this.x, this.y - 5);
                 ctx.stroke();
 
-                // Duart (nxitja avash)
-                let armMove = Math.sin(this.armAngle) * 10;
-                ctx.beginPath();
-                ctx.moveTo(this.x, this.y - 15);
-                ctx.lineTo(this.x - 12, this.y - 10 + armMove); // Dora majtas
-                ctx.moveTo(this.x, this.y - 15);
-                ctx.lineTo(this.x + 12, this.y - 10 - armMove); // Dora djathtas
-                ctx.stroke();
-
-                // Këmbët
+                // Duart dhe Këmbët (Animacion)
+                let m = Math.sin(this.angle) * 10;
                 if (this.state === 'sitting') {
+                    // Pozicioni ulur
                     ctx.beginPath();
-                    ctx.moveTo(this.x, this.y); ctx.lineTo(this.x + 8, this.y + 6);
-                    ctx.moveTo(this.x, this.y); ctx.lineTo(this.x - 8, this.y + 6);
+                    ctx.moveTo(this.x, this.y-15); ctx.lineTo(this.x-15, this.y-5); // Dora 1
+                    ctx.moveTo(this.x, this.y-15); ctx.lineTo(this.x+15, this.y-5); // Dora 2
+                    ctx.moveTo(this.x, this.y-5); ctx.lineTo(this.x-10, this.y+5); // Këmba 1
+                    ctx.moveTo(this.x, this.y-5); ctx.lineTo(this.x+10, this.y+5); // Këmba 2
                     ctx.stroke();
                 } else {
-                    let legMove = Math.sin(this.legAngle) * 12;
+                    // Pozicioni duke ecur/rënë
                     ctx.beginPath();
-                    ctx.moveTo(this.x, this.y); ctx.lineTo(this.x - legMove, this.y + 15);
-                    ctx.moveTo(this.x, this.y); ctx.lineTo(this.x + legMove, this.y + 15);
+                    ctx.moveTo(this.x, this.y-18); ctx.lineTo(this.x-12, this.y-10+m); 
+                    ctx.moveTo(this.x, this.y-18); ctx.lineTo(this.x+12, this.y-10-m);
+                    ctx.moveTo(this.x, this.y-5); ctx.lineTo(this.x-8+m, this.y+10);
+                    ctx.moveTo(this.x, this.y-5); ctx.lineTo(this.x+8-m, this.y+10);
                     ctx.stroke();
                 }
                 ctx.restore();
             }
-            update() {
-                const targetEl = document.getElementById(this.target === 'btn' ? 'btn-target' : 'text-target');
-                const rect = targetEl.getBoundingClientRect();
-                const tx = rect.left + rect.width / 2;
-                const ty = rect.top;
-
-                if (this.state === 'walking') {
-                    this.legAngle += 0.05; // Më avash
-                    this.armAngle += 0.05;
-                    this.x += (tx - this.x) * 0.01;
-                    this.y += (ty - this.y) * 0.01;
-                    if (Math.abs(this.x - tx) < 10 && Math.abs(this.y - ty) < 10) {
-                        this.state = 'sitting';
-                        this.waitStart = Date.now();
-                    }
-                } else if (this.state === 'sitting') {
-                    if (Date.now() - this.waitStart > 3000) this.state = 'falling';
-                } else if (this.state === 'falling') {
-                    this.fallSpeed += 0.2;
-                    this.y += this.fallSpeed;
-                    if (this.y > canvas.height + 50) this.init();
-                }
-            }
         }
 
+        const lonePerson = new Person();
+
+        // --- RAKETAT (PA NDRYSHUAR) ---
         class Firework {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = canvas.height;
-                this.targetY = Math.random() * (canvas.height * 0.6);
-                this.speed = 4;
+                this.targetY = Math.random() * (canvas.height * 0.7) + 50;
+                this.speed = 3 + Math.random() * 3;
+                this.angle = -Math.PI / 2 + (Math.random() * 0.4 - 0.2);
+                this.velocity = { x: Math.cos(this.angle) * this.speed, y: Math.sin(this.angle) * this.speed };
+                const rand = Math.random();
+                if (rand > 0.85) this.explosionSize = 150;
+                else if (rand > 0.4) this.explosionSize = 70;
+                else this.explosionSize = 30;
                 this.dead = false;
+                this.trail = [];
             }
             update() {
-                this.y -= this.speed;
+                this.trail.push({x: this.x, y: this.y});
+                if (this.trail.length > 8) this.trail.shift();
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
                 if (this.y <= this.targetY) { this.explode(); this.dead = true; }
             }
             draw() {
-                ctx.beginPath(); ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-                ctx.fillStyle = "#fff"; ctx.fill();
+                ctx.beginPath(); ctx.strokeStyle = "rgba(255, 255, 255, 0.3)"; ctx.lineWidth = 1.5;
+                if(this.trail.length > 0) { ctx.moveTo(this.trail[0].x, this.trail[0].y); ctx.lineTo(this.x, this.y); ctx.stroke(); }
+                ctx.beginPath(); ctx.arc(this.x, this.y, 2, 0, Math.PI * 2); ctx.fillStyle = "#fff"; ctx.fill();
             }
             explode() {
-                const colors = ['#00f2ff', '#00ffaa', '#ff00ee', '#ffff00'];
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                for (let i = 0; i < 40; i++) { particles.push(new Particle(this.x, this.y, color)); }
+                const neonColors = ['#00f2ff', '#00ffaa', '#ff00ee', '#ffff00', '#ff3300', '#4d4dff', '#ffffff'];
+                const color = neonColors[Math.floor(Math.random() * neonColors.length)];
+                for (let i = 0; i < this.explosionSize; i++) { particles.push(new Particle(this.x, this.y, color)); }
             }
         }
 
@@ -227,36 +382,35 @@
             constructor(x, y, color) {
                 this.x = x; this.y = y; this.color = color;
                 const angle = Math.random() * Math.PI * 2;
-                const force = Math.random() * 8;
+                const force = Math.random() * 11;
                 this.velocity = { x: Math.cos(angle) * force, y: Math.sin(angle) * force };
-                this.alpha = 1;
+                this.alpha = 1; this.friction = 0.94; this.gravity = 0.15; this.size = Math.random() * 3 + 1;
             }
             draw() {
                 ctx.save(); ctx.globalAlpha = this.alpha; ctx.beginPath();
-                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2); ctx.fillStyle = this.color;
-                ctx.fill(); ctx.restore();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = this.color;
+                ctx.shadowBlur = 12; ctx.shadowColor = this.color; ctx.fill(); ctx.restore();
             }
             update() {
-                this.x += this.velocity.x; this.y += this.velocity.y;
-                this.velocity.y += 0.1; // Graviteti
-                this.alpha -= 0.01;
+                this.velocity.x *= this.friction; this.velocity.y *= this.friction; this.velocity.y += this.gravity;
+                this.x += this.velocity.x; this.y += this.velocity.y; this.alpha -= 0.01;
             }
         }
 
-        let people = [new Person(), new Person(), new Person()];
-        let fireworks = [];
-        let particles = [];
+        let fireworks = []; let particles = [];
 
         function animate() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)'; 
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.18)'; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Raketat shfaqen gjatë gjithë kohës
-            if (Math.random() < 0.05) fireworks.push(new Firework());
-
-            fireworks.forEach((fw, i) => { fw.update(); fw.draw(); if (fw.dead) fireworks.splice(i, 1); });
-            particles.forEach((p, i) => { p.update(); p.draw(); if (p.alpha <= 0) particles.splice(i, 1); });
-            people.forEach(p => { p.update(); p.draw(); });
+            
+            // Raketat
+            if (Math.random() < 0.07) { fireworks.push(new Firework()); }
+            fireworks.forEach((fw, index) => { fw.update(); fw.draw(); if (fw.dead) fireworks.splice(index, 1); });
+            particles.forEach((p, index) => { p.update(); p.draw(); if (p.alpha <= 0) particles.splice(index, 1); });
+            
+            // Personi (Gjithmonë sipër raketave)
+            lonePerson.update();
+            lonePerson.draw();
 
             requestAnimationFrame(animate);
         }
