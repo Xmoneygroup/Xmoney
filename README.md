@@ -7,7 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;400;600;700&display=swap');
 
-        /* STYLE PËR PRELOADER */
+        /* --- STILI I RI: PRELOADER --- */
         #preloader {
             position: fixed;
             top: 0;
@@ -19,7 +19,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
+            z-index: 9999; /* Sigurohet që është mbi çdo gjë */
             transition: opacity 0.8s ease, visibility 0.8s;
         }
 
@@ -65,7 +65,7 @@
             visibility: hidden;
         }
 
-        /* STILI EKZISTUES */
+        /* --- STILI JOT EKZISTUES (I paprekur) --- */
         body, html {
             margin: 0;
             padding: 0;
@@ -135,32 +135,37 @@
         .verified-badge { background: rgba(0, 242, 255, 0.15); color: #00f2ff; border: 1px solid rgba(0, 242, 255, 0.3); }
         .premium-badge { background: rgba(255, 215, 0, 0.15); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.3); }
 
-        .glass-card h2 { color: #fff; font-size: 2rem; margin: 0 0 15px 0; font-weight: 600; }
+        .glass-card h2 { color: #fff; font-size: 2rem; margin: 0 0 15px 0; font-weight: 600; letter-spacing: -0.5px; }
         .glass-card .domain-line { display: block; margin-bottom: 35px; }
-        .glass-card .domain-name { color: rgba(255,255,255,0.8); font-size: 1.1rem; }
-        .glass-card .price { font-size: 1.8rem; font-weight: 700; color: #fff; }
+        .glass-card .domain-name { color: rgba(255,255,255,0.8); font-weight: 300; font-size: 1.1rem; margin: 0 0 8px 0; }
+        .glass-card .price { font-size: 1.8rem; font-weight: 700; color: #fff; margin: 0; letter-spacing: 0.5px; }
 
         .next-btn {
             display: block; width: 100%; padding: 20px; background: #fff; color: #000;
             text-decoration: none; font-weight: 600; border-radius: 20px;
-            transition: all 0.3s ease; text-align: center;
+            transition: all 0.3s ease; border: none; cursor: pointer;
+            text-align: center; font-size: 1.1rem;
         }
+
+        .next-btn:hover { background: rgba(255,255,255,0.9); transform: scale(0.98); }
 
         .contact-info { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-top: 40px; text-align: center; }
         .phone-link { color: #fff; text-decoration: none; font-size: 1.4rem; font-weight: 600; display: block; margin-top: 10px; }
 
         .info-panel { text-align: left; color: #fff; }
-        .info-domain { font-family: 'Syncopate', sans-serif; font-size: 3.5rem; text-transform: lowercase; }
-        .info-status { font-size: 1.6rem; opacity: 0.8; letter-spacing: 3px; }
+        .info-domain { font-family: 'Syncopate', sans-serif; font-size: 3.5rem; margin: 0; letter-spacing: 2px; text-transform: lowercase; text-shadow: 0 0 30px rgba(255,255,255,0.2); }
+        .info-status { font-size: 1.6rem; font-weight: 300; opacity: 0.8; margin-top: 5px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 3px; }
 
-        .trust-list { display: flex; flex-direction: column; gap: 20px; margin-top: 20px; }
-        .trust-item { display: flex; align-items: center; gap: 15px; color: rgba(255,255,255,0.8); }
-        .trust-item span { color: #00f2ff; }
+        .trust-list { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+        .trust-item { display: flex; align-items: center; gap: 15px; font-size: 1rem; color: rgba(255,255,255,0.8); font-weight: 300; }
+        .trust-item span { font-size: 1.4rem; color: #00f2ff; }
 
         @media (max-width: 1000px) {
             .main-wrapper { flex-direction: column; gap: 40px; padding-bottom: 40px; }
             .info-panel { text-align: center; }
-            .glass-card { width: 90%; padding: 40px; }
+            .trust-list { align-items: center; }
+            .glass-card { width: 90%; max-width: 570px; padding: 40px; }
+            .info-domain { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -209,64 +214,85 @@
     </div>
 
     <script>
-        // SCRIPT PËR PRELOADER
+        // --- SCRIPT PER PRELOADERIN ---
         window.addEventListener('load', () => {
             setTimeout(() => {
-                document.getElementById('preloader').classList.add('preloader-hidden');
-            }, 1500); // Faqja hapet pas 1.5 sekondash
+                const loader = document.getElementById('preloader');
+                loader.classList.add('preloader-hidden');
+            }, 1500); // 1.5 sekonda vonesë që të duket bukur
         });
 
-        // SCRIPT PËR CANVAS (3D BUBBLES)
+        // --- SCRIPT PER RAKETAT (I paprekur) ---
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            init();
         });
 
-        class Bubble {
-            constructor() { this.init(); }
-            init() {
-                this.radius = Math.random() * 80 + 20;
+        class Firework {
+            constructor() {
                 this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.opacity = Math.random() * 0.15 + 0.05;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                const g = ctx.createRadialGradient(this.x-this.radius/3, this.y-this.radius/3, this.radius/10, this.x, this.y, this.radius);
-                g.addColorStop(0, `rgba(255, 255, 255, ${this.opacity + 0.1})`);
-                g.addColorStop(1, 'rgba(255, 255, 255, 0.01)');
-                ctx.fillStyle = g;
-                ctx.fill();
+                this.y = canvas.height;
+                this.targetY = Math.random() * (canvas.height * 0.7) + 50;
+                this.speed = 3 + Math.random() * 3;
+                this.angle = -Math.PI / 2 + (Math.random() * 0.4 - 0.2);
+                this.velocity = { x: Math.cos(this.angle) * this.speed, y: Math.sin(this.angle) * this.speed };
+                const rand = Math.random();
+                if (rand > 0.85) this.explosionSize = 150;
+                else if (rand > 0.4) this.explosionSize = 70;
+                else this.explosionSize = 30;
+                this.dead = false;
+                this.trail = [];
             }
             update() {
-                this.x += this.vx; this.y += this.vy;
-                if (this.x < -this.radius) this.x = canvas.width + this.radius;
-                if (this.x > canvas.width + this.radius) this.x = -this.radius;
-                if (this.y < -this.radius) this.y = canvas.height + this.radius;
-                if (this.y > canvas.height + this.radius) this.y = -this.radius;
+                this.trail.push({x: this.x, y: this.y});
+                if (this.trail.length > 8) this.trail.shift();
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                if (this.y <= this.targetY) { this.explode(); this.dead = true; }
+            }
+            draw() {
+                ctx.beginPath(); ctx.strokeStyle = "rgba(255, 255, 255, 0.3)"; ctx.lineWidth = 1.5;
+                if(this.trail.length > 0) { ctx.moveTo(this.trail[0].x, this.trail[0].y); ctx.lineTo(this.x, this.y); ctx.stroke(); }
+                ctx.beginPath(); ctx.arc(this.x, this.y, 2, 0, Math.PI * 2); ctx.fillStyle = "#fff"; ctx.fill();
+            }
+            explode() {
+                const neonColors = ['#00f2ff', '#00ffaa', '#ff00ee', '#ffff00', '#ff3300', '#4d4dff', '#ffffff'];
+                const color = neonColors[Math.floor(Math.random() * neonColors.length)];
+                for (let i = 0; i < this.explosionSize; i++) { particles.push(new Particle(this.x, this.y, color)); }
             }
         }
 
-        const bubbles = [];
-        function init() {
-            bubbles.length = 0;
-            for (let i = 0; i < 15; i++) { bubbles.push(new Bubble()); }
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x; this.y = y; this.color = color;
+                const angle = Math.random() * Math.PI * 2;
+                const force = Math.random() * 11;
+                this.velocity = { x: Math.cos(angle) * force, y: Math.sin(angle) * force };
+                this.alpha = 1; this.friction = 0.94; this.gravity = 0.15; this.size = Math.random() * 3 + 1;
+            }
+            draw() {
+                ctx.save(); ctx.globalAlpha = this.alpha; ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = this.color;
+                ctx.shadowBlur = 12; ctx.shadowColor = this.color; ctx.fill(); ctx.restore();
+            }
+            update() {
+                this.velocity.x *= this.friction; this.velocity.y *= this.friction; this.velocity.y += this.gravity;
+                this.x += this.velocity.x; this.y += this.velocity.y; this.alpha -= 0.01;
+            }
         }
+
+        let fireworks = []; let particles = [];
         function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            bubbles.forEach(b => { b.update(); b.draw(); });
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.18)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            if (Math.random() < 0.07) { fireworks.push(new Firework()); }
+            fireworks.forEach((fw, index) => { fw.update(); fw.draw(); if (fw.dead) fireworks.splice(index, 1); });
+            particles.forEach((p, index) => { p.update(); p.draw(); if (p.alpha <= 0) particles.splice(index, 1); });
             requestAnimationFrame(animate);
         }
-        init();
         animate();
     </script>
 </body>
