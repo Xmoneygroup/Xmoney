@@ -5,52 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MkdMap - Welcome to Macedonia</title>
     <style>
-        /* --- STILI PËR ANIMACIONIN HYRËS (SPLASH SCREEN) --- */
+        /* --- STILI PËR EKRANIN HYRËS (SPLASH SCREEN) --- */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: #0f172a; /* Ngjyrë e errët elegante slate-900 */
+            background-color: #0f172a;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s;
+            opacity: 1;
+            transition: opacity 0.5s ease;
         }
 
         .splash-text {
             color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-family: sans-serif;
+            font-size: 2.2rem;
+            font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease forwards;
+            text-align: center;
+            padding: 0 20px;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Klasa që do të aktivizohet nga JavaScript pas 2 sekondave */
-        .fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        /* --- STILI PËR FAQEN KRYESORE (HOME PAGE) --- */
+        /* --- STILI PËR FAQEN KRYESORE --- */
         body {
             margin: 0;
             padding: 0;
-            background-color: #f8fafc; /* Sfond i hapur dhe i pastër */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            font-family: sans-serif;
         }
 
         header {
@@ -65,8 +52,8 @@
 
         .main-title {
             margin: 0;
-            font-size: 1.5rem; /* Madhësi mesatare/e vogël, shumë elegante */
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: bold;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #0f172a;
@@ -81,30 +68,32 @@
 </head>
 <body>
 
-    <!-- 1. EKRANI HYRËS (SPLASH SCREEN) -->
+    <!-- 1. SPLASH SCREEN -->
     <div id="splash-screen">
         <div class="splash-text">Welcome to Macedonia</div>
     </div>
 
-    <!-- 2. FAQJA KRYESORE (HOME PAGE) -->
+    <!-- 2. HOME PAGE -->
     <header>
         <h1 class="main-title">mkdmap</h1>
     </header>
 
     <main>
         <div class="content-placeholder">
-            <p>Hapi i parë u krye me sukses. Faqja kryesore po pret pjesën tjetër...</p>
+            <p>Faqja u ngarkua me sukses në GitHub! Po presim instruksionet e radhës...</p>
         </div>
     </main>
 
-    <!-- 3. SCRIPT-I PËR ANIMACIONIN 2 SEKONDA -->
+    <!-- 3. ANIMACIONI 2 SEKONDA -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Presim saktësisht 2 sekonda (2000 milisekonda) para se të nisë zbehja
+        window.addEventListener("DOMContentLoaded", function() {
             setTimeout(function() {
-                const splash = document.getElementById("splash-screen");
-                splash.classList.add("fade-out");
-            }, 2000);
+                var splash = document.getElementById("splash-screen");
+                splash.style.opacity = "0";
+                setTimeout(function() {
+                    splash.style.display = "none";
+                }, 500); // kjo e heq plotësisht pasi bëhet transparente
+            }, 2000); // 2 sekonda vonesë
         });
     </script>
 
