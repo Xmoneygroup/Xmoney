@@ -5,372 +5,477 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>MKDMAP — Zbulo Maqedoninë</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@300;400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --gold:#C9A84C;--gold2:#e8c96a;
-  --ink:#050505;--ink2:#0f0f0f;--ink3:#1a1a1a;
-  --stone:#666;--stone2:#999;
+  --gold:#C9A84C;--gold2:#e8c96a;--gold3:rgba(201,168,76,0.12);
+  --bg:#06080f;--bg2:#0b0e18;--bg3:#101420;
+  --surface:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.07);
+  --bordergold:rgba(201,168,76,0.25);
+  --text:#f0f0f0;--text2:rgba(255,255,255,0.5);--text3:rgba(255,255,255,0.25);
 }
 html{scroll-behavior:smooth;cursor:none}
-body{background:var(--ink);color:#fff;font-family:'Syne',sans-serif;font-weight:300;overflow-x:hidden}
-#cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .2s;mix-blend-mode:difference}
-#cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,168,76,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:300;overflow-x:hidden;line-height:1.6}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,5,0.85);backdrop-filter:blur(20px);border-bottom:.5px solid rgba(255,255,255,.06)}
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;letter-spacing:.15em;color:#fff;text-decoration:none;text-transform:uppercase}
-.nav-logo span{color:var(--gold)}
-.nav-right{display:flex;align-items:center;gap:2.5rem}
-.nav-link{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
-.nav-link:hover{color:var(--gold)}
-.nav-cta{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;padding:9px 22px;border:.5px solid rgba(201,168,76,.4);color:var(--gold);background:transparent;cursor:none;font-family:'Syne',sans-serif;transition:all .25s}
-.nav-cta:hover{background:var(--gold);color:var(--ink)}
+/* CURSOR */
+#cur{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s}
+#cur-r{position:fixed;width:32px;height:32px;border:1px solid rgba(201,168,76,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
 
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;perspective:1000px}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.055) 1px,transparent 1px);background-size:55px 55px;transform:rotateX(52deg) scale(2.8) translateY(22%);transform-origin:center bottom;animation:gp 6s ease-in-out infinite}
-@keyframes gp{0%,100%{opacity:.35}50%{opacity:.7}}
-.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 15%,rgba(5,5,5,.95) 70%)}
-.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(201,168,76,.1) 0%,transparent 65%);pointer-events:none}
-.hero-content{position:relative;z-index:2;text-align:center;animation:hIn 1.2s cubic-bezier(.16,1,.3,1) forwards;opacity:0}
-@keyframes hIn{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
-.hero-tag{display:inline-flex;align-items:center;gap:12px;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;font-weight:400}
-.hero-tag::before,.hero-tag::after{content:'';width:28px;height:.5px;background:var(--gold);opacity:.5}
-.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(4rem,11vw,9.5rem);font-weight:400;line-height:.88;letter-spacing:-.02em;color:#fff;margin-bottom:1.5rem}
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  padding:1.2rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(6,8,15,0.9);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+}
+.logo{
+  font-family:'Playfair Display',serif;font-weight:500;
+  font-size:1.5rem;color:#fff;text-decoration:none;letter-spacing:.02em;
+}
+.logo b{color:var(--gold);font-weight:500}
+.nav-c{display:flex;align-items:center;gap:2rem}
+.nav-a{font-size:.72rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .2s}
+.nav-a:hover{color:var(--gold)}
+/* lang selector */
+.lang-sel{position:relative}
+.lang-btn{
+  display:flex;align-items:center;gap:6px;
+  background:var(--surface);border:1px solid var(--border);
+  padding:6px 14px;cursor:none;color:var(--text2);
+  font-family:'Inter',sans-serif;font-size:.68rem;font-weight:400;
+  letter-spacing:.1em;text-transform:uppercase;transition:all .2s;
+}
+.lang-btn:hover,.lang-btn.open{border-color:var(--bordergold);color:var(--gold)}
+.lang-btn svg{width:12px;height:12px;transition:transform .2s}
+.lang-btn.open svg{transform:rotate(180deg)}
+.lang-drop{
+  position:absolute;top:calc(100% + 8px);right:0;
+  background:var(--bg2);border:1px solid var(--border);
+  min-width:200px;display:none;flex-direction:column;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);z-index:100;
+  max-height:320px;overflow-y:auto;
+}
+.lang-drop.open{display:flex}
+.lang-opt{
+  padding:10px 16px;font-size:.72rem;color:var(--text2);
+  cursor:none;transition:all .15s;display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.lang-opt:hover{background:var(--gold3);color:#fff}
+.lang-opt.active{color:var(--gold)}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  padding:8rem 2rem 5rem;
+}
+/* Animated starfield bg */
+.hero-stars{position:absolute;inset:0;overflow:hidden}
+.hero-stars::before,.hero-stars::after{
+  content:'';position:absolute;
+  width:2px;height:2px;background:#fff;border-radius:50%;
+  box-shadow:
+    80px 120px 0 rgba(255,255,255,.6),
+    200px 80px 0 rgba(255,255,255,.3),
+    350px 200px 0 rgba(255,255,255,.5),
+    500px 50px 0 rgba(255,255,255,.4),
+    650px 300px 0 rgba(255,255,255,.2),
+    800px 150px 0 rgba(255,255,255,.5),
+    900px 400px 0 rgba(255,255,255,.3),
+    1100px 100px 0 rgba(255,255,255,.4),
+    1300px 350px 0 rgba(255,255,255,.2),
+    150px 450px 0 rgba(255,255,255,.3),
+    450px 500px 0 rgba(255,255,255,.5),
+    700px 480px 0 rgba(255,255,255,.2),
+    1000px 500px 0 rgba(255,255,255,.4),
+    250px 300px 0 rgba(255,255,255,.6),
+    600px 380px 0 rgba(255,255,255,.3),
+    1150px 430px 0 rgba(255,255,255,.5),
+    50px 600px 0 rgba(255,255,255,.2),
+    380px 620px 0 rgba(255,255,255,.4),
+    750px 580px 0 rgba(255,255,255,.3),
+    1050px 650px 0 rgba(255,255,255,.5);
+}
+/* 3D Grid floor */
+.hero-floor{
+  position:absolute;bottom:0;left:0;right:0;height:55%;
+  background:
+    linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);
+  background-size:50px 50px;
+  transform:perspective(500px) rotateX(60deg);
+  transform-origin:center bottom;
+  mask-image:linear-gradient(to bottom,transparent,rgba(0,0,0,.6));
+}
+/* Glowing orb */
+.hero-orb{
+  position:absolute;top:40%;left:50%;
+  transform:translate(-50%,-50%);
+  width:500px;height:500px;
+  background:radial-gradient(ellipse,rgba(201,168,76,.07) 0%,transparent 65%);
+  pointer-events:none;animation:orb 6s ease-in-out infinite;
+}
+@keyframes orb{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-55%) scale(1.1)}}
+
+.hero-content{position:relative;z-index:2;text-align:center;max-width:760px;animation:hIn 1s cubic-bezier(.16,1,.3,1) both}
+@keyframes hIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);
+  padding:6px 18px;margin-bottom:2.5rem;
+  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:400;
+}
+.hero-badge::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,8vw,7.5rem);font-weight:500;
+  line-height:.92;letter-spacing:-.01em;color:#fff;
+  margin-bottom:1.5rem;
+}
 .hero-h1 em{font-style:italic;color:var(--gold)}
-.hero-sub{font-size:.82rem;color:rgba(255,255,255,.35);letter-spacing:.06em;line-height:2.1;margin-bottom:3.5rem;font-weight:300;max-width:380px;margin-left:auto;margin-right:auto}
-.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-p{background:var(--gold);color:var(--ink);border:none;padding:14px 38px;font-family:'Syne',sans-serif;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;cursor:none;transition:all .25s}
-.btn-p:hover{background:var(--gold2);transform:translateY(-2px)}
-.btn-g{background:transparent;color:rgba(255,255,255,.5);border:.5px solid rgba(255,255,255,.12);padding:14px 38px;font-family:'Syne',sans-serif;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;cursor:none;transition:all .25s}
-.btn-g:hover{border-color:var(--gold);color:var(--gold)}
-.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);animation:sb 2s ease-in-out infinite}
-@keyframes sb{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
-.scroll-line{width:.5px;height:38px;background:linear-gradient(var(--gold),transparent)}
+.hero-p{
+  font-size:.9rem;color:var(--text2);line-height:1.9;
+  margin-bottom:1rem;font-weight:300;max-width:480px;margin-left:auto;margin-right:auto;
+}
+/* Promo text */
+.hero-promo{
+  background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.18);
+  padding:1rem 1.5rem;margin:1.5rem auto 2.5rem;max-width:560px;
+  font-size:.78rem;color:rgba(255,255,255,.7);line-height:1.8;font-weight:300;
+  position:relative;
+}
+.hero-promo::before{content:'"';font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);position:absolute;top:-12px;left:14px;line-height:1}
+.hero-promo-note{font-size:.65rem;color:var(--gold);margin-top:.5rem;display:block;letter-spacing:.08em}
 
-.stats-bar{background:var(--ink2);border-top:.5px solid rgba(255,255,255,.05);border-bottom:.5px solid rgba(255,255,255,.05);padding:2.25rem 3rem;display:flex;justify-content:center;gap:6rem;flex-wrap:wrap}
-.stat-i{text-align:center}
-.stat-n{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:400;color:#fff;display:block;line-height:1}
-.stat-n span{color:var(--gold)}
-.stat-l{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--stone2);margin-top:6px;display:block}
+.hero-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.btn-main{background:var(--gold);color:#050505;border:none;padding:13px 34px;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;cursor:none;transition:all .25s}
+.btn-main:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(201,168,76,.25)}
+.btn-out{background:transparent;color:var(--text2);border:1px solid var(--border);padding:13px 34px;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;cursor:none;transition:all .25s}
+.btn-out:hover{border-color:var(--bordergold);color:var(--gold)}
 
-.s-ey{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
-.s-ti{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:400;color:#fff;line-height:1.1;margin-bottom:.75rem}
-.s-ti em{font-style:italic;color:var(--gold)}
-.s-div{width:36px;height:.5px;background:var(--gold);opacity:.5;margin-bottom:3rem}
+/* STATS */
+.stats{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 3rem;display:flex;justify-content:center;gap:5rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:500;color:#fff;display:block;line-height:1}
+.stat-n em{font-style:normal;color:var(--gold)}
+.stat-l{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-top:6px;display:block}
 
-.cat-wrap{background:var(--ink2);padding:7rem 3rem}
-.cat-inner{max-width:1200px;margin:0 auto}
-.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.03);margin-top:3rem}
-.cat-tile{background:var(--ink2);padding:2.5rem 2rem;border:.5px solid rgba(255,255,255,.04);cursor:none;position:relative;overflow:hidden;transition:all .4s cubic-bezier(.16,1,.3,1);text-decoration:none;display:block}
-.cat-tile::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.cat-tile:hover{background:rgba(201,168,76,.04);border-color:rgba(201,168,76,.18);transform:translateY(-5px)}
-.cat-tile:hover::after{transform:scaleX(1)}
-.cat-tile:hover .ct-ico{transform:scale(1.12) rotate(-5deg)}
-.ct-n{position:absolute;top:.75rem;right:1.5rem;font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:400;color:rgba(255,255,255,.03);line-height:1;transition:all .4s}
-.cat-tile:hover .ct-n{color:rgba(201,168,76,.08)}
-.ct-ico{font-size:2rem;display:block;margin-bottom:1.5rem;transition:transform .4s}
-.ct-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;color:#fff;display:block;margin-bottom:.25rem}
-.ct-cnt{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--stone2)}
+/* SECTION WRAP */
+.sw{padding:6rem 2.5rem}
+.si{max-width:1200px;margin:0 auto}
+.sey{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.sti{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.8rem);font-weight:500;color:#fff;line-height:1.15;margin-bottom:.6rem}
+.sti em{font-style:italic;color:var(--gold)}
+.sdiv{width:32px;height:1px;background:var(--gold);opacity:.4;margin-bottom:3rem}
 
-.biz-section{background:var(--ink);padding:7rem 3rem}
-.biz-inner{max-width:1200px;margin:0 auto}
-.fbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:3rem}
-.fp{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:8px 18px;border:.5px solid rgba(255,255,255,.1);background:transparent;color:rgba(255,255,255,.38);cursor:none;font-family:'Syne',sans-serif;transition:all .2s}
-.fp.active,.fp:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
-.biz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
-.bc{background:var(--ink2);border:.5px solid rgba(255,255,255,.07);transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;transform-style:preserve-3d}
-.bc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.06),transparent);opacity:0;transition:opacity .4s;pointer-events:none}
-.bc:hover{border-color:rgba(201,168,76,.28);box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 0 .5px rgba(201,168,76,.1)}
-.bc:hover::before{opacity:1}
-.bc-head{padding:1.75rem 1.75rem 1.25rem;border-bottom:.5px solid rgba(255,255,255,.05);display:flex;gap:1rem;align-items:flex-start}
-.bc-ico{width:50px;height:50px;border:.5px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;background:rgba(255,255,255,.02)}
-.bc-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;color:#fff;margin-bottom:4px;line-height:1.2}
-.bc-cat{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
-.bc-score{margin-left:auto;flex-shrink:0;text-align:right}
-.bc-sn{font-family:'Playfair Display',serif;font-size:1.4rem;color:#fff;display:block;line-height:1}
-.bc-ss{font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone2);margin-top:2px}
-.bc-body{padding:1.25rem 1.75rem}
-.bc-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.5}
-.bc-ri{font-size:.72rem;flex-shrink:0;margin-top:1px;opacity:.45}
-.bc-foot{padding:1rem 1.75rem;border-top:.5px solid rgba(255,255,255,.05);display:flex;gap:8px}
-.abtn{flex:1;padding:11px 0;font-family:'Syne',sans-serif;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;cursor:none;border:none;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;transition:all .2s;font-weight:500}
-.acall{background:var(--gold);color:var(--ink)}
-.acall:hover{background:var(--gold2)}
-.amap{background:rgba(255,255,255,.04);color:rgba(255,255,255,.5);border:.5px solid rgba(255,255,255,.08)}
-.amap:hover{background:rgba(255,255,255,.09);color:#fff}
-.bstat{font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;padding:3px 9px}
-.bopen{background:rgba(50,180,100,.09);color:#4dc87a;border:.5px solid rgba(50,180,100,.18)}
-.bclosed{background:rgba(200,50,50,.09);color:#e06060;border:.5px solid rgba(200,50,50,.18)}
+/* CATEGORIES GRID */
+.cat-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:1px;background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  perspective:1000px;
+}
+.ct{
+  background:var(--bg2);padding:2.25rem 1.5rem;
+  border:1px solid transparent;
+  cursor:none;position:relative;overflow:hidden;
+  transition:all .4s cubic-bezier(.16,1,.3,1);
+  text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.ct::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.07),transparent 60%);opacity:0;transition:opacity .4s}
+.ct:hover{background:rgba(255,255,255,.03);border-color:var(--bordergold);transform:translateY(-6px) scale(1.02);z-index:2;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.ct:hover::before{opacity:1}
+.ct:hover .ct-ico{transform:scale(1.15) translateY(-3px)}
+.ct:hover .ct-arrow{opacity:1;transform:translateX(0)}
+.ct-ico{font-size:1.8rem;margin-bottom:1rem;display:block;transition:transform .4s;filter:drop-shadow(0 0 8px rgba(201,168,76,.3))}
+.ct-name{font-size:.8rem;font-weight:500;color:#fff;margin-bottom:.25rem;letter-spacing:.02em}
+.ct-sub{font-size:.62rem;color:var(--text3);letter-spacing:.08em}
+.ct-arrow{font-size:.7rem;color:var(--gold);margin-top:.75rem;opacity:0;transform:translateX(-6px);transition:all .3s}
 
-.cities-wrap{background:var(--ink2);padding:7rem 3rem}
-.cities-inner{max-width:1200px;margin:0 auto}
-.city-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.03);margin-top:3rem}
-.cblock{padding:3rem 2.5rem;background:var(--ink2);border:.5px solid rgba(255,255,255,.04);cursor:none;transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
-.cblock::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.cblock:hover::after{transform:scaleX(1)}
-.cblock:hover{background:rgba(201,168,76,.025)}
-.cb-n{position:absolute;top:-12px;right:1.5rem;font-family:'Playfair Display',serif;font-size:6rem;font-weight:400;color:rgba(255,255,255,.025);line-height:1;user-select:none}
-.cb-name{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:400;color:#fff;margin-bottom:.35rem}
-.cb-reg{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--stone2);margin-bottom:1.25rem}
-.cb-cnt{font-size:.7rem;color:var(--gold);display:flex;align-items:center;gap:10px}
-.cb-cnt::before{content:'';width:18px;height:.5px;background:var(--gold)}
+/* CATEGORIES FULL LIST */
+.cat-full{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.03);border:1px solid var(--border);margin-top:1px}
 
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(24px);z-index:500;display:none;align-items:center;justify-content:center;padding:2rem}
-.modal-bg.open{display:flex}
-.modal{background:var(--ink2);border:.5px solid rgba(201,168,76,.18);width:100%;max-width:580px;max-height:88vh;overflow-y:auto;animation:mIn .4s cubic-bezier(.16,1,.3,1) forwards}
-@keyframes mIn{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:none}}
-.m-head{padding:2rem 2.5rem 1.5rem;border-bottom:.5px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--ink2);z-index:2}
-.m-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;color:#fff}
-.m-sub{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-top:3px}
-.m-close{background:none;border:.5px solid rgba(255,255,255,.1);width:36px;height:36px;cursor:none;color:rgba(255,255,255,.4);font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:'Syne',sans-serif}
-.m-close:hover{border-color:var(--gold);color:var(--gold)}
-.m-body{padding:2rem 2.5rem}
-.m-list{display:flex;flex-direction:column;gap:1rem}
-.m-biz{background:rgba(255,255,255,.025);border:.5px solid rgba(255,255,255,.06);padding:1.5rem;transition:border-color .2s}
-.m-biz:hover{border-color:rgba(201,168,76,.22)}
-.m-btop{display:flex;align-items:flex-start;gap:1rem;margin-bottom:.75rem}
-.m-ico{width:44px;height:44px;border:.5px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
-.m-name{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;line-height:1.2;margin-bottom:3px}
-.m-sub2{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
-.m-score{margin-left:auto;font-family:'Playfair Display',serif;font-size:1.25rem;color:#fff}
-.m-info{font-size:.76rem;color:rgba(255,255,255,.38);line-height:1.9;margin-bottom:1rem}
-.m-btns{display:flex;gap:8px}
-.mb-call{flex:1;padding:11px;background:var(--gold);color:var(--ink);border:none;font-family:'Syne',sans-serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;cursor:none;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s;text-decoration:none}
-.mb-call:hover{background:var(--gold2)}
-.mb-map{flex:1;padding:11px;background:rgba(255,255,255,.04);color:rgba(255,255,255,.5);border:.5px solid rgba(255,255,255,.08);font-family:'Syne',sans-serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;cursor:none;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;text-decoration:none}
-.mb-map:hover{background:rgba(255,255,255,.09);color:#fff}
+/* HOW IT WORKS */
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.how-card{
+  background:var(--bg2);border:1px solid var(--border);padding:2.5rem 2rem;
+  position:relative;transition:all .35s cubic-bezier(.16,1,.3,1);
+}
+.how-card:hover{border-color:var(--bordergold);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.how-n{font-family:'Playfair Display',serif;font-size:4rem;font-weight:500;color:rgba(201,168,76,.08);position:absolute;top:.5rem;right:1.5rem;line-height:1}
+.how-ico{font-size:1.75rem;margin-bottom:1.25rem;display:block}
+.how-title{font-size:.9rem;font-weight:500;color:#fff;margin-bottom:.5rem}
+.how-desc{font-size:.78rem;color:var(--text2);line-height:1.8}
 
-footer{background:var(--ink);border-top:.5px solid rgba(255,255,255,.05);padding:4.5rem 3rem 2.5rem}
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:4rem 2.5rem 2rem}
 .ft{max-width:1200px;margin:0 auto}
-.ft-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;padding-bottom:3rem;border-bottom:.5px solid rgba(255,255,255,.05)}
-.ft-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;letter-spacing:.15em;color:#fff;text-transform:uppercase}
-.ft-logo span{color:var(--gold)}
-.ft-desc{font-size:.72rem;color:var(--stone2);margin-top:.5rem;max-width:240px;line-height:1.9}
-.ft-links{display:flex;gap:3rem;flex-wrap:wrap}
-.ft-ct{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.ft-col a{display:block;font-size:.72rem;color:var(--stone2);text-decoration:none;margin-bottom:.6rem;transition:color .2s}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+.ft-logo{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:500;color:#fff;margin-bottom:.75rem}
+.ft-logo b{color:var(--gold);font-weight:500}
+.ft-desc{font-size:.75rem;color:var(--text3);line-height:1.9;max-width:240px}
+.ft-col-t{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+.ft-col a{display:block;font-size:.75rem;color:var(--text3);text-decoration:none;margin-bottom:.6rem;transition:color .2s}
 .ft-col a:hover{color:#fff}
-.ft-bot{max-width:1200px;margin:2rem auto 0;display:flex;justify-content:space-between;font-size:.58rem;letter-spacing:.06em;color:rgba(255,255,255,.14);flex-wrap:wrap;gap:.5rem}
+.ft-bot{display:flex;justify-content:space-between;padding-top:2rem;font-size:.62rem;color:var(--text3);flex-wrap:wrap;gap:.5rem}
 
-@media(max-width:900px){
-  .cat-grid{grid-template-columns:repeat(2,1fr)}
-  .city-grid{grid-template-columns:1fr 1fr}
-  nav{padding:1.25rem 1.5rem}
-  .nav-right .nav-link{display:none}
-  .cat-wrap,.biz-section,.cities-wrap,footer{padding:4rem 1.5rem}
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(20px);z-index:500;display:none;align-items:center;justify-content:center;padding:1.5rem}
+.modal-bg.open{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--border);width:100%;max-width:520px;max-height:85vh;overflow-y:auto;animation:mIn .35s cubic-bezier(.16,1,.3,1)}
+@keyframes mIn{from{opacity:0;transform:scale(.96) translateY(20px)}to{opacity:1;transform:none}}
+.mh{padding:1.75rem 2rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg2);z-index:2}
+.mh-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500;color:#fff}
+.mh-sub{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+.mclose{background:none;border:1px solid var(--border);width:34px;height:34px;cursor:none;color:var(--text2);font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:'Inter',sans-serif}
+.mclose:hover{border-color:var(--bordergold);color:var(--gold)}
+.mb{padding:1.75rem 2rem}
+/* empty state */
+.empty-state{text-align:center;padding:3rem 1rem}
+.empty-ico{font-size:3rem;margin-bottom:1rem;display:block;opacity:.4}
+.empty-t{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text2);margin-bottom:.5rem}
+.empty-s{font-size:.75rem;color:var(--text3);line-height:1.8}
+.empty-badge{display:inline-block;margin-top:1rem;background:var(--gold3);border:1px solid var(--bordergold);padding:6px 16px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.cat-grid{grid-template-columns:repeat(3,1fr)}.cat-full{grid-template-columns:repeat(3,1fr)}.ft-top{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem}.nav-c .nav-a{display:none}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}.cat-full{grid-template-columns:repeat(2,1fr)}
+  .how-grid{grid-template-columns:1fr}.sw{padding:4rem 1.25rem}
+  .stats{gap:2rem;padding:2rem 1.25rem}.ft-top{grid-template-columns:1fr 1fr}
+  .hero-h1{font-size:2.8rem}
 }
-@media(max-width:520px){
-  .cat-grid,.city-grid{grid-template-columns:1fr}
-  .stats-bar{gap:2rem;padding:2rem 1.5rem}
-  .hero-h1{font-size:3.2rem}
-}
+@media(max-width:480px){.cat-grid{grid-template-columns:repeat(2,1fr)}.ft-top{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+<div id="cur"></div>
+<div id="cur-r"></div>
 
+<!-- NAV -->
 <nav>
-  <a href="#top" class="nav-logo">MKD<span>MAP</span></a>
-  <div class="nav-right">
-    <a href="#bizneset" class="nav-link">Direktoria</a>
-    <a href="#qytetet" class="nav-link">Qytetet</a>
-    <a href="#kontakt" class="nav-link">Kontakt</a>
-    <button class="nav-cta" onclick="openModal('Hotel')">Hotelet</button>
+  <a href="#top" class="logo">MKD<b>MAP</b></a>
+  <div class="nav-c">
+    <a href="#categories" class="nav-a" data-t="nav_cat">Kategoritë</a>
+    <a href="#si-punon" class="nav-a" data-t="nav_how">Si punon</a>
+    <a href="#kontakt" class="nav-a" data-t="nav_contact">Kontakt</a>
+    <div class="lang-sel">
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">
+        <span id="langLabel">🇦🇱 SQ</span>
+        <svg viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <div class="lang-drop" id="langDrop"></div>
+    </div>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-grid"></div>
-  <div class="hero-vignette"></div>
-  <div class="hero-glow"></div>
+  <div class="hero-stars"></div>
+  <div class="hero-floor"></div>
+  <div class="hero-orb"></div>
   <div class="hero-content">
-    <div class="hero-tag">Republika e Maqedonisë së Veriut · mkdmap.com</div>
-    <h1 class="hero-h1"><em>Zbulo</em><br>Maqedoninë</h1>
-    <p class="hero-sub">Kafene, hotele, rent-a-car, restorante<br>— lokacione dhe kontakte direkte.</p>
+    <div class="hero-badge" data-t="hero_badge">Republika e Maqedonisë së Veriut · mkdmap.com</div>
+    <h1 class="hero-h1"><em data-t="hero_h1_em">Zbulo</em><br><span data-t="hero_h1">Maqedoninë</span></h1>
+    <p class="hero-p" data-t="hero_p">Restorante, hotele, rent-a-car, farmaci, elektricistë, hidraulikë dhe shumë më tepër — gjithçka në një vend, falas.</p>
+    <div class="hero-promo">
+      <span data-t="promo_text">Bizneset e listuara në MKDMAP kanë raportuar se klientët që i kontaktuan përmes platformës sonë u kanë ofruar kushte speciale dhe zbritje ekskluzive. Bashkohuni me komunitetin tonë dhe gjeni shërbimin e duhur!</span>
+      <span class="hero-promo-note" data-t="promo_note">★ Bizneset e verifikuara ofrojnë lirime për klientët nga MKDMAP</span>
+    </div>
     <div class="hero-btns">
-      <button class="btn-p" onclick="document.getElementById('bizneset').scrollIntoView({behavior:'smooth'})">Eksploro Tani</button>
-      <button class="btn-g" onclick="document.getElementById('qytetet').scrollIntoView({behavior:'smooth'})">Shiko Qytetet</button>
+      <button class="btn-main" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})" data-t="btn_explore">Eksploro Kategoritë</button>
+      <button class="btn-out" onclick="document.getElementById('si-punon').scrollIntoView({behavior:'smooth'})" data-t="btn_how">Si funksionon?</button>
     </div>
   </div>
-  <div class="hero-scroll"><div class="scroll-line"></div><span>Shpëto poshtë</span></div>
 </section>
 
-<div class="stats-bar">
-  <div class="stat-i"><span class="stat-n">340<span>+</span></span><span class="stat-l">Biznese aktive</span></div>
-  <div class="stat-i"><span class="stat-n">12<span>+</span></span><span class="stat-l">Qytete</span></div>
-  <div class="stat-i"><span class="stat-n">8</span><span class="stat-l">Kategori</span></div>
-  <div class="stat-i"><span class="stat-n">100<span>%</span></span><span class="stat-l">Falas gjithmonë</span></div>
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><span class="stat-n">12<em>+</em></span><span class="stat-l" data-t="stat_cities">Qytete</span></div>
+  <div class="stat"><span class="stat-n">30<em>+</em></span><span class="stat-l" data-t="stat_cats">Kategori</span></div>
+  <div class="stat"><span class="stat-n">100<em>%</em></span><span class="stat-l" data-t="stat_free">Falas Gjithmonë</span></div>
+  <div class="stat"><span class="stat-n">24<em>/7</em></span><span class="stat-l" data-t="stat_online">Online</span></div>
 </div>
 
-<div class="cat-wrap">
-  <div class="cat-inner">
-    <p class="s-ey">Çfarë po kërkon sot?</p>
-    <h2 class="s-ti">Kategoritë <em>tona</em></h2>
-    <div class="s-div"></div>
-    <div class="cat-grid">
-      <a class="cat-tile" href="#bizneset" onclick="setFilter('Kafene')"><span class="ct-n">01</span><span class="ct-ico">☕</span><span class="ct-name">Kafene</span><span class="ct-cnt">87 vende</span></a>
-      <a class="cat-tile" href="#bizneset" onclick="setFilter('Restorant')"><span class="ct-n">02</span><span class="ct-ico">🍽</span><span class="ct-name">Restorante</span><span class="ct-cnt">94 vende</span></a>
-      <a class="cat-tile" href="javascript:void(0)" onclick="openModal('Hotel')"><span class="ct-n">03</span><span class="ct-ico">🏨</span><span class="ct-name">Hotele</span><span class="ct-cnt">28 hotele — Lista</span></a>
-      <a class="cat-tile" href="#bizneset" onclick="setFilter('Makinë me qira')"><span class="ct-n">04</span><span class="ct-ico">🚗</span><span class="ct-name">Rent a Car</span><span class="ct-cnt">34 agjenci</span></a>
-      <a class="cat-tile" href="#bizneset" onclick="setFilter('Punë Online')"><span class="ct-n">05</span><span class="ct-ico">💻</span><span class="ct-name">Punë Online</span><span class="ct-cnt">62 kompani</span></a>
-      <a class="cat-tile" href="#bizneset" onclick="setFilter('Shërbime')"><span class="ct-n">06</span><span class="ct-ico">🔧</span><span class="ct-name">Shërbime</span><span class="ct-cnt">41 biznese</span></a>
-      <a class="cat-tile" href="#bizneset" onclick="setFilter('Dyqane')"><span class="ct-n">07</span><span class="ct-ico">🛍</span><span class="ct-name">Dyqane</span><span class="ct-cnt">53 dyqane</span></a>
-      <a class="cat-tile" href="#bizneset" onclick="setFilter('')"><span class="ct-n">08</span><span class="ct-ico">🗺</span><span class="ct-name">Të gjitha</span><span class="ct-cnt">340 biznese</span></a>
+<!-- CATEGORIES -->
+<section class="sw" id="categories" style="background:var(--bg2)">
+  <div class="si">
+    <p class="sey" data-t="s_ey1">Shërbime & Biznese</p>
+    <h2 class="sti"><em data-t="s_ti1_em">Gjej</em> <span data-t="s_ti1">çfarë të duhet</span></h2>
+    <div class="sdiv"></div>
+
+    <!-- TOP 5 featured -->
+    <div class="cat-grid" id="catGrid"></div>
+
+    <!-- ALL categories -->
+    <div style="margin-top:3rem">
+      <p class="sey" data-t="s_all">Të gjitha kategoritë</p>
+      <div class="cat-full" id="catFull"></div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="biz-section" id="bizneset">
-  <div class="biz-inner">
-    <p class="s-ey">Direktoria e bizneseve</p>
-    <h2 class="s-ti">Bizneset <em>e rekomanduara</em></h2>
-    <div class="s-div"></div>
-    <div class="fbar" id="fbar">
-      <button class="fp active" onclick="setFBtn(this,'')">Të gjitha</button>
-      <button class="fp" onclick="setFBtn(this,'Kafene')">Kafene</button>
-      <button class="fp" onclick="setFBtn(this,'Restorant')">Restorant</button>
-      <button class="fp" onclick="setFBtn(this,'Hotel')">Hotel</button>
-      <button class="fp" onclick="setFBtn(this,'Makinë me qira')">Rent a Car</button>
-      <button class="fp" onclick="setFBtn(this,'Punë Online')">Punë Online</button>
-      <button class="fp" onclick="setFBtn(this,'Shërbime')">Shërbime</button>
-      <button class="fp" onclick="setFBtn(this,'Dyqane')">Dyqane</button>
+<!-- HOW IT WORKS -->
+<section class="sw" id="si-punon">
+  <div class="si">
+    <p class="sey" data-t="s_ey2">Si funksionon MKDMAP</p>
+    <h2 class="sti"><span data-t="s_ti2">Thjesht</span> <em data-t="s_ti2_em">& Falas</em></h2>
+    <div class="sdiv"></div>
+    <div class="how-grid">
+      <div class="how-card"><span class="how-n">01</span><span class="how-ico">🔍</span><div class="how-title" data-t="how1_t">Kërko kategorinë</div><div class="how-desc" data-t="how1_d">Zgjidh kategorinë që të intereson — restorante, hidraulikë, farmaci, elektricistë dhe shumë të tjera.</div></div>
+      <div class="how-card"><span class="how-n">02</span><span class="how-ico">📍</span><div class="how-title" data-t="how2_t">Shiko lokacionin</div><div class="how-desc" data-t="how2_d">Çdo biznes ka adresën e saktë dhe lidhje direkte me Google Maps për navigim të lehtë.</div></div>
+      <div class="how-card"><span class="how-n">03</span><span class="how-ico">📞</span><div class="how-title" data-t="how3_t">Kontakto direkt</div><div class="how-desc" data-t="how3_d">Telefono me një klik — pa ndërmjetës, pa komisione. Direkt me biznesin që të intereson.</div></div>
     </div>
-    <div class="biz-grid" id="bizGrid"></div>
-  </div>
-</div>
-
-<div class="cities-wrap" id="qytetet">
-  <div class="cities-inner">
-    <p class="s-ey">Filtro sipas vendndodhjes</p>
-    <h2 class="s-ti">Qytetet <em>tona</em></h2>
-    <div class="s-div"></div>
-    <div class="city-grid">
-      <div class="cblock" onclick="filterCity('Shkup')"><div class="cb-n">01</div><div class="cb-name">Shkup</div><div class="cb-reg">Rajoni Qendror · Kryeqyteti</div><div class="cb-cnt">156 biznese</div></div>
-      <div class="cblock" onclick="filterCity('Ohër')"><div class="cb-n">02</div><div class="cb-name">Ohër</div><div class="cb-reg">Rajoni Jugperëndimor · Liqeni i Ohrit</div><div class="cb-cnt">48 biznese</div></div>
-      <div class="cblock" onclick="filterCity('Bitola')"><div class="cb-n">03</div><div class="cb-name">Bitola</div><div class="cb-reg">Rajoni Juglindor · Shirok Sokak</div><div class="cb-cnt">42 biznese</div></div>
-      <div class="cblock" onclick="filterCity('Tetovë')"><div class="cb-n">04</div><div class="cb-name">Tetovë</div><div class="cb-reg">Rajoni Pollog · Mali Sharr</div><div class="cb-cnt">31 biznese</div></div>
-      <div class="cblock" onclick="filterCity('Kumanovë')"><div class="cb-n">05</div><div class="cb-name">Kumanovë</div><div class="cb-reg">Rajoni Verilindor</div><div class="cb-cnt">27 biznese</div></div>
-      <div class="cblock" onclick="filterCity('Shtip')"><div class="cb-n">06</div><div class="cb-name">Shtip</div><div class="cb-reg">Rajoni Lindor · Bregalnica</div><div class="cb-cnt">18 biznese</div></div>
+    <div style="margin-top:2.5rem;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);padding:2rem;max-width:720px">
+      <p style="font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.9;font-weight:300" data-t="discount_text">
+        💡 <strong style="color:var(--gold);font-weight:500" data-t="discount_bold">Tip:</strong> Shumë biznese në MKDMAP ofrojnë çmime speciale për klientët që i gjejnë nëpërmjet platformës sonë. Kur të kontaktoni, përmendni se e gjetët në <strong style="color:#fff">mkdmap.com</strong> dhe pyesni për oferta ekskluzive!
+      </p>
     </div>
   </div>
-</div>
+</section>
 
+<!-- FOOTER -->
 <footer id="kontakt">
   <div class="ft">
     <div class="ft-top">
       <div>
-        <div class="ft-logo">MKD<span>MAP</span></div>
-        <p class="ft-desc">Direktoria më e plotë e bizneseve në Maqedoninë e Veriut — falas, gjithmonë.</p>
+        <div class="ft-logo">MKD<b>MAP</b></div>
+        <p class="ft-desc" data-t="ft_desc">Direktoria më e plotë e bizneseve në Maqedoninë e Veriut — falas, gjithmonë, për të gjithë.</p>
       </div>
-      <div class="ft-links">
-        <div class="ft-col"><div class="ft-ct">Navigim</div><a href="#bizneset">Direktoria</a><a href="#qytetet">Qytetet</a><a href="#top">Kreu</a></div>
-        <div class="ft-col"><div class="ft-ct">Kontakt</div><a href="mailto:info@mkdmap.com">info@mkdmap.com</a><a href="#">Shto biznesin tënd</a><a href="#">Rreth nesh</a></div>
-      </div>
+      <div class="ft-col"><div class="ft-col-t" data-t="ft_c1">Navigim</div><a href="#categories" data-t="ft_cats">Kategoritë</a><a href="#si-punon" data-t="ft_how">Si punon</a><a href="#top" data-t="ft_top">Kreu</a></div>
+      <div class="ft-col"><div class="ft-col-t" data-t="ft_c2">Bizneset</div><a href="#" data-t="ft_add">Regjistro biznesin</a><a href="#" data-t="ft_about">Rreth nesh</a></div>
+      <div class="ft-col"><div class="ft-col-t" data-t="ft_c3">Kontakt</div><a href="mailto:info@mkdmap.com">info@mkdmap.com</a><a href="#">mkdmap.com</a></div>
     </div>
     <div class="ft-bot">
-      <span>© 2025 mkdmap.com — Të gjitha të drejtat e rezervuara</span>
-      <span>Bërë me dashuri për Maqedoninë e Veriut 🇲🇰</span>
+      <span data-t="ft_copy">© 2025 mkdmap.com — Të gjitha të drejtat e rezervuara</span>
+      <span data-t="ft_made">Bërë me dashuri për Maqedoninë e Veriut 🇲🇰</span>
     </div>
   </div>
 </footer>
 
+<!-- MODAL (empty state for each category) -->
 <div class="modal-bg" id="modalBg" onclick="closeMBg(event)">
   <div class="modal" id="modal">
-    <div class="m-head">
-      <div><div class="m-title" id="mTitle">Hotelet</div><div class="m-sub">Telefono direkt · Google Maps</div></div>
-      <button class="m-close" onclick="closeM()">✕</button>
+    <div class="mh">
+      <div><div class="mh-title" id="mTitle"></div><div class="mh-sub" data-t="m_sub">Së shpejti · Coming Soon</div></div>
+      <button class="mclose" onclick="closeM()">✕</button>
     </div>
-    <div class="m-body"><div class="m-list" id="mList"></div></div>
+    <div class="mb">
+      <div class="empty-state">
+        <span class="empty-ico" id="mIco"></span>
+        <div class="empty-t" data-t="empty_t">Bizneset po regjistrohen</div>
+        <p class="empty-s" data-t="empty_s">Kjo kategori do të hapet së shpejti me biznese të verifikuara. Nëse keni një biznes në këtë fushë, na kontaktoni në info@mkdmap.com</p>
+        <span class="empty-badge" data-t="empty_badge">Listim Falas · Free Listing</span>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cur.style.left=mx+'px';cur.style.top=my+'px';
-});
-(function anim(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim)})();
-document.querySelectorAll('a,button,.cat-tile,.bc,.cblock,.m-biz').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';ring.style.width='52px';ring.style.height='52px'});
-  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.width='36px';ring.style.height='36px'});
-});
+// ─── TRANSLATIONS ───
+const LANGS = {
+  sq:{ flag:'🇦🇱', label:'Shqip', nav_cat:'Kategoritë', nav_how:'Si punon', nav_contact:'Kontakt', hero_badge:'Republika e Maqedonisë së Veriut · mkdmap.com', hero_h1_em:'Zbulo', hero_h1:'Maqedoninë', hero_p:'Restorante, hotele, rent-a-car, farmaci, elektricistë, hidraulikë dhe shumë më tepër — gjithçka në një vend, falas.', promo_text:'Bizneset e listuara në MKDMAP kanë raportuar se klientët që i kontaktuan përmes platformës sonë u janë ofruar kushte speciale dhe zbritje ekskluzive. Bashkohuni me komunitetin tonë!', promo_note:'★ Bizneset e verifikuara ofrojnë lirime për klientët nga MKDMAP', btn_explore:'Eksploro Kategoritë', btn_how:'Si funksionon?', stat_cities:'Qytete', stat_cats:'Kategori', stat_free:'Falas Gjithmonë', stat_online:'Online', s_ey1:'Shërbime & Biznese', s_ti1_em:'Gjej', s_ti1:'çfarë të duhet', s_all:'Të gjitha kategoritë', s_ey2:'Si funksionon MKDMAP', s_ti2:'Thjesht', s_ti2_em:'& Falas', how1_t:'Kërko kategorinë', how1_d:'Zgjidh kategorinë që të intereson — restorante, hidraulikë, farmaci, elektricistë dhe shumë të tjera.', how2_t:'Shiko lokacionin', how2_d:'Çdo biznes ka adresën e saktë dhe lidhje direkte me Google Maps për navigim të lehtë.', how3_t:'Kontakto direkt', how3_d:'Telefono me një klik — pa ndërmjetës, pa komisione. Direkt me biznesin që të intereson.', discount_text:'💡 Shumë biznese në MKDMAP ofrojnë çmime speciale për klientët që i gjejnë nëpërmjet platformës sonë. Kur kontaktoni, përmendni se e gjetët në mkdmap.com!', discount_bold:'Tip:', ft_desc:'Direktoria më e plotë e bizneseve në Maqedoninë e Veriut — falas, gjithmonë, për të gjithë.', ft_c1:'Navigim', ft_cats:'Kategoritë', ft_how:'Si punon', ft_top:'Kreu', ft_c2:'Bizneset', ft_add:'Regjistro biznesin', ft_about:'Rreth nesh', ft_c3:'Kontakt', ft_copy:'© 2025 mkdmap.com — Të gjitha të drejtat e rezervuara', ft_made:'Bërë me dashuri për Maqedoninë e Veriut 🇲🇰', m_sub:'Së shpejti · Coming Soon', empty_t:'Bizneset po regjistrohen', empty_s:'Kjo kategori do të hapet së shpejti me biznese të verifikuara. Nëse keni një biznes, na kontaktoni në info@mkdmap.com', empty_badge:'Listim Falas · Free Listing' },
+  mk:{ flag:'🇲🇰', label:'Македонски', nav_cat:'Категории', nav_how:'Како работи', nav_contact:'Контакт', hero_badge:'Република Северна Македонија · mkdmap.com', hero_h1_em:'Откриј', hero_h1:'Македонија', hero_p:'Ресторани, хотели, рент-а-кар, аптеки, електричари, водоинсталатери и многу повеќе — сè на едно место, бесплатно.', promo_text:'Бизнисите листирани на MKDMAP нудат специјални услови и попусти за клиенти кои ги контактираат преку нашата платформа. Придружете се на нашата заедница!', promo_note:'★ Верификувани бизниси нудат попусти за клиенти од MKDMAP', btn_explore:'Истражи Категории', btn_how:'Како функционира?', stat_cities:'Градови', stat_cats:'Категории', stat_free:'Секогаш Бесплатно', stat_online:'Онлајн', s_ey1:'Услуги и Бизниси', s_ti1_em:'Најди', s_ti1:'што ти треба', s_all:'Сите категории', s_ey2:'Како функционира MKDMAP', s_ti2:'Едноставно', s_ti2_em:'& Бесплатно', how1_t:'Пребарај категорија', how1_d:'Избери категорија — ресторани, водоинсталатери, аптеки, електричари и многу повеќе.', how2_t:'Погледни локација', how2_d:'Секој бизнис има точна адреса и директна врска со Google Maps.', how3_t:'Контактирај директно', how3_d:'Јави се со еден клик — без посредници, без провизии.', discount_text:'💡 Многу бизниси на MKDMAP нудат специјални цени за клиенти кои ги наоѓаат преку нашата платформа. Спомнете дека сте нашле на mkdmap.com!', discount_bold:'Совет:', ft_desc:'Најкомплетниот директориум на бизниси во Северна Македонија — бесплатно, секогаш, за сите.', ft_c1:'Навигација', ft_cats:'Категории', ft_how:'Како работи', ft_top:'Почеток', ft_c2:'Бизниси', ft_add:'Регистрирај бизнис', ft_about:'За нас', ft_c3:'Контакт', ft_copy:'© 2025 mkdmap.com — Сите права задржани', ft_made:'Направено со љубов за Македонија 🇲🇰', m_sub:'Наскоро · Coming Soon', empty_t:'Бизнисите се регистрираат', empty_s:'Оваа категорија наскоро ќе биде отворена со верификувани бизниси. Ако имате бизнис, контактирајте не на info@mkdmap.com', empty_badge:'Бесплатно листирање · Free Listing' },
+  en:{ flag:'🇬🇧', label:'English', nav_cat:'Categories', nav_how:'How it works', nav_contact:'Contact', hero_badge:'Republic of North Macedonia · mkdmap.com', hero_h1_em:'Discover', hero_h1:'Macedonia', hero_p:'Restaurants, hotels, car rentals, pharmacies, electricians, plumbers and much more — all in one place, free.', promo_text:'Businesses listed on MKDMAP have reported offering special conditions and exclusive discounts to clients who contact them through our platform. Join our community!', promo_note:'★ Verified businesses offer discounts to clients from MKDMAP', btn_explore:'Explore Categories', btn_how:'How does it work?', stat_cities:'Cities', stat_cats:'Categories', stat_free:'Always Free', stat_online:'Online', s_ey1:'Services & Businesses', s_ti1_em:'Find', s_ti1:'what you need', s_all:'All categories', s_ey2:'How MKDMAP works', s_ti2:'Simple', s_ti2_em:'& Free', how1_t:'Search category', how1_d:'Choose the category you need — restaurants, plumbers, pharmacies, electricians and many more.', how2_t:'View location', how2_d:'Every business has an exact address and a direct link to Google Maps for easy navigation.', how3_t:'Contact directly', how3_d:'Call with one click — no middlemen, no commissions. Directly with the business you need.', discount_text:'💡 Many businesses on MKDMAP offer special prices for clients who find them through our platform. When you contact them, mention that you found them on mkdmap.com!', discount_bold:'Tip:', ft_desc:'The most complete business directory in North Macedonia — free, always, for everyone.', ft_c1:'Navigation', ft_cats:'Categories', ft_how:'How it works', ft_top:'Top', ft_c2:'Businesses', ft_add:'Register your business', ft_about:'About us', ft_c3:'Contact', ft_copy:'© 2025 mkdmap.com — All rights reserved', ft_made:'Made with love for North Macedonia 🇲🇰', m_sub:'Coming Soon', empty_t:'Businesses are registering', empty_s:'This category will open soon with verified businesses. If you have a business, contact us at info@mkdmap.com', empty_badge:'Free Listing' },
+  de:{ flag:'🇩🇪', label:'Deutsch', nav_cat:'Kategorien', nav_how:'Wie es funktioniert', nav_contact:'Kontakt', hero_badge:'Republik Nordmazedonien · mkdmap.com', hero_h1_em:'Entdecke', hero_h1:'Mazedonien', hero_p:'Restaurants, Hotels, Mietwagen, Apotheken, Elektriker, Klempner und vieles mehr — alles an einem Ort, kostenlos.', promo_text:'Auf MKDMAP gelistete Unternehmen bieten Kunden, die sie über unsere Plattform kontaktieren, besondere Konditionen und exklusive Rabatte. Werden Sie Teil unserer Community!', promo_note:'★ Verifizierte Unternehmen bieten Rabatte für MKDMAP-Kunden', btn_explore:'Kategorien erkunden', btn_how:'Wie funktioniert es?', stat_cities:'Städte', stat_cats:'Kategorien', stat_free:'Immer Kostenlos', stat_online:'Online', s_ey1:'Dienste & Unternehmen', s_ti1_em:'Finde', s_ti1:'was du brauchst', s_all:'Alle Kategorien', s_ey2:'Wie MKDMAP funktioniert', s_ti2:'Einfach', s_ti2_em:'& Kostenlos', how1_t:'Kategorie suchen', how1_d:'Wähle die Kategorie, die dich interessiert — Restaurants, Klempner, Apotheken, Elektriker und mehr.', how2_t:'Standort anzeigen', how2_d:'Jedes Unternehmen hat eine genaue Adresse und einen direkten Link zu Google Maps.', how3_t:'Direkt kontaktieren', how3_d:'Anruf mit einem Klick — keine Vermittler, keine Provisionen.', discount_text:'💡 Viele Unternehmen auf MKDMAP bieten Sonderpreise für Kunden, die sie über unsere Plattform finden. Erwähne mkdmap.com beim Kontakt!', discount_bold:'Tipp:', ft_desc:'Das vollständigste Unternehmensverzeichnis in Nordmazedonien — kostenlos, immer, für alle.', ft_c1:'Navigation', ft_cats:'Kategorien', ft_how:'Wie es funktioniert', ft_top:'Oben', ft_c2:'Unternehmen', ft_add:'Unternehmen registrieren', ft_about:'Über uns', ft_c3:'Kontakt', ft_copy:'© 2025 mkdmap.com — Alle Rechte vorbehalten', ft_made:'Mit Liebe für Nordmazedonien gemacht 🇲🇰', m_sub:'Demnächst · Coming Soon', empty_t:'Unternehmen registrieren sich', empty_s:'Diese Kategorie wird bald mit verifizierten Unternehmen geöffnet. Kontaktieren Sie uns unter info@mkdmap.com', empty_badge:'Kostenlose Listung · Free Listing' },
+  tr:{ flag:'🇹🇷', label:'Türkçe', nav_cat:'Kategoriler', nav_how:'Nasıl çalışır', nav_contact:'İletişim', hero_badge:'Kuzey Makedonya Cumhuriyeti · mkdmap.com', hero_h1_em:'Keşfet', hero_h1:'Makedonya\'yı', hero_p:'Restoranlar, oteller, araç kiralama, eczaneler, elektrikçiler, tesisatçılar ve çok daha fazlası — hepsi tek yerde, ücretsiz.', promo_text:'MKDMAP\'ta listelenen işletmeler, platformumuz aracılığıyla kendileriyle iletişime geçen müşterilere özel koşullar ve indirimler sunmaktadır. Topluluğumuza katılın!', promo_note:'★ Doğrulanmış işletmeler MKDMAP müşterilerine indirim sunar', btn_explore:'Kategorileri Keşfet', btn_how:'Nasıl çalışır?', stat_cities:'Şehir', stat_cats:'Kategori', stat_free:'Daima Ücretsiz', stat_online:'Çevrimiçi', s_ey1:'Hizmetler & İşletmeler', s_ti1_em:'Bul', s_ti1:'ihtiyacın olanı', s_all:'Tüm kategoriler', s_ey2:'MKDMAP nasıl çalışır', s_ti2:'Basit', s_ti2_em:'& Ücretsiz', how1_t:'Kategori ara', how1_d:'İlgilendiğiniz kategoriyi seçin — restoranlar, tesisatçılar, eczaneler ve daha fazlası.', how2_t:'Konumu görüntüle', how2_d:'Her işletmenin tam adresi ve Google Maps\'a doğrudan bağlantısı vardır.', how3_t:'Doğrudan iletişim', how3_d:'Tek tıkla ara — aracı yok, komisyon yok.', discount_text:'💡 MKDMAP\'taki birçok işletme, platformumuz aracılığıyla bulan müşterilere özel fiyatlar sunar. mkdmap.com\'dan bulduğunuzu belirtin!', discount_bold:'İpucu:', ft_desc:'Kuzey Makedonya\'nın en kapsamlı işletme rehberi — ücretsiz, her zaman, herkes için.', ft_c1:'Navigasyon', ft_cats:'Kategoriler', ft_how:'Nasıl çalışır', ft_top:'Üst', ft_c2:'İşletmeler', ft_add:'İşletme kaydet', ft_about:'Hakkımızda', ft_c3:'İletişim', ft_copy:'© 2025 mkdmap.com — Tüm hakları saklıdır', ft_made:'Kuzey Makedonya için sevgiyle yapıldı 🇲🇰', m_sub:'Yakında · Coming Soon', empty_t:'İşletmeler kaydoluyor', empty_s:'Bu kategori yakında doğrulanmış işletmelerle açılacak. İşletmeniz varsa info@mkdmap.com adresinden iletişime geçin', empty_badge:'Ücretsiz Listeleme · Free Listing' },
+  sr:{ flag:'🇷🇸', label:'Srpski', nav_cat:'Kategorije', nav_how:'Kako funkcioniše', nav_contact:'Kontakt', hero_badge:'Republika Severna Makedonija · mkdmap.com', hero_h1_em:'Otkrij', hero_h1:'Makedoniju', hero_p:'Restorani, hoteli, rent-a-car, apoteke, električari, vodoinstalateri i mnogo više — sve na jednom mestu, besplatno.', promo_text:'Poslovice listovane na MKDMAP nude posebne uslove i ekskluzivne popuste klijentima koji ih kontaktiraju putem naše platforme. Pridružite se našoj zajednici!', promo_note:'★ Verifikovane poslovice nude popuste klijentima sa MKDMAP', btn_explore:'Istraži Kategorije', btn_how:'Kako funkcioniše?', stat_cities:'Gradovi', stat_cats:'Kategorije', stat_free:'Uvek Besplatno', stat_online:'Online', s_ey1:'Usluge i Poslovice', s_ti1_em:'Pronađi', s_ti1:'ono što ti treba', s_all:'Sve kategorije', s_ey2:'Kako funkcioniše MKDMAP', s_ti2:'Jednostavno', s_ti2_em:'i Besplatno', how1_t:'Pretraži kategoriju', how1_d:'Izaberi kategoriju — restorani, vodoinstalateri, apoteke, električari i mnogo više.', how2_t:'Pogledaj lokaciju', how2_d:'Svaka firma ima tačnu adresu i direktan link ka Google Maps.', how3_t:'Kontaktiraj direktno', how3_d:'Pozovi jednim klikom — bez posrednika, bez provizija.', discount_text:'💡 Mnoge firme na MKDMAP nude posebne cene za klijente koji ih nađu putem naše platforme. Pomenite mkdmap.com!', discount_bold:'Savet:', ft_desc:'Najkompletniji poslovni imenik u Severnoj Makedoniji — besplatno, uvek, za sve.', ft_c1:'Navigacija', ft_cats:'Kategorije', ft_how:'Kako funkcioniše', ft_top:'Vrh', ft_c2:'Firme', ft_add:'Registruj firmu', ft_about:'O nama', ft_c3:'Kontakt', ft_copy:'© 2025 mkdmap.com — Sva prava zadržana', ft_made:'Napravljeno s ljubavlju za Severnu Makedoniju 🇲🇰', m_sub:'Uskoro · Coming Soon', empty_t:'Firme se registruju', empty_s:'Ova kategorija uskoro će biti otvorena sa verifikovanim firmama. Kontaktirajte nas na info@mkdmap.com', empty_badge:'Besplatno Listiranje · Free Listing' },
+  it:{ flag:'🇮🇹', label:'Italiano', nav_cat:'Categorie', nav_how:'Come funziona', nav_contact:'Contatto', hero_badge:'Repubblica della Macedonia del Nord · mkdmap.com', hero_h1_em:'Scopri', hero_h1:'la Macedonia', hero_p:'Ristoranti, hotel, noleggio auto, farmacie, elettricisti, idraulici e molto altro — tutto in un posto, gratis.', promo_text:'Le attività elencate su MKDMAP offrono condizioni speciali e sconti esclusivi ai clienti che le contattano tramite la nostra piattaforma. Unisciti alla nostra community!', promo_note:'★ Le attività verificate offrono sconti ai clienti da MKDMAP', btn_explore:'Esplora Categorie', btn_how:'Come funziona?', stat_cities:'Città', stat_cats:'Categorie', stat_free:'Sempre Gratis', stat_online:'Online', s_ey1:'Servizi e Attività', s_ti1_em:'Trova', s_ti1:'ciò che ti serve', s_all:'Tutte le categorie', s_ey2:'Come funziona MKDMAP', s_ti2:'Semplice', s_ti2_em:'& Gratuito', how1_t:'Cerca categoria', how1_d:'Scegli la categoria che ti interessa — ristoranti, idraulici, farmacie, elettricisti e molte altre.', how2_t:'Visualizza posizione', how2_d:'Ogni attività ha un indirizzo esatto e un link diretto a Google Maps.', how3_t:'Contatta direttamente', how3_d:'Chiama con un clic — senza intermediari, senza commissioni.', discount_text:'💡 Molte attività su MKDMAP offrono prezzi speciali ai clienti che le trovano tramite la nostra piattaforma. Menziona mkdmap.com!', discount_bold:'Consiglio:', ft_desc:"La directory aziendale più completa della Macedonia del Nord — gratuita, sempre, per tutti.", ft_c1:'Navigazione', ft_cats:'Categorie', ft_how:'Come funziona', ft_top:'Inizio', ft_c2:'Attività', ft_add:"Registra la tua attività", ft_about:'Chi siamo', ft_c3:'Contatto', ft_copy:'© 2025 mkdmap.com — Tutti i diritti riservati', ft_made:'Fatto con amore per la Macedonia del Nord 🇲🇰', m_sub:'Presto · Coming Soon', empty_t:'Le attività si stanno registrando', empty_s:"Questa categoria aprirà presto con attività verificate. Se hai un'attività, contattaci su info@mkdmap.com", empty_badge:'Inserzione Gratuita · Free Listing' },
+  es:{ flag:'🇪🇸', label:'Español', nav_cat:'Categorías', nav_how:'Cómo funciona', nav_contact:'Contacto', hero_badge:'República de Macedonia del Norte · mkdmap.com', hero_h1_em:'Descubre', hero_h1:'Macedonia', hero_p:'Restaurantes, hoteles, alquiler de coches, farmacias, electricistas, fontaneros y mucho más — todo en un lugar, gratis.', promo_text:'Los negocios listados en MKDMAP ofrecen condiciones especiales y descuentos exclusivos a los clientes que los contactan a través de nuestra plataforma. ¡Únete a nuestra comunidad!', promo_note:'★ Los negocios verificados ofrecen descuentos a clientes de MKDMAP', btn_explore:'Explorar Categorías', btn_how:'¿Cómo funciona?', stat_cities:'Ciudades', stat_cats:'Categorías', stat_free:'Siempre Gratis', stat_online:'En línea', s_ey1:'Servicios y Negocios', s_ti1_em:'Encuentra', s_ti1:'lo que necesitas', s_all:'Todas las categorías', s_ey2:'Cómo funciona MKDMAP', s_ti2:'Simple', s_ti2_em:'y Gratis', how1_t:'Buscar categoría', how1_d:'Elige la categoría que te interesa — restaurantes, fontaneros, farmacias, electricistas y más.', how2_t:'Ver ubicación', how2_d:'Cada negocio tiene una dirección exacta y un enlace directo a Google Maps.', how3_t:'Contactar directamente', how3_d:'Llama con un clic — sin intermediarios, sin comisiones.', discount_text:'💡 Muchos negocios en MKDMAP ofrecen precios especiales a los clientes que los encuentran a través de nuestra plataforma. ¡Menciona mkdmap.com!', discount_bold:'Consejo:', ft_desc:'El directorio de negocios más completo de Macedonia del Norte — gratis, siempre, para todos.', ft_c1:'Navegación', ft_cats:'Categorías', ft_how:'Cómo funciona', ft_top:'Inicio', ft_c2:'Negocios', ft_add:'Registra tu negocio', ft_about:'Sobre nosotros', ft_c3:'Contacto', ft_copy:'© 2025 mkdmap.com — Todos los derechos reservados', ft_made:'Hecho con amor por Macedonia del Norte 🇲🇰', m_sub:'Próximamente · Coming Soon', empty_t:'Los negocios se están registrando', empty_s:'Esta categoría abrirá pronto con negocios verificados. Si tienes un negocio, contáctanos en info@mkdmap.com', empty_badge:'Listado Gratuito · Free Listing' },
+  ar:{ flag:'🇸🇦', label:'العربية', nav_cat:'الفئات', nav_how:'كيف يعمل', nav_contact:'اتصل بنا', hero_badge:'جمهورية مقدونيا الشمالية · mkdmap.com', hero_h1_em:'اكتشف', hero_h1:'مقدونيا', hero_p:'مطاعم، فنادق، تأجير سيارات، صيدليات، كهربائيون، سباكون والمزيد — كل شيء في مكان واحد، مجاناً.', promo_text:'الشركات المدرجة على MKDMAP تقدم شروطاً خاصة وخصومات حصرية للعملاء الذين يتواصلون معهم عبر منصتنا. انضم إلى مجتمعنا!', promo_note:'★ الشركات المعتمدة تقدم خصومات لعملاء MKDMAP', btn_explore:'استكشاف الفئات', btn_how:'كيف يعمل؟', stat_cities:'مدن', stat_cats:'فئات', stat_free:'مجاني دائماً', stat_online:'متصل', s_ey1:'خدمات وشركات', s_ti1_em:'ابحث', s_ti1:'عما تحتاجه', s_all:'جميع الفئات', s_ey2:'كيف يعمل MKDMAP', s_ti2:'بسيط', s_ti2_em:'ومجاني', how1_t:'ابحث عن فئة', how1_d:'اختر الفئة التي تهمك — مطاعم، سباكون، صيدليات، كهربائيون والمزيد.', how2_t:'عرض الموقع', how2_d:'كل شركة لها عنوان دقيق ورابط مباشر لخرائط Google.', how3_t:'تواصل مباشرة', how3_d:'اتصل بنقرة واحدة — بدون وسطاء، بدون عمولات.', discount_text:'💡 تقدم العديد من الشركات على MKDMAP أسعاراً خاصة للعملاء الذين يجدونهم عبر منصتنا. اذكر mkdmap.com عند التواصل!', discount_bold:'نصيحة:', ft_desc:'أكمل دليل أعمال في مقدونيا الشمالية — مجاناً، دائماً، للجميع.', ft_c1:'التنقل', ft_cats:'الفئات', ft_how:'كيف يعمل', ft_top:'الأعلى', ft_c2:'الشركات', ft_add:'سجل شركتك', ft_about:'من نحن', ft_c3:'اتصل بنا', ft_copy:'© 2025 mkdmap.com — جميع الحقوق محفوظة', ft_made:'صنع بحب لمقدونيا الشمالية 🇲🇰', m_sub:'قريباً · Coming Soon', empty_t:'الشركات تسجل', empty_s:'ستُفتح هذه الفئة قريباً مع شركات معتمدة. إذا كان لديك شركة، تواصل معنا على info@mkdmap.com', empty_badge:'إدراج مجاني · Free Listing' },
+  fr:{ flag:'🇫🇷', label:'Français', nav_cat:'Catégories', nav_how:'Comment ça marche', nav_contact:'Contact', hero_badge:'République de Macédoine du Nord · mkdmap.com', hero_h1_em:'Découvrez', hero_h1:'la Macédoine', hero_p:"Restaurants, hôtels, location de voitures, pharmacies, électriciens, plombiers et bien plus — tout en un seul endroit, gratuitement.", promo_text:"Les entreprises listées sur MKDMAP offrent des conditions spéciales et des remises exclusives aux clients qui les contactent via notre plateforme. Rejoignez notre communauté!", promo_note:'★ Les entreprises vérifiées offrent des remises aux clients de MKDMAP', btn_explore:'Explorer les Catégories', btn_how:'Comment ça fonctionne?', stat_cities:'Villes', stat_cats:'Catégories', stat_free:'Toujours Gratuit', stat_online:'En ligne', s_ey1:'Services et Entreprises', s_ti1_em:'Trouvez', s_ti1:'ce dont vous avez besoin', s_all:'Toutes les catégories', s_ey2:'Comment fonctionne MKDMAP', s_ti2:'Simple', s_ti2_em:'et Gratuit', how1_t:'Rechercher une catégorie', how1_d:"Choisissez la catégorie qui vous intéresse — restaurants, plombiers, pharmacies, électriciens et plus.", how2_t:'Voir la localisation', how2_d:'Chaque entreprise a une adresse exacte et un lien direct vers Google Maps.', how3_t:'Contacter directement', how3_d:'Appelez en un clic — sans intermédiaires, sans commissions.', discount_text:'💡 De nombreuses entreprises sur MKDMAP offrent des prix spéciaux aux clients qui les trouvent via notre plateforme. Mentionnez mkdmap.com!', discount_bold:'Conseil:', ft_desc:'Le répertoire professionnel le plus complet de Macédoine du Nord — gratuit, toujours, pour tous.', ft_c1:'Navigation', ft_cats:'Catégories', ft_how:'Comment ça marche', ft_top:'Haut', ft_c2:'Entreprises', ft_add:'Enregistrer votre entreprise', ft_about:'À propos', ft_c3:'Contact', ft_copy:'© 2025 mkdmap.com — Tous droits réservés', ft_made:'Fait avec amour pour la Macédoine du Nord 🇲🇰', m_sub:'Bientôt · Coming Soon', empty_t:"Les entreprises s'enregistrent", empty_s:"Cette catégorie ouvrira bientôt avec des entreprises vérifiées. Contactez-nous sur info@mkdmap.com", empty_badge:'Inscription Gratuite · Free Listing' },
+  ru:{ flag:'🇷🇺', label:'Русский', nav_cat:'Категории', nav_how:'Как работает', nav_contact:'Контакт', hero_badge:'Республика Северная Македония · mkdmap.com', hero_h1_em:'Открой', hero_h1:'Македонию', hero_p:'Рестораны, отели, аренда авто, аптеки, электрики, сантехники и многое другое — всё в одном месте, бесплатно.', promo_text:'Компании, перечисленные на MKDMAP, предлагают особые условия и эксклюзивные скидки клиентам, которые связываются с ними через нашу платформу. Присоединяйтесь!', promo_note:'★ Верифицированные компании предлагают скидки клиентам MKDMAP', btn_explore:'Исследовать категории', btn_how:'Как это работает?', stat_cities:'Города', stat_cats:'Категории', stat_free:'Всегда Бесплатно', stat_online:'Онлайн', s_ey1:'Услуги и Компании', s_ti1_em:'Найди', s_ti1:'что тебе нужно', s_all:'Все категории', s_ey2:'Как работает MKDMAP', s_ti2:'Просто', s_ti2_em:'и Бесплатно', how1_t:'Поиск категории', how1_d:'Выбери интересующую категорию — рестораны, сантехники, аптеки, электрики и многое другое.', how2_t:'Посмотреть местоположение', how2_d:'Каждая компания имеет точный адрес и прямую ссылку на Google Maps.', how3_t:'Связаться напрямую', how3_d:'Позвони в один клик — без посредников, без комиссий.', discount_text:'💡 Многие компании на MKDMAP предлагают специальные цены клиентам, которые находят их через нашу платформу. Упомяни mkdmap.com!', discount_bold:'Совет:', ft_desc:'Наиболее полный бизнес-справочник Северной Македонии — бесплатно, всегда, для всех.', ft_c1:'Навигация', ft_cats:'Категории', ft_how:'Как работает', ft_top:'Наверх', ft_c2:'Компании', ft_add:'Зарегистрировать компанию', ft_about:'О нас', ft_c3:'Контакт', ft_copy:'© 2025 mkdmap.com — Все права защищены', ft_made:'Сделано с любовью для Северной Македонии 🇲🇰', m_sub:'Скоро · Coming Soon', empty_t:'Компании регистрируются', empty_s:'Эта категория скоро откроется с верифицированными компаниями. Свяжитесь с нами на info@mkdmap.com', empty_badge:'Бесплатное размещение · Free Listing' },
+  ro:{ flag:'🇷🇴', label:'Română', nav_cat:'Categorii', nav_how:'Cum funcționează', nav_contact:'Contact', hero_badge:'Republica Macedonia de Nord · mkdmap.com', hero_h1_em:'Descoperă', hero_h1:'Macedonia', hero_p:'Restaurante, hoteluri, închirieri auto, farmacii, electricieni, instalatori și mult mai mult — totul într-un singur loc, gratuit.', promo_text:'Afacerile listate pe MKDMAP oferă condiții speciale și reduceri exclusive clienților care îi contactează prin platforma noastră. Alăturați-vă comunității noastre!', promo_note:'★ Afacerile verificate oferă reduceri clienților de la MKDMAP', btn_explore:'Explorează Categoriile', btn_how:'Cum funcționează?', stat_cities:'Orașe', stat_cats:'Categorii', stat_free:'Mereu Gratuit', stat_online:'Online', s_ey1:'Servicii și Afaceri', s_ti1_em:'Găsește', s_ti1:'ce ai nevoie', s_all:'Toate categoriile', s_ey2:'Cum funcționează MKDMAP', s_ti2:'Simplu', s_ti2_em:'și Gratuit', how1_t:'Caută categorie', how1_d:'Alege categoria care te interesează — restaurante, instalatori, farmacii, electricieni și multe altele.', how2_t:'Vezi locația', how2_d:'Fiecare afacere are adresa exactă și un link direct la Google Maps.', how3_t:'Contactează direct', how3_d:'Sună cu un singur clic — fără intermediari, fără comisioane.', discount_text:'💡 Multe afaceri pe MKDMAP oferă prețuri speciale clienților care le găsesc prin platforma noastră. Menționează mkdmap.com!', discount_bold:'Sfat:', ft_desc:'Cel mai complet director de afaceri din Macedonia de Nord — gratuit, mereu, pentru toți.', ft_c1:'Navigare', ft_cats:'Categorii', ft_how:'Cum funcționează', ft_top:'Sus', ft_c2:'Afaceri', ft_add:'Înregistrează afacerea', ft_about:'Despre noi', ft_c3:'Contact', ft_copy:'© 2025 mkdmap.com — Toate drepturile rezervate', ft_made:'Făcut cu dragoste pentru Macedonia de Nord 🇲🇰', m_sub:'În curând · Coming Soon', empty_t:'Afacerile se înregistrează', empty_s:'Această categorie se va deschide în curând cu afaceri verificate. Contactați-ne la info@mkdmap.com', empty_badge:'Listare Gratuită · Free Listing' }
+};
+let curLang='sq';
 
-const DATA=[
-  {name:"Kafeja Çaršija",cat:"Kafene",city:"Shkup",phone:"+38923214567",phoneD:"+389 2 321 4567",addr:"Çaršija e Vjetër, Shkup",r:"4.8",ico:"☕",open:true,lat:41.9973,lng:21.4336},
-  {name:"Kafeja Porta",cat:"Kafene",city:"Bitola",phone:"+38947235678",phoneD:"+389 47 235 678",addr:"Shirok Sokak, Bitola",r:"4.6",ico:"☕",open:true,lat:41.0297,lng:21.3294},
-  {name:"Kafeja Mala Stanica",cat:"Kafene",city:"Shkup",phone:"+38922468901",phoneD:"+389 2 246 8901",addr:"Kapistec, Shkup",r:"4.5",ico:"☕",open:false,lat:41.9960,lng:21.4314},
-  {name:"Restoranti Pelister",cat:"Restorant",city:"Bitola",phone:"+38947222333",phoneD:"+389 47 222 333",addr:"Bul. Hristo Uzunov 8, Bitola",r:"4.7",ico:"🍽",open:true,lat:41.0297,lng:21.3297},
-  {name:"Restorant Sv. Sofija",cat:"Restorant",city:"Ohër",phone:"+38946261444",phoneD:"+389 46 261 444",addr:"Kej Makedonija 30, Ohër",r:"4.8",ico:"🍽",open:true,lat:41.1171,lng:20.8016},
-  {name:"Shtip Grill House",cat:"Restorant",city:"Shtip",phone:"+38932399111",phoneD:"+389 32 399 111",addr:"Centar, Shtip",r:"4.6",ico:"🍽",open:true,lat:41.7458,lng:22.1968},
-  {name:"Lake View Hotel",cat:"Hotel",city:"Ohër",phone:"+38946265100",phoneD:"+389 46 265 100",addr:"Kej Makedonija 12, Ohër",r:"4.9",ico:"🏨",open:true,lat:41.1231,lng:20.8019},
-  {name:"Hotel Metropol",cat:"Hotel",city:"Ohër",phone:"+38946270050",phoneD:"+389 46 270 050",addr:"Kej Makedonija 2, Ohër",r:"4.7",ico:"🏨",open:true,lat:41.1205,lng:20.8012},
-  {name:"Hotel Arka",cat:"Hotel",city:"Shkup",phone:"+38923201010",phoneD:"+389 2 320 1010",addr:"Bul. Kuzman Josifovski 2, Shkup",r:"4.6",ico:"🏨",open:true,lat:41.9965,lng:21.4314},
-  {name:"Hotel Epinal",cat:"Hotel",city:"Bitola",phone:"+38947207777",phoneD:"+389 47 207 777",addr:"Partizanska bb, Bitola",r:"4.5",ico:"🏨",open:true,lat:41.0352,lng:21.3299},
-  {name:"Aqua Hotel Struga",cat:"Hotel",city:"Ohër",phone:"+38946785100",phoneD:"+389 46 785 100",addr:"Kej 8 Nëntor, Struga",r:"4.4",ico:"🏨",open:true,lat:41.1781,lng:20.6734},
-  {name:"Macedonia Rent a Car",cat:"Makinë me qira",city:"Shkup",phone:"+38922556789",phoneD:"+389 2 255 6789",addr:"Bul. Jane Sandanski 15, Shkup",r:"4.6",ico:"🚗",open:true,lat:41.9980,lng:21.4270},
-  {name:"AutoFlex Shkup",cat:"Makinë me qira",city:"Shkup",phone:"+38923129900",phoneD:"+389 2 312 9900",addr:"Aeroporti Nëna Terezë, Shkup",r:"4.7",ico:"🚗",open:true,lat:41.9616,lng:21.6214},
-  {name:"Ohrid Rent a Car",cat:"Makinë me qira",city:"Ohër",phone:"+38946260444",phoneD:"+389 46 260 444",addr:"Turistička 5, Ohër",r:"4.5",ico:"🚗",open:false,lat:41.1231,lng:20.8019},
-  {name:"FreelanceMK",cat:"Punë Online",city:"Shkup",phone:"+38971234567",phoneD:"+389 71 234 567",addr:"Aerodrom, Shkup",r:"4.9",ico:"💻",open:true,lat:41.9900,lng:21.4400},
-  {name:"TechWork Studio",cat:"Punë Online",city:"Shkup",phone:"+38972456789",phoneD:"+389 72 456 789",addr:"Centar, Shkup",r:"4.8",ico:"💻",open:true,lat:41.9981,lng:21.4254},
-  {name:"DigitalMK Agency",cat:"Punë Online",city:"Shkup",phone:"+38970345678",phoneD:"+389 70 345 678",addr:"Kapistec, Shkup",r:"4.6",ico:"💻",open:true,lat:41.9962,lng:21.4311},
-  {name:"Mavrovo Adventures",cat:"Shërbime",city:"Tetovë",phone:"+38944332211",phoneD:"+389 44 332 211",addr:"Mavrovo Resort, Tetovë",r:"4.7",ico:"⛷",open:true,lat:41.6558,lng:20.7403},
-  {name:"Kumanova Shop",cat:"Dyqane",city:"Kumanovë",phone:"+38931411222",phoneD:"+389 31 411 222",addr:"Ploshtad Makedonia, Kumanovë",r:"4.3",ico:"🛍",open:true,lat:42.1323,lng:21.7143},
+// ─── CATEGORIES ───
+const CATS_FEATURED = [
+  {ico:'🍽',key:'Restorant'},
+  {ico:'🏨',key:'Hotel'},
+  {ico:'🚗',key:'RentCar'},
+  {ico:'☕',key:'Kafene'},
+  {ico:'💊',key:'Farmaci'},
 ];
+const CATS_ALL = [
+  {ico:'🍽',key:'Restorant'},{ico:'🏨',key:'Hotel'},{ico:'🚗',key:'RentCar'},{ico:'☕',key:'Kafene'},
+  {ico:'💊',key:'Farmaci'},{ico:'⚡',key:'Elektricist'},{ico:'🔧',key:'Hidraulik'},{ico:'🏠',key:'Shepi'},
+  {ico:'🪟',key:'Pllaka'},{ico:'🛋',key:'Mobileri'},{ico:'📱',key:'MobilShop'},{ico:'🖥',key:'IT'},
+  {ico:'🏥',key:'Klinik'},{ico:'🦷',key:'Dentist'},{ico:'👁',key:'Okullist'},{ico:'💇',key:'Berber'},
+  {ico:'💅',key:'Kozmetik'},{ico:'🏋',key:'Fitness'},{ico:'🎓',key:'Arsim'},{ico:'🏦',key:'Banke'},
+  {ico:'⚖',key:'Noter'},{ico:'👔',key:'Avokat'},{ico:'🏗',key:'Inxhinjer'},{ico:'🌐',key:'Agjenci'},
+  {ico:'🚿',key:'Ujsjelles'},{ico:'🚗',key:'Lavazh'},{ico:'🔩',key:'AutoPjes'},{ico:'🛒',key:'Dyqan'},
+  {ico:'🛍',key:'Shitje'},{ico:'🎪',key:'Events'},{ico:'📸',key:'Fotograf'},{ico:'🏪',key:'Tregti'},
+];
+const CAT_NAMES = {
+  sq:{Restorant:'Restorante',Hotel:'Hotele',RentCar:'Rent a Car',Kafene:'Kafene',Farmaci:'Farmaci',Elektricist:'Elektricistë',Hidraulik:'Hidraulikë',Shepi:'Shërbime Shtëpie',Pllaka:'Pllaka & Montues',Mobileri:'Mobileri',MobilShop:'Mobil & Aksesorë',IT:'IT & Kompjuterë',Klinik:'Klinika',Dentist:'Dentistë',Okullist:'Okulistë',Berber:'Berber & Parukeri',Kozmetik:'Kozmetikë',Fitness:'Fitness & Spa',Arsim:'Arsim & Kurse',Banke:'Banka & Financa',Noter:'Noter',Avokat:'Avokat',Inxhinjer:'Inxhinjer',Agjenci:'Agjenci Turistike',Ujsjelles:'Ujësjellës',Lavazh:'Lavazhe',AutoPjes:'Auto Pjesë',Dyqan:'Dyqane',Shitje:'Shitje Online',Events:'Organizim Eventesh',Fotograf:'Fotografi',Tregti:'Tregti & Importe'},
+  mk:{Restorant:'Ресторани',Hotel:'Хотели',RentCar:'Рент а кар',Kafene:'Кафеани',Farmaci:'Аптеки',Elektricist:'Електричари',Hidraulik:'Водоинсталатери',Shepi:'Домашни Услуги',Pllaka:'Плочки & Монтажа',Mobileri:'Мебел',MobilShop:'Мобилни & Опрема',IT:'IT & Компјутери',Klinik:'Клиники',Dentist:'Стоматолози',Okullist:'Оптичари',Berber:'Берберници',Kozmetik:'Козметика',Fitness:'Фитнес & Спа',Arsim:'Образование',Banke:'Банки',Noter:'Нотари',Avokat:'Адвокати',Inxhinjer:'Инженери',Agjenci:'Туристички Агенции',Ujsjelles:'Водовод',Lavazh:'Автоперални',AutoPjes:'Авто Делови',Dyqan:'Продавници',Shitje:'Онлајн Продажба',Events:'Организација Настани',Fotograf:'Фотографи',Tregti:'Трговија & Увоз'},
+  en:{Restorant:'Restaurants',Hotel:'Hotels',RentCar:'Car Rental',Kafene:'Cafés',Farmaci:'Pharmacies',Elektricist:'Electricians',Hidraulik:'Plumbers',Shepi:'Home Services',Pllaka:'Tiles & Installation',Mobileri:'Furniture',MobilShop:'Mobile & Accessories',IT:'IT & Computers',Klinik:'Clinics',Dentist:'Dentists',Okullist:'Opticians',Berber:'Barbershops',Kozmetik:'Cosmetics',Fitness:'Fitness & Spa',Arsim:'Education',Banke:'Banks & Finance',Noter:'Notary',Avokat:'Lawyers',Inxhinjer:'Engineers',Agjenci:'Travel Agencies',Ujsjelles:'Waterworks',Lavazh:'Car Wash',AutoPjes:'Auto Parts',Dyqan:'Shops',Shitje:'Online Sales',Events:'Event Planning',Fotograf:'Photography',Tregti:'Trade & Import'},
+};
+function getCatName(key){return (CAT_NAMES[curLang]||CAT_NAMES.en)[key]||key}
 
-let cCat='';
-
-function renderBiz(){
-  const list=cCat?DATA.filter(b=>b.cat===cCat):DATA;
-  document.getElementById('bizGrid').innerHTML=list.length?list.map(b=>`
-    <div class="bc">
-      <div class="bc-head">
-        <div class="bc-ico">${b.ico}</div>
-        <div style="flex:1;min-width:0">
-          <div class="bc-name">${b.name}</div>
-          <div class="bc-cat">${b.cat} · ${b.city}</div>
-        </div>
-        <div class="bc-score"><span class="bc-sn">${b.r}</span><span class="bc-ss">vlerësim</span></div>
-      </div>
-      <div class="bc-body">
-        <div class="bc-row"><span class="bc-ri">📞</span><span>${b.phoneD}</span></div>
-        <div class="bc-row"><span class="bc-ri">📍</span><span>${b.addr}</span></div>
-        <div class="bc-row"><span class="bstat ${b.open?'bopen':'bclosed'}">${b.open?'Hapur tani':'Mbyllur'}</span></div>
-      </div>
-      <div class="bc-foot">
-        <a class="abtn acall" href="tel:${b.phone}">📞 Telefono</a>
-        <a class="abtn amap" href="https://www.google.com/maps?q=${b.lat},${b.lng}" target="_blank">🗺 Harta</a>
-      </div>
-    </div>`).join(''):'<p style="color:rgba(255,255,255,.25);font-size:.8rem;grid-column:1/-1;padding:2rem 0">Nuk u gjet asnjë biznes.</p>';
+function buildCats(){
+  // Featured 5
+  document.getElementById('catGrid').innerHTML=CATS_FEATURED.map(c=>`
+    <a class="ct" href="javascript:void(0)" onclick="openM('${c.key}','${c.ico}')">
+      <span class="ct-ico">${c.ico}</span>
+      <span class="ct-name" id="fn-${c.key}">${getCatName(c.key)}</span>
+      <span class="ct-sub" data-t="cat_soon">Coming Soon</span>
+      <span class="ct-arrow">→</span>
+    </a>`).join('');
+  // All
+  document.getElementById('catFull').innerHTML=CATS_ALL.map(c=>`
+    <a class="ct" href="javascript:void(0)" onclick="openM('${c.key}','${c.ico}')">
+      <span class="ct-ico">${c.ico}</span>
+      <span class="ct-name" id="an-${c.key}">${getCatName(c.key)}</span>
+      <span class="ct-sub" data-t="cat_soon">Coming Soon</span>
+      <span class="ct-arrow">→</span>
+    </a>`).join('');
 }
 
-function setFilter(cat){cCat=cat;renderBiz();document.querySelectorAll('.fp').forEach(p=>{p.classList.toggle('active',(!cat&&p.textContent.trim()==='Të gjitha')||(cat&&p.textContent.trim()===cat))})}
-function setFBtn(el,cat){cCat=cat;document.querySelectorAll('.fp').forEach(p=>p.classList.remove('active'));el.classList.add('active');renderBiz()}
-function filterCity(city){document.getElementById('bizneset').scrollIntoView({behavior:'smooth'})}
+// ─── LANG ───
+let langOpen=false;
+function buildLangDrop(){
+  const drop=document.getElementById('langDrop');
+  drop.innerHTML=Object.entries(LANGS).map(([k,v])=>`<div class="lang-opt ${k===curLang?'active':''}" onclick="setLang('${k}')">${v.flag} ${v.label}<span style="font-size:.6rem;color:var(--text3)">${k.toUpperCase()}</span></div>`).join('');
+}
+function toggleLang(){langOpen=!langOpen;document.getElementById('langDrop').classList.toggle('open',langOpen);document.getElementById('langBtn').classList.toggle('open',langOpen);buildLangDrop()}
+function setLang(l){
+  curLang=l;langOpen=false;
+  document.getElementById('langDrop').classList.remove('open');
+  document.getElementById('langBtn').classList.remove('open');
+  document.getElementById('langLabel').textContent=LANGS[l].flag+' '+l.toUpperCase();
+  const T=LANGS[l];
+  document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(T[k])el.textContent=T[k]});
+  // RTL for Arabic
+  document.body.dir=l==='ar'?'rtl':'ltr';
+  // Update cat names
+  [...CATS_FEATURED,...CATS_ALL].forEach(c=>{
+    const fn=document.getElementById('fn-'+c.key);const an=document.getElementById('an-'+c.key);
+    const n=getCatName(c.key);
+    if(fn)fn.textContent=n;if(an)an.textContent=n;
+  });
+}
+document.addEventListener('click',e=>{if(langOpen&&!e.target.closest('.lang-sel')){langOpen=false;document.getElementById('langDrop').classList.remove('open');document.getElementById('langBtn').classList.remove('open')}});
 
-function openModal(cat){
-  const items=DATA.filter(b=>b.cat===cat);
-  const labels={Hotel:'Hotelet',Kafene:'Kafenetë',Restorant:'Restorantet','Makinë me qira':'Rent a Car'};
-  document.getElementById('mTitle').textContent=labels[cat]||cat;
-  document.getElementById('mList').innerHTML=items.map(b=>`
-    <div class="m-biz">
-      <div class="m-btop">
-        <div class="m-ico">${b.ico}</div>
-        <div style="flex:1">
-          <div class="m-name">${b.name}</div>
-          <div class="m-sub2">${b.city} · <span class="bstat ${b.open?'bopen':'bclosed'}" style="padding:2px 7px;font-size:.52rem">${b.open?'Hapur':'Mbyllur'}</span></div>
-        </div>
-        <div class="m-score">${b.r}</div>
-      </div>
-      <div class="m-info">📞 ${b.phoneD}<br>📍 ${b.addr}</div>
-      <div class="m-btns">
-        <a class="mb-call" href="tel:${b.phone}">📞 Telefono Direkt</a>
-        <a class="mb-map" href="https://www.google.com/maps?q=${b.lat},${b.lng}" target="_blank">🗺 Google Maps</a>
-      </div>
-    </div>`).join('');
+// ─── MODAL ───
+function openM(key,ico){
+  document.getElementById('mTitle').textContent=getCatName(key);
+  document.getElementById('mIco').textContent=ico;
+  const T=LANGS[curLang];
+  document.querySelector('#modal .mh-sub').textContent=T.m_sub||'Coming Soon';
+  document.querySelector('.empty-t').textContent=T.empty_t||'Businesses registering';
+  document.querySelector('.empty-s').textContent=T.empty_s||'Contact us at info@mkdmap.com';
+  document.querySelector('.empty-badge').textContent=T.empty_badge||'Free Listing';
   document.getElementById('modalBg').classList.add('open');
   document.body.style.overflow='hidden';
 }
@@ -378,20 +483,32 @@ function closeMBg(e){if(e.target===document.getElementById('modalBg'))closeM()}
 function closeM(){document.getElementById('modalBg').classList.remove('open');document.body.style.overflow=''}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 
-// 3D card tilt on mouse
+// ─── CURSOR ───
+const cur2=document.getElementById('cur'),ring2=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur2.style.left=mx+'px';cur2.style.top=my+'px'});
+(function a(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring2.style.left=rx+'px';ring2.style.top=ry+'px';requestAnimationFrame(a)})();
+document.querySelectorAll('a,button,.ct,.how-card,.cblock').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur2.style.transform='translate(-50%,-50%) scale(2.5)';ring2.style.width='50px';ring2.style.height='50px'});
+  el.addEventListener('mouseleave',()=>{cur2.style.transform='translate(-50%,-50%) scale(1)';ring2.style.width='32px';ring2.style.height='32px'});
+});
+
+// ─── 3D tilt on category tiles ───
 document.addEventListener('mousemove',e=>{
-  document.querySelectorAll('.bc').forEach(card=>{
-    const r=card.getBoundingClientRect();
-    const dx=e.clientX-r.left-r.width/2,dy=e.clientY-r.top-r.height/2;
-    if(Math.abs(dx)<r.width&&Math.abs(dy)<r.height){
-      card.style.transform=`perspective(600px) rotateX(${-dy/r.height*5}deg) rotateY(${dx/r.width*5}deg) translateY(-6px)`;
+  document.querySelectorAll('.ct').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(e.clientX>r.left-20&&e.clientX<r.right+20&&e.clientY>r.top-20&&e.clientY<r.bottom+20){
+      const x=(e.clientX-r.left-r.width/2)/(r.width/2);
+      const y=(e.clientY-r.top-r.height/2)/(r.height/2);
+      el.style.transform=`perspective(500px) rotateX(${-y*6}deg) rotateY(${x*6}deg) translateY(-6px) scale(1.02)`;
     } else {
-      card.style.transform='';
+      el.style.transform='';
     }
   });
 });
 
-renderBiz();
+// INIT
+buildCats();
 </script>
 </body>
 </html>
