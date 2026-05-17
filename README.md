@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MkdMap - Global Luxury Directory</title>
     <!-- Fusim fontin Montserrat për stil luksoz -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2=family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         /* --- 1. STILI PËR EKRANIN HYRËS (SPLASH SCREEN) --- */
         #splash-screen {
@@ -21,26 +21,26 @@
             z-index: 9999;
             opacity: 1;
             transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .splash-text {
             color: #ffffff;
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 300; /* Shkronja më elegante dhe të bukura */
+            font-size: 2.5rem;
+            font-weight: 300;
             text-transform: uppercase;
             text-align: center;
-            white-space: nowrap;
-            letter-spacing: -5px; /* Nis me shkronja të mbledhura */
+            letter-spacing: -5px;
             opacity: 0;
-            /* Animacioni horizontal dhe shfaqja graduale */
             animation: textSpreadIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
         @keyframes textSpreadIn {
             to { 
                 opacity: 1; 
-                letter-spacing: 6px; /* Shkronjat hapen horizontalisht */
+                letter-spacing: 6px;
             }
         }
 
@@ -62,7 +62,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 40px 20px;
             text-align: center;
         }
 
@@ -93,22 +93,23 @@
 
         /* --- SELEKTORI MODERN I GJUHËVE (50 GJUHË) --- */
         .lang-container {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .lang-select {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(212, 175, 55, 0.2);
             color: #cbd5e1;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 30px;
             font-family: inherit;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             letter-spacing: 1px;
             cursor: pointer;
             outline: none;
             transition: all 0.4s ease;
             backdrop-filter: blur(10px);
+            max-width: 100%;
         }
 
         .lang-select:hover, .lang-select:focus {
@@ -130,13 +131,14 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
             border-radius: 100px;
-            padding: 8px 8px 8px 25px;
+            padding: 6px 6px 6px 25px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             max-width: 650px;
             margin-left: auto;
             margin-right: auto;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            align-items: center;
         }
 
         .search-box:focus-within {
@@ -154,6 +156,7 @@
             font-size: 1.05rem;
             font-family: inherit;
             letter-spacing: 0.5px;
+            padding: 10px 0;
         }
 
         .search-box input::placeholder {
@@ -172,6 +175,7 @@
             letter-spacing: 1.5px;
             font-size: 0.85rem;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .search-box button:hover {
@@ -196,6 +200,9 @@
             text-align: left;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
                         background 0.4s ease, 
                         border-color 0.4s ease, 
@@ -249,11 +256,12 @@
             padding-top: 15px;
             margin-top: auto;
             font-size: 0.85rem;
+            gap: 10px;
         }
 
-        /* Stilet e reja për vegëzat që të mos duken si linja të thjeshta tekstesh */
         .biz-loc-link, .biz-phone-link {
             text-decoration: none;
+            display: inline-block;
             transition: all 0.3s ease;
         }
 
@@ -262,7 +270,7 @@
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             letter-spacing: 0.5px;
         }
         
@@ -276,11 +284,12 @@
             font-weight: 400;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             background: rgba(255, 255, 255, 0.04);
-            padding: 5px 14px;
+            padding: 6px 14px;
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.02);
+            white-space: nowrap;
         }
 
         .biz-phone-link:hover .biz-phone {
@@ -296,12 +305,43 @@
             grid-column: 1 / -1;
         }
 
+        /* --- PËRSHTATJA INTELIGJENTE DHE E QARTË PËR CELULARË --- */
         @media (max-width: 480px) {
+            .container { padding: 25px 15px; }
+            .splash-text { font-size: 1.8rem; }
             .main-title { font-size: 2.2rem; letter-spacing: 10px; }
-            .search-box { padding: 5px 5px 5px 18px; margin-bottom: 40px; }
-            .search-box button { padding: 12px 22px; font-size: 0.8rem; }
+            
+            /* Kutia e kërkimit kthehet në strukturë vertikale që të mos ngjeshet */
+            .search-box { 
+                flex-direction: column; 
+                border-radius: 20px; 
+                padding: 15px; 
+                margin-bottom: 35px;
+                gap: 12px;
+            }
+            .search-box input { 
+                width: 100%; 
+                text-align: center; 
+                font-size: 1rem;
+                padding: 5px 0;
+            }
+            .search-box button { 
+                width: 100%; 
+                padding: 14px; 
+                font-size: 0.9rem; 
+            }
+            
             .results-container { grid-template-columns: 1fr; gap: 20px; }
-            .biz-footer { flex-direction: row; font-size: 0.8rem; }
+            .business-card { padding: 22px; }
+            
+            /* Footer-i i biznesit rregullohet që butonat të jenë të pastër dhe të mos dalin jashtë kutisë */
+            .biz-footer { 
+                flex-direction: row; 
+                justify-content: space-between;
+                font-size: 0.8rem; 
+                padding-top: 12px;
+            }
+            .biz-phone { padding: 6px 10px; }
         }
     </style>
 </head>
@@ -319,7 +359,7 @@
                 <h1 class="main-title">mkdmap</h1>
             </header>
 
-            <!-- SELEKTORI ME 50 GJUHË TË NDRYSHME -->
+            <!-- SELEKTORI ME GJUHË -->
             <div class="lang-container">
                 <select class="lang-select" id="language-picker" onchange="changeLanguage()">
                     <option value="en"> English (EN)</option>
@@ -356,7 +396,7 @@
                     <option value="ja"> 日本語 (JA)</option>
                     <option value="ko"> 한국어 (KO)</option>
                     <option value="ar"> العربية (AR)</option>
-                    <option value="he"> עבריtext (HE)</option>
+                    <option value="he"> עברית (HE)</option>
                     <option value="hi"> हिन्दी (HI)</option>
                     <option value="id"> Bahasa Indonesia (ID)</option>
                     <option value="ms"> Bahasa Melayu (MS)</option>
@@ -404,15 +444,15 @@
                 setTimeout(function() {
                     splash.style.display = "none";
                 }, 600); 
-            }, 2500); // Pak më shumë kohë që të dallohet animacioni i bukur horizontal
+            }, 2500);
         });
 
-        // DATABASE ME PËRKTHIME DHE LOKACIONET NGA GOOGLE MAPS
+        // DATABASE ME PËRKTHIME DHE LOKACIONE
         const businesses = [
             {
-                phone: "+38970123456", // Numri i pastër për thirrje direkte
+                phone: "+38970123456",
                 phoneDisplay: "+389 70 123 456",
-                mapUrl: "https://maps.google.com/?q=Mavrovo+Lake", // Linku i Google Maps
+                mapUrl: "https://maps.google.com/?q=Mavrovo+Lake",
                 tags: "villa hotel vilë vila вила хотел",
                 en: { name: "Luxury Villa Mavrovo", location: "Mavrovo", desc: "Exclusive villa with mountain view and private pool." },
                 sq: { name: "Vila Luksoze Mavrovë", location: "Mavrovë", desc: "Vilë ekskluzive me pamje spektakolare nga mali dhe pishinë private." },
@@ -425,7 +465,7 @@
                 tags: "mechanik mekanik service auto авто механичар",
                 en: { name: "Skopje Auto Mechanic Pro", location: "Skopje", desc: "24/7 emergency car repair for tourists. English speaking support." },
                 sq: { name: "Mekanik Auto Pro Shkup", location: "Shkup", desc: "Riparim urgjent i makinave 24/7 për turistët dhe vendasit. Flasim Shqip." },
-                mk: { name: "Авто Механичар Про Скопје", location: "Скопје", desc: "24/7 итна поправка на возила за туристи. Зборуваме англиски и германски." }
+                mk: { name: "Авто Механичар Про Скопје", location: "Скопје", desc: "24/7 итна поправка на возила за朼уристи. Зборуваме англиски и германски." }
             },
             {
                 phone: "+38975444333",
@@ -455,15 +495,15 @@
 
                 box.innerHTML += `
                     <div class="business-card">
-                        <div class="biz-name">${data.name}</div>
-                        <p class="biz-desc">${data.desc}</p>
+                        <div>
+                            <div class="biz-name">${data.name}</div>
+                            <p class="biz-desc">${data.desc}</p>
+                        </div>
                         
                         <div class="biz-footer">
-                            <!-- Vegëza për hapjen e lokacionit direkt në Google Maps -->
                             <a href="${biz.mapUrl}" target="_blank" class="biz-loc-link" title="Open in Google Maps">
                                 <span class="biz-loc">📍 ${data.location}</span>
                             </a>
-                            <!-- Vegëza 'tel:' për thirrje të menjëhershme nga celulari -->
                             <a href="tel:${biz.phone}" class="biz-phone-link">
                                 <span class="biz-phone">📞 ${biz.phoneDisplay}</span>
                             </a>
